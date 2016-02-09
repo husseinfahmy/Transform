@@ -1,0 +1,7 @@
+ <project>
+  <modelVersion> 4.0.0 </modelVersion>
+  <groupId> ca.uwo.csd.cs2212.team01 </groupId>
+  <artifactId> team01_ProgramName </artifactId>
+  <packaging> jar </packaging>
+  <version> 1.0-SNAPSHOT </version>
+</project>
