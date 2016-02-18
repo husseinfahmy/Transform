@@ -45,10 +45,11 @@ public class MainWindow extends JFrame {
 	}
     
     private void initUI () {
-    	this.setTitle("TRAINR");  //replace with your UWO email id
+    	this.setTitle("TRAINR");
     	this.setSize(1024, 800);
     	this.setLocationRelativeTo(null);
-    	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    	// changed EXIT_ON_CLOSE to DISPOSE_ON_CLOSE, prevents errors when using JFrame
+    	this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		  
 		  /*this.setJMenuBar(this.createMenubar());
 		  

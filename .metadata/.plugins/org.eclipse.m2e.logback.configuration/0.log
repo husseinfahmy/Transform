@@ -1,0 +1,22 @@
+2016-02-17 19:40:10,880 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: ca.uwo.csd.cs2212.team01:team01.TRAINR:0.0.1-SNAPSHOT @ C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\pom.xml.
+2016-02-17 19:40:12,844 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /team01.TRAINR-0.0.1-SNAPSHOT/src/main/java
+2016-02-17 19:40:12,845 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /team01.TRAINR-0.0.1-SNAPSHOT/src/main/resources
+2016-02-17 19:40:12,846 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /team01.TRAINR-0.0.1-SNAPSHOT/src/test/java
+2016-02-17 19:40:13,125 [Worker-3] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 3 sec
+2016-02-17 19:40:15,138 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-02-17 19:40:15,170 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-02-17 19:40:15,217 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-02-17 19:40:15,218 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-02-17 19:40:37,457 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-02-17 19:40:37,464 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-02-17 19:40:37,466 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-02-17 19:40:37,466 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-02-17 19:40:50,223 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-02-17 19:40:50,224 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-02-17 19:40:50,226 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-02-17 19:40:50,231 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-02-17 19:41:29,847 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-02-17 19:41:29,848 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-02-17 19:41:29,850 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-02-17 19:41:29,861 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-02-17 19:42:35,649 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
