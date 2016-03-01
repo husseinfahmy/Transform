@@ -101,6 +101,42 @@ public class DashboardScreen extends JPanel {
     	};
     	
     	this.add(bannerPanel);
+    	
+    	JPanel weekProgressPanel = new JPanel() {
+    		@Override
+    		protected void paintComponent(Graphics g) {
+    			super.paintComponent(g);
+    			
+    			this.setLayout(null);
+    			this.setOpaque(false);
+    			
+    			BufferedImage image = null;
+				try {
+					image = ImageIO.read(new File("UI/weekprogress-bg.png"));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+    			this.setSize(image.getWidth(), 150);
+    	    	this.setLocation((1480-this.getWidth())/2,75);
+    			g.drawImage(image, 0, 60, image.getWidth(), image.getHeight(), null);
+    			
+    			JLabel label;
+    			Dimension size;
+    			
+    			BufferedImage checkmark = null, exclmark = null, xmark = null;
+				try {
+					checkmark = ImageIO.read(new File("UI/checkmark.png"));
+					exclmark = ImageIO.read(new File("UI/exclmark.png"));
+					xmark = ImageIO.read(new File("UI/xmark.png"));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+    		}
+    	};
+    	
+    	this.add(weekProgressPanel);
 	}
     
 	@Override
