@@ -23,6 +23,7 @@ public class SplashScreen extends JPanel {
 	private MainWindow mainWindow;
 	
 	private JPanel loggingInPanel, titlePanel;
+	private GoalPanel setGoalPanel;
 	
 	public SplashScreen(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
@@ -117,6 +118,8 @@ public class SplashScreen extends JPanel {
     		}
     	};
     	this.add(loggingInPanel);
+
+    	this.setGoalPanel = new GoalPanel(mainWindow, FONT_HELVETICA_NEUE_THIN);
 	}
     
     @Override
