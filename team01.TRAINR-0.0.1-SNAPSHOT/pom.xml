@@ -3,7 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>ca.uwo.csd.cs2212.team01</groupId>
-	<artifactId>team01_TRAINR</artifactId>
+	<artifactId>team01-TRAINR</artifactId>
+	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<name>TRAINR</name>
