@@ -67,6 +67,31 @@ public class SplashScreen extends JPanel {
     		}
     	};
     	this.add(titlePanel);
+
+    	JPanel devicesPanel = new JPanel() {
+    		@Override
+    		protected void paintComponent(Graphics g) {
+    			super.paintComponent(g);
+    			
+    			this.setLayout(null);
+    			this.setOpaque(false);
+    			
+    			Graphics2D g2 = (Graphics2D) g;
+    			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    			
+    			BufferedImage image = null;
+				try {
+					image = ImageIO.read(new File("UI/devices.png"));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+    			this.setSize(image.getWidth(), image.getHeight());
+    	    	this.setLocation((1480-getWidth())/2,(800-getHeight())/2);
+    			g2.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
+    		}
+    	};
+    	this.add(devicesPanel);
 	}
     
     @Override
