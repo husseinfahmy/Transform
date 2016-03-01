@@ -36,8 +36,14 @@ public class MainWindow extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private int posX = 0, posY = 0;
+
+	private SplashScreen splashScreen;
 	
 	public MainWindow(boolean testMode) {
+
+		splashScreen = new SplashScreen(this);
+		
+		this.add(splashScreen);
 	}
     
 	private void createMouseListener() {

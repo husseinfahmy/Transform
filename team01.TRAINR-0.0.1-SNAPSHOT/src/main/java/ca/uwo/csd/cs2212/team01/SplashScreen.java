@@ -22,6 +22,8 @@ public class SplashScreen extends JPanel {
 	private Font FONT_HELVETICA_NEUE_THIN = null, FONT_HELVETICA_NEUE_ITALIC = null, FONT_HELVETICA_NEUE_BOLD = null;
 	private MainWindow mainWindow;
 	
+	private JPanel titlePanel;
+	
 	public SplashScreen(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 		
@@ -34,6 +36,37 @@ public class SplashScreen extends JPanel {
 	}
 	
     private void initUI() {
+    	this.titlePanel = new JPanel() {
+    		@Override
+    		protected void paintComponent(Graphics g) {
+    			super.paintComponent(g);
+    			
+    			this.setLayout(null);
+    			this.setOpaque(false);
+    			
+    			Graphics2D g2 = (Graphics2D) g;
+    			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    			
+    			JLabel title = new JLabel("Trainr", JLabel.LEFT);
+    			title.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(120.0f));
+    			Dimension sizeTitle = title.getPreferredSize();
+    			title.setBounds(0, 0, sizeTitle.width, sizeTitle.height);
+    			title.setForeground(new Color(255,255,255,150));
+    			
+    			JLabel version = new JLabel("Beta Version 1.0", JLabel.LEFT);
+    			version.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+    			Dimension sizeVersion = version.getPreferredSize();
+    			version.setBounds((sizeTitle.width-sizeVersion.width)/2, sizeTitle.height, sizeVersion.width, sizeVersion.height);
+    			version.setForeground(new Color(255,255,255,128));
+
+    			this.setSize(sizeTitle.width, sizeTitle.height+sizeVersion.height);
+    			this.setLocation((1480/2-getWidth())/2, (800-getHeight())/2);
+    			
+    			this.add(title);
+    			this.add(version);
+    		}
+    	};
+    	this.add(titlePanel);
 	}
     
     @Override
