@@ -22,7 +22,7 @@ public class SplashScreen extends JPanel {
 	private Font FONT_HELVETICA_NEUE_THIN = null, FONT_HELVETICA_NEUE_ITALIC = null, FONT_HELVETICA_NEUE_BOLD = null;
 	private MainWindow mainWindow;
 	
-	private JPanel titlePanel;
+	private JPanel loggingInPanel, titlePanel;
 	
 	public SplashScreen(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
@@ -92,6 +92,31 @@ public class SplashScreen extends JPanel {
     		}
     	};
     	this.add(devicesPanel);
+    	
+    	this.loggingInPanel = new JPanel() {
+    		@Override
+    		protected void paintComponent(Graphics g) {
+    			super.paintComponent(g);
+    			
+    			this.setLayout(null);
+    			this.setOpaque(false);
+    			
+    			Graphics2D g2 = (Graphics2D) g;
+    			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    			
+    			JLabel label = new JLabel("Logging In...", JLabel.LEFT);
+    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(45.0f));
+    			Dimension size = label.getPreferredSize();
+    			label.setBounds(0, 0, size.width, size.height);
+    			label.setForeground(new Color(255,255,255,150));
+
+    			this.setSize(size.width, size.height);
+    			this.setLocation(1480/2 + (1480/2-getWidth())/2, (800-getHeight())/2);
+    			
+    			this.add(label);
+    		}
+    	};
+    	this.add(loggingInPanel);
 	}
     
     @Override
