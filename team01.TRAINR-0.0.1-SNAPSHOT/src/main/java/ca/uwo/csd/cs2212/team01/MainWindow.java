@@ -38,10 +38,12 @@ public class MainWindow extends JFrame {
 	private int posX = 0, posY = 0;
 
 	private SplashScreen splashScreen;
+	private DashboardScreen dashboardScreen;
 	
 	public MainWindow(boolean testMode) {
 
 		splashScreen = new SplashScreen(this);
+		dashboardScreen = new DashboardScreen(this);
 		
 		this.add(splashScreen);
 	}
