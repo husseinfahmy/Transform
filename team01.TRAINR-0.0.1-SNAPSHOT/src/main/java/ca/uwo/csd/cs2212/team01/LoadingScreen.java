@@ -18,7 +18,6 @@ public class LoadingScreen extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Font FONT_HELVETICA_NEUE_THIN = null, FONT_HELVETICA_NEUE_ITALIC = null, FONT_HELVETICA_NEUE_BOLD = null;
 	private MainWindow mainWindow;
 	
 	private JPanel titlePanel, devicesPanel;
@@ -30,8 +29,6 @@ public class LoadingScreen extends JPanel {
 		this.setOpaque(false);
     	this.setLocation(0, 0);
     	this.setSize(1480, 800);
-    	
-    	this.createFonts();
     	
 		this.initUI();
 		
@@ -145,13 +142,13 @@ public class LoadingScreen extends JPanel {
     			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     			
     			JLabel title = new JLabel("Trainr", JLabel.LEFT);
-    			title.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(120.0f));
+    			title.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(120.0f));
     			Dimension sizeTitle = title.getPreferredSize();
     			title.setBounds(0, 0, sizeTitle.width, sizeTitle.height);
     			title.setForeground(new Color(255,255,255,150));
     			
     			JLabel version = new JLabel("Beta Version 1.0", JLabel.LEFT);
-    			version.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+    			version.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
     			Dimension sizeVersion = version.getPreferredSize();
     			version.setBounds((sizeTitle.width-sizeVersion.width)/2, sizeTitle.height, sizeVersion.width, sizeVersion.height);
     			version.setForeground(new Color(255,255,255,128));
@@ -203,7 +200,7 @@ public class LoadingScreen extends JPanel {
     			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     			
     			JLabel label = new JLabel("Logging In...", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(45.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(45.0f));
     			Dimension size = label.getPreferredSize();
     			label.setBounds(0, 0, size.width, size.height);
     			label.setForeground(new Color(255,255,255,150));
@@ -218,48 +215,6 @@ public class LoadingScreen extends JPanel {
 	}
     
     public JPanel getDevicesPanel() { return this.devicesPanel; }
-    
-    private void createFonts() {
-    	GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-    	
-    	//Font font = null;
-		try {
-			FONT_HELVETICA_NEUE_THIN = Font.createFont(Font.TRUETYPE_FONT, new File("FONTS/HelveticaNeueThin.ttf"));
-			//FONT_HELVETICA_NEUE_BOLD = Font.createFont(Font.TRUETYPE_FONT, new File("FONTS/HelveticaNeueBold.ttf"));
-		} catch (FontFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		genv.registerFont(FONT_HELVETICA_NEUE_THIN);
-		
-		try {
-			FONT_HELVETICA_NEUE_ITALIC = Font.createFont(Font.TRUETYPE_FONT, new File("FONTS/HelveticaNeueThinItalic.ttf"));
-		} catch (FontFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		genv.registerFont(FONT_HELVETICA_NEUE_ITALIC);
-		
-		/*try {
-			FONT_HELVETICA_NEUE_BOLD = Font.createFont(Font.TRUETYPE_FONT, new File("FONTS/HelveticaNeue.ttf"));
-		} catch (FontFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		
-    	//GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-    	//genv.registerFont(font);
-    	//font = font.deriveFont(12f);
-    }
     
     @Override
 	protected void paintComponent(Graphics g) {
@@ -291,7 +246,7 @@ public class LoadingScreen extends JPanel {
 		g2.drawImage(image, 13, getHeight()-image.getHeight()-13, null);
 
 		JLabel label = new JLabel("<html>Fitbit Privacy Statement<br>Copy Rights & Endorsements</html>", JLabel.LEFT);
-		label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+		label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
 		Dimension size = label.getPreferredSize();
 		label.setBounds(13+image.getWidth()+13, getHeight()-13-50, size.width, size.height);
 		label.setForeground(Color.WHITE);

@@ -24,7 +24,6 @@ public class DashboardScreen extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Font FONT_HELVETICA_NEUE_THIN = null, FONT_HELVETICA_NEUE_ITALIC = null, FONT_HELVETICA_NEUE_BOLD = null;
 	private MainWindow mainWindow;
 	
 	private JPanel bannerPanel;
@@ -36,8 +35,6 @@ public class DashboardScreen extends JPanel {
 		this.setOpaque(false);
     	this.setLocation(0, 0);
     	this.setSize(1480, 800);
-    	
-    	this.createFonts();
     	
 		this.initUI();
 	}
@@ -101,14 +98,14 @@ public class DashboardScreen extends JPanel {
     			g2.drawLine((int)(getWidth()*0.7f/2), 75/2, (int)(getWidth()*0.7f/2) + (int)(getWidth()*0.3f), 75/2);
     			
     			JLabel label = new JLabel("Current Weight", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
-    			size = label.getPreferredSize();
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+    			Dimension size = label.getPreferredSize();
     			label.setBounds(getWidth()/2 - (int)(getWidth()*0.3f)/2 + (int)((getWidth()*0.3f/2) - size.width)/2, (75/2 - size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
     			
     			label = new JLabel("Target Weight", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			size = label.getPreferredSize();
     			label.setBounds(getWidth()/2 + (int)((getWidth()*0.3f/2) - size.width)/2, (75/2 - size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
@@ -163,7 +160,7 @@ public class DashboardScreen extends JPanel {
     			g2.drawImage(image, getWidth()-image.getWidth()-13-50-13, (getHeight()-image.getHeight())/2, null);
 				
     			refreshDesc = new JLabel("<html>Last Refreshed:<br>" + mainWindow.lastRefreshed().getTXTone().get(0) + "</html>", JLabel.LEFT);
-    			refreshDesc.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(14.0f));
+    			refreshDesc.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(14.0f));
     			size = refreshDesc.getPreferredSize();
 				
     			image = null;
@@ -244,7 +241,7 @@ public class DashboardScreen extends JPanel {
     					else label = new JLabel(mainWindow.getDayOfWeek(day.getDate()), JLabel.LEFT);
     				}
     				
-    				label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+    				label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
         			size = label.getPreferredSize();
         			label.setBounds((this.getWidth()/7)*i + ((this.getWidth()/7)-size.width)/2, 60 + (35-size.height)/2, size.width, size.height);
         			label.setForeground(Color.WHITE);
@@ -252,10 +249,10 @@ public class DashboardScreen extends JPanel {
         			
     				if (i == 6) {
     					label = new JLabel("In Progress", JLabel.LEFT);
-    					label.setFont(FONT_HELVETICA_NEUE_ITALIC.deriveFont(25.0f));
+    					label.setFont(mainWindow.FONT_HELVETICA_NEUE_ITALIC.deriveFont(25.0f));
     				}else {
     					label = new JLabel("<html>" + (value > 0 ? "+" : "") + value + "<small style='font-size:18pt'> cal</small></html>", JLabel.LEFT);
-    					label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+    					label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
     				}
     				
     				size = label.getPreferredSize();
@@ -295,14 +292,14 @@ public class DashboardScreen extends JPanel {
 				g2.drawImage(image, (getWidth()-image.getWidth())/2, 0, null);
 
     			JLabel label = new JLabel("Calorie Tracking", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
     			Dimension size = label.getPreferredSize();
     			label.setBounds(getWidth()*0 + (getWidth() - size.width)/2, (52-size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
 
     			label = new JLabel("Today's Plan", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(24.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(24.0f));
     			size = label.getPreferredSize();
     			label.setBounds((getWidth() - size.width)/2, 52 + (60-size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
@@ -322,7 +319,7 @@ public class DashboardScreen extends JPanel {
 
 	   			for (int i = 0; i < feedback.getTXTone().size(); i++ ) {
 	    			label = new JLabel("<html><font color='#ffffff'>" + feedback.getTXTone().get(i) + "</font><font color='#7772FF'>" + feedback.getTXTtwo().get(i) + "</font></html>", JLabel.LEFT);
-	    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
 	    			size = label.getPreferredSize();
 	    			
    			        g2.draw(new RoundRectangle2D.Float((getWidth()/2 - size.width)/2 - 8, 112+image.getHeight() + (130-image.getHeight() - (size.height+10)*3)/2 + (size.height+10)*i - 3, size.width + 16, size.height+6, 8, 8));
@@ -337,7 +334,7 @@ public class DashboardScreen extends JPanel {
 
 	   			for (int i = 0; i < txtOne.size(); i++ ) {
    					label = new JLabel("<html><font color='#ffffff'>" + feedback.getTXTone().get(i) + "</font><font color='#6AB9FF'>" + feedback.getTXTtwo().get(i) + "</font></html>", JLabel.LEFT);
-	    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
 	    			size = label.getPreferredSize();
 
    			        g2.draw(new RoundRectangle2D.Float(getWidth()/2 + (getWidth()/2 - size.width)/2 - 8, 112+image.getHeight() + (130-image.getHeight() - (size.height+10)*3)/2 + (size.height+10)*i - 3, size.width + 16, size.height+6, 8, 8));
@@ -365,7 +362,7 @@ public class DashboardScreen extends JPanel {
     			scaleMaxCal = totalCalEat*scaleFactor;
     			
     			label = new JLabel("Today's Progress", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(24.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(24.0f));
     			size = label.getPreferredSize();
     			label.setBounds(getWidth()*0 + (getWidth() - size.width)/2, 112+130 + (100-size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
@@ -391,7 +388,7 @@ public class DashboardScreen extends JPanel {
     			this.add(axisGraph);
     			
     			label = new JLabel("Calories Eaten", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			size = label.getPreferredSize();
     			label.setBounds(getWidth()/5/2, 112+120+120+(55-size.height)/2, size.width, size.height);
     			label.setForeground(new Color(119, 114, 255, 255));
@@ -403,7 +400,7 @@ public class DashboardScreen extends JPanel {
 				g2.drawLine((getWidth()/axisData.length)/2, 112+120+120+(55-size.height)/2 + size.height + 5, getWidth() - 1 - (int)((getWidth() - getWidth()/5/2 - 1)*(scaleMaxCal-totalCalEat)/scaleMaxCal), 112+120+120+(55-size.height)/2 + size.height + 5);
 
     			label = new JLabel("Calories Burned", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			size = label.getPreferredSize();
     			label.setBounds(getWidth()*0 + getWidth()/5/2, 112+120+120+55+(55-size.height)/2, size.width, size.height);
     			label.setForeground(new Color(106, 185, 255, 255));
@@ -449,7 +446,7 @@ public class DashboardScreen extends JPanel {
     			g2.drawImage(image, getWidth()*0 + (getWidth()-image.getWidth())/2, getHeight()-image.getHeight(), null);
 
     			label = new JLabel("Customize My Plans", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			size = label.getPreferredSize();
     			label.setBounds(getWidth()*0 + (getWidth()-size.width)/2, getHeight()-image.getHeight()+(31-size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
@@ -488,7 +485,7 @@ public class DashboardScreen extends JPanel {
 				g2.drawImage(image, (getWidth()-image.getWidth())/2, 0, null);
 
     			JLabel label = new JLabel("TRAINR Feedback", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
     			Dimension size = label.getPreferredSize();
     			label.setBounds((getWidth() - size.width)/2, (52-size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
@@ -504,7 +501,7 @@ public class DashboardScreen extends JPanel {
 	   			else output = null;
 	   			
 	   			label = new JLabel("<html><center>" + output + "</center></html>", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
     			size = label.getPreferredSize();
     			label.setBounds((getWidth() - size.width)/2, 52 + 15 + (100-size.height)/2, size.width, size.height);
     			label.setForeground(new Color(1.0f,1.0f,1.0f,0.6f));
@@ -513,7 +510,7 @@ public class DashboardScreen extends JPanel {
     			if (feedback.getTextCode() == 2) {
     				output = String.format("%.1f", feedback.getFirstValues().get(2))+" lbs to go!";
     	   			label = new JLabel(output, JLabel.LEFT);
-        			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+        			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
         			size = label.getPreferredSize();
         			label.setBounds(40, 52 + 15 + 100 + 100/2 - size.height - 3, size.width, size.height);
         			label.setForeground(new Color(106, 185, 255, 255));
@@ -525,7 +522,7 @@ public class DashboardScreen extends JPanel {
         			g2.draw(new Ellipse2D.Double(getWidth()-40-50, 52 + 15 + 100 + (100-50)/2, 50, 50));
         			
         			label = new JLabel("MS", JLabel.LEFT);
-        			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+        			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
         			size = label.getPreferredSize();
         			label.setBounds(getWidth()-40-50 + (50-size.width)/2, 52+15+100 + (100-size.height)/2, size.width, size.height);
         			label.setForeground(Color.WHITE);
@@ -540,7 +537,7 @@ public class DashboardScreen extends JPanel {
 	   			else output = null;
 	   			
 	   			label = new JLabel("<html><center>" + output + "</center></html>", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
     			size = label.getPreferredSize();
     			label.setBounds((getWidth() - size.width)/2, 52+15+100+100 + (100-size.height)/2, size.width, size.height);
     			label.setForeground(new Color(1.0f,1.0f,1.0f,0.6f));
@@ -554,7 +551,7 @@ public class DashboardScreen extends JPanel {
 	   			else output = null;
 	   			
 	   			label = new JLabel("<html><center>" + output + "</center></html>", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
     			size = label.getPreferredSize();
     			label.setBounds((getWidth() - size.width)/2, 52+15+100+100+100 + (100-size.height)/2, size.width, size.height);
     			label.setForeground(new Color(1.0f,1.0f,1.0f,0.6f));
@@ -592,21 +589,21 @@ public class DashboardScreen extends JPanel {
 				g2.drawImage(image, (getWidth()-image.getWidth())/2, 0, null);
 
     			JLabel label = new JLabel("Activity Tracking", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
     			Dimension size = label.getPreferredSize();
     			label.setBounds((getWidth() - size.width)/2, (52-size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
     			
     			label = new JLabel("<html><div style='text-align:center;'>Active<br>Activity</div></html>", JLabel.CENTER);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
     			size = label.getPreferredSize();
     			label.setBounds((getWidth()/3 - size.width)/2, 52 + (80-size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
     			
     			label = new JLabel("<html><div style='text-align:center;'>Sedentary<br>Activity</div></html>", JLabel.CENTER);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
     			size = label.getPreferredSize();
     			label.setBounds(getWidth()*2/3 + (getWidth()/3 - size.width)/2, 52 + (80-size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
@@ -638,7 +635,7 @@ public class DashboardScreen extends JPanel {
     	        g2.setStroke(new BasicStroke(2.0f));
     	        
     			label = new JLabel(totalActiveMin + "", JLabel.CENTER);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
     			size = label.getPreferredSize();
     			label.setBounds((getWidth()/3 - size.width)/2, 52+80 + (100-size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
@@ -647,14 +644,14 @@ public class DashboardScreen extends JPanel {
     			g2.drawLine((getWidth()/3 - size.width)/2 + size.width + 10, 52+80 + (100-2)/2, (getWidth()-100)/2 - 10 - 6, 52+80 + (100-2)/2);
     			
     			label = new JLabel("min", JLabel.CENTER);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
     			Dimension size2 = label.getPreferredSize();
     			label.setBounds((getWidth()/3 - size2.width)/2, 52+80 + (100-size.height)/2 + size.height + 1, size2.width, size2.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
     			
     			label = new JLabel(totalSedMin + "", JLabel.CENTER);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
     			size = label.getPreferredSize();
     			label.setBounds(getWidth()*2/3 + (getWidth()/3 - size.width)/2, 52+80 + (100-size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
@@ -663,7 +660,7 @@ public class DashboardScreen extends JPanel {
     			g2.drawLine((getWidth()-100)/2 + 100 + 10 + 6, 52+80 + (100-2)/2, getWidth()*2/3 + (getWidth()/3 - size.width)/2 - 10, 52+80 + (100-2)/2);
     			
     			label = new JLabel("min", JLabel.CENTER);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
     			size2 = label.getPreferredSize();
     			label.setBounds(getWidth()*2/3 + (getWidth()/3 - size2.width)/2, 52+80 + (100-size.height)/2 + size.height + 1, size2.width, size2.height);
     			label.setForeground(Color.WHITE);
@@ -682,7 +679,7 @@ public class DashboardScreen extends JPanel {
     	        g2.setStroke(new BasicStroke(2.0f));
     			
     			label = new JLabel("135", JLabel.CENTER);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
     			size = label.getPreferredSize();
     			label.setBounds((getWidth()/3 - size.width)/2, 52+80+100 + (160-size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
@@ -691,14 +688,14 @@ public class DashboardScreen extends JPanel {
     			g2.drawLine((getWidth()/3 - size.width)/2 + size.width + 10, 52+80+100 + (160-2)/2, (getWidth()-image.getWidth())/2 - 10, 52+80+100 + (160-2)/2);
     			
     			label = new JLabel("BPM", JLabel.CENTER);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
     			size2 = label.getPreferredSize();
     			label.setBounds((getWidth()/3 - size2.width)/2, 52+80+100 + (160-size.height)/2 + size.height + 1, size2.width, size2.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
     			
     			label = new JLabel("78", JLabel.CENTER);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
     			size = label.getPreferredSize();
     			label.setBounds(getWidth()*2/3 + (getWidth()/3 - size.width)/2, 52+80+100 + (160-size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
@@ -707,7 +704,7 @@ public class DashboardScreen extends JPanel {
     			g2.drawLine((getWidth()-image.getWidth())/2 + image.getWidth() + 10, 52+80+100 + (160-2)/2, getWidth()*2/3 + (getWidth()/3 - size.width)/2 - 10, 52+80+100 + (160-2)/2);
     			
     			label = new JLabel("BPM", JLabel.CENTER);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
     			size2 = label.getPreferredSize();
     			label.setBounds(getWidth()*2/3 + (getWidth()/3 - size2.width)/2, 52+80+100 + (160-size.height)/2 + size.height + 1, size2.width, size2.height);
     			label.setForeground(Color.WHITE);
@@ -721,14 +718,14 @@ public class DashboardScreen extends JPanel {
     	        g2.draw(new Ellipse2D.Double(20*1 + arcSize*0, 52+80+100+160, arcSize, arcSize));
 
     			label = new JLabel(totalDist + "", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			size = label.getPreferredSize();
     			label.setBounds(20*1 + arcSize*0 + (arcSize-size.width)/2, 52+80+100+160 + (arcSize*2/3 - size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
     			
     			label = new JLabel("Km", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
     			size = label.getPreferredSize();
     			label.setBounds(20*1 + arcSize*0 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
@@ -740,14 +737,14 @@ public class DashboardScreen extends JPanel {
     	        g2.draw(new Ellipse2D.Double(20*2 + arcSize*1, 52+80+100+160, arcSize, arcSize));
 
     			label = new JLabel(totalSteps + "", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			size = label.getPreferredSize();
     			label.setBounds(20*2 + arcSize*1 + (arcSize-size.width)/2, 52+80+100+160 + (arcSize*2/3 - size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
     			
     			label = new JLabel("Steps", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
     			size = label.getPreferredSize();
     			label.setBounds(20*2 + arcSize*1 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
@@ -759,14 +756,14 @@ public class DashboardScreen extends JPanel {
     	        g2.draw(new Ellipse2D.Double(20*3 + arcSize*2, 52+80+100+160, arcSize, arcSize));
 
     			label = new JLabel(totalFloors + "", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			size = label.getPreferredSize();
     			label.setBounds(20*3 + arcSize*2 + (arcSize-size.width)/2, 52+80+100+160 + (arcSize*2/3 - size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
     			
     			label = new JLabel("Floors", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
     			size = label.getPreferredSize();
     			label.setBounds(20*3 + arcSize*2 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
@@ -778,14 +775,14 @@ public class DashboardScreen extends JPanel {
     	        g2.draw(new Ellipse2D.Double(20*4 + arcSize*3, 52+80+100+160, arcSize, arcSize));
     	        
     			label = new JLabel(totalCal + "", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			size = label.getPreferredSize();
     			label.setBounds(20*4 + arcSize*3 + (arcSize-size.width)/2, 52+80+100+160 + (arcSize*2/3 - size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
     			
     			label = new JLabel("<html><p style='text-align:center;'>Calories<br>Burned</p></html>", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(16.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(16.0f));
     			size = label.getPreferredSize();
     			label.setBounds(20*4 + arcSize*3 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
@@ -801,48 +798,6 @@ public class DashboardScreen extends JPanel {
 
     public JPanel getBannerPanel() { return this.bannerPanel; }
     public JLabel getRefreshDesc() { return this.refreshDesc; }
-    
-    private void createFonts() {
-    	GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-    	
-    	//Font font = null;
-		try {
-			FONT_HELVETICA_NEUE_THIN = Font.createFont(Font.TRUETYPE_FONT, new File("FONTS/HelveticaNeueThin.ttf"));
-			//FONT_HELVETICA_NEUE_BOLD = Font.createFont(Font.TRUETYPE_FONT, new File("FONTS/HelveticaNeueBold.ttf"));
-		} catch (FontFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		genv.registerFont(FONT_HELVETICA_NEUE_THIN);
-		
-		try {
-			FONT_HELVETICA_NEUE_ITALIC = Font.createFont(Font.TRUETYPE_FONT, new File("FONTS/HelveticaNeueThinItalic.ttf"));
-		} catch (FontFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		genv.registerFont(FONT_HELVETICA_NEUE_ITALIC);
-		
-		/*try {
-			FONT_HELVETICA_NEUE_BOLD = Font.createFont(Font.TRUETYPE_FONT, new File("FONTS/HelveticaNeue.ttf"));
-		} catch (FontFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		
-    	//GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-    	//genv.registerFont(font);
-    	//font = font.deriveFont(12f);
-    }
     
 	@Override
 	protected void paintComponent(Graphics g) {

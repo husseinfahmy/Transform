@@ -35,6 +35,7 @@ public class MainWindow extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	public Font FONT_HELVETICA_NEUE_THIN = null, FONT_HELVETICA_NEUE_ITALIC = null, FONT_HELVETICA_NEUE_BOLD = null;
 	private int posX = 0, posY = 0;
 	private boolean testMode;
 	
@@ -75,6 +76,8 @@ public class MainWindow extends JFrame {
     	this.createMouseListener();
     	// changed EXIT_ON_CLOSE to DISPOSE_ON_CLOSE, prevents errors when using JFrame
     	this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    	
+    	this.createFonts();
     	
     	if (testMode) {
     		this.lastCall = new Date();
@@ -134,6 +137,53 @@ public class MainWindow extends JFrame {
 	public SplashScreen getSplashScreen() { return this.splashScreen; }
 	public WeighScreen getWeighScreen() { return this.weighScreen; }
 	public DashboardScreen getDashboardScreen() { return this.dashboardScreen; }
+
+    private void createFonts() {
+    	GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+    	
+    	ClassLoader classLoader = getClass().getClassLoader();
+    	File file;
+    	
+    	file = new File(classLoader.getResource("FONTS/HelveticaNeueThin.ttf").getFile());
+    	//Font font = null;
+		try {
+			FONT_HELVETICA_NEUE_THIN = Font.createFont(Font.TRUETYPE_FONT, file);
+			//FONT_HELVETICA_NEUE_BOLD = Font.createFont(Font.TRUETYPE_FONT, new File("FONTS/HelveticaNeueBold.ttf"));
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		genv.registerFont(FONT_HELVETICA_NEUE_THIN);
+		
+		file = new File(classLoader.getResource("FONTS/HelveticaNeueThinItalic.ttf").getFile());
+		try {
+			FONT_HELVETICA_NEUE_ITALIC = Font.createFont(Font.TRUETYPE_FONT, file);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		genv.registerFont(FONT_HELVETICA_NEUE_ITALIC);
+		
+		/*try {
+			FONT_HELVETICA_NEUE_BOLD = Font.createFont(Font.TRUETYPE_FONT, new File("FONTS/HelveticaNeue.ttf"));
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		
+    	//GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+    	//genv.registerFont(font);
+    	//font = font.deriveFont(12f);
+    }
     
 	private void createMouseListener() {
     	this.addMouseListener(new MouseAdapter()

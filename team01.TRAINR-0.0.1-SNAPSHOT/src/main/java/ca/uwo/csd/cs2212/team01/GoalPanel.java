@@ -18,7 +18,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class GoalPanel extends JPanel {
-	private Font font;
 	private Rectangle rectList[];
 	private Rectangle panelRect;
 	private MainWindow mainWindow;
@@ -27,10 +26,9 @@ public class GoalPanel extends JPanel {
 	private JTextArea currentWeight, targetWeight;
 	private JButton submitForm;
 	
-	public GoalPanel(MainWindow mainWindow, Font font) {
+	public GoalPanel(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 		
-		this.font = font;
 		this.rectList = new Rectangle[4];
 
 		this.setLayout(null);
@@ -39,7 +37,7 @@ public class GoalPanel extends JPanel {
 		int height = 0;
 		
 		title = new JLabel("Set Weight Loss Goal", JLabel.LEFT);
-		title.setFont(this.font.deriveFont(45.0f));
+		title.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(45.0f));
 		Dimension size = title.getPreferredSize();
 		title.setBounds((503-size.width)/2, height, size.width, size.height);
 		title.setForeground(new Color(255,255,255,150));
@@ -49,12 +47,12 @@ public class GoalPanel extends JPanel {
 		rectList[1] = new Rectangle(253, height, 250, 50);
 
 		tableTitle1 = new JLabel("Current Weight (lbs)", JLabel.CENTER);
-		tableTitle1.setFont(this.font.deriveFont(22.0f));
+		tableTitle1.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
 		tableTitle1.setBounds(0, height, 250, 50);
 		tableTitle1.setForeground(new Color(255,255,255,150));
 
 		tableTitle2 = new JLabel("Target Weight (lbs)", JLabel.CENTER);
-		tableTitle2.setFont(this.font.deriveFont(22.0f));
+		tableTitle2.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
 		tableTitle2.setBounds(253, height, 250, 50);
 		tableTitle2.setForeground(new Color(255,255,255,150));
 		
@@ -68,7 +66,7 @@ public class GoalPanel extends JPanel {
 		currentWeight.setSize(250, 50);
 		currentWeight.setBounds(5+100, height+8, 250-100, 50-8);
 		currentWeight.setOpaque(false);
-		currentWeight.setFont(this.font.deriveFont(22.0f));
+		currentWeight.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
 		currentWeight.setForeground(new Color(255,255,255,200));
 		currentWeight.setCaretColor(new Color(255,255,255,200));
 
@@ -76,21 +74,21 @@ public class GoalPanel extends JPanel {
 		targetWeight.setLayout(null);
 		targetWeight.setBounds(253+5+100, height+8, 250-100, 50-8);
 		targetWeight.setOpaque(false);
-		targetWeight.setFont(this.font.deriveFont(22.0f));
+		targetWeight.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
 		targetWeight.setForeground(new Color(255,255,255,200));
 		targetWeight.setCaretColor(new Color(255,255,255,200));
 
 		height += 53+20;
 
 		desc = new JLabel("Please enter in a weight for each.", JLabel.LEFT);
-		desc.setFont(this.font.deriveFont(30.0f));
+		desc.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
 		size = desc.getPreferredSize();
 		desc.setBounds((503-size.width)/2, height, size.width, size.height);
 		desc.setForeground(new Color(255,255,255,150));
 		height += size.height+50;
 		
 		submitForm = new JButton("Click to continue >");
-		submitForm.setFont(this.font.deriveFont(45.0f));
+		submitForm.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(45.0f));
 		submitForm.setBackground(null);
 		submitForm.setBorder(null);
 		submitForm.setFocusPainted(false);
@@ -103,7 +101,7 @@ public class GoalPanel extends JPanel {
         submitForm.addActionListener(new ButtonActionListener(0, 1, this.mainWindow));
 		
 		btnDesc = new JLabel("Click to continue >", JLabel.LEFT);
-		btnDesc.setFont(this.font.deriveFont(45.0f));
+		btnDesc.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(45.0f));
 		size = btnDesc.getPreferredSize();
 		submitForm.setSize(size.width, size.height);
 		
