@@ -33,6 +33,8 @@ public class SplashScreen extends JPanel {
     	this.setLocation(0, 0);
     	this.setSize(1480, 800);
     	
+    	this.createFonts();
+    	
 		this.initUI();
 	}
 	
@@ -72,9 +74,52 @@ public class SplashScreen extends JPanel {
     	this.add(mainWindow.getLoadingScreen().getDevicesPanel());
 
     	this.setGoalPanel = new GoalPanel(mainWindow, FONT_HELVETICA_NEUE_THIN);
+    	this.add(setGoalPanel);
 	}
     
     public GoalPanel getSetGoalPanel() { return this.setGoalPanel; }
+    
+    private void createFonts() {
+    	GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+    	
+    	//Font font = null;
+		try {
+			FONT_HELVETICA_NEUE_THIN = Font.createFont(Font.TRUETYPE_FONT, new File("FONTS/HelveticaNeueThin.ttf"));
+			//FONT_HELVETICA_NEUE_BOLD = Font.createFont(Font.TRUETYPE_FONT, new File("FONTS/HelveticaNeueBold.ttf"));
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		genv.registerFont(FONT_HELVETICA_NEUE_THIN);
+		
+		try {
+			FONT_HELVETICA_NEUE_ITALIC = Font.createFont(Font.TRUETYPE_FONT, new File("FONTS/HelveticaNeueThinItalic.ttf"));
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		genv.registerFont(FONT_HELVETICA_NEUE_ITALIC);
+		
+		/*try {
+			FONT_HELVETICA_NEUE_BOLD = Font.createFont(Font.TRUETYPE_FONT, new File("FONTS/HelveticaNeue.ttf"));
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		
+    	//GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+    	//genv.registerFont(font);
+    	//font = font.deriveFont(12f);
+    }
     
     @Override
 	protected void paintComponent(Graphics g) {

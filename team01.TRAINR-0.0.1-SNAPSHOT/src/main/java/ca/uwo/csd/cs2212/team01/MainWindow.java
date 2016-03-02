@@ -77,9 +77,9 @@ public class MainWindow extends JFrame {
 		loadingScreen = new LoadingScreen(this);
 		splashScreen = new SplashScreen(this);
 		//weighScreen = new WeighScreen(this);
-		//dashboardScreen = new DashboardScreen(this);
+		dashboardScreen = new DashboardScreen(this);
 		
-		this.add(loadingScreen);
+		this.add(splashScreen);
 	}
     
 	public void setupVirtualTrainer(float currentWeight, float targetWeight) {

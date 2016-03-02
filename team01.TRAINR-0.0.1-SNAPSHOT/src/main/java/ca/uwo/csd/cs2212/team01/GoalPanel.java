@@ -47,8 +47,6 @@ public class GoalPanel extends JPanel {
 
 		rectList[0] = new Rectangle(0, height, 250, 50);
 		rectList[1] = new Rectangle(253, height, 250, 50);
-		/*g2.fillRect(0, height, 250, 50);
-		g2.fillRect(253, height, 250, 50);*/
 
 		tableTitle1 = new JLabel("Current Weight (lbs)", JLabel.CENTER);
 		tableTitle1.setFont(this.font.deriveFont(22.0f));
