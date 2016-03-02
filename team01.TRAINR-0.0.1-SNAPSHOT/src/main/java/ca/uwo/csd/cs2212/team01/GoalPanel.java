@@ -64,42 +64,23 @@ public class GoalPanel extends JPanel {
 
 		rectList[2] = new Rectangle(0, height, 250, 50);
 		rectList[3] = new Rectangle(253, height, 250, 50);
-		/*g2.fillRect(0, height, 250, 50);
-		g2.fillRect(253, height, 250, 50);*/
-		//currWeightInputPos = new Dimension(0, height);
 		
 		currentWeight = new JTextArea();
-		//currentWeight.setContentType("text/html");
 		currentWeight.setLayout(null);
-		//currentWeight.setWrapStyleWord(true);
-		//currentWeight.setLineWrap(true);
-		//currentWeight.setLocation(5, height+8);
 		currentWeight.setSize(250, 50);
 		currentWeight.setBounds(5+100, height+8, 250-100, 50-8);
 		currentWeight.setOpaque(false);
 		currentWeight.setFont(this.font.deriveFont(22.0f));
 		currentWeight.setForeground(new Color(255,255,255,200));
 		currentWeight.setCaretColor(new Color(255,255,255,200));
-		//currentWeight.setEditorKit(kit);
-		
-		/*Document doc;
-		SimpleAttributeSet center = new SimpleAttributeSet();
-		StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);*/
-		
-		//doc = (StyledDocument)currentWeight.getDocument();
-		//doc.setParagraphAttributes(0, doc.getLength(), center, false);
 
 		targetWeight = new JTextArea();
-		//targetWeight.setContentType("text/html");
 		targetWeight.setLayout(null);
-		//targetWeight.setLocation(253+5, height+8);
-		//targetWeight.setSize(250, 50);
 		targetWeight.setBounds(253+5+100, height+8, 250-100, 50-8);
 		targetWeight.setOpaque(false);
 		targetWeight.setFont(this.font.deriveFont(22.0f));
 		targetWeight.setForeground(new Color(255,255,255,200));
 		targetWeight.setCaretColor(new Color(255,255,255,200));
-		//targetWeight.setEditorKit(kit);
 
 		height += 53+20;
 
@@ -121,23 +102,12 @@ public class GoalPanel extends JPanel {
 		submitForm.setOpaque(false);
 		submitForm.setForeground(new Color(255,255,255,150));
 		submitForm.setFocusable(false);
-		/*submitForm.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				mainFrame.setVisible(false);
-				this.mainFrame.getContentPane().removeAll();
-				this.mainFrame.add(new DashboardScreen(mainFrame));
-				this.mainFrame.setVisible(true);
-				System.out.println("Button Clicked");
-			}
-		});*/
+        submitForm.addActionListener(new ButtonActionListener(0, 1, this.mainWindow));
 		
 		btnDesc = new JLabel("Click to continue >", JLabel.LEFT);
 		btnDesc.setFont(this.font.deriveFont(45.0f));
 		size = btnDesc.getPreferredSize();
 		submitForm.setSize(size.width, size.height);
-		//btnDesc.setBounds((503-size.width)/2, height, size.width, size.height);
-		//btnDesc.setForeground(new Color(255,255,255,150));
 		
 		submitForm.setLocation((503-size.width)/2, height);
 		
@@ -152,7 +122,6 @@ public class GoalPanel extends JPanel {
     	this.add(targetWeight);
     	this.add(desc);
     	this.add(submitForm);
-    	//this.add(btnDesc);
 	}
 
 	public String getCurrentWeight() { return this.currentWeight.getText(); }
