@@ -73,7 +73,7 @@ public class DashboardScreen extends JPanel {
 					e.printStackTrace();
 				}
     			g2.drawImage(image, 13, 13, null);
-
+				
     			JButton weighBtn = new JButton("Weigh Myself");
     			weighBtn.setBackground(null);
     			weighBtn.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
@@ -87,7 +87,7 @@ public class DashboardScreen extends JPanel {
     			weighBtn.setFocusable(false);
     	        weighBtn.addActionListener(new ButtonActionListener(3, 0, mainWindow));
     	        this.add(weighBtn);
-
+				
     			JLabel btnDesc = new JLabel("Weigh Myself", JLabel.LEFT);
     			btnDesc.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			Dimension size = btnDesc.getPreferredSize();
@@ -155,19 +155,21 @@ public class DashboardScreen extends JPanel {
     			refreshBtn.setOpaque(false);
     			refreshBtn.setFocusable(false);
     			refreshBtn.setSize(image.getWidth(), image.getHeight());
+				
     			refreshBtn.setLocation(getWidth()-image.getWidth()-13-50-13, (getHeight()-image.getHeight())/2);
     	        refreshBtn.addActionListener(new ButtonActionListener(1, 0, mainWindow));
     	        this.add(refreshBtn);
     	        
     			g2.drawImage(image, getWidth()-image.getWidth()-13-50-13, (getHeight()-image.getHeight())/2, null);
-    			
+				
     			refreshDesc = new JLabel("<html>Last Refreshed:<br>" + mainWindow.lastRefreshed().getTXTone().get(0) + "</html>", JLabel.LEFT);
     			refreshDesc.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(14.0f));
     			size = refreshDesc.getPreferredSize();
+				
     			refreshDesc.setBounds(getWidth()-image.getWidth()-13-50-13-size.width-13, (getHeight()-size.height)/2, size.width, size.height);
     			refreshDesc.setForeground(Color.WHITE);
     			this.add(refreshDesc);
-
+				
     			image = null;
 				try {
 					image = ImageIO.read(new File("UI/exit-icon.png"));

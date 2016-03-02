@@ -113,7 +113,7 @@ public class MainWindow extends JFrame {
 		
 		if (testMode) vt.addNewWeightMeasurement(user, currentWeight);
 	}
-    
+	
     public User getUser() { return this.user; }
 	
     public LinkedList<Day> getDays() { return this.days; }
