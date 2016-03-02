@@ -558,6 +558,8 @@ public class DashboardScreen extends JPanel {
     	
     	this.add(activityTrackingPanel);
 	}
+
+    public JPanel getBannerPanel() { return this.bannerPanel; }
     
 	@Override
 	protected void paintComponent(Graphics g) {

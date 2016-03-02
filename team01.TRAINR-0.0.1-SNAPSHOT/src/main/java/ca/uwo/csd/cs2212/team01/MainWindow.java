@@ -38,17 +38,22 @@ public class MainWindow extends JFrame {
 	private int posX = 0, posY = 0;
 	
 	static final int MAX_PROGRESS = 1440;
-	
+
+	private WeighScreen weighScreen;
 	private SplashScreen splashScreen;
 	private DashboardScreen dashboardScreen;
 	
 	public MainWindow(boolean testMode) {
 
+		weighScreen = new WeighScreen(this);
 		splashScreen = new SplashScreen(this);
 		dashboardScreen = new DashboardScreen(this);
 		
 		this.add(splashScreen);
 	}
+
+	public WeighScreen getWeighScreen() { return this.weighScreen; }
+	public DashboardScreen getDashboardScreen() { return this.dashboardScreen; }
     
 	private void createMouseListener() {
     	this.addMouseListener(new MouseAdapter()
