@@ -256,6 +256,55 @@ public class DashboardScreen extends JPanel {
     	};
     	
     	this.add(calorieTrackingPanel);
+    	
+
+    	JPanel trainrFeedbackPanel = new JPanel() {
+    		@Override
+    		protected void paintComponent(Graphics g) {
+    			super.paintComponent(g);
+    			
+    			this.setLayout(null);
+    			this.setOpaque(false);
+    			this.setSize(1480/3, 800 - 75 - 150 - 20);
+    	    	this.setLocation((1480 - getWidth()*3)/2 + getWidth()*1,75 + 150);
+    			
+    			Graphics2D g2 = (Graphics2D) g;
+    			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    			
+    			BufferedImage image = null;
+				try {
+					image = ImageIO.read(new File("UI/panel-head-bg.png"));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+    			g2.setColor(new Color(1.0f,1.0f,1.0f,0.3f));
+    	        g2.setStroke(new BasicStroke(1.0f));
+				g2.drawLine(0, 0, 0, getHeight());
+				g2.drawLine(getWidth()-1, 0, getWidth()-1, getHeight());
+				g2.drawImage(image, (getWidth()-image.getWidth())/2, 0, null);
+
+    			JLabel label = new JLabel("TRAINR Feedback", JLabel.LEFT);
+    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+    			Dimension size = label.getPreferredSize();
+    			label.setBounds((getWidth() - size.width)/2, (52-size.height)/2, size.width, size.height);
+    			label.setForeground(Color.WHITE);
+    			this.add(label);
+    			
+    			g2.setColor(Color.WHITE);
+    			g2.draw(new Ellipse2D.Double(getWidth()-40-50, 52 + 15 + 100 + (100-50)/2, 50, 50));
+    			
+    			label = new JLabel("MS", JLabel.LEFT);
+    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+    			size = label.getPreferredSize();
+    			label.setBounds(getWidth()-40-50 + (50-size.width)/2, 52+15+100 + (100-size.height)/2, size.width, size.height);
+    			label.setForeground(Color.WHITE);
+    			this.add(label);
+    		}
+    	};
+    	
+    	this.add(trainrFeedbackPanel);
 	}
     
 	@Override
