@@ -79,7 +79,7 @@ public class WeighPanel extends JPanel {
 		submitForm.setOpaque(false);
 		submitForm.setForeground(new Color(255,255,255,150));
 		submitForm.setFocusable(false);
-        //submitForm.addActionListener(new ButtonActionListener(2, 1, this.mainWindow));
+        submitForm.addActionListener(new ButtonActionListener(2, 1, this.mainWindow));
         
 		btnDesc = new JLabel("Click to continue >", JLabel.LEFT);
 		btnDesc.setFont(this.font.deriveFont(45.0f));
