@@ -38,7 +38,7 @@ public class MainWindow extends JFrame {
 	private int posX = 0, posY = 0;
 	
 	static final int MAX_PROGRESS = 1440;
-
+	
 	private SplashScreen splashScreen;
 	private DashboardScreen dashboardScreen;
 	

@@ -1354,3 +1354,228 @@ Caused by: com.jcraft.jsch.JSchException: Auth cancel
 	at com.jcraft.jsch.Session.connect(Session.java:511)
 	at org.eclipse.jgit.transport.JschConfigSessionFactory.getSession(JschConfigSessionFactory.java:116)
 	... 8 more
+
+!ENTRY org.eclipse.egit.ui 4 0 2016-03-01 19:26:12.211
+!MESSAGE Branch failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log5225907373333476449.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.egit.core.op.BranchOperation$1.run(BranchOperation.java:138)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.egit.core.op.BranchOperation.execute(BranchOperation.java:164)
+	at org.eclipse.egit.ui.internal.branch.BranchOperationUI$1.runInWorkspace(BranchOperationUI.java:286)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.eclipse.jgit.api.errors.JGitInternalException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log5225907373333476449.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:320)
+	at org.eclipse.egit.core.op.BranchOperation$1.run(BranchOperation.java:134)
+	... 5 more
+Caused by: java.io.IOException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log5225907373333476449.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1188)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:450)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:396)
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:263)
+	... 6 more
+!SUBENTRY 1 org.eclipse.egit.core 4 0 2016-03-01 19:26:12.211
+!MESSAGE Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log5225907373333476449.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+!STACK 0
+org.eclipse.jgit.api.errors.JGitInternalException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log5225907373333476449.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:320)
+	at org.eclipse.egit.core.op.BranchOperation$1.run(BranchOperation.java:134)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.egit.core.op.BranchOperation.execute(BranchOperation.java:164)
+	at org.eclipse.egit.ui.internal.branch.BranchOperationUI$1.runInWorkspace(BranchOperationUI.java:286)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log5225907373333476449.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1188)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:450)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:396)
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:263)
+	... 6 more
+
+!ENTRY org.eclipse.core.jobs 4 2 2016-03-01 19:26:33.670
+!MESSAGE An internal error occurred during: "Resetting to HEAD".
+!STACK 0
+org.eclipse.jgit.api.errors.JGitInternalException: Exception caught during execution of reset command. Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log3223353845187712856.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.api.ResetCommand.call(ResetCommand.java:230)
+	at org.eclipse.egit.core.op.ResetOperation.reset(ResetOperation.java:100)
+	at org.eclipse.egit.core.op.ResetOperation.access$0(ResetOperation.java:86)
+	at org.eclipse.egit.core.op.ResetOperation$1.run(ResetOperation.java:75)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.egit.core.op.ResetOperation.execute(ResetOperation.java:79)
+	at org.eclipse.egit.core.internal.job.JobUtil$2.runInWorkspace(JobUtil.java:105)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log3223353845187712856.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1188)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:450)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:396)
+	at org.eclipse.jgit.api.ResetCommand.checkoutIndex(ResetCommand.java:386)
+	at org.eclipse.jgit.api.ResetCommand.call(ResetCommand.java:203)
+	... 8 more
+
+!ENTRY org.eclipse.egit.ui 4 0 2016-03-01 19:28:46.083
+!MESSAGE Branch failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log649836782092936381.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.egit.core.op.BranchOperation$1.run(BranchOperation.java:138)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.egit.core.op.BranchOperation.execute(BranchOperation.java:164)
+	at org.eclipse.egit.ui.internal.branch.BranchOperationUI$1.runInWorkspace(BranchOperationUI.java:286)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.eclipse.jgit.api.errors.JGitInternalException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log649836782092936381.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:320)
+	at org.eclipse.egit.core.op.BranchOperation$1.run(BranchOperation.java:134)
+	... 5 more
+Caused by: java.io.IOException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log649836782092936381.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1188)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:450)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:396)
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:263)
+	... 6 more
+!SUBENTRY 1 org.eclipse.egit.core 4 0 2016-03-01 19:28:46.083
+!MESSAGE Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log649836782092936381.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+!STACK 0
+org.eclipse.jgit.api.errors.JGitInternalException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log649836782092936381.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:320)
+	at org.eclipse.egit.core.op.BranchOperation$1.run(BranchOperation.java:134)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.egit.core.op.BranchOperation.execute(BranchOperation.java:164)
+	at org.eclipse.egit.ui.internal.branch.BranchOperationUI$1.runInWorkspace(BranchOperationUI.java:286)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log649836782092936381.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1188)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:450)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:396)
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:263)
+	... 6 more
+
+!ENTRY org.eclipse.egit.ui 4 0 2016-03-01 19:29:22.851
+!MESSAGE Branch failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log7588043569946953093.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.egit.core.op.BranchOperation$1.run(BranchOperation.java:138)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.egit.core.op.BranchOperation.execute(BranchOperation.java:164)
+	at org.eclipse.egit.ui.internal.branch.BranchOperationUI$1.runInWorkspace(BranchOperationUI.java:286)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.eclipse.jgit.api.errors.JGitInternalException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log7588043569946953093.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:320)
+	at org.eclipse.egit.core.op.BranchOperation$1.run(BranchOperation.java:134)
+	... 5 more
+Caused by: java.io.IOException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log7588043569946953093.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1188)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:450)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:396)
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:263)
+	... 6 more
+!SUBENTRY 1 org.eclipse.egit.core 4 0 2016-03-01 19:29:22.851
+!MESSAGE Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log7588043569946953093.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+!STACK 0
+org.eclipse.jgit.api.errors.JGitInternalException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log7588043569946953093.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:320)
+	at org.eclipse.egit.core.op.BranchOperation$1.run(BranchOperation.java:134)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.egit.core.op.BranchOperation.execute(BranchOperation.java:164)
+	at org.eclipse.egit.ui.internal.branch.BranchOperationUI$1.runInWorkspace(BranchOperationUI.java:286)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log7588043569946953093.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1188)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:450)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:396)
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:263)
+	... 6 more
+!SESSION 2016-03-01 19:29:53.607 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_CA
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-03-01 19:30:16.341
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Kamal'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 4 0 2016-03-01 19:31:47.220
+!MESSAGE Branch failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log1301289727772991000.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.egit.core.op.BranchOperation$1.run(BranchOperation.java:138)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.egit.core.op.BranchOperation.execute(BranchOperation.java:164)
+	at org.eclipse.egit.ui.internal.branch.BranchOperationUI$1.runInWorkspace(BranchOperationUI.java:286)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.eclipse.jgit.api.errors.JGitInternalException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log1301289727772991000.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:320)
+	at org.eclipse.egit.core.op.BranchOperation$1.run(BranchOperation.java:134)
+	... 5 more
+Caused by: java.io.IOException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log1301289727772991000.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1188)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:450)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:396)
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:263)
+	... 6 more
+!SUBENTRY 1 org.eclipse.egit.core 4 0 2016-03-01 19:31:47.220
+!MESSAGE Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log1301289727772991000.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+!STACK 0
+org.eclipse.jgit.api.errors.JGitInternalException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log1301289727772991000.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:320)
+	at org.eclipse.egit.core.op.BranchOperation$1.run(BranchOperation.java:134)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.egit.core.op.BranchOperation.execute(BranchOperation.java:164)
+	at org.eclipse.egit.ui.internal.branch.BranchOperationUI$1.runInWorkspace(BranchOperationUI.java:286)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log1301289727772991000.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1188)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:450)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:396)
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:263)
+	... 6 more
+
+!ENTRY org.eclipse.egit.ui 4 0 2016-03-01 19:47:32.504
+!MESSAGE Branch failed
+!STACK 1
+org.eclipse.core.runtime.CoreException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log5119561350136211585.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.egit.core.op.BranchOperation$1.run(BranchOperation.java:138)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.egit.core.op.BranchOperation.execute(BranchOperation.java:164)
+	at org.eclipse.egit.ui.internal.branch.BranchOperationUI$1.runInWorkspace(BranchOperationUI.java:286)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.eclipse.jgit.api.errors.JGitInternalException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log5119561350136211585.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:320)
+	at org.eclipse.egit.core.op.BranchOperation$1.run(BranchOperation.java:134)
+	... 5 more
+Caused by: java.io.IOException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log5119561350136211585.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1188)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:450)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:396)
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:263)
+	... 6 more
+!SUBENTRY 1 org.eclipse.egit.core 4 0 2016-03-01 19:47:32.505
+!MESSAGE Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log5119561350136211585.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+!STACK 0
+org.eclipse.jgit.api.errors.JGitInternalException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log5119561350136211585.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:320)
+	at org.eclipse.egit.core.op.BranchOperation$1.run(BranchOperation.java:134)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.egit.core.op.BranchOperation.execute(BranchOperation.java:164)
+	at org.eclipse.egit.ui.internal.branch.BranchOperationUI$1.runInWorkspace(BranchOperationUI.java:286)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Could not rename file C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log5119561350136211585.tmp to C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1188)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:450)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:396)
+	at org.eclipse.jgit.api.CheckoutCommand.call(CheckoutCommand.java:263)
+	... 6 more
