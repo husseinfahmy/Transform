@@ -31,13 +31,79 @@ public class ButtonActionListener implements ActionListener {
 		switch(this.btnMode) {
 		case 0: // Submit Current/Target Weights
 			switch(this.value) {
-			case 2: // Weigh Screen
-				this.mainWindow.setVisible(false);
-				this.mainWindow.getContentPane().removeAll();
-				this.mainWindow.add(this.mainWindow.getWeighScreen());
-				this.mainWindow.setVisible(true);
+			case 1: // Dashboard Screen
+				label = this.mainWindow.getSplashScreen().getSetGoalPanel().getDesc();
+				
+				try {
+					value = this.mainWindow.getSplashScreen().getSetGoalPanel().getCurrentWeight();
+					currentWeight = Integer.parseInt(value);
+					
+					value = this.mainWindow.getSplashScreen().getSetGoalPanel().getTargetWeight();
+					targetWeight = Integer.parseInt(value);
+					
+					if (currentWeight-targetWeight < 2) {
+						label.setText("Try to lose at least 2 lbs!");
+						size = label.getPreferredSize();
+						label.setBounds((503-size.width)/2, label.getY(), size.width, size.height);
+						break;
+					}else if (currentWeight <= 0 || targetWeight <= 0) throw new NumberFormatException("Negative number!");
+
+					this.mainWindow.setupVirtualTrainer(currentWeight, targetWeight);
+
+					this.mainWindow.setVisible(false);
+					this.mainWindow.getContentPane().removeAll();
+					this.mainWindow.add(this.mainWindow.getDashboardScreen());
+					this.mainWindow.setVisible(true);
+				}catch (NumberFormatException ex) {
+					label.setText("Invalid format! Enter a positive integer.");
+					size = label.getPreferredSize();
+					label.setBounds((503-size.width)/2, label.getY(), size.width, size.height);
+				}finally {
+				}
+				break;
+				
+			case 2: // Weigh Screen - Submit New Weight
+				label = this.mainWindow.getWeighScreen().getSetWeighPanel().getDesc();
+				
+				try {
+					value = this.mainWindow.getWeighScreen().getSetWeighPanel().getCurrentWeight();
+					currentWeight = Integer.parseInt(value);
+					
+					if (currentWeight <= 0) throw new NumberFormatException("Negative number!");
+					
+					this.mainWindow.getVirtualTrainer().addNewWeightMeasurement(mainWindow.getUser(), currentWeight);
+					
+					this.mainWindow.setVisible(false);
+					this.mainWindow.getContentPane().removeAll();
+					this.mainWindow.add(this.mainWindow.getDashboardScreen());
+					this.mainWindow.setVisible(true);
+				}catch (NumberFormatException ex) {
+					label.setText("Invalid format! Enter a positive integer.");
+					size = label.getPreferredSize();
+					label.setBounds((503-size.width)/2, label.getY(), size.width, size.height);
+				}finally {
+				}
 				break;
 			}
+			break;
+			
+		case 1: // Refresh Button
+			label = mainWindow.getDashboardScreen().getRefreshDesc();
+			mainWindow.updateLastRefreshed();
+			mainWindow.setVisible(false);
+			label.setText("<html>Last Refreshed:<br>" + mainWindow.lastRefreshed().getTXTone().get(0) + "</html>");
+			mainWindow.setVisible(true);
+			break;
+			
+		case 2: // Exit Button
+			System.exit(0);
+			break;
+			
+		case 3: // Weigh Screen
+			this.mainWindow.setVisible(false);
+			this.mainWindow.getContentPane().removeAll();
+			this.mainWindow.add(this.mainWindow.getWeighScreen());
+			this.mainWindow.setVisible(true);
 			break;
 		}
 	}

@@ -64,7 +64,7 @@ public class WeighScreen extends JPanel {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-    			g2.drawImage(image, 13, 13, 63, 63, 0, 0, image.getWidth(), image.getHeight(), null);
+    			g2.drawImage(image, 13, 13, null);
     			
     			g2.setColor(new Color(1.0f,1.0f,1.0f,0.3f));
     	        g2.setStroke(new BasicStroke(2.0f));
@@ -83,6 +83,20 @@ public class WeighScreen extends JPanel {
     			label.setBounds(getWidth()/2 + (int)((getWidth()*0.3f/2) - size.width)/2, (75/2 - size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
+    			
+    			label = new JLabel(mainWindow.getVirtualTrainer().getCurrentWeight() + "", JLabel.LEFT);
+    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+    			size = label.getPreferredSize();
+    			label.setBounds(getWidth()/2 - (int)(getWidth()*0.3f)/2 + (int)((getWidth()*0.3f)/2 - size.width)/2, 75/2 + (75/2 - size.height)/2, size.width, size.height);
+    			label.setForeground(Color.WHITE);
+    			this.add(label);
+    			
+    			label = new JLabel(mainWindow.getVirtualTrainer().getTargetWeight() + "", JLabel.LEFT);
+    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+    			size = label.getPreferredSize();
+    			label.setBounds(getWidth()/2 + (int)((getWidth()*0.3f)/2 - size.width)/2, 75/2 + (75/2 - size.height)/2, size.width, size.height);
+    			label.setForeground(Color.WHITE);
+    			this.add(label);
 
     			image = null;
 				try {
@@ -92,6 +106,30 @@ public class WeighScreen extends JPanel {
 					e.printStackTrace();
 				}
     			g2.drawImage(image, (getWidth()-image.getWidth())/2, (getHeight()-image.getHeight())/2, null);
+
+    			image = null;
+				try {
+					image = ImageIO.read(new File("UI/exit-icon.png"));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+    			JButton exitBtn = new JButton();
+    			exitBtn.setBackground(null);
+    			exitBtn.setBorder(null);
+    			exitBtn.setFocusPainted(false);
+    			exitBtn.setMargin(new Insets(0, 0, 0, 0));
+    			exitBtn.setContentAreaFilled(false);
+    			exitBtn.setBorderPainted(false);
+    			exitBtn.setOpaque(false);
+    			exitBtn.setFocusable(false);
+    			exitBtn.setSize(image.getWidth(), image.getHeight());
+    			exitBtn.setLocation(getWidth()-image.getWidth()-13, 13);
+    	        exitBtn.addActionListener(new ButtonActionListener(2, 0, mainWindow));
+    	        this.add(exitBtn);
+    	        
+    			g2.drawImage(image, getWidth()-image.getWidth()-13, 13, null);
     		}
     	};
     	
@@ -157,13 +195,46 @@ public class WeighScreen extends JPanel {
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		BufferedImage bgImage = null;
+		BufferedImage image = null;
 		try {
-			bgImage = ImageIO.read(new File("UI/bg.jpg"));
+			image = ImageIO.read(new File("UI/bg.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		g2.drawImage(bgImage, 0, 0, getWidth(), getHeight(), 0, 0, bgImage.getWidth(), bgImage.getHeight(), null);
+		g2.drawImage(image, 0, 0, getWidth(), getHeight(), 0, 0, image.getWidth(), image.getHeight(), null);
+		
+		image = null;
+		try {
+			image = ImageIO.read(new File("UI/fitbit-logo.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		g2.drawImage(image, 13, getHeight()-image.getHeight()-13, null);
+
+		JLabel label = new JLabel("<html>Fitbit Privacy Statement<br>Copy Rights & Endorsements</html>", JLabel.LEFT);
+		label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+		Dimension size = label.getPreferredSize();
+		label.setBounds(13+image.getWidth()+13, getHeight()-13-50, size.width, size.height);
+		label.setForeground(Color.WHITE);
+		this.add(label);
+		
+		image = null;
+		try {
+			image = ImageIO.read(new File("UI/logo-s.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		g2.drawImage(image, getWidth()-image.getWidth()-13, getHeight()-13-image.getHeight(), null);
+
+		image = null;
+		try {
+			image = ImageIO.read(new File("UI/exit-icon.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

@@ -20,9 +20,8 @@ public class App {
 		logger.trace("Entering main");
 		logger.warn("Hello Maven/log4j World");
 		logger.info("My username is team01");
-		logger.trace("Exiting main");
 		
-		if (args.length > 0 && args[0].equals("Test Mode")) testMode = true;
+		if (args.length > 0 && args[0].equals("test")) testMode = true;
 		else testMode = false;
 		
 		SwingUtilities.invokeLater(new Runnable() {
@@ -32,5 +31,7 @@ public class App {
         		window.setVisible(true);
         	}
 		});
+		
+		logger.trace("Exiting main");
 	}
 }
