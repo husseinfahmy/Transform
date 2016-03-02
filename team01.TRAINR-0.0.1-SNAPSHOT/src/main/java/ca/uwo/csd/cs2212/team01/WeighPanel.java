@@ -18,7 +18,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class WeighPanel extends JPanel {
-	private Font font;
 	private Rectangle rectList[];
 	private Rectangle panelRect;
 	private MainWindow mainWindow;
@@ -27,10 +26,9 @@ public class WeighPanel extends JPanel {
 	private JTextArea currentWeight;
 	private JButton submitForm;
 	
-	public WeighPanel(MainWindow mainWindow, Font font) {
+	public WeighPanel(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 		
-		this.font = font;
 		this.rectList = new Rectangle[2];
 
 		this.setLayout(null);
@@ -42,7 +40,7 @@ public class WeighPanel extends JPanel {
 
 		tableTitle1 = new JLabel("Current Weight (lbs)", JLabel.CENTER);
 		Dimension size = tableTitle1.getPreferredSize();
-		tableTitle1.setFont(this.font.deriveFont(22.0f));
+		tableTitle1.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
 		tableTitle1.setBounds((500-size.width)/2, height, 250, 50);
 		tableTitle1.setForeground(new Color(255,255,255,150));
 		
@@ -55,21 +53,21 @@ public class WeighPanel extends JPanel {
 		currentWeight.setSize(250, 50);
 		currentWeight.setBounds((500-250)/2 + 5+100, height+8, 250-100, 50-8);
 		currentWeight.setOpaque(false);
-		currentWeight.setFont(this.font.deriveFont(22.0f));
+		currentWeight.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
 		currentWeight.setForeground(new Color(255,255,255,200));
 		currentWeight.setCaretColor(new Color(255,255,255,200));
 
 		height += 53+20;
 
 		desc = new JLabel("Please enter in a weight for each.", JLabel.LEFT);
-		desc.setFont(this.font.deriveFont(30.0f));
+		desc.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
 		size = desc.getPreferredSize();
 		desc.setBounds((503-size.width)/2, height, size.width, size.height);
 		desc.setForeground(new Color(255,255,255,150));
 		height += size.height+50;
 		
 		submitForm = new JButton("Click to continue >");
-		submitForm.setFont(this.font.deriveFont(45.0f));
+		submitForm.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(45.0f));
 		submitForm.setBackground(null);
 		submitForm.setBorder(null);
 		submitForm.setFocusPainted(false);
@@ -82,7 +80,7 @@ public class WeighPanel extends JPanel {
         submitForm.addActionListener(new ButtonActionListener(2, 1, this.mainWindow));
         
 		btnDesc = new JLabel("Click to continue >", JLabel.LEFT);
-		btnDesc.setFont(this.font.deriveFont(45.0f));
+		btnDesc.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(45.0f));
 		size = btnDesc.getPreferredSize();
 		submitForm.setSize(size.width, size.height);
 		btnDesc.setBounds(0, 0, size.width, size.height);
