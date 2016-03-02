@@ -46,6 +46,11 @@ public class MainWindow extends JFrame {
 	//User & Virtual Trainer Storage:
 	private User user;	
 	private VirtualTrainer vt;
+
+	//Data Storage:
+	private LinkedList<Day> days = new LinkedList<Day>();
+	private LinkedList<Day> futureDays = new LinkedList<Day>();
+	private LinkedList<Day> past6Days = new LinkedList<Day>();
 	
 	private LoadingScreen loadingScreen;
 	private WeighScreen weighScreen;
@@ -88,7 +93,20 @@ public class MainWindow extends JFrame {
 		
 		if (testMode) vt.addNewWeightMeasurement(user, currentWeight);
 	}
+	
+    public LinkedList<Day> getDays() {
+		return this.days;
+	}
 
+	public Feedback updateWeeklyProgress() //to be called once everyday, every morning?
+	{
+		return this.vt.updateWeeklyProgress(past6Days);
+	}
+	
+	public VirtualTrainer getVirtualTrainer() {
+		return this.vt;
+	}
+	
 	public LoadingScreen getLoadingScreen() { return this.loadingScreen; }
 	public SplashScreen getSplashScreen() { return this.splashScreen; }
 	public WeighScreen getWeighScreen() { return this.weighScreen; }

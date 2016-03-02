@@ -138,7 +138,6 @@ public class DashboardScreen extends JPanel {
     	
     	this.add(weekProgressPanel);
     	
-
     	JPanel calorieTrackingPanel = new JPanel() {
     		@Override
     		protected void paintComponent(Graphics g) {
@@ -197,12 +196,11 @@ public class DashboardScreen extends JPanel {
 				}
     			g2.drawImage(image, getWidth()*0, 112+130, getWidth() - 1, image.getHeight(), null);
 
-    			Date today = new Date();
+    			Day today = mainWindow.getDays().getLast();
+    			Feedback feedback = today.todaysProgess();
     			
-    			float totalCalEat = 1000, totalTime = today.getTime(), maxTime = mainWindow.MAX_PROGRESS, totalCalBurn = 1500;
+    			float totalCalEat = feedback.getFirstValues().get(0), totalTime = today.getDayProgress(), maxTime = mainWindow.MAX_PROGRESS, totalCalBurn = feedback.getFirstValues().get(1);
     			float scaleFactor = maxTime/totalTime, scaleMaxCal = 0;
-    			
-    			scaleMaxCal = totalCalEat*scaleFactor;
 	   			
     			label = new JLabel("Today's Progress", JLabel.LEFT);
     			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(24.0f));
@@ -333,15 +331,74 @@ public class DashboardScreen extends JPanel {
     			label.setBounds((getWidth() - size.width)/2, (52-size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
-    			
-    			g2.setColor(Color.WHITE);
-    			g2.draw(new Ellipse2D.Double(getWidth()-40-50, 52 + 15 + 100 + (100-50)/2, 50, 50));
-    			
-    			label = new JLabel("MS", JLabel.LEFT);
+
+	   			//Display Feedback:
+	   			//Milestone Progress Feedback:
+	   			Feedback feedback = mainWindow.getVirtualTrainer().getmsFeedback();
+	   			
+	   			String output = null;
+	   			if (feedback.getTextCode() == 1) output = feedback.getTXTone().getFirst();
+	   			else if (feedback.getTextCode() == 2) output = feedback.getTXTone().getFirst();
+	   			else output = null;
+	   			
+	   			label = new JLabel("<html><center>" + output + "</center></html>", JLabel.LEFT);
     			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
     			size = label.getPreferredSize();
-    			label.setBounds(getWidth()-40-50 + (50-size.width)/2, 52+15+100 + (100-size.height)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
+    			label.setBounds((getWidth() - size.width)/2, 52 + 15 + (100-size.height)/2, size.width, size.height);
+    			label.setForeground(new Color(1.0f,1.0f,1.0f,0.6f));
+    			this.add(label);
+    			
+    			if (feedback.getTextCode() == 2) {
+    				output = String.format("%.1f", feedback.getFirstValues().get(2))+" lbs to go!";
+    	   			label = new JLabel(output, JLabel.LEFT);
+        			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+        			size = label.getPreferredSize();
+        			label.setBounds(40, 52 + 15 + 100 + 100/2 - size.height - 3, size.width, size.height);
+        			label.setForeground(new Color(106, 185, 255, 255));
+        			this.add(label);
+        			g2.setColor(new Color(106, 185, 255, 255));
+        			g2.drawLine(40, 52 + 15 + 100 + 100/2, (getWidth()-40-50) - (int)((getWidth()-40*2-50)*(2-feedback.getFirstValues().get(2))/2), 52 + 15 + 100 + 100/2);
+
+        			g2.setColor(Color.WHITE);
+        			g2.draw(new Ellipse2D.Double(getWidth()-40-50, 52 + 15 + 100 + (100-50)/2, 50, 50));
+        			
+        			label = new JLabel("MS", JLabel.LEFT);
+        			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+        			size = label.getPreferredSize();
+        			label.setBounds(getWidth()-40-50 + (50-size.width)/2, 52+15+100 + (100-size.height)/2, size.width, size.height);
+        			label.setForeground(Color.WHITE);
+        			this.add(label);
+    			}
+    			
+	   			if(feedback.getButtonCode()==1) System.out.println("Display Customize My Plans button");
+	   			System.out.println();
+	   			
+	   			//Feedback on user's current Calorie Difference for today:
+	   			feedback = mainWindow.getVirtualTrainer().updateTodaysProgress(mainWindow.getDays().getLast());
+	   			
+	   			if(feedback.getTextCode() == 1) output = feedback.getTXTone().getFirst();
+	   			else if (feedback.getTextCode() == 2) output = feedback.getTXTone().getFirst() + feedback.getFirstValues().get(2);
+	   			else output = null;
+	   			
+	   			label = new JLabel("<html><center>" + output + "</center></html>", JLabel.LEFT);
+    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+    			size = label.getPreferredSize();
+    			label.setBounds((getWidth() - size.width)/2, 52+15+100+100 + (100-size.height)/2, size.width, size.height);
+    			label.setForeground(new Color(1.0f,1.0f,1.0f,0.6f));
+    			this.add(label);
+	   			
+	   			//Feedback on user's past week's performance:
+	   			feedback = mainWindow.updateWeeklyProgress();
+
+	   			if(feedback.getTextCode() == 1) output = feedback.getTXTone().getFirst();
+	   			else if (feedback.getTextCode() == 2) output = feedback.getTXTone().getFirst() + feedback.getFirstValues().get(2);
+	   			else output = null;
+	   			
+	   			label = new JLabel("<html><center>" + output + "</center></html>", JLabel.LEFT);
+    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+    			size = label.getPreferredSize();
+    			label.setBounds((getWidth() - size.width)/2, 52+15+100+100+100 + (100-size.height)/2, size.width, size.height);
+    			label.setForeground(new Color(1.0f,1.0f,1.0f,0.6f));
     			this.add(label);
     		}
     	};
