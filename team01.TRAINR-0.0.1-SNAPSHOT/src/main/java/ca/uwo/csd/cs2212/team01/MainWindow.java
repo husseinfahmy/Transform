@@ -49,6 +49,8 @@ public class MainWindow extends JFrame {
 		
 		this.add(splashScreen);
 	}
+	
+	public DashboardScreen getDashboardScreen() { return this.dashboardScreen; }
     
 	private void createMouseListener() {
     	this.addMouseListener(new MouseAdapter()
