@@ -46,12 +46,7 @@ public class ButtonActionListener implements ActionListener {
 						size = label.getPreferredSize();
 						label.setBounds((503-size.width)/2, label.getY(), size.width, size.height);
 						break;
-					}else if (currentWeight <= 0 || targetWeight <= 0) {
-						label.setText("Invalid format! Enter a positive integer.");
-						size = label.getPreferredSize();
-						label.setBounds((503-size.width)/2, label.getY(), size.width, size.height);
-						break;
-					}
+					}else if (currentWeight <= 0 || targetWeight <= 0) throw new NumberFormatException("Negative number!");
 
 					this.mainWindow.setupVirtualTrainer(currentWeight, targetWeight);
 
@@ -60,20 +55,34 @@ public class ButtonActionListener implements ActionListener {
 					this.mainWindow.add(this.mainWindow.getDashboardScreen());
 					this.mainWindow.setVisible(true);
 				}catch (NumberFormatException ex) {
-					System.out.println("Invalid format! Enter a number.");
-					label.setText("Invalid format! Enter a number.");
+					label.setText("Invalid format! Enter a positive integer.");
 					size = label.getPreferredSize();
 					label.setBounds((503-size.width)/2, label.getY(), size.width, size.height);
 				}finally {
-					System.out.println("Button Clicked");
 				}
 				break;
 				
-			case 2: // Weigh Screen
-				this.mainWindow.setVisible(false);
-				this.mainWindow.getContentPane().removeAll();
-				this.mainWindow.add(this.mainWindow.getWeighScreen());
-				this.mainWindow.setVisible(true);
+			case 2: // Weigh Screen - Submit New Weight
+				label = this.mainWindow.getWeighScreen().getSetWeighPanel().getDesc();
+				
+				try {
+					value = this.mainWindow.getWeighScreen().getSetWeighPanel().getCurrentWeight();
+					currentWeight = Integer.parseInt(value);
+					
+					if (currentWeight <= 0) throw new NumberFormatException("Negative number!");
+					
+					this.mainWindow.getVirtualTrainer().addNewWeightMeasurement(mainWindow.getUser(), currentWeight);
+					
+					this.mainWindow.setVisible(false);
+					this.mainWindow.getContentPane().removeAll();
+					this.mainWindow.add(this.mainWindow.getDashboardScreen());
+					this.mainWindow.setVisible(true);
+				}catch (NumberFormatException ex) {
+					label.setText("Invalid format! Enter a positive integer.");
+					size = label.getPreferredSize();
+					label.setBounds((503-size.width)/2, label.getY(), size.width, size.height);
+				}finally {
+				}
 				break;
 			}
 			break;
@@ -84,6 +93,17 @@ public class ButtonActionListener implements ActionListener {
 			mainWindow.setVisible(false);
 			label.setText("<html>Last Refreshed:<br>" + mainWindow.lastRefreshed().getTXTone().get(0) + "</html>");
 			mainWindow.setVisible(true);
+			break;
+			
+		case 2: // Exit Button
+			System.exit(0);
+			break;
+			
+		case 3: // Weigh Screen
+			this.mainWindow.setVisible(false);
+			this.mainWindow.getContentPane().removeAll();
+			this.mainWindow.add(this.mainWindow.getWeighScreen());
+			this.mainWindow.setVisible(true);
 			break;
 		}
 	}

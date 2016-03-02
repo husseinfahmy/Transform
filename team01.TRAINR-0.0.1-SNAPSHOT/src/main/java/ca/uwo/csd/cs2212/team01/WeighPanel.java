@@ -10,7 +10,11 @@ import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -36,22 +40,22 @@ public class WeighPanel extends JPanel {
 		
 		int height = 0;
 
-		rectList[0] = new Rectangle((500-250)/2, height, 250, 50);
+		rectList[0] = new Rectangle((503-250)/2, height, 250, 50);
 
 		tableTitle1 = new JLabel("Current Weight (lbs)", JLabel.CENTER);
 		Dimension size = tableTitle1.getPreferredSize();
 		tableTitle1.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
-		tableTitle1.setBounds((500-size.width)/2, height, 250, 50);
+		tableTitle1.setBounds((503-size.width)/2, height, 250, 50);
 		tableTitle1.setForeground(new Color(255,255,255,150));
 		
 		height += 53;
 
-		rectList[1] = new Rectangle((500-250)/2, height, 250, 50);
+		rectList[1] = new Rectangle((503-250)/2, height, 250, 50);
 		
 		currentWeight = new JTextArea();
 		currentWeight.setLayout(null);
 		currentWeight.setSize(250, 50);
-		currentWeight.setBounds((500-250)/2 + 5+100, height+8, 250-100, 50-8);
+		currentWeight.setBounds((503-250)/2 + 5+100, height+8, 250-100, 50-8);
 		currentWeight.setOpaque(false);
 		currentWeight.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
 		currentWeight.setForeground(new Color(255,255,255,200));
@@ -77,7 +81,7 @@ public class WeighPanel extends JPanel {
 		submitForm.setOpaque(false);
 		submitForm.setForeground(new Color(255,255,255,150));
 		submitForm.setFocusable(false);
-        submitForm.addActionListener(new ButtonActionListener(2, 1, this.mainWindow));
+        submitForm.addActionListener(new ButtonActionListener(0, 2, this.mainWindow));
         
 		btnDesc = new JLabel("Click to continue >", JLabel.LEFT);
 		btnDesc.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(45.0f));
@@ -107,7 +111,7 @@ public class WeighPanel extends JPanel {
 		super.paintComponent(g);
 
 		this.setSize(panelRect.width, panelRect.height);
-    	this.setLocation((1480/2-panelRect.width)/2,(800-panelRect.height)/2);
+    	this.setLocation((1480-panelRect.width)/2,(800-panelRect.height)/2);
     	
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);

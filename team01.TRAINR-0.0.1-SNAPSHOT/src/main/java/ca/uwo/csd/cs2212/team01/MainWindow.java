@@ -89,6 +89,7 @@ public class MainWindow extends JFrame {
 		dashboardScreen = new DashboardScreen(this);
 		
 		this.add(splashScreen);
+		
 	}
     
 	public boolean isTestMode() { return this.testMode; }
@@ -115,6 +116,8 @@ public class MainWindow extends JFrame {
 		
 		if (testMode) vt.addNewWeightMeasurement(user, currentWeight);
 	}
+	
+    public User getUser() { return this.user; }
 	
     public LinkedList<Day> getDays() { return this.days; }
     public LinkedList<Day> getPast6Days() { return this.past6Days; }
