@@ -235,7 +235,9 @@ public class DashboardScreen extends JPanel {
     			
     			float totalCalEat = feedback.getFirstValues().get(0), totalTime = today.getDayProgress(), maxTime = mainWindow.MAX_PROGRESS, totalCalBurn = feedback.getFirstValues().get(1);
     			float scaleFactor = maxTime/totalTime, scaleMaxCal = 0;
-	   			
+
+    			scaleMaxCal = totalCalEat*scaleFactor;
+    			
     			label = new JLabel("Today's Progress", JLabel.LEFT);
     			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(24.0f));
     			size = label.getPreferredSize();
