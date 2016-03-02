@@ -87,12 +87,14 @@ public class DashboardScreen extends JPanel {
     			weighBtn.setFocusable(false);
     	        weighBtn.addActionListener(new ButtonActionListener(3, 0, mainWindow));
     	        this.add(weighBtn);
-    	        
+
     			JLabel btnDesc = new JLabel("Weigh Myself", JLabel.LEFT);
     			btnDesc.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			Dimension size = btnDesc.getPreferredSize();
     			weighBtn.setSize(size.width, size.height);
     			weighBtn.setLocation(63+13, (getHeight()-size.height)/2);
+
+			    g2.draw(new RoundRectangle2D.Float(63+13 - 8, (getHeight()-size.height)/2 - 3, size.width + 16, size.height+6, 8, 8));
     			
     			g2.setColor(new Color(1.0f,1.0f,1.0f,0.3f));
     	        g2.setStroke(new BasicStroke(2.0f));
