@@ -220,7 +220,37 @@ public class DashboardScreen extends JPanel {
 					e.printStackTrace();
 				}
     			g2.drawImage(image, getWidth()*0, 112, getWidth() - 1, image.getHeight(), null);
-    			
+
+				Feedback feedback = mainWindow.getDays().getLast().todaysMeals();
+				LinkedList<String> txtOne = feedback.getTXTone();
+
+	   			for (int i = 0; i < feedback.getTXTone().size(); i++ ) {
+	    			label = new JLabel("<html><font color='#ffffff'>" + feedback.getTXTone().get(i) + "</font><font color='#7772FF'>" + feedback.getTXTtwo().get(i) + "</font></html>", JLabel.LEFT);
+	    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+	    			size = label.getPreferredSize();
+	    			
+   			        g2.draw(new RoundRectangle2D.Float((getWidth()/2 - size.width)/2 - 8, 112+image.getHeight() + (130-image.getHeight() - (size.height+10)*3)/2 + (size.height+10)*i - 3, size.width + 16, size.height+6, 8, 8));
+	    			
+	    			label.setBounds((getWidth()/2 - size.width)/2, 112+image.getHeight() + (130-image.getHeight() - (size.height+10)*3)/2 + (size.height+10)*i, size.width, size.height);
+	    			label.setForeground(Color.WHITE);
+	    			this.add(label);
+	   			}
+	   			
+	   			feedback = mainWindow.getDays().getLast().todaysWorkouts();
+	   			txtOne =  feedback.getTXTone();
+
+	   			for (int i = 0; i < txtOne.size(); i++ ) {
+   					label = new JLabel("<html><font color='#ffffff'>" + feedback.getTXTone().get(i) + "</font><font color='#6AB9FF'>" + feedback.getTXTtwo().get(i) + "</font></html>", JLabel.LEFT);
+	    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+	    			size = label.getPreferredSize();
+
+   			        g2.draw(new RoundRectangle2D.Float(getWidth()/2 + (getWidth()/2 - size.width)/2 - 8, 112+image.getHeight() + (130-image.getHeight() - (size.height+10)*3)/2 + (size.height+10)*i - 3, size.width + 16, size.height+6, 8, 8));
+	    			
+	    			label.setBounds(getWidth()/2 + (getWidth()/2 - size.width)/2, 112+image.getHeight() + (130-image.getHeight() - (size.height+10)*3)/2 + (size.height+10)*i, size.width, size.height);
+	    			label.setForeground(Color.WHITE);
+	    			this.add(label);
+	   			}
+	   			
     			image = null;
 				try {
 					image = ImageIO.read(new File("UI/shadow-up.png"));
@@ -231,7 +261,7 @@ public class DashboardScreen extends JPanel {
     			g2.drawImage(image, getWidth()*0, 112+130, getWidth() - 1, image.getHeight(), null);
 
     			Day today = mainWindow.getDays().getLast();
-    			Feedback feedback = today.todaysProgess();
+    			feedback = today.todaysProgess();
     			
     			float totalCalEat = feedback.getFirstValues().get(0), totalTime = today.getDayProgress(), maxTime = mainWindow.MAX_PROGRESS, totalCalBurn = feedback.getFirstValues().get(1);
     			float scaleFactor = maxTime/totalTime, scaleMaxCal = 0;
