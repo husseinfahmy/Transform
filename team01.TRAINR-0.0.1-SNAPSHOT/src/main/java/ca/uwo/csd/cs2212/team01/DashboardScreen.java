@@ -69,7 +69,7 @@ public class DashboardScreen extends JPanel {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-    			g2.drawImage(image, 13, 13, 63, 63, 0, 0, image.getWidth(), image.getHeight(), null);
+    			g2.drawImage(image, 13, 13, null);
 
     			g2.setColor(new Color(1.0f,1.0f,1.0f,0.3f));
     	        g2.setStroke(new BasicStroke(2.0f));
