@@ -28,6 +28,7 @@ public class DashboardScreen extends JPanel {
 	private MainWindow mainWindow;
 	
 	private JPanel bannerPanel;
+	private JLabel refreshDesc;
 	
 	public DashboardScreen(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
@@ -99,6 +100,13 @@ public class DashboardScreen extends JPanel {
 					e.printStackTrace();
 				}
     			g2.drawImage(image, (getWidth()-image.getWidth())/2, (getHeight()-image.getHeight())/2, null);
+
+    			refreshDesc = new JLabel("<html>Last Refreshed:<br>" + mainWindow.lastRefreshed().getTXTone().get(0) + "</html>", JLabel.LEFT);
+    			refreshDesc.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(14.0f));
+    			size = refreshDesc.getPreferredSize();
+    			refreshDesc.setBounds(getWidth()-image.getWidth()-13-size.width-13, (getHeight()-size.height)/2, size.width, size.height);
+    			refreshDesc.setForeground(Color.WHITE);
+    			this.add(refreshDesc);
     		}
     	};
     	

@@ -51,6 +51,12 @@ public class MainWindow extends JFrame {
 	private LinkedList<Day> days = new LinkedList<Day>();
 	private LinkedList<Day> futureDays = new LinkedList<Day>();
 	private LinkedList<Day> past6Days = new LinkedList<Day>();
+
+	//Time & Date Formats:
+	private SimpleDateFormat fmDate = new SimpleDateFormat("yyyy-MM-dd"); 		//date format: 2016-02-18
+	private SimpleDateFormat fmDayofWeek = new SimpleDateFormat ("EEEE");		//date format: Wednesday
+	private SimpleDateFormat fmTime = new SimpleDateFormat ("H:mm");				//time format 07:15 (or 13:00 for 1pm)
+	private SimpleDateFormat fmLastRefresh = new SimpleDateFormat ("M d, h:mm a");	//time format: "Feb 28, 1:34 PM"
 	
 	private LoadingScreen loadingScreen;
 	private WeighScreen weighScreen;
@@ -84,6 +90,16 @@ public class MainWindow extends JFrame {
     
 	public boolean isTestMode() { return this.testMode; }
 	public void setLastCall(Date newDate) { this.lastCall = newDate; }
+	
+	public void updateLastRefreshed() { this.setLastCall(new Date()); }
+	
+	public Feedback lastRefreshed()
+	{
+		Feedback fb = new Feedback();
+		fb.setTXTCode(1);
+		fb.addTXTone(fmLastRefresh.format(this.lastCall.getTime()));
+		return fb;
+	}
 	
 	public void setupVirtualTrainer(float currentWeight, float targetWeight) {
 		// Virtual Trainer needs to deliver feedback to the user based on the processed data.
