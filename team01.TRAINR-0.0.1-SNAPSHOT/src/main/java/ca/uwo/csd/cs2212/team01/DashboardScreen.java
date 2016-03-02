@@ -27,8 +27,6 @@ public class DashboardScreen extends JPanel {
 	private Font FONT_HELVETICA_NEUE_THIN = null, FONT_HELVETICA_NEUE_ITALIC = null, FONT_HELVETICA_NEUE_BOLD = null;
 	private MainWindow mainWindow;
 	
-	private JPanel bannerPanel;
-	
 	public DashboardScreen(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 		
@@ -40,7 +38,7 @@ public class DashboardScreen extends JPanel {
 	}
 	
     private void initUI() {
-    	bannerPanel = new JPanel() {
+    	JPanel bannerPanel = new JPanel() {
     		@Override
     		protected void paintComponent(Graphics g) {
     			super.paintComponent(g);
@@ -71,13 +69,33 @@ public class DashboardScreen extends JPanel {
 				}
     			g2.drawImage(image, 13, 13, 63, 63, 0, 0, image.getWidth(), image.getHeight(), null);
 
+    			JButton weighBtn = new JButton("Weigh Myself");
+    			weighBtn.setBackground(null);
+    			weighBtn.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+    			weighBtn.setForeground(new Color(255,255,255,150));
+    			weighBtn.setBorder(null);
+    			weighBtn.setFocusPainted(false);
+    			weighBtn.setMargin(new Insets(0, 0, 0, 0));
+    			weighBtn.setContentAreaFilled(false);
+    			weighBtn.setBorderPainted(false);
+    			weighBtn.setOpaque(false);
+    			weighBtn.setFocusable(false);
+    	        weighBtn.addActionListener(new ButtonActionListener(0, 2, mainWindow));
+    	        this.add(weighBtn);
+    	        
+    			JLabel btnDesc = new JLabel("Weigh Myself", JLabel.LEFT);
+    			btnDesc.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+    			Dimension size = btnDesc.getPreferredSize();
+    			weighBtn.setSize(size.width, size.height);
+    			weighBtn.setLocation(63+13, (getHeight()-size.height)/2);
+    			
     			g2.setColor(new Color(1.0f,1.0f,1.0f,0.3f));
     	        g2.setStroke(new BasicStroke(2.0f));
     			g2.drawLine((int)(getWidth()*0.7f/2), 75/2, (int)(getWidth()*0.7f/2) + (int)(getWidth()*0.3f), 75/2);
     			
     			JLabel label = new JLabel("Current Weight", JLabel.LEFT);
     			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
-    			Dimension size = label.getPreferredSize();
+    			size = label.getPreferredSize();
     			label.setBounds(getWidth()/2 - (int)(getWidth()*0.3f)/2 + (int)((getWidth()*0.3f/2) - size.width)/2, (75/2 - size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
@@ -558,8 +576,6 @@ public class DashboardScreen extends JPanel {
     	
     	this.add(activityTrackingPanel);
 	}
-
-    public JPanel getBannerPanel() { return this.bannerPanel; }
     
 	@Override
 	protected void paintComponent(Graphics g) {
