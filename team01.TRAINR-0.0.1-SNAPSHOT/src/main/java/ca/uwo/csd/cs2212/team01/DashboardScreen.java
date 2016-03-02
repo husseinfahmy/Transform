@@ -588,76 +588,81 @@ public class DashboardScreen extends JPanel {
     			label.setForeground(Color.WHITE);
     			this.add(label);
 				
-				int arcSize = (getWidth() - 40*4)/4;
+				int arcSize = (getWidth() - 20*(4+1))/4;
 				
     	        // draw Arc2D.Double
     	        g2.setStroke(new BasicStroke(2.0f));
     	        g2.setColor(Color.WHITE);
-    	        g2.draw(new Ellipse2D.Double(40*1 + arcSize*0, 52+80+100+160, arcSize, arcSize));
+    	        g2.draw(new Ellipse2D.Double(20*1 + arcSize*0, 52+80+100+160, arcSize, arcSize));
 
     			label = new JLabel(totalDist + "", JLabel.LEFT);
     			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			size = label.getPreferredSize();
-    			label.setBounds(50*1 + arcSize*0 + (arcSize-size.width)/2, 52+80+100+160 + ((arcSize+6)*2/3 - size.height)/2, size.width, size.height);
+    			label.setBounds(20*1 + arcSize*0 + (arcSize-size.width)/2, 52+80+100+160 + (arcSize*2/3 - size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
     			
     			label = new JLabel("Km", JLabel.LEFT);
     			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
     			size = label.getPreferredSize();
-    			label.setBounds(40*1 + arcSize*0 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
+    			label.setBounds(20*1 + arcSize*0 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
     			
     	        // draw Arc2D.Double
     	        g2.setStroke(new BasicStroke(2.0f));
     	        g2.setColor(Color.WHITE);
-    	        g2.draw(new Ellipse2D.Double(50*2 + arcSize*1, 52+80+100+160, arcSize, arcSize));
+    	        g2.draw(new Ellipse2D.Double(20*2 + arcSize*1, 52+80+100+160, arcSize, arcSize));
 
     			label = new JLabel(totalSteps + "", JLabel.LEFT);
     			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			size = label.getPreferredSize();
-    			label.setBounds(40*2 + arcSize*1 + (arcSize-size.width)/2, 52+80+100+160 + ((arcSize+6)*2/3 - size.height)/2, size.width, size.height);
+    			label.setBounds(20*2 + arcSize*1 + (arcSize-size.width)/2, 52+80+100+160 + (arcSize*2/3 - size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
     			
     			label = new JLabel("Steps", JLabel.LEFT);
     			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
     			size = label.getPreferredSize();
-    			label.setBounds(40*2 + arcSize*1 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
+    			label.setBounds(20*2 + arcSize*1 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
     			
     	        // draw Arc2D.Double
     	        g2.setStroke(new BasicStroke(2.0f));
     	        g2.setColor(Color.WHITE);
-    	        g2.draw(new Ellipse2D.Double(50*3 + arcSize*2, 52+80+100+160, arcSize, arcSize));
+    	        g2.draw(new Ellipse2D.Double(20*3 + arcSize*2, 52+80+100+160, arcSize, arcSize));
 
     			label = new JLabel(totalFloors + "", JLabel.LEFT);
     			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			size = label.getPreferredSize();
-    			label.setBounds(40*3 + arcSize*2 + (arcSize-size.width)/2, 52+80+100+160 + ((arcSize+6)*2/3 - size.height)/2, size.width, size.height);
+    			label.setBounds(20*3 + arcSize*2 + (arcSize-size.width)/2, 52+80+100+160 + (arcSize*2/3 - size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
     			
     			label = new JLabel("Floors", JLabel.LEFT);
     			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
     			size = label.getPreferredSize();
-    			label.setBounds(40*3 + arcSize*2 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
+    			label.setBounds(20*3 + arcSize*2 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
 
+    	        // draw Arc2D.Double
+    	        g2.setStroke(new BasicStroke(2.0f));
+    	        g2.setColor(Color.WHITE);
+    	        g2.draw(new Ellipse2D.Double(20*4 + arcSize*3, 52+80+100+160, arcSize, arcSize));
+    	        
     			label = new JLabel(totalCal + "", JLabel.LEFT);
     			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			size = label.getPreferredSize();
-    			label.setBounds(40*4 + arcSize*3 + (arcSize-size.width)/2, 52+80+100+160 + ((arcSize+6)*2/3 - size.height)/2, size.width, size.height);
+    			label.setBounds(20*4 + arcSize*3 + (arcSize-size.width)/2, 52+80+100+160 + (arcSize*2/3 - size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
     			
-    			label = new JLabel("Cal Burned", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+    			label = new JLabel("<html><p style='text-align:center;'>Calories<br>Burned</p></html>", JLabel.LEFT);
+    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(16.0f));
     			size = label.getPreferredSize();
-    			label.setBounds(40*4 + arcSize*3 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
+    			label.setBounds(20*4 + arcSize*3 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
     			
