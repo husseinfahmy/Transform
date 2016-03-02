@@ -42,7 +42,8 @@ public class MainWindow extends JFrame {
 
 	//Time & Date Stamps:
 	private Date lastCall;
-	
+
+	private LoadingScreen loadingScreen;
 	private WeighScreen weighScreen;
 	private SplashScreen splashScreen;
 	private DashboardScreen dashboardScreen;
@@ -63,12 +64,13 @@ public class MainWindow extends JFrame {
     	if (testMode) {
     		this.lastCall = new Date();
     	}
-    	
+
+		loadingScreen = new LoadingScreen(this);
 		weighScreen = new WeighScreen(this);
 		splashScreen = new SplashScreen(this);
 		dashboardScreen = new DashboardScreen(this);
 		
-		this.add(splashScreen);
+		this.add(loadingScreen);
 	}
 
 	public WeighScreen getWeighScreen() { return this.weighScreen; }
