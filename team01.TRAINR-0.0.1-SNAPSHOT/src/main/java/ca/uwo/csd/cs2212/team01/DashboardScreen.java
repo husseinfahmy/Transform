@@ -120,7 +120,7 @@ public class DashboardScreen extends JPanel {
     			refreshBtn.setFocusable(false);
     			refreshBtn.setSize(image.getWidth(), image.getHeight());
     			refreshBtn.setLocation(getWidth()-image.getWidth()-13, (getHeight()-image.getHeight())/2);
-    	        //refreshBtn.addActionListener(new ButtonActionListener(1, 0, mainWindow));
+    	        refreshBtn.addActionListener(new ButtonActionListener(1, 0, mainWindow));
     	        this.add(refreshBtn);
     	        
     			g2.drawImage(image, getWidth()-image.getWidth()-13, (getHeight()-image.getHeight())/2, null);
@@ -651,6 +651,7 @@ public class DashboardScreen extends JPanel {
 	}
 
     public JPanel getBannerPanel() { return this.bannerPanel; }
+    public JLabel getRefreshDesc() { return this.refreshDesc; }
     
     private void createFonts() {
     	GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();

@@ -77,6 +77,14 @@ public class ButtonActionListener implements ActionListener {
 				break;
 			}
 			break;
+			
+		case 1: // Refresh Button
+			label = mainWindow.getDashboardScreen().getRefreshDesc();
+			mainWindow.updateLastRefreshed();
+			mainWindow.setVisible(false);
+			label.setText("<html>Last Refreshed:<br>" + mainWindow.lastRefreshed().getTXTone().get(0) + "</html>");
+			mainWindow.setVisible(true);
+			break;
 		}
 	}
 }
