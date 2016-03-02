@@ -150,8 +150,8 @@ public class VirtualTrainer {
 				msUpdateFeedback.addTXTone
 				(
 						"You have gained " +  weightDiff + " lbs!<br>"
-						+ "You must take action by either reducing your calorie intake<br>"
-						+ "or setting a higher calorie burn goal during your workouts:"
+						+ "You should reduce your calorie intake or<br>"
+						+ "set a higher calorie burn goal for workouts:"
 				); 
 				return msUpdateFeedback; 
 			} 
@@ -162,9 +162,9 @@ public class VirtualTrainer {
 				msUpdateFeedback.setButtonCode(1); //DISPLAY "CUSTOMIZE MY PLAN" BUTTON
 				msUpdateFeedback.addTXTone
 				(
-						"You have not lost any weight :(<br>"
-						+ "You must take action by either reducing your calorie intake<br>"
-						+ "or setting a higher calorie burn goal during your workouts:"
+						"You have not lost any weight!<br>"
+						+ "You should reduce your calorie intake or<br>"
+						+ "set a higher calorie burn goal for workouts:"
 				); 
 				return msUpdateFeedback; 
 			}
