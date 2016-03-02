@@ -101,6 +101,30 @@ public class DashboardScreen extends JPanel {
 				}
     			g2.drawImage(image, (getWidth()-image.getWidth())/2, (getHeight()-image.getHeight())/2, null);
 
+    			image = null;
+				try {
+					image = ImageIO.read(new File("UI/refresh-icon.png"));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+    			JButton refreshBtn = new JButton();
+    			refreshBtn.setBackground(null);
+    			refreshBtn.setBorder(null);
+    			refreshBtn.setFocusPainted(false);
+    			refreshBtn.setMargin(new Insets(0, 0, 0, 0));
+    			refreshBtn.setContentAreaFilled(false);
+    			refreshBtn.setBorderPainted(false);
+    			refreshBtn.setOpaque(false);
+    			refreshBtn.setFocusable(false);
+    			refreshBtn.setSize(image.getWidth(), image.getHeight());
+    			refreshBtn.setLocation(getWidth()-image.getWidth()-13, (getHeight()-image.getHeight())/2);
+    	        //refreshBtn.addActionListener(new ButtonActionListener(1, 0, mainWindow));
+    	        this.add(refreshBtn);
+    	        
+    			g2.drawImage(image, getWidth()-image.getWidth()-13, (getHeight()-image.getHeight())/2, null);
+    			
     			refreshDesc = new JLabel("<html>Last Refreshed:<br>" + mainWindow.lastRefreshed().getTXTone().get(0) + "</html>", JLabel.LEFT);
     			refreshDesc.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(14.0f));
     			size = refreshDesc.getPreferredSize();
