@@ -167,6 +167,44 @@ public class DashboardScreen extends JPanel {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+
+				int value = 0;
+				LinkedList<Day> past6Days = mainWindow.getPast6Days();
+				Day day = null;
+				
+    			for(int i = 0; i < 7; i++) {
+    				if (i == 6) label = new JLabel("<html><b>Today</b></html>", JLabel.LEFT);
+    				else {
+    					day = past6Days.get(i);
+    					value = (int)day.getDailyCalDiff();
+    					if (value >= 0) g.drawImage(xmark, (this.getWidth()/7)*i + ((this.getWidth()/7)-xmark.getWidth())/2, (60-xmark.getHeight())/2, xmark.getWidth(), xmark.getHeight(), null);
+    					else if (value <= -480)
+    						g.drawImage(checkmark, (this.getWidth()/7)*i + ((this.getWidth()/7)-checkmark.getWidth())/2, (60-checkmark.getHeight())/2, checkmark.getWidth(), checkmark.getHeight(), null);
+    					else g.drawImage(exclmark, (this.getWidth()/7)*i + ((this.getWidth()/7)-exclmark.getWidth())/2, (60-exclmark.getHeight())/2, exclmark.getWidth(), exclmark.getHeight(), null);
+    					
+    					if (i == 5) label = new JLabel("Yesterday", JLabel.LEFT);
+    					else label = new JLabel(mainWindow.getDayOfWeek(day.getDate()), JLabel.LEFT);
+    				}
+    				
+    				label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+        			size = label.getPreferredSize();
+        			label.setBounds((this.getWidth()/7)*i + ((this.getWidth()/7)-size.width)/2, 60 + (35-size.height)/2, size.width, size.height);
+        			label.setForeground(Color.WHITE);
+        			this.add(label);
+        			
+    				if (i == 6) {
+    					label = new JLabel("In Progress", JLabel.LEFT);
+    					label.setFont(FONT_HELVETICA_NEUE_ITALIC.deriveFont(25.0f));
+    				}else {
+    					label = new JLabel("<html>" + (value > 0 ? "+" : "") + value + "<small style='font-size:18pt'> cal</small></html>", JLabel.LEFT);
+    					label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+    				}
+    				
+    				size = label.getPreferredSize();
+        			label.setBounds((this.getWidth()/7)*i + ((this.getWidth()/7)-size.width)/2, 60+35 + (55-size.height)/2, size.width, size.height);
+        			label.setForeground(Color.WHITE);
+        			this.add(label);
+        		}
     		}
     	};
     	

@@ -39,7 +39,9 @@ public class LoadingScreen extends JPanel {
 	}
 	
 	private void initTestMode() {
-		mainWindow.setLastCall(new Date());
+		Date today = new Date();
+		
+		mainWindow.setLastCall(today);
 		//Random macro information - Constructor: public Macro(float calories, float proteins, float carbs, float fats):
 		Macro macro1 = new Macro((float)100, (float)20, (float)50, (float)5 );
 		Macro macro2 = new Macro((float)200, (float)10, (float)25, (float)4 );
@@ -116,8 +118,8 @@ public class LoadingScreen extends JPanel {
 		////////////////////////////////////////////////////////////////////////////////
 		
 		for(int i = 0;i<updateDays-1;i++)
-		{ Day day = new Day(); day.setDayProgress(1440); day.setPlan(planArray[i]); day.generateFakeData(1); mainWindow.getDays().add(day); } //add 6 "previous days" worth of fake raw data & fake plans.
-		Day day = new Day(); day.setDayProgress(1020); day.setPlan(planArray[6]); day.generateFakeData(3); mainWindow.getDays().add(day); //add "todays" data which includes fake raw data until 5pm and fake plan.
+		{ Day day = new Day(); day.setDate(new Date(today.getTime()-1440*60*1000*(updateDays-1-i))); day.setDayProgress(1440); day.setPlan(planArray[i]); day.generateFakeData(1); mainWindow.getDays().add(day); } //add 6 "previous days" worth of fake raw data & fake plans.
+		Day day = new Day(); day.setDate(today);day.setDayProgress(1020); day.setPlan(planArray[6]); day.generateFakeData(3); mainWindow.getDays().add(day); //add "todays" data which includes fake raw data until 5pm and fake plan.
 		//carry out calculations and call methods --> display everything on UI. Done.
 		
 		//all 7 days have raw data that needs processing // ie. updateDays = number of days that need updating in the LinkedList. the last "updateDays" worth of days

@@ -125,6 +125,8 @@ public class MainWindow extends JFrame {
 		return this.vt;
 	}
 	
+	public String getDayOfWeek(Date day) { return fmDayofWeek.format(day); }
+	
 	public LoadingScreen getLoadingScreen() { return this.loadingScreen; }
 	public SplashScreen getSplashScreen() { return this.splashScreen; }
 	public WeighScreen getWeighScreen() { return this.weighScreen; }
