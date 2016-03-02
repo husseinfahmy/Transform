@@ -73,14 +73,36 @@ public class DashboardScreen extends JPanel {
 					e.printStackTrace();
 				}
     			g2.drawImage(image, 13, 13, null);
+				
+    			JButton weighBtn = new JButton("Weigh Myself");
+    			weighBtn.setBackground(null);
+    			weighBtn.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+    			weighBtn.setForeground(new Color(255,255,255,150));
+    			weighBtn.setBorder(null);
+    			weighBtn.setFocusPainted(false);
+    			weighBtn.setMargin(new Insets(0, 0, 0, 0));
+    			weighBtn.setContentAreaFilled(false);
+    			weighBtn.setBorderPainted(false);
+    			weighBtn.setOpaque(false);
+    			weighBtn.setFocusable(false);
+    	        weighBtn.addActionListener(new ButtonActionListener(3, 0, mainWindow));
+    	        this.add(weighBtn);
+				
+    			JLabel btnDesc = new JLabel("Weigh Myself", JLabel.LEFT);
+    			btnDesc.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+    			Dimension size = btnDesc.getPreferredSize();
+    			weighBtn.setSize(size.width, size.height);
+    			weighBtn.setLocation(63+13, (getHeight()-size.height)/2);
 
+			    g2.draw(new RoundRectangle2D.Float(63+13 - 8, (getHeight()-size.height)/2 - 3, size.width + 16, size.height+6, 8, 8));
+    			
     			g2.setColor(new Color(1.0f,1.0f,1.0f,0.3f));
     	        g2.setStroke(new BasicStroke(2.0f));
     			g2.drawLine((int)(getWidth()*0.7f/2), 75/2, (int)(getWidth()*0.7f/2) + (int)(getWidth()*0.3f), 75/2);
     			
     			JLabel label = new JLabel("Current Weight", JLabel.LEFT);
     			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
-    			Dimension size = label.getPreferredSize();
+    			size = label.getPreferredSize();
     			label.setBounds(getWidth()/2 - (int)(getWidth()*0.3f)/2 + (int)((getWidth()*0.3f/2) - size.width)/2, (75/2 - size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
@@ -89,6 +111,20 @@ public class DashboardScreen extends JPanel {
     			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			size = label.getPreferredSize();
     			label.setBounds(getWidth()/2 + (int)((getWidth()*0.3f/2) - size.width)/2, (75/2 - size.height)/2, size.width, size.height);
+    			label.setForeground(Color.WHITE);
+    			this.add(label);
+    			
+    			label = new JLabel(mainWindow.getVirtualTrainer().getCurrentWeight() + "", JLabel.LEFT);
+    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+    			size = label.getPreferredSize();
+    			label.setBounds(getWidth()/2 - (int)(getWidth()*0.3f)/2 + (int)((getWidth()*0.3f)/2 - size.width)/2, 75/2 + (75/2 - size.height)/2, size.width, size.height);
+    			label.setForeground(Color.WHITE);
+    			this.add(label);
+    			
+    			label = new JLabel(mainWindow.getVirtualTrainer().getTargetWeight() + "", JLabel.LEFT);
+    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+    			size = label.getPreferredSize();
+    			label.setBounds(getWidth()/2 + (int)((getWidth()*0.3f)/2 - size.width)/2, 75/2 + (75/2 - size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
 
@@ -124,14 +160,14 @@ public class DashboardScreen extends JPanel {
     	        this.add(refreshBtn);
     	        
     			g2.drawImage(image, getWidth()-image.getWidth()-13-50-13, (getHeight()-image.getHeight())/2, null);
-    			
+				
     			refreshDesc = new JLabel("<html>Last Refreshed:<br>" + mainWindow.lastRefreshed().getTXTone().get(0) + "</html>", JLabel.LEFT);
     			refreshDesc.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(14.0f));
     			size = refreshDesc.getPreferredSize();
     			refreshDesc.setBounds(getWidth()-image.getWidth()-13-50-13-size.width-13, (getHeight()-size.height)/2, size.width, size.height);
     			refreshDesc.setForeground(Color.WHITE);
     			this.add(refreshDesc);
-
+				
     			image = null;
 				try {
 					image = ImageIO.read(new File("UI/exit-icon.png"));
@@ -153,7 +189,7 @@ public class DashboardScreen extends JPanel {
     			exitBtn.setLocation(getWidth()-image.getWidth()-13, 13);
     	        exitBtn.addActionListener(new ButtonActionListener(2, 0, mainWindow));
     	        this.add(exitBtn);
-    	        
+				
     			g2.drawImage(image, getWidth()-image.getWidth()-13, 13, null);
     		}
     	};
@@ -497,9 +533,6 @@ public class DashboardScreen extends JPanel {
         			label.setForeground(Color.WHITE);
         			this.add(label);
     			}
-    			
-	   			if(feedback.getButtonCode()==1) System.out.println("Display Customize My Plans button");
-	   			System.out.println();
 	   			
 	   			//Feedback on user's current Calorie Difference for today:
 	   			feedback = mainWindow.getVirtualTrainer().updateTodaysProgress(mainWindow.getDays().getLast());
