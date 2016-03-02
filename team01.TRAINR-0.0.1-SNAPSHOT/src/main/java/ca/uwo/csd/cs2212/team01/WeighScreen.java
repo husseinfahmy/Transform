@@ -236,7 +236,6 @@ public class WeighScreen extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		g2.drawImage(image, 0, 0, getWidth(), getHeight(), 0, 0, image.getWidth(), image.getHeight(), null);
 		
 		JButton exitBtn = new JButton();
 		exitBtn.setBackground(null);

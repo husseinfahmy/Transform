@@ -187,7 +187,7 @@ public class SplashScreen extends JPanel {
 		exitBtn.setLocation(getWidth()-image.getWidth()-13, 13);
         exitBtn.addActionListener(new ButtonActionListener(2, 0, mainWindow));
         this.add(exitBtn);
-        
+		
 		g2.drawImage(image, getWidth()-image.getWidth()-13, 13, null);
 	}
 }
