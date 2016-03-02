@@ -43,6 +43,10 @@ public class MainWindow extends JFrame {
 	//Time & Date Stamps:
 	private Date lastCall;
 
+	//User & Virtual Trainer Storage:
+	private User user;	
+	private VirtualTrainer vt;
+	
 	private LoadingScreen loadingScreen;
 	private WeighScreen weighScreen;
 	private SplashScreen splashScreen;
@@ -71,6 +75,18 @@ public class MainWindow extends JFrame {
 		//dashboardScreen = new DashboardScreen(this);
 		
 		this.add(loadingScreen);
+	}
+    
+	public void setupVirtualTrainer(float currentWeight, float targetWeight) {
+		// Virtual Trainer needs to deliver feedback to the user based on the processed data.
+		vt = new VirtualTrainer();
+    	// Test Mode assumes user has already specified a weight loss goal:
+		System.out.println();
+		if(vt.setWeightLossGoal(user, currentWeight, targetWeight)) System.out.println("Setting current weight and target weight successful.") ;
+		vt.setMileStones();
+		System.out.println();
+		
+		if (testMode) vt.addNewWeightMeasurement(user, currentWeight);
 	}
 
 	public LoadingScreen getLoadingScreen() { return this.loadingScreen; }

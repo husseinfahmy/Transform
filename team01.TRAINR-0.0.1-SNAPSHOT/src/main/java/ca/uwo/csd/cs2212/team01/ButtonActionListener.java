@@ -53,7 +53,7 @@ public class ButtonActionListener implements ActionListener {
 						break;
 					}
 
-					//this.mainWindow.setupVirtualTrainer(currentWeight, targetWeight);
+					this.mainWindow.setupVirtualTrainer(currentWeight, targetWeight);
 
 					this.mainWindow.setVisible(false);
 					this.mainWindow.getContentPane().removeAll();
