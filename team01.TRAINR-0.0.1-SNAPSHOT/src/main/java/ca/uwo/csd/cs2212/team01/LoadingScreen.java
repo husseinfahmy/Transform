@@ -19,7 +19,7 @@ public class LoadingScreen extends JPanel {
 	private Font FONT_HELVETICA_NEUE_THIN = null, FONT_HELVETICA_NEUE_ITALIC = null, FONT_HELVETICA_NEUE_BOLD = null;
 	private MainWindow mainWindow;
 	
-	private JPanel titlePanel;
+	private JPanel titlePanel, devicesPanel;
 	
 	public LoadingScreen(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
@@ -66,6 +66,32 @@ public class LoadingScreen extends JPanel {
     		}
     	};
     	this.add(titlePanel);
+
+
+    	devicesPanel = new JPanel() {
+    		@Override
+    		protected void paintComponent(Graphics g) {
+    			super.paintComponent(g);
+    			
+    			this.setLayout(null);
+    			this.setOpaque(false);
+    			
+    			Graphics2D g2 = (Graphics2D) g;
+    			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    			
+    			BufferedImage image = null;
+				try {
+					image = ImageIO.read(new File("UI/devices.png"));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+    			this.setSize(image.getWidth(), image.getHeight());
+    	    	this.setLocation((1480-getWidth())/2,(800-getHeight())/2);
+    			g2.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
+    		}
+    	};
+    	this.add(devicesPanel);
     	
     	JPanel loggingInPanel = new JPanel() {
     		@Override
@@ -92,6 +118,8 @@ public class LoadingScreen extends JPanel {
     	};
     	this.add(loggingInPanel);
 	}
+    
+    public JPanel getDevicesPanel() { return this.devicesPanel; }
     
     private void createFonts() {
     	GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();

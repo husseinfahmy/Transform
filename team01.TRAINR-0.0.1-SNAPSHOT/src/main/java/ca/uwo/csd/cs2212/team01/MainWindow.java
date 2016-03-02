@@ -66,13 +66,14 @@ public class MainWindow extends JFrame {
     	}
 
 		loadingScreen = new LoadingScreen(this);
-		weighScreen = new WeighScreen(this);
-		splashScreen = new SplashScreen(this);
-		dashboardScreen = new DashboardScreen(this);
+		//weighScreen = new WeighScreen(this);
+		//splashScreen = new SplashScreen(this);
+		//dashboardScreen = new DashboardScreen(this);
 		
 		this.add(loadingScreen);
 	}
 
+	public LoadingScreen getLoadingScreen() { return this.loadingScreen; }
 	public WeighScreen getWeighScreen() { return this.weighScreen; }
 	public DashboardScreen getDashboardScreen() { return this.dashboardScreen; }
     
