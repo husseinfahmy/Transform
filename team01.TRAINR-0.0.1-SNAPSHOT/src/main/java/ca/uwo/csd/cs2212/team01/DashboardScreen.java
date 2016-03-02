@@ -119,18 +119,42 @@ public class DashboardScreen extends JPanel {
     			refreshBtn.setOpaque(false);
     			refreshBtn.setFocusable(false);
     			refreshBtn.setSize(image.getWidth(), image.getHeight());
-    			refreshBtn.setLocation(getWidth()-image.getWidth()-13, (getHeight()-image.getHeight())/2);
+    			refreshBtn.setLocation(getWidth()-image.getWidth()-13-50-13, (getHeight()-image.getHeight())/2);
     	        refreshBtn.addActionListener(new ButtonActionListener(1, 0, mainWindow));
     	        this.add(refreshBtn);
     	        
-    			g2.drawImage(image, getWidth()-image.getWidth()-13, (getHeight()-image.getHeight())/2, null);
+    			g2.drawImage(image, getWidth()-image.getWidth()-13-50-13, (getHeight()-image.getHeight())/2, null);
     			
     			refreshDesc = new JLabel("<html>Last Refreshed:<br>" + mainWindow.lastRefreshed().getTXTone().get(0) + "</html>", JLabel.LEFT);
     			refreshDesc.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(14.0f));
     			size = refreshDesc.getPreferredSize();
-    			refreshDesc.setBounds(getWidth()-image.getWidth()-13-size.width-13, (getHeight()-size.height)/2, size.width, size.height);
+    			refreshDesc.setBounds(getWidth()-image.getWidth()-13-50-13-size.width-13, (getHeight()-size.height)/2, size.width, size.height);
     			refreshDesc.setForeground(Color.WHITE);
     			this.add(refreshDesc);
+
+    			image = null;
+				try {
+					image = ImageIO.read(new File("UI/exit-icon.png"));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+    			JButton exitBtn = new JButton();
+    			exitBtn.setBackground(null);
+    			exitBtn.setBorder(null);
+    			exitBtn.setFocusPainted(false);
+    			exitBtn.setMargin(new Insets(0, 0, 0, 0));
+    			exitBtn.setContentAreaFilled(false);
+    			exitBtn.setBorderPainted(false);
+    			exitBtn.setOpaque(false);
+    			exitBtn.setFocusable(false);
+    			exitBtn.setSize(image.getWidth(), image.getHeight());
+    			exitBtn.setLocation(getWidth()-image.getWidth()-13, 13);
+    	        exitBtn.addActionListener(new ButtonActionListener(2, 0, mainWindow));
+    	        this.add(exitBtn);
+    	        
+    			g2.drawImage(image, getWidth()-image.getWidth()-13, 13, null);
     		}
     	};
     	

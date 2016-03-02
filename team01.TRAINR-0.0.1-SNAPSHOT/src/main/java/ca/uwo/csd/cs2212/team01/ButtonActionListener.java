@@ -85,6 +85,10 @@ public class ButtonActionListener implements ActionListener {
 			label.setText("<html>Last Refreshed:<br>" + mainWindow.lastRefreshed().getTXTone().get(0) + "</html>");
 			mainWindow.setVisible(true);
 			break;
+			
+		case 2: // Exit Button
+			System.exit(0);
+			break;
 		}
 	}
 }

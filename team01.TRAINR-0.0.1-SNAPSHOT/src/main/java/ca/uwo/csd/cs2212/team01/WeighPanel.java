@@ -10,7 +10,11 @@ import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -117,5 +121,29 @@ public class WeighPanel extends JPanel {
 		g2.setColor(new Color(0,0,0,(int)(255*0.5f)));
 		
 		for(Rectangle rect : this.rectList) g2.fillRect(rect.x, rect.y, rect.width, rect.height);
+
+		BufferedImage image = null;
+		try {
+			image = ImageIO.read(new File("UI/exit-icon.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		JButton exitBtn = new JButton();
+		exitBtn.setBackground(null);
+		exitBtn.setBorder(null);
+		exitBtn.setFocusPainted(false);
+		exitBtn.setMargin(new Insets(0, 0, 0, 0));
+		exitBtn.setContentAreaFilled(false);
+		exitBtn.setBorderPainted(false);
+		exitBtn.setOpaque(false);
+		exitBtn.setFocusable(false);
+		exitBtn.setSize(image.getWidth(), image.getHeight());
+		exitBtn.setLocation(getWidth()-image.getWidth()-13, 13);
+        exitBtn.addActionListener(new ButtonActionListener(2, 0, mainWindow));
+        this.add(exitBtn);
+        
+		g2.drawImage(image, getWidth()-image.getWidth()-13, 13, null);
 	}
 }

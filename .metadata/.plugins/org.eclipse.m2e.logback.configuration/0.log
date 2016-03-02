@@ -1720,3 +1720,125 @@ org.eclipse.core.runtime.CoreException: Launch configuration App (1) references 
 2016-03-02 06:29:54,896 [Worker-135] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
 2016-03-02 06:29:54,913 [Worker-135] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2016-03-02 06:29:54,917 [Worker-135] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:13:13,065 [Worker-137] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:13:13,106 [Worker-137] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-03-02 07:13:13,122 [Worker-137] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:13:13,122 [Worker-137] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:28:07,400 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: ca.uwo.csd.cs2212.team01:team01-TRAINR:0.0.1-SNAPSHOT @ C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\pom.xml.
+2016-03-02 07:28:08,534 [Worker-1] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /team01.TRAINR-0.0.1-SNAPSHOT/src/main/java
+2016-03-02 07:28:08,536 [Worker-1] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /team01.TRAINR-0.0.1-SNAPSHOT/src/main/resources
+2016-03-02 07:28:08,537 [Worker-1] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /team01.TRAINR-0.0.1-SNAPSHOT/src/test/java
+2016-03-02 07:28:08,626 [Worker-1] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 3 sec
+2016-03-02 07:28:12,309 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:28:12,316 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:28:12,335 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:28:12,336 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:35:24,212 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:35:24,212 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-03-02 07:35:24,212 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:35:24,212 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:36:56,214 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:36:56,214 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:36:56,214 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:36:56,230 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:37:10,066 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:37:10,067 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:37:10,069 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:37:10,075 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:43:02,166 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:43:02,182 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:43:02,192 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:43:02,198 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:43:23,739 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:43:23,739 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:43:23,739 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:43:23,755 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:43:38,527 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:43:38,540 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:43:38,554 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:43:38,570 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:43:44,604 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:43:44,605 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:43:44,609 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:43:44,616 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:44:30,433 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:44:30,449 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:44:30,449 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:44:30,464 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:44:40,707 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:44:40,707 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:44:40,707 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:44:40,707 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:45:11,210 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:45:11,225 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:45:11,225 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:45:11,241 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:45:17,563 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:45:17,563 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:45:17,563 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:45:17,578 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:45:28,014 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:45:28,029 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:45:28,045 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:45:28,061 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:45:42,449 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:45:42,449 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:45:42,449 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:45:42,449 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:45:55,605 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:45:55,624 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:45:55,630 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:45:55,635 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:46:05,768 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:46:05,768 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:46:05,772 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:46:05,777 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:46:09,816 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:46:09,832 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:46:09,853 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:46:09,854 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:46:16,902 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:46:16,903 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:46:16,904 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:46:16,952 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:46:21,295 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:46:21,314 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:46:21,317 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:46:21,317 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:46:42,060 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:46:42,060 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:46:42,060 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:46:42,060 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:46:45,584 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:46:45,595 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:46:45,604 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:46:45,607 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:46:55,921 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:46:55,921 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:46:55,921 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:46:55,937 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:47:12,418 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:47:12,418 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:47:12,434 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:47:12,434 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:47:24,044 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:47:24,044 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:47:24,044 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:47:24,044 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:47:30,470 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:47:30,470 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:47:30,470 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:47:30,486 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:47:49,679 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:47:49,679 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:47:49,679 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:47:49,679 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:47:53,692 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:47:53,707 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:47:53,723 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:47:53,723 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:48:09,483 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:48:09,484 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-03-02 07:48:09,485 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 07:48:09,491 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 07:48:31,785 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is out-of-date. Remote download required.

@@ -86,6 +86,7 @@ public class MainWindow extends JFrame {
 		dashboardScreen = new DashboardScreen(this);
 		
 		this.add(splashScreen);
+		
 	}
     
 	public boolean isTestMode() { return this.testMode; }
