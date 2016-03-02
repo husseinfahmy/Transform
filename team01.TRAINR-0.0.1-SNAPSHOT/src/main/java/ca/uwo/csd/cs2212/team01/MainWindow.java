@@ -36,8 +36,6 @@ public class MainWindow extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private int posX = 0, posY = 0;
-	
-	static final int MAX_PROGRESS = 1440;
 
 	private SplashScreen splashScreen;
 	private DashboardScreen dashboardScreen;
