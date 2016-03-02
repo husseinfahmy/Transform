@@ -236,31 +236,21 @@ public class WeighScreen extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		g2.drawImage(image, 0, 0, getWidth(), getHeight(), 0, 0, image.getWidth(), image.getHeight(), null);
 		
-		image = null;
-		try {
-			image = ImageIO.read(new File("UI/fitbit-logo.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		g2.drawImage(image, 13, getHeight()-image.getHeight()-13, null);
-
-		JLabel label = new JLabel("<html>Fitbit Privacy Statement<br>Copy Rights & Endorsements</html>", JLabel.LEFT);
-		label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
-		Dimension size = label.getPreferredSize();
-		label.setBounds(13+image.getWidth()+13, getHeight()-13-50, size.width, size.height);
-		label.setForeground(Color.WHITE);
-		this.add(label);
-		
-		image = null;
-		try {
-			image = ImageIO.read(new File("UI/logo-s.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		g2.drawImage(image, getWidth()-image.getWidth()-13, getHeight()-13-image.getHeight(), null);
+		JButton exitBtn = new JButton();
+		exitBtn.setBackground(null);
+		exitBtn.setBorder(null);
+		exitBtn.setFocusPainted(false);
+		exitBtn.setMargin(new Insets(0, 0, 0, 0));
+		exitBtn.setContentAreaFilled(false);
+		exitBtn.setBorderPainted(false);
+		exitBtn.setOpaque(false);
+		exitBtn.setFocusable(false);
+		exitBtn.setSize(image.getWidth(), image.getHeight());
+		exitBtn.setLocation(getWidth()-image.getWidth()-13, 13);
+        exitBtn.addActionListener(new ButtonActionListener(2, 0, mainWindow));
+        this.add(exitBtn);
+        
+		g2.drawImage(image, getWidth()-image.getWidth()-13, 13, null);
 	}
 }

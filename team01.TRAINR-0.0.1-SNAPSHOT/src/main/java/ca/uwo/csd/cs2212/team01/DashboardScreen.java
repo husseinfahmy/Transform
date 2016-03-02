@@ -166,10 +166,6 @@ public class DashboardScreen extends JPanel {
     			refreshDesc.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(14.0f));
     			size = refreshDesc.getPreferredSize();
 				
-    			refreshDesc.setBounds(getWidth()-image.getWidth()-13-50-13-size.width-13, (getHeight()-size.height)/2, size.width, size.height);
-    			refreshDesc.setForeground(Color.WHITE);
-    			this.add(refreshDesc);
-				
     			image = null;
 				try {
 					image = ImageIO.read(new File("UI/exit-icon.png"));
@@ -191,7 +187,7 @@ public class DashboardScreen extends JPanel {
     			exitBtn.setLocation(getWidth()-image.getWidth()-13, 13);
     	        exitBtn.addActionListener(new ButtonActionListener(2, 0, mainWindow));
     	        this.add(exitBtn);
-    	        
+				
     			g2.drawImage(image, getWidth()-image.getWidth()-13, 13, null);
     		}
     	};

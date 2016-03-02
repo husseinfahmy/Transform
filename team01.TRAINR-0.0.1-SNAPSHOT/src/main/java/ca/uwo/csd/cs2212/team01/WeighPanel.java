@@ -121,13 +121,5 @@ public class WeighPanel extends JPanel {
 		g2.setColor(new Color(0,0,0,(int)(255*0.5f)));
 		
 		for(Rectangle rect : this.rectList) g2.fillRect(rect.x, rect.y, rect.width, rect.height);
-
-		BufferedImage image = null;
-		try {
-			image = ImageIO.read(new File("UI/exit-icon.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }
