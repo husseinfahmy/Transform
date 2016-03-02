@@ -197,6 +197,12 @@ public class DashboardScreen extends JPanel {
 				}
     			g2.drawImage(image, getWidth()*0, 112+130, getWidth() - 1, image.getHeight(), null);
 
+    			Date today = new Date();
+    			
+    			float totalCalEat = 1000, totalTime = today.getTime(), maxTime = mainWindow.MAX_PROGRESS, totalCalBurn = 1500;
+    			float scaleFactor = maxTime/totalTime, scaleMaxCal = 0;
+    			
+    			scaleMaxCal = totalCalEat*scaleFactor;
 	   			
     			label = new JLabel("Today's Progress", JLabel.LEFT);
     			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(24.0f));
@@ -214,6 +220,16 @@ public class DashboardScreen extends JPanel {
 				}
     			g2.drawImage(image, 0, 112+120+120, this.getWidth() - 1, image.getHeight(), null);
 
+    			String[] axisData = new String[5];
+    			
+    			for(int i = 0; i < axisData.length; i++) {
+    				if (scaleMaxCal > axisData.length) axisData[i] = (int)(scaleMaxCal*i/4.5f) + "";
+    				else axisData[i] = String.format("%.2f", scaleMaxCal*i/4.5f) + "";
+    			}
+    			
+    			LineAxisGraph axisGraph = new LineAxisGraph(axisData, 0, 112+120+120-30, this.getWidth() - 1, 30, axisData.length, true);
+    			this.add(axisGraph);
+    			
     			label = new JLabel("Calories Eaten", JLabel.LEFT);
     			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			size = label.getPreferredSize();
@@ -221,12 +237,21 @@ public class DashboardScreen extends JPanel {
     			label.setForeground(new Color(119, 114, 255, 255));
     			this.add(label);
     			
+    			g2.setStroke(new BasicStroke(2.0f));
+    			
+    			g2.setColor(new Color(119, 114, 255, 255));
+				g2.drawLine((getWidth()/axisData.length)/2, 112+120+120+(55-size.height)/2 + size.height + 5, getWidth() - 1 - (int)((getWidth() - getWidth()/5/2 - 1)*(scaleMaxCal-totalCalEat)/scaleMaxCal), 112+120+120+(55-size.height)/2 + size.height + 5);
+
     			label = new JLabel("Calories Burned", JLabel.LEFT);
     			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			size = label.getPreferredSize();
     			label.setBounds(getWidth()*0 + getWidth()/5/2, 112+120+120+55+(55-size.height)/2, size.width, size.height);
     			label.setForeground(new Color(106, 185, 255, 255));
     			this.add(label);
+
+    			g2.setColor(new Color(106, 185, 255, 255));
+				g2.drawLine((getWidth()/5)/2, 112+120+120+55+(55-size.height)/2 - 5, getWidth() - 1 - (int)((getWidth() - getWidth()/5/2 - 1)*(scaleMaxCal-totalCalBurn)/scaleMaxCal), 112+120+120+55+(55-size.height)/2 - 5);
+    			
 
     			image = null;
 				try {
@@ -237,6 +262,23 @@ public class DashboardScreen extends JPanel {
 				}
     			g2.drawImage(image, getWidth()*0, 112+120+120+110, this.getWidth() - 1, image.getHeight(), null);
 
+    	    	int hour, minute;
+    	    	
+    			for(int i = 0; i < axisData.length; i++) {
+    	    		hour = (int)Math.floor(maxTime/4.5f/2 + maxTime*i/4.5f)/60;
+    	    		minute = (int)(maxTime/4.5f/2 + maxTime*i/4.5f) - (hour*60);
+    	    		
+    				if (i == 0) axisData[i] = "Wakeup";
+    				else if (i == axisData.length-1 && hour >= 24) axisData[i] = "Sleep";
+    				else {
+        	    		if (hour > 12) axisData[i] = (hour - 12) + ":" + String.format("%02d", minute) + " pm";
+        	    		else axisData[i] = hour + ":" + String.format("%02d", minute) + " am";
+    				}
+    			}
+    			
+    			axisGraph = new LineAxisGraph(axisData, 0, 112+120+120+110+image.getHeight(), this.getWidth() - 1, 30, axisData.length, false);
+    			this.add(axisGraph);
+    			
     			image = null;
 				try {
 					image = ImageIO.read(new File("UI/panel-btn1-bg.png"));
