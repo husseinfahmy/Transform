@@ -74,6 +74,8 @@ public class SplashScreen extends JPanel {
     	this.setGoalPanel = new GoalPanel(mainWindow, FONT_HELVETICA_NEUE_THIN);
 	}
     
+    public GoalPanel getSetGoalPanel() { return this.setGoalPanel; }
+    
     @Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
