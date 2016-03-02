@@ -110,13 +110,38 @@ public class SplashScreen extends JPanel {
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		BufferedImage bgImage = null;
+		BufferedImage image = null;
 		try {
-			bgImage = ImageIO.read(new File("UI/bg.jpg"));
+			image = ImageIO.read(new File("UI/bg.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		g2.drawImage(bgImage, 0, 0, getWidth(), getHeight(), 0, 0, bgImage.getWidth(), bgImage.getHeight(), null);
+		g2.drawImage(image, 0, 0, getWidth(), getHeight(), 0, 0, image.getWidth(), image.getHeight(), null);
+		
+		image = null;
+		try {
+			image = ImageIO.read(new File("UI/fitbit-logo.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		g2.drawImage(image, 13, getHeight()-image.getHeight()-13, null);
+
+		JLabel label = new JLabel("<html>Fitbit Privacy Statement<br>Copy Rights & Endorsements</html>", JLabel.LEFT);
+		label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+		Dimension size = label.getPreferredSize();
+		label.setBounds(13+image.getWidth()+13, getHeight()-13-50, size.width, size.height);
+		label.setForeground(Color.WHITE);
+		this.add(label);
+		
+		image = null;
+		try {
+			image = ImageIO.read(new File("UI/logo-s.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		g2.drawImage(image, getWidth()-image.getWidth()-13, getHeight()-13-image.getHeight(), null);
 	}
 }
