@@ -3,6 +3,8 @@ package ca.uwo.csd.cs2212.team01;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.Date;
+import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -32,6 +34,100 @@ public class LoadingScreen extends JPanel {
     	this.createFonts();
     	
 		this.initUI();
+		
+		if (mainWindow.isTestMode()) this.initTestMode();
+	}
+	
+	private void initTestMode() {
+		mainWindow.setLastCall(new Date());
+		//Random macro information - Constructor: public Macro(float calories, float proteins, float carbs, float fats):
+		Macro macro1 = new Macro((float)100, (float)20, (float)50, (float)5 );
+		Macro macro2 = new Macro((float)200, (float)10, (float)25, (float)4 );
+		Macro macro3 = new Macro((float)200, (float)5, (float)15, (float)3 );
+
+		//Food items and their nutritional info built with the previous macro information:
+		Food food1 = new Food("food item",1,(float)1,"cup",macro1);
+		Food food2 = new Food("food item",1,(float)1,"cup",macro2);
+		Food food3 = new Food("food item",1,(float)1,"cup",macro3);
+	
+		//User builds their meals by specifying servings of food and adding them to meals:
+		//Meal 1
+		Meal meal1 = new Meal(); 
+		FoodServing foodServing1 = new FoodServing(food1,(float)1,"cup"); // 100 calories
+		FoodServing foodServing2 = new FoodServing(food2,(float)1,"cup"); // 200 calories
+		FoodServing foodServing3 = new FoodServing(food3,(float)1,"cup"); // 200 calories
+		meal1.addFoodServing(foodServing1); // 100 calories
+		meal1.addFoodServing(foodServing2); // 200 calories
+		meal1.addFoodServing(foodServing3); // 200 calories // total: 500 calories
+		
+		//Meal 2
+		Meal meal2 = new Meal(); 
+		meal2.addFoodServing(foodServing1); // 100 calories
+		meal2.addFoodServing(foodServing2); // 200 calories
+		meal2.addFoodServing(foodServing3); // 200 calories // total: 500 calories
+		
+		//Meal 3
+		Meal meal3 = new Meal(); 
+		meal3.addFoodServing(foodServing1); // 100 calories
+		meal3.addFoodServing(foodServing2); // 200 calories
+		meal3.addFoodServing(foodServing3); // 200 calories // total: 500 calories
+		
+		//Total Calories In for the day: 500 + 500 + 500 = 1500 Calories
+
+		//Workouts created by user
+		Workout workout1 = new Workout(200); //Scheduled Workout has a Calorie Burn Goal of 200 Calories 
+		Workout workout2 = new Workout(200); //Scheduled Workout has a Calorie Burn Goal of 200 Calories
+		Workout workout3 = new Workout(200); //Scheduled Workout has a Calorie Burn Goal of 200 Calories
+		Workout workout4 = new Workout(200); //Scheduled Workout has a Calorie Burn Goal of 200 Calories
+		Workout workout5 = new Workout(200); //Scheduled Workout has a Calorie Burn Goal of 200 Calories
+		Workout workout6 = new Workout(200); //Scheduled Workout has a Calorie Burn Goal of 200 Calories
+		Workout workout7 = new Workout(200); //Scheduled Workout has a Calorie Burn Goal of 200 Calories
+
+		//Adding the meals and workouts that the user built to the user's daily plans. BMR = Basal Metabolic Rate = 1600 Calories burned passively by user.
+		Plan[] planArray = new Plan[7];
+		Plan plan1 = new Plan(); plan1.addMeal(meal1); plan1.addMeal(meal2); plan1.addMeal(meal3); plan1.addWorkout(workout1); planArray[0] = plan1; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
+		Plan plan2 = new Plan(); plan2.addMeal(meal1); plan2.addMeal(meal2); plan2.addMeal(meal3); plan2.addWorkout(workout2); planArray[1] = plan2; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
+		Plan plan3 = new Plan(); plan3.addMeal(meal1); plan3.addMeal(meal2); plan3.addMeal(meal3); plan3.addWorkout(workout3); planArray[2] = plan3; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
+		Plan plan4 = new Plan(); plan4.addMeal(meal1); plan4.addMeal(meal2); plan4.addMeal(meal3); plan4.addWorkout(workout4); planArray[3] = plan4; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
+		Plan plan5 = new Plan(); plan5.addMeal(meal1); plan5.addMeal(meal2); plan5.addMeal(meal3); plan5.addWorkout(workout5); planArray[4] = plan5; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
+		Plan plan6 = new Plan(); plan6.addMeal(meal1); plan6.addMeal(meal2); plan6.addMeal(meal3); plan6.addWorkout(workout6); planArray[5] = plan6; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
+		Plan plan7 = new Plan(); plan7.addMeal(meal1); plan7.addMeal(meal2); plan7.addMeal(meal3); plan7.addWorkout(workout7); planArray[6] = plan7; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
+		
+		//Each plan has a planned calorie difference of 1500 cal -1800 cal = 
+		// -300 calories deficit
+		
+	//			for(int i = 0;i<7;i++) 
+	//			{
+	//				System.out.println("Cal burned: "+ planArray[i].getCaloriesBurned()); 
+	//				System.out.println("Cal consumed: " +planArray[i].getCaloriesConsumed());
+	//			}
+		
+		//TEST: PASSED	
+		//Generating fake plans is done.
+		
+		//Test Mode assumes user will update app "today @ 6pm (current time)" where app determines it needs to download 7 days worth of raw data --> 6 previous days and today.
+		//In other words, the app has not been refreshed for the past 7 days - or - it has been 7 days since the app has made any API calls to download new data from Fitbit servers.
+		//The 6 previous days gets filled with fake raw data from 8am till 11:59pm each day. All other elements in arrays will be empty.
+		//"Today" gets filled with fake raw data from 8am till 5pm. Thus, Test Mode simulates the user refreshing the app at 5pm "today"
+				
+		
+		/////////////////////////////////////////////////////////////////////////////////
+			int updateDays = 7;		//Simulated refresh assumes 7 new incoming day's worth of data is downloaded which = 6 Previous Days and Today.
+		////////////////////////////////////////////////////////////////////////////////
+		
+		for(int i = 0;i<updateDays-1;i++)
+		{ Day day = new Day(); day.setDayProgress(1440); day.setPlan(planArray[i]); day.generateFakeData(1); mainWindow.getDays().add(day); } //add 6 "previous days" worth of fake raw data & fake plans.
+		Day day = new Day(); day.setDayProgress(1020); day.setPlan(planArray[6]); day.generateFakeData(3); mainWindow.getDays().add(day); //add "todays" data which includes fake raw data until 5pm and fake plan.
+		//carry out calculations and call methods --> display everything on UI. Done.
+		
+		//all 7 days have raw data that needs processing // ie. updateDays = number of days that need updating in the LinkedList. the last "updateDays" worth of days
+		//need to process new raw data :
+		for(int i = 0; i < updateDays; i++)
+			mainWindow.getDays().get(mainWindow.getDays().size()-1-i).processNewData();
+		
+		//Write "Dashboard UI Code" to mock what the UI would display
+		 
+		 for(int i = 6; i>0;i--) mainWindow.getPast6Days().add(mainWindow.getDays().get(mainWindow.getDays().size()-1-i));
 	}
 	
     private void initUI() {

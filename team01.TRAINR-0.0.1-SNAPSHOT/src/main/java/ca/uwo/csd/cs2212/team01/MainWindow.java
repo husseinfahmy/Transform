@@ -82,6 +82,9 @@ public class MainWindow extends JFrame {
 		this.add(splashScreen);
 	}
     
+	public boolean isTestMode() { return this.testMode; }
+	public void setLastCall(Date newDate) { this.lastCall = newDate; }
+	
 	public void setupVirtualTrainer(float currentWeight, float targetWeight) {
 		// Virtual Trainer needs to deliver feedback to the user based on the processed data.
 		vt = new VirtualTrainer();
@@ -94,9 +97,8 @@ public class MainWindow extends JFrame {
 		if (testMode) vt.addNewWeightMeasurement(user, currentWeight);
 	}
 	
-    public LinkedList<Day> getDays() {
-		return this.days;
-	}
+    public LinkedList<Day> getDays() { return this.days; }
+    public LinkedList<Day> getPast6Days() { return this.past6Days; }
 
 	public Feedback updateWeeklyProgress() //to be called once everyday, every morning?
 	{
