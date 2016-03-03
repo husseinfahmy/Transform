@@ -37,11 +37,11 @@ public class MainWindow extends JFrame {
 	public Font FONT_HELVETICA_NEUE_THIN = null, FONT_HELVETICA_NEUE_ITALIC = null, FONT_HELVETICA_NEUE_BOLD = null;
 	private int posX = 0, posY = 0;
 	private boolean testMode;
-	
-	static final int MAX_PROGRESS = 1440;
 
 	//Time & Date Stamps:
 	private Date lastCall;
+	private boolean firstCall = true;
+	public static final int MAX_PROGRESS = 1440;
 
 	//User & Virtual Trainer Storage:
 	private User user;	
@@ -53,9 +53,7 @@ public class MainWindow extends JFrame {
 	private LinkedList<Day> past6Days = new LinkedList<Day>();
 
 	//Time & Date Formats:
-	private SimpleDateFormat fmDate = new SimpleDateFormat("yyyy-MM-dd"); 		//date format: 2016-02-18
 	private SimpleDateFormat fmDayofWeek = new SimpleDateFormat ("EEEE");		//date format: Wednesday
-	private SimpleDateFormat fmTime = new SimpleDateFormat ("H:mm");				//time format 07:15 (or 13:00 for 1pm)
 	private SimpleDateFormat fmLastRefresh = new SimpleDateFormat ("M d, h:mm a");	//time format: "Feb 28, 1:34 PM"
 	
 	private LoadingScreen loadingScreen;
@@ -92,7 +90,6 @@ public class MainWindow extends JFrame {
 	}
     
 	public boolean isTestMode() { return this.testMode; }
-	public void setLastCall(Date newDate) { this.lastCall = newDate; }
 	
 	public void updateLastRefreshed() { this.setLastCall(new Date()); }
 	
@@ -117,8 +114,16 @@ public class MainWindow extends JFrame {
 	}
 	
     public User getUser() { return this.user; }
-	
-    public LinkedList<Day> getDays() { return this.days; }
+    public void setUser(User user) { this.user = user; }
+
+    public Date getLastCall() { return this.lastCall; }
+    public void setLastCall(Date lastCall) { this.lastCall = lastCall; }
+    
+    public boolean isFirstCall() { return firstCall; }
+	public void setFirstCall(boolean firstCall) { this.firstCall = firstCall; }
+
+	public LinkedList<Day> getDays() { return this.days; }
+    public LinkedList<Day> getFutureDays() { return this.futureDays; }
     public LinkedList<Day> getPast6Days() { return this.past6Days; }
 
 	public Feedback updateWeeklyProgress() //to be called once everyday, every morning?
@@ -126,9 +131,7 @@ public class MainWindow extends JFrame {
 		return this.vt.updateWeeklyProgress(past6Days);
 	}
 	
-	public VirtualTrainer getVirtualTrainer() {
-		return this.vt;
-	}
+	public VirtualTrainer getVirtualTrainer() { return this.vt; }
 	
 	public String getDayOfWeek(Date day) { return fmDayofWeek.format(day); }
 	
