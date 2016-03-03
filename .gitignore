@@ -1,6 +1,6 @@
 .metadata/
 .recommenders/
 *.class
-./target/
+./team01.TRAINR-0.0.1-SNAPSHOT/target/
 .*
 !/.gitignore
