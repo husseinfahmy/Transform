@@ -431,6 +431,92 @@ public class MainWindow extends JFrame {
     }//end for loop 
     }//end APIcall()
     
+	//[TEST: PASSED]
+	/**
+	     *Storing the data into arrays from the API call 
+     */
+	private void StoreDataFromAPI(String responseBody, String name, Day day) 
+	{
+		try {
+	    			JSONObject jsonObj =  new JSONObject(responseBody);
+	    			JSONArray dataType = (JSONArray) jsonObj.get("activities-" + name);
+	    			JSONObject dataTypeOverTime = (JSONObject) jsonObj.get("activities-" + name + "-intraday");
+	    			JSONArray dataSet = (JSONArray) dataTypeOverTime.get("dataset");
+	    			
+	    			JSONObject jsonDataObj;
+	    			
+	     			if(name == "calories")
+	     			{
+	     				double[] calArray = day.getCalArray();
+	     				for(int i = 0; i < dataSet.length() -1; i++)
+	     				{
+		    	        	 
+	     					jsonDataObj = dataSet.getJSONObject(i); 
+	     					calArray[i] = (Double) jsonDataObj.get("value"); 
+	     				}
+	     				day.setCalArray(calArray);
+    	    		}
+	     			
+    	    		else if(name == "floors")
+    	    		{
+    	    			int[] floorArray = day.getFloorsArray();
+	     				for(int i = 0; i < dataSet.length(); i++)
+	     				{
+		    	        	 
+	     					jsonDataObj = dataSet.getJSONObject(i); 
+	     					floorArray[i] = jsonDataObj.getInt("value"); 
+	     				}
+	     				day.setFloorsArray(floorArray);
+    	    		}
+    	    		else if(name == "distace")
+    	    		{
+    	    			double[] distArray = day.getDistArray();
+    	    			for(int i = 0; i < dataSet.length(); i++)
+    	    			{
+    	    				jsonDataObj = dataSet.getJSONObject(i); 
+    	    				distArray[i] = (Double) jsonDataObj.get("value");
+    	    			}
+    	    			day.setDistArray(distArray);
+    	    		}
+    	    		else if(name == "steps")
+    	    		{
+    	    			int[] stepsArray = day.getStepsArray();
+    	    			for(int i = 0; i < dataSet.length(); i++)
+    	    			{
+    	    				jsonDataObj = dataSet.getJSONObject(i); 
+    	    				stepsArray[i] =  jsonDataObj.getInt("value");
+    	    			}
+    	    			day.setStepsArray(stepsArray);
+    	    				
+    	    		}
+    	    		else if(name == "minutesSedentary")
+    	    		{
+    	    			int[] sedArray = day.getSedTimeArray();
+    	    			for(int i = 0; i < dataSet.length(); i++)
+    	    			{
+    	    				jsonDataObj = dataSet.getJSONObject(i); 
+    	    				sedArray[i]= jsonDataObj.getInt("value");
+    	    			}
+    	    			day.setSedTimeArray(sedArray);
+    		        	
+    	    		}
+    	    		else if ( name == "heart")
+    	    		{
+    	    			int[] hrArray = day.getHrArray();
+    	    			for(int i = 0; i < dataSet.length(); i++)
+    	    			{
+    	    				jsonDataObj = dataSet.getJSONObject(i); 
+    	    				hrArray[i]= jsonDataObj.getInt("value");
+    	    			}
+    	    			day.setHrArray(hrArray);
+    	    		}      
+	    		} catch (JSONException e) {
+	    			// TODO Auto-generated catch block
+	    			e.printStackTrace();
+	    		}
+		
+	}//StoreDataFromAPI()
+	
 	private void createMouseListener() {
     	this.addMouseListener(new MouseAdapter()
     	{
