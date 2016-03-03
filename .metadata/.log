@@ -2085,3 +2085,15 @@ Caused by: java.io.FileNotFoundException: C:\Users\Kamal\courses\cs2212\labs\tea
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2016-03-02 20:04:15.906
 !MESSAGE The POM for ca.uwo.csd.cs2212:scribejava-core:jar:2.2.2-CS2212 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-03-03 01:15:53.462
+!MESSAGE The POM for ca.uwo.csd.cs2212:scribejava-apis:jar:2.2.2-CS2212 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-03-03 01:15:53.462
+!MESSAGE The POM for ca.uwo.csd.cs2212:scribejava-core:jar:2.2.2-CS2212 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-03-03 01:15:56.192
+!MESSAGE The POM for ca.uwo.csd.cs2212:scribejava-apis:jar:2.2.2-CS2212 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-03-03 01:15:56.214
+!MESSAGE The POM for ca.uwo.csd.cs2212:scribejava-core:jar:2.2.2-CS2212 is missing, no dependency information available

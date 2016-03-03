@@ -249,6 +249,8 @@ public class MainWindow extends JFrame {
 		}
 		genv.registerFont(FONT_HELVETICA_NEUE_THIN);
 		
+		FONT_HELVETICA_NEUE_THIN = UIManager.getDefaults().getFont("TabbedPane.font");
+		
 		file = new File(classLoader.getResource("FONTS/HelveticaNeueThinItalic.ttf").getFile());
 		try {
 			FONT_HELVETICA_NEUE_ITALIC = Font.createFont(Font.TRUETYPE_FONT, file);
@@ -260,6 +262,8 @@ public class MainWindow extends JFrame {
 			e.printStackTrace();
 		}
 		genv.registerFont(FONT_HELVETICA_NEUE_ITALIC);
+		
+		FONT_HELVETICA_NEUE_ITALIC = UIManager.getDefaults().getFont("TabbedPane.font");
 		
 		/*try {
 			FONT_HELVETICA_NEUE_BOLD = Font.createFont(Font.TRUETYPE_FONT, new File("FONTS/HelveticaNeue.ttf"));
