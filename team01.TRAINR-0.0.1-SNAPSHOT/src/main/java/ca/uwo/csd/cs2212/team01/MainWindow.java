@@ -50,11 +50,10 @@ public class MainWindow extends JFrame {
 	//Data Storage:
 	private LinkedList<Day> days = new LinkedList<Day>();
 	private LinkedList<Day> futureDays = new LinkedList<Day>();
-	private LinkedList<Day> past6Days = new LinkedList<Day>();
 
 	//Time & Date Formats:
 	private SimpleDateFormat fmDayofWeek = new SimpleDateFormat ("EEEE");		//date format: Wednesday
-	private SimpleDateFormat fmLastRefresh = new SimpleDateFormat ("M d, h:mm a");	//time format: "Feb 28, 1:34 PM"
+	private SimpleDateFormat fmLastRefresh = new SimpleDateFormat ("MMMM d, h:mm a");	//time format: "Feb 28, 1:34 PM"
 	
 	private LoadingScreen loadingScreen;
 	private WeighScreen weighScreen;
@@ -85,13 +84,17 @@ public class MainWindow extends JFrame {
 		weighScreen = new WeighScreen(this);
 		dashboardScreen = new DashboardScreen(this);
 		
-		this.add(splashScreen);
-		
+		this.add(loadingScreen);
+
+		if (testMode) this.getLoadingScreen().initTestMode();
+		else this.getLoadingScreen().initSetup();
 	}
     
 	public boolean isTestMode() { return this.testMode; }
 	
 	public void updateLastRefreshed() { this.setLastCall(new Date()); }
+	
+	public void updateDashboardScreen() { this.dashboardScreen = new DashboardScreen(this); }
 	
 	public Feedback lastRefreshed()
 	{
@@ -110,7 +113,7 @@ public class MainWindow extends JFrame {
 		vt.setMileStones();
 		System.out.println();
 		
-		if (testMode) vt.addNewWeightMeasurement(user, currentWeight);
+		//if (testMode) vt.addNewWeightMeasurement(user, currentWeight);
 	}
 	
     public User getUser() { return this.user; }
@@ -124,10 +127,12 @@ public class MainWindow extends JFrame {
 
 	public LinkedList<Day> getDays() { return this.days; }
     public LinkedList<Day> getFutureDays() { return this.futureDays; }
-    public LinkedList<Day> getPast6Days() { return this.past6Days; }
 
 	public Feedback updateWeeklyProgress() //to be called once everyday, every morning?
 	{
+		LinkedList<Day> past6Days = new LinkedList<Day>();
+		for(int i = 6; i>0;i--) past6Days.add(days.get(days.size()-1-i));
+			
 		return this.vt.updateWeeklyProgress(past6Days);
 	}
 	
@@ -256,20 +261,21 @@ public class MainWindow extends JFrame {
         String refreshToken = null;
         Long expiresIn = null;
         String rawResponse = null;
-         
+        
+    	ClassLoader classLoader = getClass().getClassLoader();
+    	
         //This is the only scope you have access to currently
         String scope = "activity%20heartrate";
         try {
             // File with service credentials.
-             
-            FileReader fileReader =
-            new FileReader("/Users/Ryan/Dropbox/Public/2212 TeamOne/Main/team01.TRAINR-0.0.1-SNAPSHOT/src/main/resources/Team1Credentials.txt");     
+        	
+            FileReader fileReader = new FileReader(classLoader.getResource("Team1Credentials.txt").getFile());     
             bufferedReader = new BufferedReader(fileReader);
             clientID= bufferedReader.readLine();
             apiKey= bufferedReader.readLine();
             apiSecret = bufferedReader.readLine();
             bufferedReader.close();
-            fileReader = new FileReader("/Users/Ryan/Dropbox/Public/2212 TeamOne/Main/team01.TRAINR-0.0.1-SNAPSHOT/src/main/resources/Team1Tokens.txt");
+            fileReader = new FileReader(classLoader.getResource("Team1Tokens.txt").getFile());
             bufferedReader = new BufferedReader(fileReader);
                      
             accessTokenItself = bufferedReader.readLine();
@@ -402,7 +408,7 @@ public class MainWindow extends JFrame {
          
         try {
             FileWriter fileWriter; 
-            fileWriter = new FileWriter("/Users/Ryan/Dropbox/Public/2212 TeamOne/Main/team01.TRAINR-0.0.1-SNAPSHOT/src/main/resources/Team1Tokens.txt");
+            fileWriter = new FileWriter(classLoader.getResource("Team1Tokens.txt").getFile());
             bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(accessToken.getToken());
             bufferedWriter.newLine();

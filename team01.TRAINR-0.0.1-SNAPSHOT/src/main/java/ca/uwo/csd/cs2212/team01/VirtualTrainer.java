@@ -125,7 +125,9 @@ public class VirtualTrainer {
 			(
 					"Progress towards your first Milestone:"
 			);
-			msUpdateFeedback.addFeedbackValue((float)0);		//"X pounds to go"
+			msUpdateFeedback.addFeedbackValue((float)0); 			//current MileStone number
+			msUpdateFeedback.addFeedbackValue((float)0);				//current MileStone progress, out of 7000
+			msUpdateFeedback.addFeedbackValue((float)2);		//"X pounds to go"
 			return msUpdateFeedback; 
 		}
 		
@@ -153,9 +155,9 @@ public class VirtualTrainer {
 				msUpdateFeedback.setButtonCode(1); //DISPLAY "CUSTOMIZE MY PLAN" BUTTON
 				msUpdateFeedback.addTXTone
 				(
-						"You have gained " +  weightDiff + " lbs!\n"
-						+ "You must take action by either reducing your calorie intake "
-						+ "or setting a higher calorie burn goal during your workouts:"
+						"You have gained " +  String.format("%.1f", weightDiff) + " lbs!<br>"
+						+ "You should reduce your calorie intake or<br>"
+						+ "set a higher calorie burn goal for workouts:"
 				); 
 				return msUpdateFeedback; 
 			} 
@@ -166,9 +168,9 @@ public class VirtualTrainer {
 				msUpdateFeedback.setButtonCode(1); //DISPLAY "CUSTOMIZE MY PLAN" BUTTON
 				msUpdateFeedback.addTXTone
 				(
-						"You have not lost any weight :(\n"
-						+ "You must take action by either reducing your calorie intake "
-						+ "or setting a higher calorie burn goal during your workouts:"
+						"You have not lost any weight!<br>"
+						+ "You should reduce your calorie intake or<br>"
+						+ "set a higher calorie burn goal for workouts:"
 				); 
 				return msUpdateFeedback; 
 			}
@@ -207,7 +209,7 @@ public class VirtualTrainer {
 							 msUpdateFeedback.setTXTCode(1);
 							 msUpdateFeedback.addTXTone
 							 (
-									 "Congratulations!<br>You have completed all your Milestones!<br>You have successfully achieved your weight loss goal!"
+									 "Congratulations!<br>You have completed all your Milestones!<br>You successfully achieved your weight loss goal!"
 							);
 							 return msUpdateFeedback; 
 						 } 
@@ -219,7 +221,7 @@ public class VirtualTrainer {
 					msUpdateFeedback.setTXTCode(2);
 					msUpdateFeedback.addTXTone
 					(
-							"You've lost " + Math.abs(weightDiff) + " lbs and achieved a Milestone!<br>"
+							"You've lost " + String.format("%.1f", Math.abs(weightDiff)) + " lbs and achieved a Milestone!<br>"
 							+ "You have achieved " + completedMileStones.size() + feedbackHelper() + "so far!<br>"
 							+ "Progress towards your next Milestone:"
 					);
@@ -233,7 +235,7 @@ public class VirtualTrainer {
 					msUpdateFeedback.setTXTCode(2);
 					msUpdateFeedback.addTXTone
 					(
-							"You've lost " + Math.abs(weightDiff) + " lbs and achieved " + counter + " Milestones!<br>"
+							"You've lost " + String.format("%.1f", Math.abs(weightDiff)) + " lbs and achieved " + counter + " Milestones!<br>"
 							+ "You have achieved " + completedMileStones.size() + feedbackHelper() + "so far!<br>"
 							+ "Progress towards your next Milestone:"
 					);
@@ -248,7 +250,7 @@ public class VirtualTrainer {
 					{
 						msUpdateFeedback.addTXTone
 						(
-								"You've lost " + Math.abs(weightDiff) + " lbs!<br>"
+								"You've lost " + String.format("%.1f", Math.abs(weightDiff)) + " lbs!<br>"
 								+ "You have achieved " + completedMileStones.size() + " Milestones so far!<br>"
 								+ "Progress towards your next Milestone:"
 						);
@@ -257,7 +259,7 @@ public class VirtualTrainer {
 					{
 						msUpdateFeedback.addTXTone
 						(
-								"You've lost " + Math.abs(weightDiff) + " lbs!<br>"
+								"You've lost " + String.format("%.1f", Math.abs(weightDiff)) + " lbs!<br>"
 								+ "Progress towards your first Milestone:"
 						);
 					}
@@ -354,7 +356,7 @@ public class VirtualTrainer {
 			weekFeedback.setTXTCode(1);
 			 weekFeedback.addTXTone
 			 (
-					 "You missed your calorie goal " + missedDay + " days ago but you’ve had 5 successful days! Great job!"
+					 "You missed your calorie goal " + missedDay + " days ago<br>but you’ve had 5 successful days! Great job!"
 			 );
 			 return weekFeedback;
 		}
@@ -364,7 +366,7 @@ public class VirtualTrainer {
 			weekFeedback.setTXTCode(1);
 			 weekFeedback.addTXTone
 			 (
-					 "You missed your calorie goal twice in the past 6 days but you’ve had " + successDays +" successful days.<br>"
+					 "You missed your calorie goal twice in the past 6 days<br>but you’ve had " + successDays +" successful days.<br>"
 			 		+ "Make sure you stick to your daily plans!"
 			 );
 			 return weekFeedback;
@@ -375,9 +377,9 @@ public class VirtualTrainer {
 			weekFeedback.setTXTCode(1);
 			 weekFeedback.addTXTone
 			 (
-					 "You missed your calorie goal 3 times in the past 6 days but you’ve had " + successDays +" successful days.<br>"
-			 		+ "You're missing your daily calorie goal too many times. "
-			 		+ "Take action by reducing your calorie intake or setting a higher calorie burn goal during your workouts: "
+					 "You missed your calorie goal 3 times in the past 6 days<br>but you’ve had " + successDays +" successful days.<br>"
+			 		+ "You're missing your daily calorie goal too many times.<br>"
+			 		+ "Take action by reducing your calorie intake or setting a higher<br>calorie burn goal during your workouts: "
 			 );
 			 weekFeedback.setButtonCode(1); // display customize meal plan button.
 		}
@@ -387,7 +389,7 @@ public class VirtualTrainer {
 			weekFeedback.setTXTCode(1);
 			weekFeedback.addTXTone
 			(
-					 "You missed your calorie goal 4 times in the past 6 days but you’ve had " + successDays +" successful days.<br>"
+					 "You missed your calorie goal 4 times in the past 6 days<br>but you’ve had " + successDays +" successful days.<br>"
 					 + "You're missing your daily calorie goal too many times. "
 			 		 + "You must take action by reducing your calorie intake or setting a higher calorie burn goal during your workouts: "					 
 			);

@@ -37,12 +37,9 @@ public class LoadingScreen extends JPanel {
     	this.setSize(1480, 800);
     	
 		this.initUI();
-		
-		if (mainWindow.isTestMode()) this.initTestMode();
-		else this.initSetup();
 	}
 	
-	private void initSetup() {
+	public void initSetup() {
 		if(mainWindow.isFirstCall())
 		{
 			Date[] dateArray = new Date[7]; int dayNumber;
@@ -94,9 +91,18 @@ public class LoadingScreen extends JPanel {
 			mainWindow.setUser(new User("Beth Locke"));
 			//vt = new VirtualTrainer();
 		}
+		
+		//this.mainWindow.setVisible(false);
+		this.mainWindow.getContentPane().removeAll();
+		this.mainWindow.add(this.mainWindow.getSplashScreen());
+		//this.mainWindow.setVisible(true);
 	}
 	
-	private void initTestMode() {
+	public void initTestMode() {
+		/*int x = 0;
+		while(x == 0) {
+		}*/
+		
 		Date today = new Date();
 		
 		mainWindow.setLastCall(today);
@@ -184,10 +190,9 @@ public class LoadingScreen extends JPanel {
 		//need to process new raw data :
 		for(int i = 0; i < updateDays; i++)
 			mainWindow.getDays().get(mainWindow.getDays().size()-1-i).processNewData();
-		
-		//Write "Dashboard UI Code" to mock what the UI would display
 		 
-		 for(int i = 6; i>0;i--) mainWindow.getPast6Days().add(mainWindow.getDays().get(mainWindow.getDays().size()-1-i));
+		this.mainWindow.getContentPane().removeAll();
+		this.mainWindow.add(this.mainWindow.getSplashScreen());
 	}
 	
     private void initUI() {

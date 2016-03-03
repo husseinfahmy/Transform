@@ -15,6 +15,7 @@ import javax.swing.SwingUtilities;
 public class App {
 	static Logger logger = LogManager.getLogger (App.class.getName());
 	private static boolean testMode;
+	private static MainWindow window;
 	
     public static void main(String[] args) {
 		logger.trace("Entering main");
@@ -27,7 +28,7 @@ public class App {
 		SwingUtilities.invokeLater(new Runnable() {
         	//@Override
         	public void run() {
-        		MainWindow window = new MainWindow(testMode);
+        		window = new MainWindow(testMode);
         		window.setVisible(true);
         	}
 		});
