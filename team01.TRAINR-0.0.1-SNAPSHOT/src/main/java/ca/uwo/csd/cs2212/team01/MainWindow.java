@@ -296,26 +296,41 @@ public class MainWindow extends JFrame {
 	 */
 	public void APICall(String date, String startTime, String endTime, Day day) 
 	{	
-		// set Day Object's progress to current day progess and set Last Updated to "lastCall"
-		if (endTime.equals("23:59")) {  day.setDayProgress(MAX_PROGRESS);  }
+String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 if "00:00"
+		String fmEndTime = endTime;			//fmEndTime.length() == 4 if "0:00" or == 5 if "00:00"
+		
+		// format startTime and endTime if times are between 1:00am and 9:59am ( ie. if .length() == 4 ) by adding an initial "0" 
+		if(fmStartTime.length() == 4) 	
+		{
+			fmStartTime = "0" + fmStartTime.charAt(0) + ":" + fmStartTime.charAt(2) + fmStartTime.charAt(3);
+		}
+		if(fmEndTime.length() == 4) 
+		{
+			fmEndTime = "0" + fmEndTime.charAt(0) + ":" + fmEndTime.charAt(2) + fmEndTime.charAt(3);
+		}
+		
+		// set Day Object's progress to current day progress
+		// set Last Updated to "lastCall"	
+		if (fmEndTime.equals("23:59"))
+		{  day.setDayProgress(MAX_PROGRESS);  }
 		else 
 		{    
-			 String hoursStr = "" + endTime.charAt(0) + endTime.charAt(1);		//get the hours part of the string
-			 String minutesStr = "" + endTime.charAt(3) + endTime.charAt(4);	//get the minutes part of the string
-			 
-			 int hours = Integer.parseInt(hoursStr); 			//convert to int
-			 int minutes = Integer.parseInt(minutesStr);		//convert to int
-	  
-			 if ( hours > 0 ) { minutes = hours*60 + minutes; }
+			String endHoursStr = "" + fmEndTime.charAt(0) + fmEndTime.charAt(1);			//get the hours part of the string
+			String endMinutesStr = "" + fmEndTime.charAt(3) + fmEndTime.charAt(4);		//get the minutes part of the string
+			
+			 int endHours = Integer.parseInt(endHoursStr); 			//convert to integer
+			 int endMinutes = Integer.parseInt(endMinutesStr);		//convert to integer
+			
+			 //calculate total number of minutes of ENDTIME if # hours elapsed > 0
+			 if ( endHours > 0 ) { endMinutes = endHours*60 + endMinutes; } 	
 			   
-			 day.setDayProgress(minutes);
+			 day.setDayProgress(endMinutes);
 			 day.setLastUpdated(lastCall);
-		 } 
-		 
+		 }
+		
 		// Make the API Calls:
 		
     	String nameOfActivity = "";
-
     	for (int i = 0; i < 6; i++)
     	{
     		System.out.println(i);
@@ -432,8 +447,7 @@ public class MainWindow extends JFrame {
         
         //    The URL from this point is how you ask for different information
         //"activities/steps/date/2016-02-18/1d/1min/time/07:15/19:30.json";
-        requestUrl = requestUrlPrefix + "activities/" + nameOfActivity + "/date/" + date + "/1d/1min/time/"+ startTime + "/"+ endTime+ ".json";
-        		//"activities/calories/date/2016-02-18/1d/1min/time/07:15/19:30.json";
+        		requestUrl = requestUrlPrefix + "activities/" + nameOfActivity + "/date/" + date + "/1d/1min/time/"+ fmStartTime + "/"+ fmEndTime+ ".json";	//"activities/calories/date/2016-02-18/1d/1min/time/07:15/19:30.json";
         //"activities/floors/date/2016-02-18/1d/1min/time/07:15/19:30.json";
         
         // This actually generates an HTTP request from the URL
