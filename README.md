@@ -1,6 +1,6 @@
 # Welcome to CS 2212 - Winter 2016
 
-To get started, you will need to run these commands in your terminal.
+To get started, you will need to run these commands in your terminal to run the program.
 
 ```
 
