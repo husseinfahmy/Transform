@@ -10,12 +10,18 @@ import org.apache.logging.log4j.Logger;
 import javax.swing.SwingUtilities;
 
 /**
- * 
+ * @author team01
+ *
  */
 public class App {
 	static Logger logger = LogManager.getLogger (App.class.getName());
 	private static boolean testMode;
+	private static MainWindow window;
 	
+    /**
+     * Runs the TRAINR program
+     * @param args
+     */
     public static void main(String[] args) {
 		logger.trace("Entering main");
 		logger.warn("Hello Maven/log4j World");
@@ -27,7 +33,7 @@ public class App {
 		SwingUtilities.invokeLater(new Runnable() {
         	//@Override
         	public void run() {
-        		MainWindow window = new MainWindow(testMode);
+        		window = new MainWindow(testMode);
         		window.setVisible(true);
         	}
 		});

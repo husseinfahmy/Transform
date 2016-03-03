@@ -2,6 +2,13 @@
 
 To get started, you will need to run these commands in your terminal.
 
+```
+
+mvn clean
+mvn package
+java -jar target/team01-TRAINR-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+```
+
 ## Configure Git for the first time
 
 ```

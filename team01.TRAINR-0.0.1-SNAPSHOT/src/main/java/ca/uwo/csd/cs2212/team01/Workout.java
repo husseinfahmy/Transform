@@ -1,5 +1,9 @@
 package ca.uwo.csd.cs2212.team01;
 
+/**
+ * @author team01
+ *
+ */
 public class Workout
 {
 	//Attributes
@@ -9,6 +13,10 @@ public class Workout
 	private int[] time;
 	
 	//Constructor
+	/**
+	 * Class Constructor
+	 * @param goal
+	 */
 	public Workout(int goal)
 	{
 		calorieBurnGoal = goal;
@@ -17,14 +25,20 @@ public class Workout
 	
 	//Getters & Setters
 	/**
-	 * @return the type
+	 * Gets the type of workout.
+	 * @return
 	 */
 	public String getType() { return type; }
 	
+	/**
+	 * Gets the total calories burned goal.
+	 * @return
+	 */
 	public String getGoalString() { return burnGoal; }
 
 	/**
-	 * @param type the type to set
+	 * The type of Workout to set.
+	 * @param type
 	 */
 	public void setType(String type) { this.type = type; }
 

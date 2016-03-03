@@ -17,6 +17,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+/**
+ * @author team01
+ *
+ */
 public class GoalPanel extends JPanel {
 	private Rectangle rectList[];
 	private Rectangle panelRect;
@@ -26,6 +30,10 @@ public class GoalPanel extends JPanel {
 	private JTextArea currentWeight, targetWeight;
 	private JButton submitForm;
 	
+	/**
+	 * Class Constructor
+	 * @param mainWindow
+	 */
 	public GoalPanel(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 		
@@ -120,10 +128,25 @@ public class GoalPanel extends JPanel {
     	this.add(submitForm);
 	}
 
+	/**
+	 * Gets the current user weight.
+	 * @return
+	 */
 	public String getCurrentWeight() { return this.currentWeight.getText(); }
+	/**
+	 * Gets the target user weight.
+	 * @return
+	 */
 	public String getTargetWeight() { return this.targetWeight.getText(); }
+	/**
+	 * Gets the message description JLabel object.
+	 * @return
+	 */
 	public JLabel getDesc() { return this.desc; }
 	
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);

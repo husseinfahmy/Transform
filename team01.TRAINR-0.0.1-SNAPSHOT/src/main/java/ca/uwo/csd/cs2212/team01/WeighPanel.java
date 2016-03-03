@@ -21,6 +21,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+/**
+ * @author team01
+ *
+ */
 public class WeighPanel extends JPanel {
 	private Rectangle rectList[];
 	private Rectangle panelRect;
@@ -30,6 +34,10 @@ public class WeighPanel extends JPanel {
 	private JTextArea currentWeight;
 	private JButton submitForm;
 	
+	/**
+	 * Class Constructor
+	 * @param mainWindow
+	 */
 	public WeighPanel(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 		
@@ -45,7 +53,7 @@ public class WeighPanel extends JPanel {
 		tableTitle1 = new JLabel("Current Weight (lbs)", JLabel.CENTER);
 		Dimension size = tableTitle1.getPreferredSize();
 		tableTitle1.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
-		tableTitle1.setBounds((503-size.width)/2, height, 250, 50);
+		tableTitle1.setBounds((503-250)/2, height, 250, 50);
 		tableTitle1.setForeground(new Color(255,255,255,150));
 		
 		height += 53;
@@ -103,9 +111,20 @@ public class WeighPanel extends JPanel {
     	//this.add(btnDesc);
 	}
 
+	/**
+	 * Gets the current weight input.
+	 * @return
+	 */
 	public String getCurrentWeight() { return this.currentWeight.getText(); }
+	/**
+	 * Gets the user notification description JLabel.
+	 * @return
+	 */
 	public JLabel getDesc() { return this.desc; }
 	
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);

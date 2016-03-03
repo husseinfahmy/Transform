@@ -16,7 +16,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
- * @author Kamal
+ * @author team01
  *
  */
 public class DashboardScreen extends JPanel {
@@ -29,6 +29,10 @@ public class DashboardScreen extends JPanel {
 	private JPanel bannerPanel;
 	private JLabel refreshDesc;
 	
+	/**
+	 * Class Constructor
+	 * @param mainWindow
+	 */
 	public DashboardScreen(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 		
@@ -39,6 +43,9 @@ public class DashboardScreen extends JPanel {
 		this.initUI();
 	}
 	
+    /**
+     * Renders the Dashboard Screen
+     */
     private void initUI() {
     	bannerPanel = new JPanel() {
     		@Override
@@ -73,7 +80,7 @@ public class DashboardScreen extends JPanel {
 				
     			JButton weighBtn = new JButton("Weigh Myself");
     			weighBtn.setBackground(null);
-    			weighBtn.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+    			weighBtn.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			weighBtn.setForeground(new Color(255,255,255,150));
     			weighBtn.setBorder(null);
     			weighBtn.setFocusPainted(false);
@@ -86,7 +93,7 @@ public class DashboardScreen extends JPanel {
     	        this.add(weighBtn);
 				
     			JLabel btnDesc = new JLabel("Weigh Myself", JLabel.LEFT);
-    			btnDesc.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+    			btnDesc.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
     			Dimension size = btnDesc.getPreferredSize();
     			weighBtn.setSize(size.width, size.height);
     			weighBtn.setLocation(63+13, (getHeight()-size.height)/2);
@@ -99,7 +106,7 @@ public class DashboardScreen extends JPanel {
     			
     			JLabel label = new JLabel("Current Weight", JLabel.LEFT);
     			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
-    			Dimension size = label.getPreferredSize();
+    			size = label.getPreferredSize();
     			label.setBounds(getWidth()/2 - (int)(getWidth()*0.3f)/2 + (int)((getWidth()*0.3f/2) - size.width)/2, (75/2 - size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
@@ -112,14 +119,14 @@ public class DashboardScreen extends JPanel {
     			this.add(label);
     			
     			label = new JLabel(mainWindow.getVirtualTrainer().getCurrentWeight() + "", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
     			size = label.getPreferredSize();
     			label.setBounds(getWidth()/2 - (int)(getWidth()*0.3f)/2 + (int)((getWidth()*0.3f)/2 - size.width)/2, 75/2 + (75/2 - size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
     			
     			label = new JLabel(mainWindow.getVirtualTrainer().getTargetWeight() + "", JLabel.LEFT);
-    			label.setFont(FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
     			size = label.getPreferredSize();
     			label.setBounds(getWidth()/2 + (int)((getWidth()*0.3f)/2 - size.width)/2, 75/2 + (75/2 - size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
@@ -158,10 +165,13 @@ public class DashboardScreen extends JPanel {
     	        this.add(refreshBtn);
     	        
     			g2.drawImage(image, getWidth()-image.getWidth()-13-50-13, (getHeight()-image.getHeight())/2, null);
-				
+
     			refreshDesc = new JLabel("<html>Last Refreshed:<br>" + mainWindow.lastRefreshed().getTXTone().get(0) + "</html>", JLabel.LEFT);
     			refreshDesc.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(14.0f));
     			size = refreshDesc.getPreferredSize();
+    			refreshDesc.setBounds(getWidth()-image.getWidth()-13-50-13-size.width-13, (getHeight()-size.height)/2, size.width, size.height);
+    			refreshDesc.setForeground(Color.WHITE);
+    			this.add(refreshDesc);
 				
     			image = null;
 				try {
@@ -224,13 +234,13 @@ public class DashboardScreen extends JPanel {
 				}
 
 				int value = 0;
-				LinkedList<Day> past6Days = mainWindow.getPast6Days();
+				LinkedList<Day> days = mainWindow.getDays();
 				Day day = null;
 				
     			for(int i = 0; i < 7; i++) {
     				if (i == 6) label = new JLabel("<html><b>Today</b></html>", JLabel.LEFT);
     				else {
-    					day = past6Days.get(i);
+    					day = days.get(i);
     					value = (int)day.getDailyCalDiff();
     					if (value >= 0) g.drawImage(xmark, (this.getWidth()/7)*i + ((this.getWidth()/7)-xmark.getWidth())/2, (60-xmark.getHeight())/2, xmark.getWidth(), xmark.getHeight(), null);
     					else if (value <= -480)
@@ -314,33 +324,48 @@ public class DashboardScreen extends JPanel {
 				}
     			g2.drawImage(image, getWidth()*0, 112, getWidth() - 1, image.getHeight(), null);
 
-				Feedback feedback = mainWindow.getDays().getLast().todaysMeals();
-				LinkedList<String> txtOne = feedback.getTXTone();
-
-	   			for (int i = 0; i < feedback.getTXTone().size(); i++ ) {
-	    			label = new JLabel("<html><font color='#ffffff'>" + feedback.getTXTone().get(i) + "</font><font color='#7772FF'>" + feedback.getTXTtwo().get(i) + "</font></html>", JLabel.LEFT);
-	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
-	    			size = label.getPreferredSize();
-	    			
-   			        g2.draw(new RoundRectangle2D.Float((getWidth()/2 - size.width)/2 - 8, 112+image.getHeight() + (130-image.getHeight() - (size.height+10)*3)/2 + (size.height+10)*i - 3, size.width + 16, size.height+6, 8, 8));
-	    			
-	    			label.setBounds((getWidth()/2 - size.width)/2, 112+image.getHeight() + (130-image.getHeight() - (size.height+10)*3)/2 + (size.height+10)*i, size.width, size.height);
-	    			label.setForeground(Color.WHITE);
-	    			this.add(label);
-	   			}
+				Feedback feedbackMeals = mainWindow.getDays().getLast().todaysMeals();
+	   			Feedback feedbackWorkouts = mainWindow.getDays().getLast().todaysWorkouts();
+	   			LinkedList<String> txtOne;
 	   			
-	   			feedback = mainWindow.getDays().getLast().todaysWorkouts();
-	   			txtOne =  feedback.getTXTone();
-
-	   			for (int i = 0; i < txtOne.size(); i++ ) {
-   					label = new JLabel("<html><font color='#ffffff'>" + feedback.getTXTone().get(i) + "</font><font color='#6AB9FF'>" + feedback.getTXTtwo().get(i) + "</font></html>", JLabel.LEFT);
-	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+	   			if ((feedbackMeals != null && feedbackMeals.getTXTone().size() > 0) || (feedbackWorkouts != null && feedbackWorkouts.getTXTone().size() > 0)) {
+		   			if (feedbackMeals != null) {
+						txtOne = feedbackMeals.getTXTone();
+		
+			   			for (int i = 0; i < feedbackMeals.getTXTone().size(); i++ ) {
+			    			label = new JLabel("<html><font color='#ffffff'>" + feedbackMeals.getTXTone().get(i) + "</font><font color='#7772FF'>" + feedbackMeals.getTXTtwo().get(i) + "</font></html>", JLabel.LEFT);
+			    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+			    			size = label.getPreferredSize();
+			    			
+		   			        g2.draw(new RoundRectangle2D.Float((getWidth()/2 - size.width)/2 - 8, 112+image.getHeight() + (130-image.getHeight() - (size.height+10)*3)/2 + (size.height+10)*i - 3, size.width + 16, size.height+6, 8, 8));
+			    			
+			    			label.setBounds((getWidth()/2 - size.width)/2, 112+image.getHeight() + (130-image.getHeight() - (size.height+10)*3)/2 + (size.height+10)*i, size.width, size.height);
+			    			label.setForeground(Color.WHITE);
+			    			this.add(label);
+			   			}
+		   			}
+		   			
+		   			if (feedbackWorkouts != null) {
+			   			txtOne =  feedbackWorkouts.getTXTone();
+		
+			   			for (int i = 0; i < txtOne.size(); i++ ) {
+		   					label = new JLabel("<html><font color='#ffffff'>" + feedbackWorkouts.getTXTone().get(i) + "</font><font color='#6AB9FF'>" + feedbackWorkouts.getTXTtwo().get(i) + "</font></html>", JLabel.LEFT);
+			    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+			    			size = label.getPreferredSize();
+		
+		   			        g2.draw(new RoundRectangle2D.Float(getWidth()/2 + (getWidth()/2 - size.width)/2 - 8, 112+image.getHeight() + (130-image.getHeight() - (size.height+10)*3)/2 + (size.height+10)*i - 3, size.width + 16, size.height+6, 8, 8));
+			    			
+			    			label.setBounds(getWidth()/2 + (getWidth()/2 - size.width)/2, 112+image.getHeight() + (130-image.getHeight() - (size.height+10)*3)/2 + (size.height+10)*i, size.width, size.height);
+			    			label.setForeground(Color.WHITE);
+			    			this.add(label);
+			   			}
+		   			}
+	   			}else {
+	    			label = new JLabel("No Plans", JLabel.LEFT);
+	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(24.0f));
 	    			size = label.getPreferredSize();
-
-   			        g2.draw(new RoundRectangle2D.Float(getWidth()/2 + (getWidth()/2 - size.width)/2 - 8, 112+image.getHeight() + (130-image.getHeight() - (size.height+10)*3)/2 + (size.height+10)*i - 3, size.width + 16, size.height+6, 8, 8));
-	    			
-	    			label.setBounds(getWidth()/2 + (getWidth()/2 - size.width)/2, 112+image.getHeight() + (130-image.getHeight() - (size.height+10)*3)/2 + (size.height+10)*i, size.width, size.height);
-	    			label.setForeground(Color.WHITE);
+	    			label.setBounds((getWidth() - size.width)/2, 112 + (130-size.height)/2, size.width, size.height);
+	    			label.setForeground(new Color(1.0f,1.0f,1.0f,0.6f));
 	    			this.add(label);
 	   			}
 	   			
@@ -354,12 +379,13 @@ public class DashboardScreen extends JPanel {
     			g2.drawImage(image, getWidth()*0, 112+130, getWidth() - 1, image.getHeight(), null);
 
     			Day today = mainWindow.getDays().getLast();
-    			feedback = today.todaysProgess();
+    			Feedback feedback = today.todaysProgess();
     			
     			float totalCalEat = feedback.getFirstValues().get(0), totalTime = today.getDayProgress(), maxTime = mainWindow.MAX_PROGRESS, totalCalBurn = feedback.getFirstValues().get(1);
     			float scaleFactor = maxTime/totalTime, scaleMaxCal = 0;
 
-    			scaleMaxCal = totalCalEat*scaleFactor;
+    			if (totalCalEat > totalCalBurn) scaleMaxCal = totalCalEat*scaleFactor;
+    			else scaleMaxCal = totalCalBurn*scaleFactor;
     			
     			label = new JLabel("Today's Progress", JLabel.LEFT);
     			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(24.0f));
@@ -397,7 +423,7 @@ public class DashboardScreen extends JPanel {
     			g2.setStroke(new BasicStroke(2.0f));
     			
     			g2.setColor(new Color(119, 114, 255, 255));
-				g2.drawLine((getWidth()/axisData.length)/2, 112+120+120+(55-size.height)/2 + size.height + 5, getWidth() - 1 - (int)((getWidth() - getWidth()/5/2 - 1)*(scaleMaxCal-totalCalEat)/scaleMaxCal), 112+120+120+(55-size.height)/2 + size.height + 5);
+				if (scaleMaxCal > 0) g2.drawLine((getWidth()/axisData.length)/2, 112+120+120+(55-size.height)/2 + size.height + 5, getWidth() - 1 - (int)((getWidth() - getWidth()/5/2 - 1)*(scaleMaxCal-totalCalEat)/scaleMaxCal), 112+120+120+(55-size.height)/2 + size.height + 5);
 
     			label = new JLabel("Calories Burned", JLabel.LEFT);
     			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
@@ -407,9 +433,8 @@ public class DashboardScreen extends JPanel {
     			this.add(label);
 
     			g2.setColor(new Color(106, 185, 255, 255));
-				g2.drawLine((getWidth()/5)/2, 112+120+120+55+(55-size.height)/2 - 5, getWidth() - 1 - (int)((getWidth() - getWidth()/5/2 - 1)*(scaleMaxCal-totalCalBurn)/scaleMaxCal), 112+120+120+55+(55-size.height)/2 - 5);
+				if (scaleMaxCal > 0) g2.drawLine((getWidth()/5)/2, 112+120+120+55+(55-size.height)/2 - 5, getWidth() - 1 - (int)((getWidth() - getWidth()/5/2 - 1)*(scaleMaxCal-totalCalBurn)/scaleMaxCal), 112+120+120+55+(55-size.height)/2 - 5);
     			
-
     			image = null;
 				try {
 					image = ImageIO.read(new File("UI/shadow-up.png"));
@@ -516,7 +541,7 @@ public class DashboardScreen extends JPanel {
         			label.setForeground(new Color(106, 185, 255, 255));
         			this.add(label);
         			g2.setColor(new Color(106, 185, 255, 255));
-        			g2.drawLine(40, 52 + 15 + 100 + 100/2, (getWidth()-40-50) - (int)((getWidth()-40*2-50)*(2-feedback.getFirstValues().get(2))/2), 52 + 15 + 100 + 100/2);
+        			g2.drawLine(40, 52 + 15 + 100 + 100/2, (getWidth()-40-50) - (int)((getWidth()-40*2-50)*feedback.getFirstValues().get(2)/2), 52 + 15 + 100 + 100/2);
 
         			g2.setColor(Color.WHITE);
         			g2.draw(new Ellipse2D.Double(getWidth()-40-50, 52 + 15 + 100 + (100-50)/2, 50, 50));
@@ -545,7 +570,7 @@ public class DashboardScreen extends JPanel {
 	   			
 	   			//Feedback on user's past week's performance:
 	   			feedback = mainWindow.updateWeeklyProgress();
-
+	   			
 	   			if(feedback.getTextCode() == 1) output = feedback.getTXTone().getFirst();
 	   			else if (feedback.getTextCode() == 2) output = feedback.getTXTone().getFirst() + feedback.getFirstValues().get(2);
 	   			else output = null;
@@ -678,7 +703,7 @@ public class DashboardScreen extends JPanel {
     			g2.setColor(new Color(1.0f,1.0f,1.0f,0.4f));
     	        g2.setStroke(new BasicStroke(2.0f));
     			
-    			label = new JLabel("135", JLabel.CENTER);
+    			label = new JLabel(lastDay.getActiveHR() + "", JLabel.CENTER);
     			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
     			size = label.getPreferredSize();
     			label.setBounds((getWidth()/3 - size.width)/2, 52+80+100 + (160-size.height)/2, size.width, size.height);
@@ -694,7 +719,7 @@ public class DashboardScreen extends JPanel {
     			label.setForeground(Color.WHITE);
     			this.add(label);
     			
-    			label = new JLabel("78", JLabel.CENTER);
+    			label = new JLabel(lastDay.getRestingHR() + "", JLabel.CENTER);
     			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
     			size = label.getPreferredSize();
     			label.setBounds(getWidth()*2/3 + (getWidth()/3 - size.width)/2, 52+80+100 + (160-size.height)/2, size.width, size.height);
@@ -796,9 +821,21 @@ public class DashboardScreen extends JPanel {
     	this.add(activityTrackingPanel);
 	}
 
+    /**
+     * Dashboard Banner
+     * @return
+     */
     public JPanel getBannerPanel() { return this.bannerPanel; }
+    
+    /**
+     * Dashboard Refresh Button Last-up-date Time Description Panel
+     * @return
+     */
     public JLabel getRefreshDesc() { return this.refreshDesc; }
     
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);

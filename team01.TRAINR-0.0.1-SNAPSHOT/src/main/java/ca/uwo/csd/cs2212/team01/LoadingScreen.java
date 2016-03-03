@@ -3,25 +3,32 @@ package ca.uwo.csd.cs2212.team01;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
- * @author Kamal
+ * @author team01
  *
  */
 public class LoadingScreen extends JPanel {
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private MainWindow mainWindow;
 	
+	//Time & Date Formats:
+	private SimpleDateFormat fmDate = new SimpleDateFormat("yyyy-MM-dd"); 		//date format: 2016-02-18
+	private SimpleDateFormat fmTime = new SimpleDateFormat ("H:mm");				//time format 07:15 (or 13:00 for 1pm)
+	
 	private JPanel titlePanel, devicesPanel;
 	
+	/**
+	 * Class Constructor
+	 * @param mainWindow
+	 */
 	public LoadingScreen(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 		
@@ -31,11 +38,78 @@ public class LoadingScreen extends JPanel {
     	this.setSize(1480, 800);
     	
 		this.initUI();
-		
-		if (mainWindow.isTestMode()) this.initTestMode();
 	}
 	
-	private void initTestMode() {
+	/**
+	 * Sets up the Virtual Trainer in "normal" mode.
+	 */
+	public void initSetup() {
+		if(mainWindow.isFirstCall())
+		{
+			Date[] dateArray = new Date[7]; int dayNumber;
+			for (int i = 0; i<6; i++)
+			{ dayNumber = (5 - i); dateArray[dayNumber] = new Date(System.currentTimeMillis() - (i+1)*24*60*60*1000); }
+			
+			//Add 6 previous empty days: [TEST: PASSED]
+			
+			for(int i = 0; i<6; i++)
+			{ Day day = new Day(dateArray[i]); mainWindow.getDays().add(day); }
+			
+			//Add empty "today": [TEST: PASSED]
+			
+			Date todayDate = new Date();
+			//calculate number of elapsed minutes for current day:
+			int hours = todayDate.getHours(); int minutes=0;
+			if(hours == 0)
+				{ minutes = todayDate.getMinutes(); }
+			else
+				{ minutes = hours*60 + todayDate.getMinutes(); }
+			
+			Day day = new Day(todayDate); mainWindow.getDays().add(day); day.setDayProgress(minutes);
+			
+			//Create 7 more empty day objects. Add to "futureDays" LinkedList: [TEST: PASSED]
+			for (int i = 0; i<7; i++)
+			{ dateArray[i] = new Date(System.currentTimeMillis() + (i+1)*24*60*60*1000); }
+			
+			for(int i = 0; i<6; i++)
+			{ day = new Day(dateArray[i]); day.setDayProgress(0); mainWindow.getFutureDays().add(day); }
+			
+			//Fill the past 7 empty days ("days" LinkedList) with data by using APICall(): [TEST: 			]			
+			
+			ListIterator<Day> previousDays = mainWindow.getDays().listIterator(); 
+			mainWindow.setLastCall(new Date()); 
+			while(previousDays.hasNext())
+			{
+				day = previousDays.next();
+				
+				if(day.getDate().getDay() == new Date().getDay()) //if day == "current day"
+				{  mainWindow.APICall(fmDate.format(day.getDate()),"00:00",fmTime.format(day.getDate()),day); day.processNewData();  }
+				
+				else 
+				{  mainWindow.APICall(fmDate.format(day.getDate()),"00:00","23:59",day); day.processNewData();  }
+			}
+			
+			mainWindow.setFirstCall(false);
+			
+			//Create new user and new virtual trainer
+			mainWindow.setUser(new User("Beth Locke"));
+			//vt = new VirtualTrainer();
+		}
+		
+		//this.mainWindow.setVisible(false);
+		this.mainWindow.getContentPane().removeAll();
+		this.mainWindow.add(this.mainWindow.getSplashScreen());
+		//this.mainWindow.setVisible(true);
+	}
+	
+	/**
+	 * Sets up the Virtual Trainer in "test" mode.
+	 */
+	public void initTestMode() {
+		/*int x = 0;
+		while(x == 0) {
+		}*/
+		
 		Date today = new Date();
 		
 		mainWindow.setLastCall(today);
@@ -123,12 +197,14 @@ public class LoadingScreen extends JPanel {
 		//need to process new raw data :
 		for(int i = 0; i < updateDays; i++)
 			mainWindow.getDays().get(mainWindow.getDays().size()-1-i).processNewData();
-		
-		//Write "Dashboard UI Code" to mock what the UI would display
 		 
-		 for(int i = 6; i>0;i--) mainWindow.getPast6Days().add(mainWindow.getDays().get(mainWindow.getDays().size()-1-i));
+		this.mainWindow.getContentPane().removeAll();
+		this.mainWindow.add(this.mainWindow.getSplashScreen());
 	}
 	
+    /**
+     * Renders the Loading Screen.
+     */
     private void initUI() {
     	this.titlePanel = new JPanel() {
     		@Override
@@ -214,8 +290,15 @@ public class LoadingScreen extends JPanel {
     	this.add(loggingInPanel);
 	}
     
+    /**
+     * Gets the devices' images JPanel object.
+     * @return
+     */
     public JPanel getDevicesPanel() { return this.devicesPanel; }
     
+    /* (non-Javadoc)
+     * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+     */
     @Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
