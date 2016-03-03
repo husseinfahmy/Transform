@@ -238,7 +238,6 @@ public class LoadingScreen extends JPanel {
     	};
     	this.add(titlePanel);
 
-
     	devicesPanel = new JPanel() {
     		@Override
     		protected void paintComponent(Graphics g) {
