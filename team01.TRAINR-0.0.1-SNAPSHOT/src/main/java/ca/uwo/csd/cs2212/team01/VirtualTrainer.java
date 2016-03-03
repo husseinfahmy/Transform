@@ -4,6 +4,10 @@ import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Stack;
 
+/**
+ * @author team01
+ *
+ */
 public class VirtualTrainer {
 
 	//Attributes
@@ -18,6 +22,9 @@ public class VirtualTrainer {
 	private Feedback milestoneFeedback;
 	
 	//Constructor
+	/**
+	 * VirtualTrainer Constructor
+	 */
 	public VirtualTrainer()
 	{
 			this.userWeight = new LinkedList<Float>();
@@ -27,26 +34,56 @@ public class VirtualTrainer {
 	}
 	
 	//Getters & Setters
+	/**
+	 * Add a new weight measurement for the user. Returns false if incorrect input has been passed.
+	 * @param user
+	 * @param weight
+	 * @return
+	 */
 	public boolean addNewWeightMeasurement(User user, float weight)
 	{
 		if(weight > 0 && weight<999) { userWeight.add(weight); milestoneFeedback = updateMileStoneProgress(user) ; return true; }
 		else { return false; }
 	}
+	/**
+	 * Set the target weight for the user. Returns false if incorrect input has been passed.
+	 * @param weight
+	 * @return
+	 */
 	public boolean setTargetWeight(float weight)
 	{
 		if(weight > 0 && weight<999) { targetWeight = weight; return true; }
 		else { return false; }
 	}
-	
+
+	/**
+	 * Get user's target weight.
+	 * @return
+	 */
 	public float getTargetWeight()
 	{ return targetWeight; }
+	/**
+	 * Get user's starting weight.
+	 * @return
+	 */
 	public float getStartingWeight()
 	{ return userWeight.getFirst();}
+	/**
+	 * Get user's current weight
+	 * @return
+	 */
 	public float getCurrentWeight()
 	{ return userWeight.getLast(); }
 	
 	//Methods
 	//Milestone Setup
+	/**
+	 * Set a weight loss goal for user. Returns false if incorrect input has been passed.
+	 * @param user
+	 * @param startingWeight
+	 * @param targetWeight
+	 * @return
+	 */
 	public boolean setWeightLossGoal(User user ,float startingWeight, float targetWeight)
 	{
 		if(startingWeight-targetWeight<2){ return false; }//User must specify a weight loss goal larger than 2 lbs }
@@ -70,6 +107,9 @@ public class VirtualTrainer {
 		{ addNewWeightMeasurement(user, startingWeight); setTargetWeight(targetWeight); return true; } //System.out.println("user is starting a weight loss journey for the first time"); 
 	}
 
+	/**
+	 * Calculates the number of Milestones the user can achieve given their weight loss goal. 
+	 */
 	public void setMileStones() 
 	{
 		//calculate total weight loss
@@ -101,6 +141,23 @@ public class VirtualTrainer {
 	// still have to write up "feedback format" for each of the feedback algorithms
 	
 	//FLAG - TIME-DEPENDENT
+	/**
+	 * Once the user has weighed themselves after a weight loss goal has been achieved,
+	 * the virtual trainer will calculate progress made on any milestones.
+	 * Feedback Format:
+	 * TEXTCODE 2 = DISPLAY TEXT & PROGRESS
+	 * TEXTCODE 1 = DISPLAY TEXT ONLY
+	 * TEXTCODE 0 = DO NOT DISPLAY TEXT
+	 * BUTTONCODE 1  = DISPLAY "CUSTOMIZE MY PLAN" BUTTON
+	 * BUTTONCODE 0  = DO NOT DISPLAY BUTTONS
+	 * 
+	 * feedbackValues:
+	 * [0] = current MileStone number
+	 * [1] = current MileStone progress, out of 7000
+	 * [2] = X pounds to go"
+	 * @param user
+	 * @return Feedback
+	 */
 	public Feedback updateMileStoneProgress(User user) //to be called once a week (every sunday) by Main? // return feedback?
 	{
 		
@@ -273,9 +330,18 @@ public class VirtualTrainer {
 		}//first else - calcualte weight change and update MS progress accordingly
 	}//public void msUpdateProgress()
 	//FLAG - CALLED BY UI
+	/**
+	 * Gets Milestone feedback
+	 * @return
+	 */
 	public Feedback getmsFeedback() 
 	{ return milestoneFeedback; }
 	//FLAG - REFRESH-DEPENDENT - CALLED BY UI
+	/**
+	 * Updates today's progress
+	 * @param today
+	 * @return
+	 */
 	public Feedback updateTodaysProgress(Day today)
 	{
 		Float calDiff = today.getDailyCalDiff();
@@ -323,6 +389,11 @@ public class VirtualTrainer {
 		else { todayFeedback.addTXTone("error"); return todayFeedback; }
 	}
 	//FLAG - TIME-DEPENDENT - CALLED BY UI
+	/**
+	 * Updates weekly progress
+	 * @param pastWeek
+	 * @return
+	 */
 	public Feedback updateWeeklyProgress(LinkedList<Day> pastWeek) //to be called once everyday, every morning?
 	{
 		ListIterator<Day> pastWeekIter = pastWeek.listIterator();
@@ -427,6 +498,11 @@ public class VirtualTrainer {
 	}
 	
 	//DAILY PLANS FEEDBACK //MEAL ADDING FEEDBACK //WORKOUT ADDING FEEDBACK
+	/**
+	 * Updates feedback on daily plan progress
+	 * @param plan
+	 * @return
+	 */
 	public Feedback dailyPlanFeedback(Plan plan) //called each time a meal or a workout is added or edited by user
 	{
 		float caloriesConsumed = plan.getCaloriesConsumed();
@@ -504,6 +580,10 @@ public class VirtualTrainer {
 		return planFeedback;
 	}
 	
+	/**
+	 * String helper for creating feedback objects containing Strings
+	 * @return
+	 */
 	public String feedbackHelper()
 	{ if(completedMileStones.size()==1) return " Milestone "; else return " Milestones "; }
 	

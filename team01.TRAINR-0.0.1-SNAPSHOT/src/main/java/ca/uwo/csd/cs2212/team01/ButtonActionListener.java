@@ -11,16 +11,29 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+/**
+ * @author team01
+ *
+ */
 public class ButtonActionListener implements ActionListener {
 	private int btnMode, value;
 	private MainWindow mainWindow;
 	
+	/**
+	 * Class Constructor
+	 * @param btnMode
+	 * @param value
+	 * @param mainWindow
+	 */
 	public ButtonActionListener(int btnMode, int value, MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 		this.btnMode = btnMode;
 		this.value = value;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	public void actionPerformed(ActionEvent e) {
 		String value;
 		JLabel label;

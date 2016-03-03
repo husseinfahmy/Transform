@@ -3,6 +3,10 @@ package ca.uwo.csd.cs2212.team01;
 /**
  * This is a class representing a Food
 */
+/**
+ * @author team01
+ *
+ */
 public class Food {
 	
 	//fields
@@ -18,6 +22,9 @@ public class Food {
 	
 	/**
 	 * Food constructor
+	 */
+	/**
+	 * 
 	 */
 	public Food ()
 	{
@@ -35,6 +42,13 @@ public class Food {
 	 * @param name String holding the name of the Food
 	 */
 
+	/**
+	 * @param name
+	 * @param itemNumber
+	 * @param servingSize
+	 * @param servingUnit
+	 * @param macro
+	 */
 	public Food(String name, int itemNumber, float servingSize, String servingUnit, Macro macro)
 	{
 		this.macroInfo = macro;
@@ -48,6 +62,9 @@ public class Food {
 	 * accessor method to get the Macro in the Food
 	 * @return Macro in the Food
 	 */
+	/**
+	 * @return
+	 */
 	public Macro getMacroInfo() {
 		return macroInfo;
 	}
@@ -55,6 +72,9 @@ public class Food {
 	/**
 	 * accessor method to get the item number of the Food
 	 * @return int holding the item number of the Food
+	 */
+	/**
+	 * @return
 	 */
 	public int getItemNumber() {
 		return itemNumber;
@@ -64,6 +84,9 @@ public class Food {
 	 * accessor method to get the number of servings of the Food
 	 * @return float holding the number of servings
 	 */
+	/**
+	 * @return
+	 */
 	public float getServingInfo() {
 		return servingInfo;
 	}
@@ -72,10 +95,16 @@ public class Food {
 	 * accessor method to get the name of the Food
 	 * @return String holding the name of the Food
 	 */
+	/**
+	 * @return
+	 */
 	public String getName() {
 		return name;
 	}
 	
+	/**
+	 * @return
+	 */
 	public String getServingUnit() {
 		return this.ServingUnit;
 	}
@@ -83,6 +112,9 @@ public class Food {
 	/**
 	 * setter method to set the Macro in the Food
 	 * @param macro Macro that holds the Macro information for the Food
+	 */
+	/**
+	 * @param macro
 	 */
 	public void setMacros(Macro macro) {
 		this.macroInfo = macro;
@@ -92,6 +124,9 @@ public class Food {
 	 * setter method to set the item number of the Food
 	 * @param itemNumber int that holds the item number of the Food
 	 */
+	/**
+	 * @param itemNumber
+	 */
 	public void setItemNumber(int itemNumber) {
 		this.itemNumber = itemNumber;
 	}
@@ -99,6 +134,9 @@ public class Food {
 	/**
 	 * setter method to set number of servings of the Food
 	 * @param serving float that holds the number of servings of the Food
+	 */
+	/**
+	 * @param serving
 	 */
 	public void setServing(float serving) {
 		this.servingInfo = serving;
@@ -108,6 +146,9 @@ public class Food {
 	 * setter method to set the name of the Food
 	 * @param name String that holds the name of the Food
 	 */
+	/**
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -116,6 +157,9 @@ public class Food {
 	 * 'g' = in grams
 	 * 'c' = cups
 	 * @param type
+	 */
+	/**
+	 * @param unit
 	 */
 	public void setServingUnit(String unit)
 	{ this.ServingUnit = unit;}

@@ -12,13 +12,10 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
- * @author Kamal
+ * @author team01
  *
  */
 public class LoadingScreen extends JPanel {
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private MainWindow mainWindow;
 	
@@ -28,6 +25,10 @@ public class LoadingScreen extends JPanel {
 	
 	private JPanel titlePanel, devicesPanel;
 	
+	/**
+	 * Class Constructor
+	 * @param mainWindow
+	 */
 	public LoadingScreen(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 		
@@ -39,6 +40,9 @@ public class LoadingScreen extends JPanel {
 		this.initUI();
 	}
 	
+	/**
+	 * Sets up the Virtual Trainer in "normal" mode.
+	 */
 	public void initSetup() {
 		if(mainWindow.isFirstCall())
 		{
@@ -98,6 +102,9 @@ public class LoadingScreen extends JPanel {
 		//this.mainWindow.setVisible(true);
 	}
 	
+	/**
+	 * Sets up the Virtual Trainer in "test" mode.
+	 */
 	public void initTestMode() {
 		/*int x = 0;
 		while(x == 0) {
@@ -195,6 +202,9 @@ public class LoadingScreen extends JPanel {
 		this.mainWindow.add(this.mainWindow.getSplashScreen());
 	}
 	
+    /**
+     * Renders the Loading Screen.
+     */
     private void initUI() {
     	this.titlePanel = new JPanel() {
     		@Override
@@ -280,8 +290,15 @@ public class LoadingScreen extends JPanel {
     	this.add(loggingInPanel);
 	}
     
+    /**
+     * Gets the devices' images JPanel object.
+     * @return
+     */
     public JPanel getDevicesPanel() { return this.devicesPanel; }
     
+    /* (non-Javadoc)
+     * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+     */
     @Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);

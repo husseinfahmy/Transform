@@ -21,6 +21,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+/**
+ * @author team01
+ *
+ */
 public class WeighPanel extends JPanel {
 	private Rectangle rectList[];
 	private Rectangle panelRect;
@@ -30,6 +34,10 @@ public class WeighPanel extends JPanel {
 	private JTextArea currentWeight;
 	private JButton submitForm;
 	
+	/**
+	 * Class Constructor
+	 * @param mainWindow
+	 */
 	public WeighPanel(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 		
@@ -103,9 +111,20 @@ public class WeighPanel extends JPanel {
     	//this.add(btnDesc);
 	}
 
+	/**
+	 * Gets the current weight input.
+	 * @return
+	 */
 	public String getCurrentWeight() { return this.currentWeight.getText(); }
+	/**
+	 * Gets the user notification description JLabel.
+	 * @return
+	 */
 	public JLabel getDesc() { return this.desc; }
 	
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);

@@ -26,13 +26,10 @@ import com.github.scribejava.core.model.Response;
 import com.github.scribejava.core.model.Verb;
 
 /**
- * @author Kamal
+ * @author team01
  *
  */
 public class MainWindow extends JFrame {
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	public Font FONT_HELVETICA_NEUE_THIN = null, FONT_HELVETICA_NEUE_ITALIC = null, FONT_HELVETICA_NEUE_BOLD = null;
 	private int posX = 0, posY = 0;
@@ -60,6 +57,10 @@ public class MainWindow extends JFrame {
 	private SplashScreen splashScreen;
 	private DashboardScreen dashboardScreen;
 	
+	/**
+	 * Class Constructor
+	 * @param testMode
+	 */
 	public MainWindow(boolean testMode) {
 		this.testMode = testMode;
 		
@@ -90,12 +91,26 @@ public class MainWindow extends JFrame {
 		else this.getLoadingScreen().initSetup();
 	}
     
+	/**
+	 * Checks if the program is in "test" mode.
+	 * @return
+	 */
 	public boolean isTestMode() { return this.testMode; }
 	
+	/**
+	 * Gets the last timestamp the user data was updated.
+	 */
 	public void updateLastRefreshed() { this.setLastCall(new Date()); }
 	
+	/**
+	 * Refreshes the Dashboard Screen.
+	 */
 	public void updateDashboardScreen() { this.dashboardScreen = new DashboardScreen(this); }
 	
+	/**
+	 * Returns the last timestamp the user data was updated in MMMM d, h:mm a format.
+	 * @return
+	 */
 	public Feedback lastRefreshed()
 	{
 		Feedback fb = new Feedback();
@@ -104,6 +119,11 @@ public class MainWindow extends JFrame {
 		return fb;
 	}
 	
+	/**
+	 * Sets up the Virtual Trainer.
+	 * @param currentWeight
+	 * @param targetWeight
+	 */
 	public void setupVirtualTrainer(float currentWeight, float targetWeight) {
 		// Virtual Trainer needs to deliver feedback to the user based on the processed data.
 		vt = new VirtualTrainer();
@@ -116,18 +136,54 @@ public class MainWindow extends JFrame {
 		//if (testMode) vt.addNewWeightMeasurement(user, currentWeight);
 	}
 	
+    /**
+     * Gets the user object.
+     * @return
+     */
     public User getUser() { return this.user; }
+    /**
+     * Sets the user object.
+     * @param user
+     */
     public void setUser(User user) { this.user = user; }
 
+    /**
+     * Gets the time a last API call was made.
+     * @return
+     */
     public Date getLastCall() { return this.lastCall; }
+    /**
+     * Sets the time the last API call was made.
+     * @param lastCall
+     */
     public void setLastCall(Date lastCall) { this.lastCall = lastCall; }
     
+    /**
+     * Checks if the API call is the first time in real-time.
+     * @return
+     */
     public boolean isFirstCall() { return firstCall; }
+	/**
+	 * Sets the first API call time in real-time.
+	 * @param firstCall
+	 */
 	public void setFirstCall(boolean firstCall) { this.firstCall = firstCall; }
 
+	/**
+	 * Returns this week's data.
+	 * @return
+	 */
 	public LinkedList<Day> getDays() { return this.days; }
+    /**
+     * Returns next week's data.
+     * @return
+     */
     public LinkedList<Day> getFutureDays() { return this.futureDays; }
 
+	/**
+	 * Copies this week's data onto another LinkedList data structure.
+	 * @return
+	 */
 	public Feedback updateWeeklyProgress() //to be called once everyday, every morning?
 	{
 		LinkedList<Day> past6Days = new LinkedList<Day>();
@@ -136,15 +192,43 @@ public class MainWindow extends JFrame {
 		return this.vt.updateWeeklyProgress(past6Days);
 	}
 	
+	/**
+	 * Gets the Virtual Trainer object.
+	 * @return
+	 */
 	public VirtualTrainer getVirtualTrainer() { return this.vt; }
 	
+	/**
+	 * Gets the day of the week as a string.
+	 * @param day
+	 * @return
+	 */
 	public String getDayOfWeek(Date day) { return fmDayofWeek.format(day); }
 	
+	/**
+	 * Gets the Loading Screen object.
+	 * @return
+	 */
 	public LoadingScreen getLoadingScreen() { return this.loadingScreen; }
+	/**
+	 * Gets the Splash Screen object.
+	 * @return
+	 */
 	public SplashScreen getSplashScreen() { return this.splashScreen; }
+	/**
+	 * Gets the Weigh Screen object.
+	 * @return
+	 */
 	public WeighScreen getWeighScreen() { return this.weighScreen; }
+	/**
+	 * Gets the Dashboard Screen object.
+	 * @return
+	 */
 	public DashboardScreen getDashboardScreen() { return this.dashboardScreen; }
 
+    /**
+     * Load custom fonts & generate system environmental variables for the fonts.
+     */
     private void createFonts() {
     	GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
     	
@@ -195,6 +279,13 @@ public class MainWindow extends JFrame {
 	//API METHODS
     
 	//[TEST: PASSED]
+	/**
+	 * Retrieves data from the FitBit API on a day-to-day basis.
+	 * @param date
+	 * @param startTime
+	 * @param endTime
+	 * @param day
+	 */
 	public void APICall(String date, String startTime, String endTime, Day day) 
 	{	
 		// set Day Object's progress to current day progess and set Last Updated to "lastCall"
@@ -442,8 +533,13 @@ public class MainWindow extends JFrame {
     
 	//[TEST: PASSED]
 	/**
-	     *Storing the data into arrays from the API call 
+	 * Storing the data into data structures (arrays) from the API call.
      */
+	/**
+	 * @param responseBody
+	 * @param name
+	 * @param day
+	 */
 	private void StoreDataFromAPI(String responseBody, String name, Day day) 
 	{
 		try {
@@ -526,6 +622,9 @@ public class MainWindow extends JFrame {
 		
 	}//StoreDataFromAPI()
 	
+	/**
+	 * Creates a mouse listener to move the program from any position on the window.
+	 */
 	private void createMouseListener() {
     	this.addMouseListener(new MouseAdapter()
     	{

@@ -11,19 +11,20 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
- * @author Kamal
+ * @author team01
  *
  */
 public class SplashScreen extends JPanel {
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private MainWindow mainWindow;
 	
 	private JPanel loggingInPanel, titlePanel;
 	private GoalPanel setGoalPanel;
 	
+	/**
+	 * Class Constructor
+	 * @param mainWindow
+	 */
 	public SplashScreen(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 		
@@ -35,6 +36,9 @@ public class SplashScreen extends JPanel {
 		this.initUI();
 	}
 	
+    /**
+     * Renders the Splash Screen.
+     */
     private void initUI() {
     	this.titlePanel = new JPanel() {
     		@Override
@@ -74,8 +78,15 @@ public class SplashScreen extends JPanel {
     	this.add(setGoalPanel);
 	}
     
+    /**
+     * Gets the Goal Panel which holds the user input for current/target weight goals.
+     * @return
+     */
     public GoalPanel getSetGoalPanel() { return this.setGoalPanel; }
     
+    /* (non-Javadoc)
+     * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+     */
     @Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);

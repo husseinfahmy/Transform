@@ -16,11 +16,25 @@ import java.awt.RenderingHints;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * @author team01
+ *
+ */
 public class LineAxisGraph extends JPanel {
 	private int numTicks;
 	private int x, y, width, height, textHeight = 0;
 	private boolean flip;
 	
+	/**
+	 * Class Constructor
+	 * @param data
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param numTicks
+	 * @param flip
+	 */
 	public LineAxisGraph(String[] data, int x, int y, int width, int height, int numTicks, boolean flip) {
 		this.x = x;
 		this.y = y;
@@ -54,6 +68,9 @@ public class LineAxisGraph extends JPanel {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);

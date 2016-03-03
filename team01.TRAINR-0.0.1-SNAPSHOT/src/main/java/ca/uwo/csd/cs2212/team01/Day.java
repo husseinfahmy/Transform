@@ -3,6 +3,10 @@ package ca.uwo.csd.cs2212.team01;
 import java.util.ListIterator;
 import java.util.*;
 
+/**
+ * @author team01
+ *
+ */
 public class Day {
 
 	//ATTRIBUTES:
@@ -35,13 +39,25 @@ public class Day {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	//CONSTRUCTORS:
+	/**
+	 * 
+	 */
 	public Day() {}
+	/**
+	 * @param date
+	 */
 	public Day(Date date)  { this.date = date; }
 	
 	//METHODS:
 	
 	//Data Processing methods
+	/**
+	 * 
+	 */
 	public void processNewData() { sumPerMin(); sumBoolean(); processHR(); calcDailyCalDiff(); }
+	/**
+	 * 
+	 */
 	private void sumPerMin()
 	{
 		double calArraySum = 0, floorsArraySum = 0, stepsArraySum = 0, distanceArraySum = 0;
@@ -54,6 +70,9 @@ public class Day {
 		  
 		for (int i = 0; i < dayProgress; i++) distanceArraySum += distArray[i]; 	totals[3] = (int)distanceArraySum;	//[3] = distance totals
 	}
+	/**
+	 * 
+	 */
 	private void sumBoolean()
 	{
 		int actTimeSum = 0, sedTimeSum = 0;
@@ -62,6 +81,9 @@ public class Day {
 		totals[4] = actTimeSum;		//[4] = active time totals
 		totals[5] = sedTimeSum;		//[5] = sed time totals
 	}
+	/**
+	 * 
+	 */
 	public void processHR()
 	{
 		int activeHR=0, restingHR=200;
@@ -69,6 +91,9 @@ public class Day {
 		totals[6] = activeHR; 		//[6] = active HR
 		totals[7] = restingHR;  	//[7] = resting HR
 	}
+	/**
+	 * 
+	 */
 	public void calcDailyCalDiff()
 	{
 		int calBurned = totals[0]; 
@@ -77,6 +102,9 @@ public class Day {
 	}
 	
 	//Return Today's Plan 
+	/**
+	 * @return
+	 */
 	public Feedback todaysMeals()
 	{
 		//FEEDBACK FORMAT
@@ -103,6 +131,9 @@ public class Day {
 		
 		return feedback;
 	}
+	/**
+	 * @return
+	 */
 	public Feedback todaysWorkouts()
 	{
 		//FEEDBACK FORMAT
@@ -140,6 +171,9 @@ public class Day {
 	}
 	
 	//Return Today's Progress
+	/**
+	 * @return
+	 */
 	public Feedback todaysProgess()
 	{
 		//FEEDBACK FORMAT
@@ -153,6 +187,9 @@ public class Day {
 	}
 	
 	//Generate fake data for this day
+	/**
+	 * @param scenario
+	 */
 	public void generateFakeData(int scenario)
 	{
 		//Previous Day Scenarios
@@ -246,41 +283,134 @@ public class Day {
 	//SETTERS & GETTERS:
 	
 	//Raw Data getters
+	/**
+	 * @return
+	 */
 	public double[] getCalArray() 	{ return calArray; }
+	/**
+	 * @return
+	 */
 	public int[] getFloorsArray() 		{ return floorsArray; }
+	/**
+	 * @return
+	 */
 	public int[] getStepsArray() 		{ return stepsArray; }
+	/**
+	 * @return
+	 */
 	public double[] getDistArray() 	{ return distArray; }
+	/**
+	 * @return
+	 */
 	public int[] getSedTimeArray() 	{ return sedTimeArray; }
+	/**
+	 * @return
+	 */
 	public int[] getHrArray() 			{ return hrArray; }
 	//Raw Data setters
+	/**
+	 * @param array
+	 */
 	public void setCalArray(double array[]) 	{ this.calArray = array; }
+	/**
+	 * @param array
+	 */
 	public void setFloorsArray(int array[]) 	{ this.floorsArray = array; }
+	/**
+	 * @param array
+	 */
 	public void setStepsArray(int array[]) 	{ this.stepsArray = array; }
+	/**
+	 * @param array
+	 */
 	public void setDistArray(double array[]) { this.distArray = array; }
+	/**
+	 * @param array
+	 */
 	public void setSedTimeArray(int array[])	{ this.sedTimeArray = array; }
+	/**
+	 * @param hrArray
+	 */
 	public void setHrArray(int[] hrArray) 		{ this.hrArray = hrArray; }
 	
 	//Processed Data getters
+	/**
+	 * @return
+	 */
 	public int[] getTotals() 			{ return totals; }
+	/**
+	 * @return
+	 */
 	public int getTotalCals() 		{ return totals[0]; }
+	/**
+	 * @return
+	 */
 	public int getTotalFloors()  	{ return totals[1]; }
+	/**
+	 * @return
+	 */
 	public int getTotalSteps()  		{ return totals[2]; }
+	/**
+	 * @return
+	 */
 	public int getTotalDist()  		{ return totals[3]; }
+	/**
+	 * @return
+	 */
 	public int getTotalActiveMin()	{ return totals[4]; }
+	/**
+	 * @return
+	 */
 	public int getTotalSedMin()  	{ return totals[5]; }
+	/**
+	 * @return
+	 */
 	public int getActiveHR() 		{ return totals[6]; }
+	/**
+	 * @return
+	 */
 	public int getRestingHR() 		{ return totals[7]; }
 	
 	//other setters
+	/**
+	 * @param date
+	 */
 	public void setDate(Date date) { this.date = date; }
+	/**
+	 * @param lastUpdated
+	 */
 	public void setLastUpdated(Date lastUpdated) { this.lastUpdated = lastUpdated; }
+	/**
+	 * @param dayProgress
+	 */
 	public void setDayProgress(int dayProgress) { this.dayProgress = dayProgress; }
+	/**
+	 * @param dailyCalDiff
+	 */
 	public void setDailyCalDiff(float dailyCalDiff) {this.dailyCalDiff = dailyCalDiff;}
+	/**
+	 * @param plan
+	 */
 	public void setPlan(Plan plan) {this.plan = plan;}
 	//other getters
+	/**
+	 * @return
+	 */
 	public Date getDate() { return date; }
+	/**
+	 * @return
+	 */
 	public int getDayProgress() { return this.dayProgress; }
+	/**
+	 * @return
+	 */
 	public Date getLastUpdated() { return lastUpdated; }
+	/**
+	 * @return
+	 */
 	public float getDailyCalDiff() {return dailyCalDiff; }
+	/**
+	 * @return
+	 */
 	public Plan getPlan() {return this.plan;}
 }

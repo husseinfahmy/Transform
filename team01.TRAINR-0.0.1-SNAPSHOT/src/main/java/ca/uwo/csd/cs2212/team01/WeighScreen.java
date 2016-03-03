@@ -8,18 +8,18 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
- * @author Kamal
- *
+ * @author team01
  */
 public class WeighScreen extends JPanel {
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private MainWindow mainWindow;
 
 	private WeighPanel setWeighPanel;
 	
+	/**
+	 * Class Constructor
+	 * @param mainWindow
+	 */
 	public WeighScreen(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 		
@@ -31,14 +31,24 @@ public class WeighScreen extends JPanel {
 		this.initUI();
 	}
 	
+    /**
+     * Renders the Weigh Screen.
+     */
     private void initUI() {
     	this.setWeighPanel = new WeighPanel(mainWindow);
     	
     	this.add(setWeighPanel);
 	}
     
+    /**
+     * Gets the Weigh Panel which holds the user input objects.
+     * @return
+     */
     public WeighPanel getSetWeighPanel() { return this.setWeighPanel; }
     
+    /* (non-Javadoc)
+     * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+     */
     @Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);

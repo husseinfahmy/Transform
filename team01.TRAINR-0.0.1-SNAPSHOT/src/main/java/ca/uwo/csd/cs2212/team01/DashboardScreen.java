@@ -16,7 +16,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
- * @author Kamal
+ * @author team01
  *
  */
 public class DashboardScreen extends JPanel {
@@ -29,6 +29,10 @@ public class DashboardScreen extends JPanel {
 	private JPanel bannerPanel;
 	private JLabel refreshDesc;
 	
+	/**
+	 * Class Constructor
+	 * @param mainWindow
+	 */
 	public DashboardScreen(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 		
@@ -39,6 +43,9 @@ public class DashboardScreen extends JPanel {
 		this.initUI();
 	}
 	
+    /**
+     * Renders the Dashboard Screen
+     */
     private void initUI() {
     	bannerPanel = new JPanel() {
     		@Override
@@ -814,9 +821,21 @@ public class DashboardScreen extends JPanel {
     	this.add(activityTrackingPanel);
 	}
 
+    /**
+     * Dashboard Banner
+     * @return
+     */
     public JPanel getBannerPanel() { return this.bannerPanel; }
+    
+    /**
+     * Dashboard Refresh Button Last-up-date Time Description Panel
+     * @return
+     */
     public JLabel getRefreshDesc() { return this.refreshDesc; }
     
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
