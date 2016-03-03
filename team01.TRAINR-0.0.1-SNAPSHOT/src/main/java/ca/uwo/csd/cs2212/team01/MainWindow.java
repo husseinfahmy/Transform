@@ -30,6 +30,9 @@ import com.github.scribejava.core.model.Verb;
  *
  */
 public class MainWindow extends JFrame {
+	static final String CREDENTIALS_FILE_PATH = "Team1Credentials.txt";
+	static final String TOKENS_FILE_PATH = "Team1Tokens.txt";
+	
 	private static final long serialVersionUID = 1L;
 	public Font FONT_HELVETICA_NEUE_THIN = null, FONT_HELVETICA_NEUE_ITALIC = null, FONT_HELVETICA_NEUE_BOLD = null;
 	private int posX = 0, posY = 0;
@@ -235,9 +238,9 @@ public class MainWindow extends JFrame {
     	ClassLoader classLoader = getClass().getClassLoader();
     	File file;
     	
-    	file = new File(classLoader.getResource("FONTS/HelveticaNeueThin.ttf").getFile());
+    	//file = new File(classLoader.getResource("FONTS/HelveticaNeueThin.ttf").getFile());
     	//Font font = null;
-		try {
+		/*try {
 			FONT_HELVETICA_NEUE_THIN = Font.createFont(Font.TRUETYPE_FONT, file);
 			//FONT_HELVETICA_NEUE_BOLD = Font.createFont(Font.TRUETYPE_FONT, new File("FONTS/HelveticaNeueBold.ttf"));
 		} catch (FontFormatException e) {
@@ -251,7 +254,7 @@ public class MainWindow extends JFrame {
 		
 		FONT_HELVETICA_NEUE_THIN = UIManager.getDefaults().getFont("TabbedPane.font");
 		
-		file = new File(classLoader.getResource("FONTS/HelveticaNeueThinItalic.ttf").getFile());
+		//file = new File(classLoader.getResource("FONTS/HelveticaNeueThinItalic.ttf").getFile());
 		try {
 			FONT_HELVETICA_NEUE_ITALIC = Font.createFont(Font.TRUETYPE_FONT, file);
 		} catch (FontFormatException e) {
@@ -261,8 +264,9 @@ public class MainWindow extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		genv.registerFont(FONT_HELVETICA_NEUE_ITALIC);
-		
+		genv.registerFont(FONT_HELVETICA_NEUE_ITALIC);*/
+
+		FONT_HELVETICA_NEUE_THIN = UIManager.getDefaults().getFont("TabbedPane.font");
 		FONT_HELVETICA_NEUE_ITALIC = UIManager.getDefaults().getFont("TabbedPane.font");
 		
 		/*try {
@@ -363,14 +367,15 @@ public class MainWindow extends JFrame {
         String scope = "activity%20heartrate";
         try {
             // File with service credentials.
-        	
-            FileReader fileReader = new FileReader(classLoader.getResource("Team1Credentials.txt").getFile());     
+        	//classLoader.getResource("Team1Credentials.txt").getFile()
+            FileReader fileReader = new FileReader(CREDENTIALS_FILE_PATH);     
             bufferedReader = new BufferedReader(fileReader);
             clientID= bufferedReader.readLine();
             apiKey= bufferedReader.readLine();
             apiSecret = bufferedReader.readLine();
             bufferedReader.close();
-            fileReader = new FileReader(classLoader.getResource("Team1Tokens.txt").getFile());
+            //classLoader.getResource("Team1Tokens.txt").getFile()
+            fileReader = new FileReader(TOKENS_FILE_PATH);
             bufferedReader = new BufferedReader(fileReader);
                      
             accessTokenItself = bufferedReader.readLine();
@@ -503,7 +508,7 @@ public class MainWindow extends JFrame {
          
         try {
             FileWriter fileWriter; 
-            fileWriter = new FileWriter(classLoader.getResource("Team1Tokens.txt").getFile());
+            fileWriter = new FileWriter(TOKENS_FILE_PATH);
             bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(accessToken.getToken());
             bufferedWriter.newLine();
