@@ -1931,3 +1931,264 @@ org.eclipse.core.runtime.CoreException: Launch configuration App (1) references 
 2016-03-02 17:32:14,204 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2016-03-02 17:32:14,219 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2016-03-02 17:32:14,219 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 19:46:13,321 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:46:13,370 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2016-03-02 19:46:13,381 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:46:13,381 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 19:46:17,041 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:46:17,046 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-03-02 19:46:17,049 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:46:17,049 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 19:46:23,226 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:46:23,230 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2016-03-02 19:46:23,233 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:46:23,233 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 19:46:49,214 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:46:49,217 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2016-03-02 19:46:49,219 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:46:49,219 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 19:47:01,143 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:47:01,145 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2016-03-02 19:47:01,147 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:47:01,148 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 19:47:06,149 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:47:06,169 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2016-03-02 19:47:06,180 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:47:06,180 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 19:47:08,560 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:47:08,560 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2016-03-02 19:47:08,560 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:47:08,560 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 19:47:12,325 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:47:12,325 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2016-03-02 19:47:12,341 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:47:12,341 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 19:47:33,638 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
+2016-03-02 19:49:36,080 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:49:36,081 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2016-03-02 19:49:36,084 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:49:36,110 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 19:50:20,004 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:50:20,025 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2016-03-02 19:50:20,046 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:50:20,071 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 19:50:32,664 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:50:32,665 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2016-03-02 19:50:32,665 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:50:32,665 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 19:50:35,524 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:50:35,566 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2016-03-02 19:50:35,579 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:50:35,588 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 19:52:33,180 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:52:33,180 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2016-03-02 19:52:33,196 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:52:33,211 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 19:56:09,704 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:56:09,711 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 6 resources
+2016-03-02 19:56:09,719 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 19:56:09,724 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 20:03:25,189 [Worker-21] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: ca.uwo.csd.cs2212.team01:team01-TRAINR:0.0.1-SNAPSHOT @ C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\pom.xml.
+2016-03-02 20:03:25,336 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/net/sourceforge/tess4j/tess4j/3.0.0/tess4j-3.0.0.pom
+2016-03-02 20:03:25,706 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/sourceforge/tess4j/tess4j/3.0.0/tess4j-3.0.0.pom
+2016-03-02 20:03:25,753 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/sourceforge/tess4j/tess4j/3.0.0/tess4j-3.0.0.pom
+2016-03-02 20:03:25,775 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+2016-03-02 20:03:25,837 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+2016-03-02 20:03:25,875 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+2016-03-02 20:03:25,906 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/net/java/dev/jna/jna/4.2.1/jna-4.2.1.pom
+2016-03-02 20:03:25,938 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/4.2.1/jna-4.2.1.pom
+2016-03-02 20:03:25,975 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/4.2.1/jna-4.2.1.pom
+2016-03-02 20:03:26,022 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/com/github/jai-imageio/jai-imageio-core/1.3.1/jai-imageio-core-1.3.1.pom
+2016-03-02 20:03:26,091 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/github/jai-imageio/jai-imageio-core/1.3.1/jai-imageio-core-1.3.1.pom
+2016-03-02 20:03:26,138 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/github/jai-imageio/jai-imageio-core/1.3.1/jai-imageio-core-1.3.1.pom
+2016-03-02 20:03:26,174 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/ghost4j/ghost4j/1.0.0/ghost4j-1.0.0.pom
+2016-03-02 20:03:26,238 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/ghost4j/ghost4j/1.0.0/ghost4j-1.0.0.pom
+2016-03-02 20:03:26,291 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/ghost4j/ghost4j/1.0.0/ghost4j-1.0.0.pom
+2016-03-02 20:03:26,322 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/net/java/dev/jna/jna/3.3.0/jna-3.3.0.pom
+2016-03-02 20:03:26,370 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/3.3.0/jna-3.3.0.pom
+2016-03-02 20:03:26,408 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/3.3.0/jna-3.3.0.pom
+2016-03-02 20:03:26,442 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/log4j/log4j/1.2.15/log4j-1.2.15.pom
+2016-03-02 20:03:26,473 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/log4j/log4j/1.2.15/log4j-1.2.15.pom
+2016-03-02 20:03:26,575 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/log4j/log4j/1.2.15/log4j-1.2.15.pom
+2016-03-02 20:03:26,592 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.pom
+2016-03-02 20:03:26,639 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.pom
+2016-03-02 20:03:26,708 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.pom
+2016-03-02 20:03:26,723 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/apache/commons/commons-parent/14/commons-parent-14.pom
+2016-03-02 20:03:26,792 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/14/commons-parent-14.pom
+2016-03-02 20:03:26,877 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/14/commons-parent-14.pom
+2016-03-02 20:03:26,977 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/apache/xmlgraphics/xmlgraphics-commons/1.4/xmlgraphics-commons-1.4.pom
+2016-03-02 20:03:27,024 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/xmlgraphics-commons/1.4/xmlgraphics-commons-1.4.pom
+2016-03-02 20:03:27,074 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/xmlgraphics-commons/1.4/xmlgraphics-commons-1.4.pom
+2016-03-02 20:03:27,093 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/commons-io/commons-io/1.3.1/commons-io-1.3.1.pom
+2016-03-02 20:03:27,124 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/commons-io/commons-io/1.3.1/commons-io-1.3.1.pom
+2016-03-02 20:03:27,177 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/commons-io/commons-io/1.3.1/commons-io-1.3.1.pom
+2016-03-02 20:03:27,378 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/com/lowagie/itext/2.1.7/itext-2.1.7.pom
+2016-03-02 20:03:27,425 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/lowagie/itext/2.1.7/itext-2.1.7.pom
+2016-03-02 20:03:27,456 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/lowagie/itext/2.1.7/itext-2.1.7.pom
+2016-03-02 20:03:28,397 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/bouncycastle/bctsp-jdk14/138/bctsp-jdk14-138.pom
+2016-03-02 20:03:28,428 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/bouncycastle/bctsp-jdk14/138/bctsp-jdk14-138.pom
+2016-03-02 20:03:28,459 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/bouncycastle/bctsp-jdk14/138/bctsp-jdk14-138.pom
+2016-03-02 20:03:28,512 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/bouncycastle/bctsp-jdk14/1.38/bctsp-jdk14-1.38.pom
+2016-03-02 20:03:28,544 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/bouncycastle/bctsp-jdk14/1.38/bctsp-jdk14-1.38.pom
+2016-03-02 20:03:28,597 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/bouncycastle/bctsp-jdk14/1.38/bctsp-jdk14-1.38.pom
+2016-03-02 20:03:28,628 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/commons-io/commons-io/2.4/commons-io-2.4.pom
+2016-03-02 20:03:28,682 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/commons-io/commons-io/2.4/commons-io-2.4.pom
+2016-03-02 20:03:28,729 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/commons-io/commons-io/2.4/commons-io-2.4.pom
+2016-03-02 20:03:28,860 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/apache/commons/commons-parent/25/commons-parent-25.pom
+2016-03-02 20:03:28,898 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/25/commons-parent-25.pom
+2016-03-02 20:03:29,029 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/25/commons-parent-25.pom
+2016-03-02 20:03:29,400 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/net/sourceforge/lept4j/lept4j/1.0.1/lept4j-1.0.1.pom
+2016-03-02 20:03:29,429 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/sourceforge/lept4j/lept4j/1.0.1/lept4j-1.0.1.pom
+2016-03-02 20:03:29,476 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/sourceforge/lept4j/lept4j/1.0.1/lept4j-1.0.1.pom
+2016-03-02 20:03:29,491 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+2016-03-02 20:03:29,529 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+2016-03-02 20:03:29,560 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+2016-03-02 20:03:29,613 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/net/java/dev/jna/jna/4.1.0/jna-4.1.0.pom
+2016-03-02 20:03:29,629 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/4.1.0/jna-4.1.0.pom
+2016-03-02 20:03:29,676 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/4.1.0/jna-4.1.0.pom
+2016-03-02 20:03:29,709 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/com/github/jai-imageio/jai-imageio-core/1.2.1/jai-imageio-core-1.2.1.pom
+2016-03-02 20:03:29,745 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/github/jai-imageio/jai-imageio-core/1.2.1/jai-imageio-core-1.2.1.pom
+2016-03-02 20:03:29,792 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/github/jai-imageio/jai-imageio-core/1.2.1/jai-imageio-core-1.2.1.pom
+2016-03-02 20:03:29,814 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/rococoa/rococoa-core/0.5/rococoa-core-0.5.pom
+2016-03-02 20:03:29,845 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/rococoa/rococoa-core/0.5/rococoa-core-0.5.pom
+2016-03-02 20:03:29,892 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/rococoa/rococoa-core/0.5/rococoa-core-0.5.pom
+2016-03-02 20:03:29,930 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/rococoa/rococoa-parent/0.5/rococoa-parent-0.5.pom
+2016-03-02 20:03:29,961 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/rococoa/rococoa-parent/0.5/rococoa-parent-0.5.pom
+2016-03-02 20:03:30,011 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/rococoa/rococoa-parent/0.5/rococoa-parent-0.5.pom
+2016-03-02 20:03:30,030 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/net/java/dev/jna/jna/3.4.0/jna-3.4.0.pom
+2016-03-02 20:03:30,061 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/3.4.0/jna-3.4.0.pom
+2016-03-02 20:03:30,114 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/3.4.0/jna-3.4.0.pom
+2016-03-02 20:03:30,146 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/cglib/cglib/2.2.2/cglib-2.2.2.pom
+2016-03-02 20:03:30,177 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/cglib/cglib/2.2.2/cglib-2.2.2.pom
+2016-03-02 20:03:30,215 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/cglib/cglib/2.2.2/cglib-2.2.2.pom
+2016-03-02 20:03:30,393 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.pom
+2016-03-02 20:03:30,431 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.pom
+2016-03-02 20:03:30,516 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.pom
+2016-03-02 20:03:30,613 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/slf4j/slf4j-parent/1.6.4/slf4j-parent-1.6.4.pom
+2016-03-02 20:03:30,653 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.6.4/slf4j-parent-1.6.4.pom
+2016-03-02 20:03:30,721 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.6.4/slf4j-parent-1.6.4.pom
+2016-03-02 20:03:30,763 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.pom
+2016-03-02 20:03:30,795 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.pom
+2016-03-02 20:03:30,836 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.pom
+2016-03-02 20:03:30,862 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/ch/qos/logback/logback-parent/1.1.3/logback-parent-1.1.3.pom
+2016-03-02 20:03:30,893 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/ch/qos/logback/logback-parent/1.1.3/logback-parent-1.1.3.pom
+2016-03-02 20:03:30,945 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/ch/qos/logback/logback-parent/1.1.3/logback-parent-1.1.3.pom
+2016-03-02 20:03:30,962 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/ch/qos/logback/logback-core/1.1.3/logback-core-1.1.3.pom
+2016-03-02 20:03:30,993 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.1.3/logback-core-1.1.3.pom
+2016-03-02 20:03:31,046 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.1.3/logback-core-1.1.3.pom
+2016-03-02 20:03:31,062 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.pom
+2016-03-02 20:03:31,093 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.pom
+2016-03-02 20:03:31,143 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.pom
+2016-03-02 20:03:31,162 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/slf4j/slf4j-parent/1.7.7/slf4j-parent-1.7.7.pom
+2016-03-02 20:03:31,194 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.7/slf4j-parent-1.7.7.pom
+2016-03-02 20:03:31,245 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.7/slf4j-parent-1.7.7.pom
+2016-03-02 20:03:31,263 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/slf4j/jul-to-slf4j/1.7.13/jul-to-slf4j-1.7.13.pom
+2016-03-02 20:03:31,310 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/slf4j/jul-to-slf4j/1.7.13/jul-to-slf4j-1.7.13.pom
+2016-03-02 20:03:31,363 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/slf4j/jul-to-slf4j/1.7.13/jul-to-slf4j-1.7.13.pom
+2016-03-02 20:03:31,394 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/slf4j/slf4j-parent/1.7.13/slf4j-parent-1.7.13.pom
+2016-03-02 20:03:31,443 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.13/slf4j-parent-1.7.13.pom
+2016-03-02 20:03:31,479 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.13/slf4j-parent-1.7.13.pom
+2016-03-02 20:03:31,510 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/slf4j/slf4j-api/1.7.13/slf4j-api-1.7.13.pom
+2016-03-02 20:03:31,548 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.13/slf4j-api-1.7.13.pom
+2016-03-02 20:03:31,579 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.13/slf4j-api-1.7.13.pom
+2016-03-02 20:03:31,626 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/slf4j/jcl-over-slf4j/1.7.13/jcl-over-slf4j-1.7.13.pom
+2016-03-02 20:03:31,664 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/slf4j/jcl-over-slf4j/1.7.13/jcl-over-slf4j-1.7.13.pom
+2016-03-02 20:03:31,695 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/slf4j/jcl-over-slf4j/1.7.13/jcl-over-slf4j-1.7.13.pom
+2016-03-02 20:03:31,726 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/slf4j/log4j-over-slf4j/1.7.13/log4j-over-slf4j-1.7.13.pom
+2016-03-02 20:03:31,764 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/slf4j/log4j-over-slf4j/1.7.13/log4j-over-slf4j-1.7.13.pom
+2016-03-02 20:03:31,811 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/slf4j/log4j-over-slf4j/1.7.13/log4j-over-slf4j-1.7.13.pom
+2016-03-02 20:03:31,842 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/json/json/20090211/json-20090211.pom
+2016-03-02 20:03:31,880 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/json/json/20090211/json-20090211.pom
+2016-03-02 20:03:31,927 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/json/json/20090211/json-20090211.pom
+2016-03-02 20:03:31,956 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/ca/uwo/csd/cs2212/scribejava-apis/2.2.2-CS2212/scribejava-apis-2.2.2-CS2212.pom
+2016-03-02 20:03:31,992 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/ca/uwo/csd/cs2212/scribejava-apis/2.2.2-CS2212/scribejava-apis-2.2.2-CS2212.pom
+2016-03-02 20:03:31,998 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for ca.uwo.csd.cs2212:scribejava-apis:jar:2.2.2-CS2212 is missing, no dependency information available
+2016-03-02 20:03:32,018 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/ca/uwo/csd/cs2212/scribejava-core/2.2.2-CS2212/scribejava-core-2.2.2-CS2212.pom
+2016-03-02 20:03:32,182 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/ca/uwo/csd/cs2212/scribejava-core/2.2.2-CS2212/scribejava-core-2.2.2-CS2212.pom
+2016-03-02 20:03:32,197 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for ca.uwo.csd.cs2212:scribejava-core:jar:2.2.2-CS2212 is missing, no dependency information available
+2016-03-02 20:03:32,282 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/net/sourceforge/tess4j/tess4j/3.0.0/tess4j-3.0.0.jar
+2016-03-02 20:03:32,419 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/net/java/dev/jna/jna/4.2.1/jna-4.2.1.jar
+2016-03-02 20:03:33,421 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/com/github/jai-imageio/jai-imageio-core/1.3.1/jai-imageio-core-1.3.1.jar
+2016-03-02 20:03:34,424 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/ghost4j/ghost4j/1.0.0/ghost4j-1.0.0.jar
+2016-03-02 20:03:35,426 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/log4j/log4j/1.2.15/log4j-1.2.15.jar
+2016-03-02 20:03:35,442 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.jar
+2016-03-02 20:03:35,457 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar
+2016-03-02 20:03:35,473 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/apache/xmlgraphics/xmlgraphics-commons/1.4/xmlgraphics-commons-1.4.jar
+2016-03-02 20:03:35,473 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/com/lowagie/itext/2.1.7/itext-2.1.7.jar
+2016-03-02 20:03:35,489 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/commons-io/commons-io/2.4/commons-io-2.4.jar
+2016-03-02 20:03:35,504 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/net/sourceforge/lept4j/lept4j/1.0.1/lept4j-1.0.1.jar
+2016-03-02 20:03:35,526 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/rococoa/rococoa-core/0.5/rococoa-core-0.5.jar
+2016-03-02 20:03:36,434 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/cglib/cglib/2.2.2/cglib-2.2.2.jar
+2016-03-02 20:03:36,450 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.jar
+2016-03-02 20:03:36,466 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/ch/qos/logback/logback-core/1.1.3/logback-core-1.1.3.jar
+2016-03-02 20:03:36,497 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar
+2016-03-02 20:03:36,497 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/slf4j/jul-to-slf4j/1.7.13/jul-to-slf4j-1.7.13.jar
+2016-03-02 20:03:36,519 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/slf4j/jcl-over-slf4j/1.7.13/jcl-over-slf4j-1.7.13.jar
+2016-03-02 20:03:36,534 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/slf4j/log4j-over-slf4j/1.7.13/log4j-over-slf4j-1.7.13.jar
+2016-03-02 20:03:36,550 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/org/json/json/20090211/json-20090211.jar
+2016-03-02 20:03:36,581 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://www.csd.uwo.ca/~mlocke2/ca/uwo/csd/cs2212/scribejava-apis/2.2.2-CS2212/scribejava-apis-2.2.2-CS2212.jar
+2016-03-02 20:03:36,782 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/ca/uwo/csd/cs2212/scribejava-apis/2.2.2-CS2212/scribejava-apis-2.2.2-CS2212.jar
+2016-03-02 20:03:36,819 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://www.csd.uwo.ca/~mlocke2/ca/uwo/csd/cs2212/scribejava-core/2.2.2-CS2212/scribejava-core-2.2.2-CS2212.jar
+2016-03-02 20:03:36,936 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://www.csd.uwo.ca/~mlocke2/ca/uwo/csd/cs2212/scribejava-core/2.2.2-CS2212/scribejava-core-2.2.2-CS2212.jar
+2016-03-02 20:03:37,417 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/sourceforge/tess4j/tess4j/3.0.0/tess4j-3.0.0.jar
+2016-03-02 20:04:00,797 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/sourceforge/tess4j/tess4j/3.0.0/tess4j-3.0.0.jar
+2016-03-02 20:04:00,840 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/4.2.1/jna-4.2.1.jar
+2016-03-02 20:04:01,651 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/4.2.1/jna-4.2.1.jar
+2016-03-02 20:04:01,682 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/github/jai-imageio/jai-imageio-core/1.3.1/jai-imageio-core-1.3.1.jar
+2016-03-02 20:04:02,237 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/github/jai-imageio/jai-imageio-core/1.3.1/jai-imageio-core-1.3.1.jar
+2016-03-02 20:04:02,266 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/ghost4j/ghost4j/1.0.0/ghost4j-1.0.0.jar
+2016-03-02 20:04:02,445 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/ghost4j/ghost4j/1.0.0/ghost4j-1.0.0.jar
+2016-03-02 20:04:02,466 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/log4j/log4j/1.2.15/log4j-1.2.15.jar
+2016-03-02 20:04:02,814 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/log4j/log4j/1.2.15/log4j-1.2.15.jar
+2016-03-02 20:04:02,846 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.jar
+2016-03-02 20:04:03,030 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.jar
+2016-03-02 20:04:03,084 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar
+2016-03-02 20:04:03,168 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar
+2016-03-02 20:04:03,200 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/xmlgraphics-commons/1.4/xmlgraphics-commons-1.4.jar
+2016-03-02 20:04:03,685 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/xmlgraphics-commons/1.4/xmlgraphics-commons-1.4.jar
+2016-03-02 20:04:03,717 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/lowagie/itext/2.1.7/itext-2.1.7.jar
+2016-03-02 20:04:04,804 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/lowagie/itext/2.1.7/itext-2.1.7.jar
+2016-03-02 20:04:04,835 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/commons-io/commons-io/2.4/commons-io-2.4.jar
+2016-03-02 20:04:05,004 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/commons-io/commons-io/2.4/commons-io-2.4.jar
+2016-03-02 20:04:05,058 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/sourceforge/lept4j/lept4j/1.0.1/lept4j-1.0.1.jar
+2016-03-02 20:04:06,962 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/sourceforge/lept4j/lept4j/1.0.1/lept4j-1.0.1.jar
+2016-03-02 20:04:07,009 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/rococoa/rococoa-core/0.5/rococoa-core-0.5.jar
+2016-03-02 20:04:07,094 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/rococoa/rococoa-core/0.5/rococoa-core-0.5.jar
+2016-03-02 20:04:07,125 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/cglib/cglib/2.2.2/cglib-2.2.2.jar
+2016-03-02 20:04:07,510 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/cglib/cglib/2.2.2/cglib-2.2.2.jar
+2016-03-02 20:04:07,595 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.jar
+2016-03-02 20:04:07,827 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.jar
+2016-03-02 20:04:07,842 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.1.3/logback-core-1.1.3.jar
+2016-03-02 20:04:08,328 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.1.3/logback-core-1.1.3.jar
+2016-03-02 20:04:08,381 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar
+2016-03-02 20:04:08,497 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar
+2016-03-02 20:04:08,528 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/slf4j/jul-to-slf4j/1.7.13/jul-to-slf4j-1.7.13.jar
+2016-03-02 20:04:08,597 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/slf4j/jul-to-slf4j/1.7.13/jul-to-slf4j-1.7.13.jar
+2016-03-02 20:04:08,613 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/slf4j/jcl-over-slf4j/1.7.13/jcl-over-slf4j-1.7.13.jar
+2016-03-02 20:04:08,698 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/slf4j/jcl-over-slf4j/1.7.13/jcl-over-slf4j-1.7.13.jar
+2016-03-02 20:04:08,729 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/slf4j/log4j-over-slf4j/1.7.13/log4j-over-slf4j-1.7.13.jar
+2016-03-02 20:04:08,898 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/slf4j/log4j-over-slf4j/1.7.13/log4j-over-slf4j-1.7.13.jar
+2016-03-02 20:04:08,914 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/json/json/20090211/json-20090211.jar
+2016-03-02 20:04:09,083 [Worker-21] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/json/json/20090211/json-20090211.jar
+2016-03-02 20:04:11,901 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 20:04:11,909 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-03-02 20:04:11,920 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 20:04:11,928 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 20:04:12,674 [Worker-21] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2016-03-02 20:04:13,532 [Worker-21] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: ca.uwo.csd.cs2212.team01:team01-TRAINR:0.0.1-SNAPSHOT @ C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\pom.xml.
+2016-03-02 20:04:13,751 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for ca.uwo.csd.cs2212:scribejava-apis:jar:2.2.2-CS2212 is missing, no dependency information available
+2016-03-02 20:04:13,761 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for ca.uwo.csd.cs2212:scribejava-core:jar:2.2.2-CS2212 is missing, no dependency information available
+2016-03-02 20:04:14,224 [Worker-21] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /team01.TRAINR-0.0.1-SNAPSHOT/src/main/java
+2016-03-02 20:04:14,233 [Worker-21] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /team01.TRAINR-0.0.1-SNAPSHOT/src/main/resources
+2016-03-02 20:04:14,239 [Worker-21] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /team01.TRAINR-0.0.1-SNAPSHOT/src/test/java
+2016-03-02 20:04:14,531 [Worker-21] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 1 sec
+2016-03-02 20:04:15,734 [Worker-16] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for ca.uwo.csd.cs2212:scribejava-apis:jar:2.2.2-CS2212 is missing, no dependency information available
+2016-03-02 20:04:15,886 [Worker-16] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for ca.uwo.csd.cs2212:scribejava-core:jar:2.2.2-CS2212 is missing, no dependency information available
+2016-03-02 20:04:16,030 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 20:04:16,037 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 6 resources
+2016-03-02 20:04:16,126 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 20:04:16,145 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources
+2016-03-02 20:04:37,751 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 20:04:37,751 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 6 resources
+2016-03-02 20:04:37,766 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-02 20:04:37,789 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Kamal\courses\cs2212\labs\team01\team01.TRAINR-0.0.1-SNAPSHOT\src\test\resources

@@ -45,7 +45,7 @@ public class WeighPanel extends JPanel {
 		tableTitle1 = new JLabel("Current Weight (lbs)", JLabel.CENTER);
 		Dimension size = tableTitle1.getPreferredSize();
 		tableTitle1.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
-		tableTitle1.setBounds((503-size.width)/2, height, 250, 50);
+		tableTitle1.setBounds((503-250)/2, height, 250, 50);
 		tableTitle1.setForeground(new Color(255,255,255,150));
 		
 		height += 53;
