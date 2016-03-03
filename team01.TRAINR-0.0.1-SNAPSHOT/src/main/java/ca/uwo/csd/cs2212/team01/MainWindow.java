@@ -30,8 +30,8 @@ import com.github.scribejava.core.model.Verb;
  *
  */
 public class MainWindow extends JFrame {
-	static final String CREDENTIALS_FILE_PATH = "Team1Credentials.txt";
-	static final String TOKENS_FILE_PATH = "Team1Tokens.txt";
+	static final String CREDENTIALS_FILE_PATH = "src/main/resources/Team1Credentials.txt";
+	static final String TOKENS_FILE_PATH = "src/main/resources/Team1Tokens.txt";
 	
 	private static final long serialVersionUID = 1L;
 	public Font FONT_HELVETICA_NEUE_THIN = null, FONT_HELVETICA_NEUE_ITALIC = null, FONT_HELVETICA_NEUE_BOLD = null;
