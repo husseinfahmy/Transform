@@ -7,13 +7,13 @@ import java.util.Stack;
 public class VirtualTrainer {
 
 	//Attributes
-	private LinkedList<Float> userWeight;
-	private float targetWeight;
-	private boolean achievementStatus;
+	public LinkedList<Float> userWeight;
+	public float targetWeight;
+	public boolean achievementStatus;
 	
-	private Stack<Goal> remainingMileStones;
-	private Goal currentMileStone;
-	private Stack<Goal> completedMileStones;
+	public Stack<Goal> remainingMileStones;
+	public Goal currentMileStone;
+	public Stack<Goal> completedMileStones;
 	
 	private Feedback milestoneFeedback;
 	
@@ -51,24 +51,21 @@ public class VirtualTrainer {
 	{
 		if(startingWeight-targetWeight<2){ return false; }//User must specify a weight loss goal larger than 2 lbs }
 		
-		//user is specifiying a NEW weight loss goal - transfer old Milestones to User's trophy case
+		//user is specifying a NEW weight loss goal - transfer old Milestones to User's trophy case
 		else if(achievementStatus)
 		{
-			//user.addJourney(new Journey("Journey #"+user.numberOfJourneys()+1,completedMileStones,userWeight));
 			completedMileStones = new Stack<Goal>(); remainingMileStones = new Stack<Goal>(); userWeight = new LinkedList<Float>();
 			achievementStatus = false;
 			addNewWeightMeasurement(user, startingWeight); setTargetWeight(targetWeight); return true;
-			//System.out.println("user is specifiying a NEW weight loss goal. Assume old Milestones have been transfered to User's trophy case by updateMileStoneProgress()");
 		}
 		//user has not completed current target weight/journey but user wants to start a new weight loss journey / delete current progress. Must warn user this action will delete current progress.
 		else if(userWeight.size() != 0)
 		{
 			completedMileStones = new Stack<Goal>(); remainingMileStones = new Stack<Goal>(); userWeight = new LinkedList<Float>();
 			addNewWeightMeasurement(user, startingWeight); setTargetWeight(targetWeight); return true;
-//			System.out.println("user has not completed current target weight/journey but user wants to start a new weight loss journey");
-//			System.out.println("Warning. This will delete all progress towards current weight target and start a new weight loss journey. No current progress will be saved.");
+
 		}
-		//user is starting a weight loss journey for the first time
+		//user is starting a new weight loss journey for the first time
 		else
 		{ addNewWeightMeasurement(user, startingWeight); setTargetWeight(targetWeight); return true; } //System.out.println("user is starting a weight loss journey for the first time"); 
 	}
@@ -122,7 +119,14 @@ public class VirtualTrainer {
 		
 		if(userWeight.size() == 1) 
 		{ 
-			return null;   //User has not weighed themselves yet after entering in their Starting Weight. No progress to measure. In theory, this won't ever happen.
+			//User has not weighed themselves yet after entering in their Starting Weight. 
+			msUpdateFeedback.setTXTCode(2);
+			msUpdateFeedback.addTXTone
+			(
+					"Progress towards your first Milestone:"
+			);
+			msUpdateFeedback.addFeedbackValue((float)0);		//"X pounds to go"
+			return msUpdateFeedback; 
 		}
 		
 		else if(currentMileStone == null) 
@@ -149,9 +153,9 @@ public class VirtualTrainer {
 				msUpdateFeedback.setButtonCode(1); //DISPLAY "CUSTOMIZE MY PLAN" BUTTON
 				msUpdateFeedback.addTXTone
 				(
-						"You have gained " +  weightDiff + " lbs!<br>"
-						+ "You should reduce your calorie intake or<br>"
-						+ "set a higher calorie burn goal for workouts:"
+						"You have gained " +  weightDiff + " lbs!\n"
+						+ "You must take action by either reducing your calorie intake "
+						+ "or setting a higher calorie burn goal during your workouts:"
 				); 
 				return msUpdateFeedback; 
 			} 
@@ -162,9 +166,9 @@ public class VirtualTrainer {
 				msUpdateFeedback.setButtonCode(1); //DISPLAY "CUSTOMIZE MY PLAN" BUTTON
 				msUpdateFeedback.addTXTone
 				(
-						"You have not lost any weight!<br>"
-						+ "You should reduce your calorie intake or<br>"
-						+ "set a higher calorie burn goal for workouts:"
+						"You have not lost any weight :(\n"
+						+ "You must take action by either reducing your calorie intake "
+						+ "or setting a higher calorie burn goal during your workouts:"
 				); 
 				return msUpdateFeedback; 
 			}

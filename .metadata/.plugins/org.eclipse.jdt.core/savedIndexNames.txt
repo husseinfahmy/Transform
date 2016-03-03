@@ -30,7 +30,6 @@ INDEX VERSION 1.127+C:\Users\Kamal\courses\cs2212\labs\team01\.metadata\.plugins
 3000975533.index
 3772303092.index
 178614963.index
-3463326411.index
 2292250293.index
 51467596.index
 4071294848.index
