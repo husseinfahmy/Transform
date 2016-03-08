@@ -4,6 +4,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -117,6 +121,17 @@ public class ButtonActionListener implements ActionListener {
 			break;
 			
 		case 2: // Exit Button
+				
+			try{
+			   FileOutputStream fout = new FileOutputStream("dashboardpreferences.dat");
+			   ObjectOutputStream out = new ObjectOutputStream(fout);
+			   out.writeObject(mainWindow.getUserDashboardPreferences());	//(over)writes dashboard preferences file
+			   out.close();
+			}catch(FileNotFoundException exception){
+			   System.out.println(exception.getMessage());
+			}catch(IOException exception){
+			   System.out.println(exception.getMessage());
+			}
 			System.exit(0);
 			break;
 			

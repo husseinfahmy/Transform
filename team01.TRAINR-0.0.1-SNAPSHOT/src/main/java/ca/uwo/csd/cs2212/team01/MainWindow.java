@@ -60,6 +60,9 @@ public class MainWindow extends JFrame {
 	private SplashScreen splashScreen;
 	private DashboardScreen dashboardScreen;
 	
+	//User Preferences
+	private DashboardPreferences userDashboardPreferences;
+	
 	/**
 	 * Class Constructor
 	 * @param testMode
@@ -83,6 +86,22 @@ public class MainWindow extends JFrame {
     		this.lastCall = new Date();
     	}
 
+    	try {
+
+    		ObjectInputStream in = new ObjectInputStream(new FileInputStream("dashboardpreferences.dat"));
+    		userDashboardPreferences = (DashboardPreferences) in.readObject();
+    		in.close();
+    	} catch (FileNotFoundException e) {
+    		userDashboardPreferences = new DashboardPreferences();
+    	} catch (IOException e) {
+    		System.out.println(e.getMessage());
+    	} catch (ClassNotFoundException e) {
+    		System.out.println(e.getMessage());
+    	}
+    	
+    	
+    	
+    	
 		loadingScreen = new LoadingScreen(this);
 		splashScreen = new SplashScreen(this);
 		weighScreen = new WeighScreen(this);
@@ -182,6 +201,19 @@ public class MainWindow extends JFrame {
      * @return
      */
     public LinkedList<Day> getFutureDays() { return this.futureDays; }
+    
+    
+    /**
+     * Returns user preferences for dashboard
+     * @return
+     */
+	public DashboardPreferences getUserDashboardPreferences() {
+		return userDashboardPreferences;
+	}
+
+	public void setUserDashboardPreferences(DashboardPreferences userDashboardPreferences) {
+		this.userDashboardPreferences = userDashboardPreferences;
+	}
 
 	/**
 	 * Copies this week's data onto another LinkedList data structure.
