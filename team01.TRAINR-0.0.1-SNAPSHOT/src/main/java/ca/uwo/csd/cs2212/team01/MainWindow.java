@@ -24,7 +24,8 @@ import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.github.scribejava.core.model.OAuthRequest;
 import com.github.scribejava.core.model.Response;
 import com.github.scribejava.core.model.Verb;
-
+import com.github.scribejava.core.exceptions.OAuthConnectionException;
+import com.github.scribejava.core.exceptions.OAuthException;
 /**
  * @author team01
  *
@@ -331,6 +332,7 @@ String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 i
 		// Make the API Calls:
 		
     	String nameOfActivity = "";
+	try{
     	for (int i = 0; i < 6; i++)
     	{
     		System.out.println(i);
@@ -552,7 +554,18 @@ String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 i
             }
         }//end try
     }//end for loop 
-    }//end APIcall()
+    
+    	}//from here on and the try at the top
+    	catch(OAuthConnectionException e){
+    		System.out.println("not connected to the internet");
+    	}
+        catch(OAuthException e){
+        	System.out.println("unable to aunthenticate, check the OAuth tokens");
+        }
+    	catch(Exception e){
+    		System.out.println("an unforscene error has occured");
+    	}
+}//end APIcall()
     
 	//[TEST: PASSED]
 	/**
