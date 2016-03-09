@@ -327,7 +327,7 @@ public class MainWindow extends JFrame {
 	 * @param endTime
 	 * @param day
 	 */
-	public void APICall(String date, String startTime, String endTime, Day day) 
+    public void APICall(String date, String startTime, String endTime, Day day) 
 	{	
 String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 if "00:00"
 		String fmEndTime = endTime;			//fmEndTime.length() == 4 if "0:00" or == 5 if "00:00"
@@ -367,7 +367,6 @@ String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 i
 	try{
     	for (int i = 0; i < 6; i++)
     	{
-    		System.out.println(i);
     		if(i == 0)
     		{
     			nameOfActivity ="floors";
@@ -472,17 +471,13 @@ String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 i
                 expiresIn,
                 rawResponse);
         // Now let's go and ask for a protected resource!
-//        System.out.println("Now we're going to access a protected resource...");
-//        System.out.println();
         //Example request:
         //    This is always the prefix (for my account)
         String requestUrlPrefix = "https://api.fitbit.com/1/user/3WGW2P/";
         String requestUrl;
         
         //    The URL from this point is how you ask for different information
-        //"activities/steps/date/2016-02-18/1d/1min/time/07:15/19:30.json";
-        		requestUrl = requestUrlPrefix + "activities/" + nameOfActivity + "/date/" + date + "/1d/1min/time/"+ fmStartTime + "/"+ fmEndTime+ ".json";	//"activities/calories/date/2016-02-18/1d/1min/time/07:15/19:30.json";
-        //"activities/floors/date/2016-02-18/1d/1min/time/07:15/19:30.json";
+        		requestUrl = requestUrlPrefix + "activities/" + nameOfActivity + "/date/" + date + "/1d/1min/time/"+ fmStartTime + "/"+ fmEndTime+ ".json";	
         
         // This actually generates an HTTP request from the URL
         //    -it has a header, body ect.
@@ -492,10 +487,6 @@ String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 i
         // You must do this before the request will work
         // See: https://dev.fitbit.com/docs/oauth2/#making-requests
         service.signRequest(accessToken, request);
-        //  If you are curious
-//        System.out.println(request.toString());
-//        System.out.println(request.getHeaders());
-//        System.out.println(request.getBodyContents());
          
          
         //  This actually sends the request:
@@ -504,23 +495,19 @@ String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 i
         //  The HTTP response from fitbit will be in HTTP format, meaning that it has a numeric code indicating
         //     whether is was successful (200) or not (400's or 500's), each code has a different meaning
 //        System.out.println();
-//        System.out.println("HTTP response code: "+response.getCode());
         int statusCode = response.getCode();
          
         switch(statusCode){
             case 200:
 //                System.out.println("Success!");
-//                System.out.println("HTTP response body:\n"+response.getBody());
                 
                 StoreDataFromAPI(response.getBody(), nameOfActivity,day);
                 break;
             case 400:
                 System.out.println("Bad Request - may have to talk to Beth");
-                System.out.println("HTTP response body:\n"+response.getBody());
                 break;
             case 401:
                 System.out.println("Likely Expired Token");
-                System.out.println("HTTP response body:\n"+response.getBody()); 
                 System.out.println("Try to refresh");
                  
                 // This uses the refresh token to get a completely new accessToken object
@@ -536,16 +523,11 @@ String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 i
                 response = request.send();
                  
                 // Hopefully got a response this time:
-                System.out.println("HTTP response code: "+response.getCode());
-                System.out.println("HTTP response body:\n"+response.getBody());
                 break;
             case 429:
                 System.out.println("Rate limit exceeded");
-                System.out.println("HTTP response body:\n"+response.getBody());
                 break;
             default:
-                System.out.println("HTTP response code: "+response.getCode());
-                System.out.println("HTTP response body:\n"+response.getBody());
         }
          
         BufferedWriter bufferedWriter=null;
@@ -610,7 +592,8 @@ String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 i
 	 */
 	private void StoreDataFromAPI(String responseBody, String name, Day day) 
 	{
-		try {
+	System.out.println("/n/n"+ name+ "/n/n/n" +responseBody);	
+			try {
 	    			JSONObject jsonObj =  new JSONObject(responseBody);
 	    			JSONArray dataType = (JSONArray) jsonObj.get("activities-" + name);
 	    			JSONObject dataTypeOverTime = (JSONObject) jsonObj.get("activities-" + name + "-intraday");
@@ -690,6 +673,27 @@ String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 i
 		
 	}//StoreDataFromAPI()
 	
+	/**
+	 * Storing the data into data structures (arrays) from the and old API call to test 
+	 * the program when not connected to the Internet.
+     */
+    private void StoredAPIData(Day day){
+    	
+    	String floorsResponse = "";
+    	String stepsResponse = "";
+    	String caloriesResponse = "";
+    	String distaceResponse = "";
+    	String minutesSedentaryResponse = "";
+    	String heartResponse = "";
+    	
+    	StoreDataFromAPI(floorsResponse, "floors", day);
+    	StoreDataFromAPI(stepsResponse, "steps", day);
+    	StoreDataFromAPI(caloriesResponse, "calories", day);
+    	StoreDataFromAPI(distaceResponse, "distace", day);
+    	StoreDataFromAPI(minutesSedentaryResponse, "minutesSedentary", day);
+    	StoreDataFromAPI(heartResponse, "heart", day);
+    	
+    }
 	/**
 	 * Creates a mouse listener to move the program from any position on the window.
 	 */
