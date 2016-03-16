@@ -1,4 +1,6 @@
-/target/
+/target/*
 *.class
-../.metadata/
-../.recommenders/
+../.metadata/*
+../.recommenders/*
+.settings/
+
