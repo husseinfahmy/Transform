@@ -1,13 +1,14 @@
 package ca.uwo.csd.cs2212.team01;
 
 import java.util.ListIterator;
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * @author team01
  *
  */
-public class Day {
+public class Day implements Serializable{
 
 	//ATTRIBUTES:
 	private Date date;
