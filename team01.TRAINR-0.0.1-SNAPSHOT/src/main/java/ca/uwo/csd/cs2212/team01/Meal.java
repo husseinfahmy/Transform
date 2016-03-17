@@ -111,6 +111,8 @@ public class Meal {
 		
 		foodServings.add(newFoodServing);
 		calorieContent = " (+ "+(int)calories + " Cal)"; //ex:    Meal 1 (+ 445 Cal)
+		
+		if(isDish) this.calcDishWeight();
 		//System.out.println("calorieContent: " + calorieContent);
 	}
 	
@@ -130,6 +132,8 @@ public class Meal {
 		
 		this.foodServings.remove(index); 
 		calorieContent = " (+ "+(int)calories + " Cal)";
+		
+		if(isDish) this.calcDishWeight();
 		//System.out.println("calorieContent: " + calorieContent);
 	}
 	
