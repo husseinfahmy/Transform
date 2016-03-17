@@ -99,11 +99,21 @@ public class MainWindow extends JFrame {
     	} catch (ClassNotFoundException e) {
     		System.out.println(e.getMessage());
     	}
+    		    	
     	
+    	try {
+    		ObjectInputStream in = new ObjectInputStream(new FileInputStream("futuredays.dat"));
+    		futureDays = (LinkedList<Day>) in.readObject();
+    		in.close();
+    	} catch (FileNotFoundException e) {
+    		System.out.println("Couldn't find future days info. No Plans active.");
+    	} catch (IOException e) {
+    		System.out.println(e.getMessage());
+    	} catch (ClassNotFoundException e) {
+    		System.out.println(e.getMessage());
+    	}
     	
-    	
-    	
-		loadingScreen = new LoadingScreen(this);
+    	loadingScreen = new LoadingScreen(this);
 		splashScreen = new SplashScreen(this);
 		weighScreen = new WeighScreen(this);
 		dashboardScreen = new DashboardScreen(this);

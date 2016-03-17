@@ -132,6 +132,17 @@ public class ButtonActionListener implements ActionListener {
 			}catch(IOException exception){
 			   System.out.println(exception.getMessage());
 			}
+			
+		    try{
+	               FileOutputStream fout = new FileOutputStream("futuredays.dat");
+	               ObjectOutputStream out = new ObjectOutputStream(fout);
+	               out.writeObject(mainWindow.getFutureDays());   //(over)writes dashboard preferences file
+	               out.close();
+	            }catch(FileNotFoundException exception){
+	               System.out.println(exception.getMessage());
+	            }catch(IOException exception){
+	               System.out.println(exception.getMessage());
+	            }
 			System.exit(0);
 			break;
 			
