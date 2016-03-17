@@ -91,9 +91,58 @@ public class Day {
 		totals[6] = activeHR; 		//[6] = active HR
 		totals[7] = restingHR;  	//[7] = resting HR
 	}
+	
 	/**
 	 * 
 	 */
+	public int[] HeartRateZone(){
+		int i = 0, heartrate = 0, zone1 = 0, zone2 = 0, zone3 = 0, zone4 = 0, zone5 = 0;
+		int[] zone = new int[5];
+		
+		for(i = 0; i < 1440; i++){
+			heartrate = hrArray[i];
+			
+			if(heartrate >= 104 && heartrate < 114){
+				//Zone 1
+				zone1++;
+			
+			}else if(heartrate >= 114 && heartrate < 133){
+				//Zone 2
+				zone2++;
+			
+			}else if(heartrate >= 133 && heartrate < 152){
+				//Zone 3
+				zone3++;
+			
+			}else if(heartrate >= 152 && heartrate < 171){
+				//Zone 4
+				zone4++;
+	
+			}else if(heartrate >= 171 && heartrate < 190){
+				//Zone 5
+				zone5++;
+			
+			}
+		}
+			zone[0] = zone1;
+			zone[1] = zone2;
+			zone[2] = zone3;
+			zone[3] = zone4;
+			zone[4] = zone5;
+			/*
+			System.out.println("Zone 1: " + zone1);
+			System.out.println("Zone 2: " + zone2);
+			System.out.println("Zone 3: " + zone3);
+			System.out.println("Zone 4: " + zone4);
+			System.out.println("Zone 5: " + zone5);
+			*/
+			return zone;
+	}
+	
+	/*
+	 * 
+	 */
+	
 	public void calcDailyCalDiff()
 	{
 		int calBurned = totals[0]; 
