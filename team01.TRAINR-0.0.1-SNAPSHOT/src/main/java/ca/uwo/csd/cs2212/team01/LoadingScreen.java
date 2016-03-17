@@ -111,150 +111,11 @@ public class LoadingScreen extends JPanel {
 	
 	//INITIAL SETUP DONE -------------------------------------------|
 	
-	
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// 		 REFRESH DATA EVENT		 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/**
-	 * Called to refresh the App's data with up-to-date data
-	 * Called when:
-	 * 1) App launches (and firstCall == false) (during LoadingScreen)
-	 * 2) User clicks Manual Refresh button
-	 */
-	public void refreshEvent()
-	{
-			//[TEST:			]
-			// Initial Setup is completed, time has elapsed, and the user has triggered a refresh event where their data and the UI needs updating.
-			// API calls need to be made to update the user's data and the downloaded data needs to be processed and displayed on UI.
-			//Pseudo-Algorithm:
-			// Get time difference between when the last API call was made and OS's current time. Convert to minutes.
-			// Compute the number of days that need to be updated from this time difference.
-			// Make the appropriate number of API calls to update the total number of days that need updating.
-		
-		
-			//Get OS's current time
-			//Compute time difference
-			//////////////////////////////
-			Date currentTime = new Date(); 																
-			long timeRange = (currentTime.getTime() - mainWindow.getLastCall().getTime())/(long)1000/(long)60; 		//convert time difference to minutes
-			//////////////////////////////
-			
-			if(timeRange > 0) 																				//else: not enough time has elapsed to warrant a refresh
-			{
-				int todayRemainder = 1440 - mainWindow.getDays().getLast().getDayProgress();
-				
-				if (timeRange < todayRemainder) 															//Update current day up till currentTime
-				{
-					
-					mainWindow.setLastCall(currentTime); 
-					mainWindow.APICall(fmDate.format(mainWindow.getDays().getLast().getDate()),fmTime.format(mainWindow.getDays().getLast().getLastUpdated()),fmTime.format(currentTime),mainWindow.getDays().getLast());
-				}
-				
-				else if (timeRange == todayRemainder) 														//Update entire remainder of current day
-				{ 
-					mainWindow.setLastCall(currentTime);
-					mainWindow.APICall(fmDate.format(mainWindow.getDays().getLast().getDate()),fmTime.format(mainWindow.getDays().getLast().getLastUpdated()),fmTime.format(currentTime),mainWindow.getDays().getLast());
-//					//Must add a new day to "days". This is the new "current day":
-//					Date date = new Date(); //Date of new day starting at 12:00am
-//					Day day = new Day(date);
-//					mainWindow.getDays().add(day);
-					
-					//Transfer first day in "futureDays" to end of "days"
-					//////////////////////////////////////////////////////////
-					mainWindow.getDays().add(mainWindow.getFutureDays().pop());
-					//must replenish day lost by "futureDays"
-					Day day = new Day(new Date(mainWindow.getFutureDays().getLast().getDate().getTime() + 24*60*60*1000));	//Has a date that is one day ahead of the last day in "futureDays"
-					day.setDayProgress(0);
-					//add day to end of "futureDays"
-					mainWindow.getFutureDays().add(day);
-					//////////////////////////////////////////////////////////
-					
-				}
-				
-				else if (timeRange > todayRemainder) 
-				{ 
-					mainWindow.setLastCall(currentTime);								//First, update the previous "current day" first
-					mainWindow.APICall(fmDate.format(mainWindow.getDays().getLast().getDate()),fmTime.format(mainWindow.getDays().getLast().getLastUpdated()),"23:59",mainWindow.getDays().getLast()); 												
-					
-					double daysRemainder = timeRange - todayRemainder; 					//the previous "current day" has been updated so we must remove this from the days that need updating.
-					int nDays = (int)daysRemainder / 1440; 								//number of WHOLE days that need to be added to "days" and then updated
-					
-					if (nDays == 0) 													//only new current day needs to be updated
-					{
-						//Transfer first day in "futureDays" to end of "days"
-						//////////////////////////////////////////////////////////
-						mainWindow.getDays().add(mainWindow.getFutureDays().pop());
-						//must replenish day lost by "futureDays"
-						Day day = new Day(new Date(mainWindow.getFutureDays().getLast().getDate().getTime() + 24*60*60*1000));	//Has a date that is one day ahead of the last day in "futureDays"
-						day.setDayProgress(0);
-						//add day to end of "futureDays"
-						mainWindow.getFutureDays().add(day);
-						//////////////////////////////////////////////////////////
-						
-						//now update the new current day in "days" with the appropriate amount of data:
-						mainWindow.APICall(fmDate.format(mainWindow.getDays().getLast().getDate()),"00:00",fmTime.format(currentTime),mainWindow.getDays().getLast()); 
-					}
-					else if(nDays > 0)
-					{
-						//Need to transfer "nDays" number of days from "futureDays" to "days"
-						//Assign the correct dates to them. Then add to "days" LinkedList. Then call APICall on new days.
-						for (int i = 0; i<nDays; i++)
-						{ 
-							//Transfer first day in "futureDays" to end of "days"
-							//////////////////////////////////////////////////////////
-							mainWindow.getDays().add(mainWindow.getFutureDays().pop());
-							//must replenish day lost by "futureDays"
-							Day day = new Day(new Date(mainWindow.getFutureDays().getLast().getDate().getTime() + 24*60*60*1000));	//Has a date that is one day ahead of the last day in "futureDays"
-							day.setDayProgress(0);
-							//add day to end of "futureDays"
-							mainWindow.getFutureDays().add(day);
-							//////////////////////////////////////////////////////////
-							
-							//now update the newly added day in "days" with a full day's worth of data:
-							mainWindow.APICall(fmDate.format(mainWindow.getDays().getLast().getDate()),"00:00","23:59",mainWindow.getDays().getLast()); 
-						}
-						if (((int)daysRemainder % 1440) > 0) 							// then the new "current day" needs updated data as well
-						{ 
-							//Transfer first day in "futureDays" to end of "days"
-							//////////////////////////////////////////////////////////
-							mainWindow.getDays().add(mainWindow.getFutureDays().pop());
-							//must replenish day lost by "futureDays"
-							Day day = new Day(new Date(mainWindow.getFutureDays().getLast().getDate().getTime() + 24*60*60*1000));	//Has a date that is one day ahead of the last day in "futureDays"
-							day.setDayProgress(0);
-							//add day to end of "futureDays"
-							mainWindow.getFutureDays().add(day);
-							//////////////////////////////////////////////////////////
-							
-							//now update the new current day in "days" with the appropriate amount of data:
-							mainWindow.APICall(fmDate.format(mainWindow.getDays()),"00:00",fmTime.format(currentTime),mainWindow.getDays().getLast()); 
-						}
-					}
-				}
-			}
-			
-			
-			
-			//NEED TO UPDATE UI:
-			//> Weekly Progress at top of dashboard
-			//> Calorie Tracking Panel
-			//> Trainr Feedback Panel
-			//> Activity Tracking Panel
-			
-			
-			
 
-		//REFRESH DATA DONE ---------------------------------------------------------------------------------------------------|
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //		 		 TEST MODE BEGINS HERE 	 //
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		
-		
-		
-	}
-
-	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/**
 	 * Sets up the Virtual Trainer in "test" mode.
 	 */
@@ -270,7 +131,7 @@ public class LoadingScreen extends JPanel {
 		Macro macro1 = new Macro((float)100, (float)20, (float)50, (float)5 );
 		Macro macro2 = new Macro((float)200, (float)10, (float)25, (float)4 );
 		Macro macro3 = new Macro((float)200, (float)5, (float)15, (float)3 );
-
+		
 		//Food items and their nutritional info built with the previous macro information:
 		Food food1 = new Food("food item",1,(float)1,"cup",macro1);
 		Food food2 = new Food("food item",1,(float)1,"cup",macro2);

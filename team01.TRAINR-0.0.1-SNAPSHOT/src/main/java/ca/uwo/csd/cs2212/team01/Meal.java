@@ -1,6 +1,7 @@
 package ca.uwo.csd.cs2212.team01;
 
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 /**
  * @author team01
@@ -14,6 +15,8 @@ public class Meal {
 	private LinkedList<FoodServing> foodServings;
 	private float calories;
 	private Macro macros;
+	private boolean isDish = false;
+	private float dishWeight = 0;
 	
 	//Constructor
 	/**
@@ -72,6 +75,26 @@ public class Meal {
 	 * @param foodServings
 	 */
 	public void setFoodServings(LinkedList<FoodServing> foodServings) {this.foodServings = foodServings;}
+	/**
+	 * Specifies if Meal Object is a dish or not a dish (a standard meal)
+	 * @param Boolean. True = is a dish. False = is a meal.
+	 */
+	public void setIsDish(boolean b) { this.isDish = b; } 
+	/**
+	 * Returns isDish. True = meal is a dish. False = meal is a standard meal
+	 * @param Boolean
+	 */
+	public boolean getIsDish() { return this.isDish; }
+	/**
+	 * Setter for dishWeight
+	 * @param weight, float
+	 */
+	public void setDishWeight(float weight) { this.dishWeight = weight; } 
+	/**
+	 * Getter for dishWeight()
+	 * @return float, dishWeight
+	 */
+	public float getDishWeight() {return this.dishWeight; }
 	
 	//Methods
 	/**
@@ -88,6 +111,8 @@ public class Meal {
 		
 		foodServings.add(newFoodServing);
 		calorieContent = " (+ "+(int)calories + " Cal)"; //ex:    Meal 1 (+ 445 Cal)
+		
+		if(isDish) this.calcDishWeight();
 		//System.out.println("calorieContent: " + calorieContent);
 	}
 	
@@ -107,6 +132,8 @@ public class Meal {
 		
 		this.foodServings.remove(index); 
 		calorieContent = " (+ "+(int)calories + " Cal)";
+		
+		if(isDish) this.calcDishWeight();
 		//System.out.println("calorieContent: " + calorieContent);
 	}
 	
@@ -114,7 +141,29 @@ public class Meal {
 	 * Gets the total number of Food Servings.
 	 * @return
 	 */
-	public int numberOfServings() 
-	{ return foodServings.size(); }
+	public int numberOfServings() { return foodServings.size(); }
+	
+	public boolean calcDishWeight()
+	{
+		if(isDish)
+		{
+			dishWeight = 0;
+			ListIterator<FoodServing> foodservings = this.foodServings.listIterator();
+			while(foodservings.hasNext())
+			{
+				FoodServing foodserving = foodservings.next();
+				if(foodserving.getServingUnit().equals("g")) dishWeight += foodserving.getServingSize();
+			}
+			return true;
+		}
+		else return false;
+	}
+	
+	
+	/**
+	 * Method to serve portions from meal (for serving from a Dish)
+	 */
+	
+	
 	
 }//Class

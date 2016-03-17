@@ -51,10 +51,15 @@ public class MainWindow extends JFrame {
 	//Data Storage:
 	private LinkedList<Day> days = new LinkedList<Day>();
 	private LinkedList<Day> futureDays = new LinkedList<Day>();
+	
+	private LinkedList<Meal> myMeals = new LinkedList<Meal>();
+	private LinkedList<Meal> myDishes = new LinkedList<Meal>();
 
 	//Time & Date Formats:
-	private SimpleDateFormat fmDayofWeek = new SimpleDateFormat ("EEEE");		//date format: Wednesday
+	private SimpleDateFormat fmDate = new SimpleDateFormat("yyyy-MM-dd"); 				//date format: 2016-02-18
+	private SimpleDateFormat fmDayofWeek = new SimpleDateFormat ("EEEE");				//date format: Wednesday
 	private SimpleDateFormat fmLastRefresh = new SimpleDateFormat ("MMMM d, h:mm a");	//time format: "Feb 28, 1:34 PM"
+	private SimpleDateFormat fmTime = new SimpleDateFormat ("H:mm");					//time format 07:15 (or 13:00 for 1pm)
 	
 	private LoadingScreen loadingScreen;
 	private WeighScreen weighScreen;
@@ -62,7 +67,7 @@ public class MainWindow extends JFrame {
 	private DashboardScreen dashboardScreen;
 	
 	//User Preferences
-	private DashboardPreferences userDashboardPreferences;
+	private DashboardPreferences userDashboardPreferences = new DashboardPreferences();
 	
 	/**
 	 * Class Constructor
@@ -86,21 +91,23 @@ public class MainWindow extends JFrame {
     	if (testMode) {
     		this.lastCall = new Date();
     	}
-
+    	
+    	
+    	//read user dashboard preferences from file
     	try {
 
     		ObjectInputStream in = new ObjectInputStream(new FileInputStream("dashboardpreferences.dat"));
     		userDashboardPreferences = (DashboardPreferences) in.readObject();
     		in.close();
     	} catch (FileNotFoundException e) {
-    		userDashboardPreferences = new DashboardPreferences();
+    		System.out.println("Couldn't find previous preferences file. Resetting preferences");
     	} catch (IOException e) {
     		System.out.println(e.getMessage());
     	} catch (ClassNotFoundException e) {
     		System.out.println(e.getMessage());
     	}
-    		    	
-    	
+
+    	//serialize future days and plans data
     	try {
     		ObjectInputStream in = new ObjectInputStream(new FileInputStream("futuredays.dat"));
     		futureDays = (LinkedList<Day>) in.readObject();
@@ -108,6 +115,23 @@ public class MainWindow extends JFrame {
     	} catch (FileNotFoundException e) {
     		System.out.println("Couldn't find future days info. No Plans active.");
     	} catch (IOException e) {
+    		System.out.println(e.getMessage());
+    	} catch (ClassNotFoundException e) {
+    		System.out.println(e.getMessage());
+    	}
+    	//read user past days from a file
+    	//have reading code in separate try-catch statements because there is no
+    	//way of knowing which file failed to be found, therefore need separate catch statements
+    	//logically, if it finds one, it should find the rest, since they're all saved at the same time
+    	//but for now, we'll do it this way in order to avoid any overlooked logical errors
+    	try {
+    		ObjectInputStream in = new ObjectInputStream(new FileInputStream("pastdays.dat"));
+    		days = (LinkedList<Day>) in.readObject();
+    		in.close();
+    	} catch (FileNotFoundException e) {
+    		//days = new LinkedList<Day>();
+    		System.out.println("Coudln't find past days user data. Starting with new data");
+	   	} catch (IOException e) {
     		System.out.println(e.getMessage());
     	} catch (ClassNotFoundException e) {
     		System.out.println(e.getMessage());
@@ -123,8 +147,6 @@ public class MainWindow extends JFrame {
 		if (testMode) this.getLoadingScreen().initTestMode();
 		else this.getLoadingScreen().initSetup();
 	}
-
-	
 	
 	/**
 	 * Checks if the program is in "test" mode.
@@ -333,6 +355,132 @@ public class MainWindow extends JFrame {
     	//genv.registerFont(font);
     	//font = font.deriveFont(12f);
     }
+    
+    
+    //REFRESH EVENT METHOD
+    
+    /**
+	 * Called to refresh the App's data with up-to-date data
+	 * Called when:
+	 * 1) App launches (and firstCall == false) (during LoadingScreen)
+	 * 2) User clicks Manual Refresh button
+	 */
+	public void refreshEvent()
+	{
+			//[TEST:			]
+			// Initial Setup is completed, time has elapsed, and the user has triggered a refresh event where their data and the UI needs updating.
+			// API calls need to be made to update the user's data and the downloaded data needs to be processed and displayed on UI.
+			//Pseudo-Algorithm:
+			// Get time difference between when the last API call was made and OS's current time. Convert to minutes.
+			// Compute the number of days that need to be updated from this time difference.
+			// Make the appropriate number of API calls to update the total number of days that need updating.
+		
+		
+			//Get OS's current time
+			//Compute time difference
+			//////////////////////////////
+			Date currentTime = new Date(); 																
+			long timeRange = (currentTime.getTime() - lastCall.getTime())/(long)1000/(long)60; 		//convert time difference to minutes
+			//////////////////////////////
+			
+			if(timeRange > 0) 																				//else: not enough time has elapsed to warrant a refresh
+			{
+				int todayRemainder = 1440 - days.getLast().getDayProgress();
+				
+				if (timeRange < todayRemainder) 															//Update current day up till currentTime
+				{
+					
+					setLastCall(currentTime); 
+					APICall(fmDate.format(days.getLast().getDate()),fmTime.format(days.getLast().getLastUpdated()),fmTime.format(currentTime),days.getLast());
+				}
+				
+				else if (timeRange == todayRemainder) 														//Update entire remainder of current day
+				{ 
+					setLastCall(currentTime);
+					APICall(fmDate.format(days.getLast().getDate()),fmTime.format(days.getLast().getLastUpdated()),fmTime.format(currentTime),days.getLast());
+//					//Must add a new day to "days". This is the new "current day":
+//					Date date = new Date(); //Date of new day starting at 12:00am
+//					Day day = new Day(date);
+//					mainWindow.getDays().add(day);
+					
+					//Transfer first day in "futureDays" to end of "days"
+					//////////////////////////////////////////////////////////
+					days.add(futureDays.pop());
+					//must replenish day lost by "futureDays"
+					Day day = new Day(new Date(futureDays.getLast().getDate().getTime() + 24*60*60*1000));	//Has a date that is one day ahead of the last day in "futureDays"
+					day.setDayProgress(0);
+					//add day to end of "futureDays"
+					futureDays.add(day);
+					//////////////////////////////////////////////////////////
+					
+				}
+				
+				else if (timeRange > todayRemainder) 
+				{ 
+					setLastCall(currentTime);								//First, update the previous "current day" first
+					APICall(fmDate.format(days.getLast().getDate()),fmTime.format(days.getLast().getLastUpdated()),"23:59",days.getLast()); 												
+					
+					double daysRemainder = timeRange - todayRemainder; 					//the previous "current day" has been updated so we must remove this from the days that need updating.
+					int nDays = (int)daysRemainder / 1440; 								//number of WHOLE days that need to be added to "days" and then updated
+					
+					if (nDays == 0) 													//only new current day needs to be updated
+					{
+						//Transfer first day in "futureDays" to end of "days"
+						//////////////////////////////////////////////////////////
+						days.add(futureDays.pop());
+						//must replenish day lost by "futureDays"
+						Day day = new Day(new Date(futureDays.getLast().getDate().getTime() + 24*60*60*1000));	//Has a date that is one day ahead of the last day in "futureDays"
+						day.setDayProgress(0);
+						//add day to end of "futureDays"
+						futureDays.add(day);
+						//////////////////////////////////////////////////////////
+						
+						//now update the new current day in "days" with the appropriate amount of data:
+						APICall(fmDate.format(days.getLast().getDate()),"00:00",fmTime.format(currentTime),days.getLast()); 
+					}
+					else if(nDays > 0)
+					{
+						//Need to transfer "nDays" number of days from "futureDays" to "days"
+						//Assign the correct dates to them. Then add to "days" LinkedList. Then call APICall on new days.
+						for (int i = 0; i<nDays; i++)
+						{ 
+							//Transfer first day in "futureDays" to end of "days"
+							//////////////////////////////////////////////////////////
+							days.add(futureDays.pop());
+							//must replenish day lost by "futureDays"
+							Day day = new Day(new Date(futureDays.getLast().getDate().getTime() + 24*60*60*1000));	//Has a date that is one day ahead of the last day in "futureDays"
+							day.setDayProgress(0);
+							//add day to end of "futureDays"
+							futureDays.add(day);
+							//////////////////////////////////////////////////////////
+							
+							//now update the newly added day in "days" with a full day's worth of data:
+							APICall(fmDate.format(days.getLast().getDate()),"00:00","23:59",days.getLast()); 
+						}
+						if (((int)daysRemainder % 1440) > 0) 							// then the new "current day" needs updated data as well
+						{ 
+							//Transfer first day in "futureDays" to end of "days"
+							//////////////////////////////////////////////////////////
+							days.add(futureDays.pop());
+							//must replenish day lost by "futureDays"
+							Day day = new Day(new Date(futureDays.getLast().getDate().getTime() + 24*60*60*1000));	//Has a date that is one day ahead of the last day in "futureDays"
+							day.setDayProgress(0);
+							//add day to end of "futureDays"
+							futureDays.add(day);
+							//////////////////////////////////////////////////////////
+							
+							//now update the new current day in "days" with the appropriate amount of data:
+							APICall(fmDate.format(days.getLast().getDate()),"00:00",fmTime.format(currentTime),days.getLast()); 
+						}
+					}
+				}
+			}
+			
+	}
+    
+    
+    
+    
     
 	//API METHODS
     
