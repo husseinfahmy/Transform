@@ -113,7 +113,9 @@ public class MainWindow extends JFrame {
 		if (testMode) this.getLoadingScreen().initTestMode();
 		else this.getLoadingScreen().initSetup();
 	}
-    
+
+	
+	
 	/**
 	 * Checks if the program is in "test" mode.
 	 * @return
@@ -230,9 +232,14 @@ public class MainWindow extends JFrame {
 	
 	/**
 	 * Gets the Virtual Trainer object.
-	 * @return
+	 * @return VirtualTrainer
 	 */
 	public VirtualTrainer getVirtualTrainer() { return this.vt; }
+	/**
+	 * Sets the Virtual Trainer object
+	 * @param vt
+	 */
+	public void setVirtualTrainer(VirtualTrainer vt) { this.vt = vt; } 
 	
 	/**
 	 * Gets the day of the week as a string.
