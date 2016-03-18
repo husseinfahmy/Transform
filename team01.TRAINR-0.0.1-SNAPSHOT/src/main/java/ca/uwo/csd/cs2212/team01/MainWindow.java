@@ -100,36 +100,44 @@ public class MainWindow extends JFrame {
     		userDashboardPreferences = (DashboardPreferences) in.readObject();
     		in.close();
     	} catch (FileNotFoundException e) {
-    		//userDashboardPreferences = new DashboardPreferences();
     		System.out.println("Couldn't find previous preferences file. Resetting preferences");
     	} catch (IOException e) {
     		System.out.println(e.getMessage());
     	} catch (ClassNotFoundException e) {
     		System.out.println(e.getMessage());
     	}
-    	
+
+    	//serialize future days and plans data
+    	try {
+    		ObjectInputStream in = new ObjectInputStream(new FileInputStream("futuredays.dat"));
+    		futureDays = (LinkedList<Day>) in.readObject();
+    		in.close();
+    	} catch (FileNotFoundException e) {
+    		System.out.println("Couldn't find future days info. No Plans active.");
+    	} catch (IOException e) {
+    		System.out.println(e.getMessage());
+    	} catch (ClassNotFoundException e) {
+    		System.out.println(e.getMessage());
+    	}
     	//read user past days from a file
     	//have reading code in separate try-catch statements because there is no
     	//way of knowing which file failed to be found, therefore need separate catch statements
     	//logically, if it finds one, it should find the rest, since they're all saved at the same time
     	//but for now, we'll do it this way in order to avoid any overlooked logical errors
     	try {
-
     		ObjectInputStream in = new ObjectInputStream(new FileInputStream("pastdays.dat"));
     		days = (LinkedList<Day>) in.readObject();
     		in.close();
     	} catch (FileNotFoundException e) {
     		//days = new LinkedList<Day>();
     		System.out.println("Coudln't find past days user data. Starting with new data");
-    	} catch (IOException e) {
+	   	} catch (IOException e) {
     		System.out.println(e.getMessage());
     	} catch (ClassNotFoundException e) {
     		System.out.println(e.getMessage());
     	}
     	
-    	
-    	
-		loadingScreen = new LoadingScreen(this);
+    	loadingScreen = new LoadingScreen(this);
 		splashScreen = new SplashScreen(this);
 		weighScreen = new WeighScreen(this);
 		dashboardScreen = new DashboardScreen(this);
@@ -139,8 +147,6 @@ public class MainWindow extends JFrame {
 		if (testMode) this.getLoadingScreen().initTestMode();
 		else this.getLoadingScreen().initSetup();
 	}
-
-	
 	
 	/**
 	 * Checks if the program is in "test" mode.

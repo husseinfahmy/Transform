@@ -121,6 +121,7 @@ public class ButtonActionListener implements ActionListener {
 			break;
 			
 		case 2: // Exit Button
+		
 			//write user dashboard preferences to file	
 			try{
 			   FileOutputStream fout = new FileOutputStream("dashboardpreferences.dat");
@@ -133,6 +134,19 @@ public class ButtonActionListener implements ActionListener {
 			   System.out.println(exception.getMessage());
 			}
 			
+
+			//Write user's future days to file
+		    try{
+	               FileOutputStream fout = new FileOutputStream("futuredays.dat");
+	               ObjectOutputStream out = new ObjectOutputStream(fout);
+	               out.writeObject(mainWindow.getFutureDays());   //(over)writes dashboard preferences file
+	               out.close();
+	            }catch(FileNotFoundException exception){
+	               System.out.println(exception.getMessage());
+	            }catch(IOException exception){
+	               System.out.println(exception.getMessage());
+	            }
+
 			//write user past days to file
 			try{
 			   FileOutputStream fout = new FileOutputStream("pastdays.dat");
@@ -144,6 +158,7 @@ public class ButtonActionListener implements ActionListener {
 			}catch(IOException exception){
 			   System.out.println(exception.getMessage());
 			}
+
 			System.exit(0);
 			break;
 			
