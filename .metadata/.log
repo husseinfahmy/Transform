@@ -1,0 +1,24 @@
+!SESSION 2016-03-18 22:16:08.991 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_74
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_CA
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.ui 2 0 2016-03-18 22:16:30.465
+!MESSAGE The 'org.eclipse.ui.startup' extension from 'com.objectaid.uml' does not provide a 'class' attribute.
+This usage is deprecated and a 'class' attribute should be provided.
+The release after Mars (4.5) will no longer support the deprecated usage!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-03-18 22:17:28.013
+!MESSAGE The POM for ca.uwo.csd.cs2212:scribejava-apis:jar:2.2.2-CS2212 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-03-18 22:17:28.016
+!MESSAGE The POM for ca.uwo.csd.cs2212:scribejava-core:jar:2.2.2-CS2212 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-03-18 22:17:31.605
+!MESSAGE The POM for ca.uwo.csd.cs2212:scribejava-apis:jar:2.2.2-CS2212 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2016-03-18 22:17:31.606
+!MESSAGE The POM for ca.uwo.csd.cs2212:scribejava-core:jar:2.2.2-CS2212 is missing, no dependency information available
