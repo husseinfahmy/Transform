@@ -1,0 +1,29 @@
+2016-03-18 22:17:24,855 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: ca.uwo.csd.cs2212.team01:team01-TRAINR:0.0.1-SNAPSHOT @ /home/hussein/Documents/Work/CS2212/BitBucket/team01/team01.TRAINR-0.0.1-SNAPSHOT/pom.xml.
+2016-03-18 22:17:28,011 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for ca.uwo.csd.cs2212:scribejava-apis:jar:2.2.2-CS2212 is missing, no dependency information available
+2016-03-18 22:17:28,015 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for ca.uwo.csd.cs2212:scribejava-core:jar:2.2.2-CS2212 is missing, no dependency information available
+2016-03-18 22:17:29,748 [Worker-1] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /team01.TRAINR-0.0.1-SNAPSHOT/src/main/java
+2016-03-18 22:17:29,749 [Worker-1] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /team01.TRAINR-0.0.1-SNAPSHOT/src/main/resources
+2016-03-18 22:17:29,749 [Worker-1] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /team01.TRAINR-0.0.1-SNAPSHOT/src/test/java
+2016-03-18 22:17:29,911 [Worker-1] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 19 sec
+2016-03-18 22:17:31,602 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for ca.uwo.csd.cs2212:scribejava-apis:jar:2.2.2-CS2212 is missing, no dependency information available
+2016-03-18 22:17:31,606 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for ca.uwo.csd.cs2212:scribejava-core:jar:2.2.2-CS2212 is missing, no dependency information available
+2016-03-18 22:17:31,675 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-18 22:17:31,689 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 6 resources
+2016-03-18 22:17:31,823 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-18 22:17:31,823 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/hussein/Documents/Work/CS2212/BitBucket/team01/team01.TRAINR-0.0.1-SNAPSHOT/src/test/resources
+2016-03-18 23:16:04,015 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-18 23:16:04,020 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 6 resources
+2016-03-18 23:16:04,022 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-18 23:16:04,022 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/hussein/Documents/Work/CS2212/BitBucket/team01/team01.TRAINR-0.0.1-SNAPSHOT/src/test/resources
+2016-03-18 23:16:59,530 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-18 23:16:59,531 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 6 resources
+2016-03-18 23:16:59,533 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-18 23:16:59,533 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/hussein/Documents/Work/CS2212/BitBucket/team01/team01.TRAINR-0.0.1-SNAPSHOT/src/test/resources
+2016-03-18 23:20:14,962 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-18 23:20:14,963 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 6 resources
+2016-03-18 23:20:14,964 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-18 23:20:14,965 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/hussein/Documents/Work/CS2212/BitBucket/team01/team01.TRAINR-0.0.1-SNAPSHOT/src/test/resources
+2016-03-18 23:21:09,658 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-18 23:21:09,659 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 6 resources
+2016-03-18 23:21:09,660 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-03-18 23:21:09,661 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/hussein/Documents/Work/CS2212/BitBucket/team01/team01.TRAINR-0.0.1-SNAPSHOT/src/test/resources

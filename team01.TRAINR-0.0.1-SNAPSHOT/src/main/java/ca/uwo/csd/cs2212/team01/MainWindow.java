@@ -119,6 +119,32 @@ public class MainWindow extends JFrame {
     	} catch (ClassNotFoundException e) {
     		System.out.println(e.getMessage());
     	}
+    	//read meal history
+    	try {
+
+    		ObjectInputStream in = new ObjectInputStream(new FileInputStream("mymeals.dat"));
+    		myMeals = (LinkedList<Meal>) in.readObject();
+    		in.close();
+    	} catch (FileNotFoundException e) {
+    		System.out.println("Couldn't user meals file. No Meal History");
+    	} catch (IOException e) {
+    		System.out.println(e.getMessage());
+    	} catch (ClassNotFoundException e) {
+    		System.out.println(e.getMessage());
+    	}
+    	//read dish history
+    	try {
+
+    		ObjectInputStream in = new ObjectInputStream(new FileInputStream("mydishes.dat"));
+    		myDishes = (LinkedList<Meal>) in.readObject();
+    		in.close();
+    	} catch (FileNotFoundException e) {
+    		System.out.println("Couldn't user dishes file. No Dish History");
+    	} catch (IOException e) {
+    		System.out.println(e.getMessage());
+    	} catch (ClassNotFoundException e) {
+    		System.out.println(e.getMessage());
+    	}
     	//read user past days from a file
     	//have reading code in separate try-catch statements because there is no
     	//way of knowing which file failed to be found, therefore need separate catch statements
@@ -248,6 +274,22 @@ public class MainWindow extends JFrame {
 
 	public void setUserDashboardPreferences(DashboardPreferences userDashboardPreferences) {
 		this.userDashboardPreferences = userDashboardPreferences;
+	}
+
+	public LinkedList<Meal> getMyMeals() {
+		return myMeals;
+	}
+
+	public void setMyMeals(LinkedList<Meal> myMeals) {
+		this.myMeals = myMeals;
+	}
+
+	public LinkedList<Meal> getMyDishes() {
+		return myDishes;
+	}
+
+	public void setMyDishes(LinkedList<Meal> myDishes) {
+		this.myDishes = myDishes;
 	}
 
 	/**
