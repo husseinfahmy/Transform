@@ -50,7 +50,7 @@ public class LoadingScreen extends JPanel {
 	public void initSetup() {
 		if(mainWindow.isFirstCall())
 		{
-			Date[] dateArray = new Date[28]; int dayNumber;
+			Date[] dateArray = new Date[21]; int dayNumber;
 			for (int i = 0; i<6; i++)
 			{ dayNumber = (5 - i); dateArray[dayNumber] = new Date(System.currentTimeMillis() - (i+1)*24*60*60*1000); }
 			
@@ -72,12 +72,12 @@ public class LoadingScreen extends JPanel {
 			Day day = new Day(todayDate); mainWindow.getDays().add(day); day.setDayProgress(minutes);
 			
 			//[TEST: PASSED]
-			//Create 28 more empty day objects.
-			for (int i = 0; i<28; i++)
+			//Create 21 more empty day objects.
+			for (int i = 0; i<21; i++)
 			{ dateArray[i] = new Date(System.currentTimeMillis() + (i+1)*24*60*60*1000); }
 			
 			//Add to "futureDays"
-			for(int i = 0; i<28; i++)
+			for(int i = 0; i<21; i++)
 			{ day = new Day(dateArray[i]); day.setDayProgress(0); mainWindow.getFutureDays().add(day); }
 			
 			// [TEST: PASSED]			
