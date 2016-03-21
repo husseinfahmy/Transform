@@ -2,6 +2,7 @@ ca/uwo/csd/cs2212/team01/GoalPanel.class
 ca/uwo/csd/cs2212/team01/Macro.class
 ca/uwo/csd/cs2212/team01/LoadingScreen$2.class
 ca/uwo/csd/cs2212/team01/Meal.class
+ca/uwo/csd/cs2212/team01/TrophyProgression.class
 ca/uwo/csd/cs2212/team01/App.class
 ca/uwo/csd/cs2212/team01/DashboardScreen$4.class
 ca/uwo/csd/cs2212/team01/LoadingScreen.class
@@ -28,6 +29,7 @@ ca/uwo/csd/cs2212/team01/SplashScreen$1.class
 ca/uwo/csd/cs2212/team01/DashboardScreen$3.class
 ca/uwo/csd/cs2212/team01/DashboardScreen$1.class
 ca/uwo/csd/cs2212/team01/FoodServing.class
+OCR.class
 ca/uwo/csd/cs2212/team01/Feedback.class
 ca/uwo/csd/cs2212/team01/ButtonActionListener.class
 ca/uwo/csd/cs2212/team01/WeighScreen.class
