@@ -143,19 +143,7 @@ public class ButtonActionListener implements ActionListener {
 			   fout = new FileOutputStream("mydishes.dat");
 			   out = new ObjectOutputStream(fout);
 			   out.writeObject(mainWindow.getMyDishes());					//(over)writes user dish data
-			   
-			   fout = new FileOutputStream("firstcall.dat");
-			   out = new ObjectOutputStream(fout);
-			   out.writeObject(mainWindow.getFirstCall());					//(over)writes first call variable
-			   
-			   fout = new FileOutputStream("user.dat");
-			   out = new ObjectOutputStream(fout);
-			   out.writeObject(mainWindow.getUser());						//(over)writes user info
-
-			   fout = new FileOutputStream("virtualtrainer.dat");
-			   out = new ObjectOutputStream(fout);
-			   out.writeObject(mainWindow.getVirtualTrainer());				//(over)writes virtual trainer information
-
+				
 			   out.close();
 			}catch(FileNotFoundException exception){
 			   System.out.println(exception.getMessage());
