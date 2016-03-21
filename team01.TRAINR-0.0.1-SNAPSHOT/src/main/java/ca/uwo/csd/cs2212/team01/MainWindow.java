@@ -30,7 +30,7 @@ import com.github.scribejava.core.exceptions.OAuthException;
  * @author team01
  *
  */
-public class MainWindow extends JFrame {
+public class MainWindow extends JFrame implements Serializable {
 	static final String CREDENTIALS_FILE_PATH = "src/main/resources/Team1Credentials.txt";
 	static final String TOKENS_FILE_PATH = "src/main/resources/Team1Tokens.txt";
 	
@@ -94,56 +94,6 @@ public class MainWindow extends JFrame {
     		this.lastCall = new Date();
     	}
     	
-    	
-    	
-    	try {
-    		//read user dashboard preferences from file
-    		ObjectInputStream in = new ObjectInputStream(new FileInputStream("dashboardpreferences.dat"));
-    		userDashboardPreferences = (DashboardPreferences) in.readObject();
-    		
-    		
-    		//read future days and plans data
-    		in = new ObjectInputStream(new FileInputStream("futuredays.dat"));
-    		futureDays = (LinkedList<Day>) in.readObject();
-    		
-    		
-    		//read meal history
-    		in = new ObjectInputStream(new FileInputStream("mymeals.dat"));
-    		myMeals = (LinkedList<Meal>) in.readObject();
-    		
-    		
-    		//read dish history
-    		in = new ObjectInputStream(new FileInputStream("mydishes.dat"));
-    		myDishes = (LinkedList<Meal>) in.readObject();
-    		
-    		
-    		//read user past days from file
-    		in = new ObjectInputStream(new FileInputStream("pastdays.dat"));
-    		days = (LinkedList<Day>) in.readObject();
-    	    
-    	    
-    		//read firstcall from file
-    		in = new ObjectInputStream(new FileInputStream("firstcall.dat"));
-    		firstCall = (Boolean) in.readObject();
-    		
-    		
-    		//read user from file
-    		in = new ObjectInputStream(new FileInputStream("user.dat"));
-    		user = (User) in.readObject();
-    		
-    		
-    		//read virtual trainer from file
-    		in = new ObjectInputStream(new FileInputStream("virtualtrainer.dat"));
-    		vt = (VirtualTrainer) in.readObject();
-    		in.close();
-    	} catch (FileNotFoundException e) {
-    		System.out.println("Couldn't find previous preferences file. Resetting preferences");
-    	} catch (IOException e) {
-    		System.out.println(e.getMessage());
-    	} catch (ClassNotFoundException e) {
-    		System.out.println(e.getMessage());
-    	}
-
     	
     	loadingScreen = new LoadingScreen(this);
 		splashScreen = new SplashScreen(this);

@@ -127,38 +127,9 @@ public class ButtonActionListener implements ActionListener {
 		
 			//write user dashboard preferences to file	
 			try{
-			   FileOutputStream fout = new FileOutputStream("dashboardpreferences.dat");
+			   FileOutputStream fout = new FileOutputStream("window.dat");
 			   ObjectOutputStream out = new ObjectOutputStream(fout);
-			   out.writeObject(mainWindow.getUserDashboardPreferences());	//(over)writes dashboard preferences file
-			   
-			   fout = new FileOutputStream("futuredays.dat");
-			   out = new ObjectOutputStream(fout);
-			   out.writeObject(mainWindow.getFutureDays());					//(over)writes future days file
-			   
-			   fout = new FileOutputStream("pastdays.dat");
-			   out = new ObjectOutputStream(fout);
-			   out.writeObject(mainWindow.getDays());						//(over)writes user past days data
-			   
-			   fout = new FileOutputStream("mymeals.dat");
-			   out = new ObjectOutputStream(fout);
-			   out.writeObject(mainWindow.getMyMeals());					//(over)writes user past meals data
-			
-			   fout = new FileOutputStream("mydishes.dat");
-			   out = new ObjectOutputStream(fout);
-			   out.writeObject(mainWindow.getMyDishes());					//(over)writes user dish data
-			   
-			   fout = new FileOutputStream("firstcall.dat");
-			   out = new ObjectOutputStream(fout);
-			   out.writeObject(mainWindow.getFirstCall());					//(over)writes first call variable
-			   
-			   fout = new FileOutputStream("user.dat");
-			   out = new ObjectOutputStream(fout);
-			   out.writeObject(mainWindow.getUser());						//(over)writes user info
-
-			   fout = new FileOutputStream("virtualtrainer.dat");
-			   out = new ObjectOutputStream(fout);
-			   out.writeObject(mainWindow.getVirtualTrainer());				//(over)writes virtual trainer information
-
+			   out.writeObject(mainWindow);	//(over)writes dashboard preferences file
 			   out.close();
 			}catch(FileNotFoundException exception){
 			   System.out.println(exception.getMessage());
