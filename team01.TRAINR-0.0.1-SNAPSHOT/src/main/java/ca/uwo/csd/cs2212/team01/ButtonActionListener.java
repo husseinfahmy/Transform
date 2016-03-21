@@ -108,7 +108,10 @@ public class ButtonActionListener implements ActionListener {
 			
 		case 1: // Refresh Button
 			this.mainWindow.updateLastRefreshed();
-			
+			//display "updating app"
+			this.mainWindow.refreshEvent();
+			//remove that textbox
+			// notify user app is updating?
 			this.mainWindow.updateDashboardScreen();
 			
 			//label = mainWindow.getDashboardScreen().getRefreshDesc();

@@ -40,13 +40,13 @@ public class MainWindow extends JFrame {
 	private boolean testMode;
 
 	//Time & Date Stamps:
-	private Date lastCall;
-	private boolean firstCall = true;
+	private Date lastCall;									
+	private boolean firstCall = true;						
 	public static final int MAX_PROGRESS = 1440;
 
 	//User & Virtual Trainer Storage:
-	private User user;	
-	private VirtualTrainer vt;
+	private User user;										
+	private VirtualTrainer vt;								
 
 	//Data Storage:
 	private LinkedList<Day> days = new LinkedList<Day>();

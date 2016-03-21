@@ -124,6 +124,8 @@ public class LoadingScreen extends JPanel {
 		while(x == 0) {
 		}*/
 		
+		if(!mainWindow.isFirstCall()) return;
+		
 		Date today = new Date();
 		
 		mainWindow.setLastCall(today);
