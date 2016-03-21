@@ -40,15 +40,13 @@ public class MainWindow extends JFrame {
 	private boolean testMode;
 
 	//Time & Date Stamps:
-
 	private Date lastCall;
-	private Boolean firstCall = true;//srlze
+	private boolean firstCall = true;
 	public static final int MAX_PROGRESS = 1440;
 
 	//User & Virtual Trainer Storage:
-	private User user;	//srlze
+	private User user;	
 	private VirtualTrainer vt;
-
 
 	//Data Storage:
 	private LinkedList<Day> days = new LinkedList<Day>();
@@ -95,46 +93,11 @@ public class MainWindow extends JFrame {
     	}
     	
     	
-    	
+    	//read user dashboard preferences from file
     	try {
-    		//read user dashboard preferences from file
+
     		ObjectInputStream in = new ObjectInputStream(new FileInputStream("dashboardpreferences.dat"));
     		userDashboardPreferences = (DashboardPreferences) in.readObject();
-    		
-    		
-    		//read future days and plans data
-    		in = new ObjectInputStream(new FileInputStream("futuredays.dat"));
-    		futureDays = (LinkedList<Day>) in.readObject();
-    		
-    		
-    		//read meal history
-    		in = new ObjectInputStream(new FileInputStream("mymeals.dat"));
-    		myMeals = (LinkedList<Meal>) in.readObject();
-    		
-    		
-    		//read dish history
-    		in = new ObjectInputStream(new FileInputStream("mydishes.dat"));
-    		myDishes = (LinkedList<Meal>) in.readObject();
-    		
-    		
-    		//read user past days from file
-    		in = new ObjectInputStream(new FileInputStream("pastdays.dat"));
-    		days = (LinkedList<Day>) in.readObject();
-    	    
-    	    
-    		//read firstcall from file
-    		in = new ObjectInputStream(new FileInputStream("firstcall.dat"));
-    		firstCall = (Boolean) in.readObject();
-    		
-    		
-    		//read user from file
-    		in = new ObjectInputStream(new FileInputStream("user.dat"));
-    		user = (User) in.readObject();
-    		
-    		
-    		//read virtual trainer from file
-    		in = new ObjectInputStream(new FileInputStream("virtualtrainer.dat"));
-    		vt = (VirtualTrainer) in.readObject();
     		in.close();
     	} catch (FileNotFoundException e) {
     		System.out.println("Couldn't find previous preferences file. Resetting preferences");
@@ -144,6 +107,61 @@ public class MainWindow extends JFrame {
     		System.out.println(e.getMessage());
     	}
 
+    	//serialize future days and plans data
+    	try {
+    		ObjectInputStream in = new ObjectInputStream(new FileInputStream("futuredays.dat"));
+    		futureDays = (LinkedList<Day>) in.readObject();
+    		in.close();
+    	} catch (FileNotFoundException e) {
+    		System.out.println("Couldn't find future days info. No Plans active.");
+    	} catch (IOException e) {
+    		System.out.println(e.getMessage());
+    	} catch (ClassNotFoundException e) {
+    		System.out.println(e.getMessage());
+    	}
+    	//read meal history
+    	try {
+
+    		ObjectInputStream in = new ObjectInputStream(new FileInputStream("mymeals.dat"));
+    		myMeals = (LinkedList<Meal>) in.readObject();
+    		in.close();
+    	} catch (FileNotFoundException e) {
+    		System.out.println("Couldn't user meals file. No Meal History");
+    	} catch (IOException e) {
+    		System.out.println(e.getMessage());
+    	} catch (ClassNotFoundException e) {
+    		System.out.println(e.getMessage());
+    	}
+    	//read dish history
+    	try {
+
+    		ObjectInputStream in = new ObjectInputStream(new FileInputStream("mydishes.dat"));
+    		myDishes = (LinkedList<Meal>) in.readObject();
+    		in.close();
+    	} catch (FileNotFoundException e) {
+    		System.out.println("Couldn't user dishes file. No Dish History");
+    	} catch (IOException e) {
+    		System.out.println(e.getMessage());
+    	} catch (ClassNotFoundException e) {
+    		System.out.println(e.getMessage());
+    	}
+    	//read user past days from a file
+    	//have reading code in separate try-catch statements because there is no
+    	//way of knowing which file failed to be found, therefore need separate catch statements
+    	//logically, if it finds one, it should find the rest, since they're all saved at the same time
+    	//but for now, we'll do it this way in order to avoid any overlooked logical errors
+    	try {
+    		ObjectInputStream in = new ObjectInputStream(new FileInputStream("pastdays.dat"));
+    		days = (LinkedList<Day>) in.readObject();
+    		in.close();
+    	} catch (FileNotFoundException e) {
+    		//days = new LinkedList<Day>();
+    		System.out.println("Coudln't find past days user data. Starting with new data");
+	   	} catch (IOException e) {
+    		System.out.println(e.getMessage());
+    	} catch (ClassNotFoundException e) {
+    		System.out.println(e.getMessage());
+    	}
     	
     	loadingScreen = new LoadingScreen(this);
 		splashScreen = new SplashScreen(this);
@@ -297,14 +315,6 @@ public class MainWindow extends JFrame {
 	 */
 	public void setVirtualTrainer(VirtualTrainer vt) { this.vt = vt; } 
 	
-	public Boolean getFirstCall() {
-		return firstCall;
-	}
-
-	public void setFirstCall(Boolean firstCall) {
-		this.firstCall = firstCall;
-	}
-
 	/**
 	 * Gets the day of the week as a string.
 	 * @param day
