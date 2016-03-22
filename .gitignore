@@ -1,11 +1,1 @@
-#Maven and compiler
 /target/
-*.class
-
-#eclipse
-../.metadata/
-../.recommenders/
-
-#for intellij
-.idea/
-*.iml
