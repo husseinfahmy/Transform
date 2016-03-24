@@ -196,16 +196,6 @@ public class MainWindow extends JFrame implements Serializable {
     public LinkedList<Day> getFutureDays() { return this.userPreferences.getFutureDays(); }
     
     /**
-     * Returns a list of Meals.
-     * @return
-     */
-    public LinkedList<Meal> getMeals() { return this.userPreferences.getMyMeals(); }
-    /**
-     * Returns a list of Dishes.
-     * @return
-     */
-    public LinkedList<Meal> getDishes() { return this.userPreferences.getMyDishes(); }
-    /**
      * Adds a Meal to the list of Meals.
      */
     public void addMeal(Meal newMeal) { if (newMeal != null) this.userPreferences.getMyMeals().add(newMeal); }

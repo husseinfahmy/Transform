@@ -465,14 +465,20 @@ public class ButtonActionListener implements ActionListener, Serializable {
 			
 		case 20: // Plan Manager Screen: remove meal
 			planManagerScreen = this.mainWindow.getPlanManagerScreen();
-			index = planManagerScreen.getMyMealsIndex()+this.value;
+			index = planManagerScreen.getMyDayMealsIndex()+this.value;
 			planManagerScreen.removeMeal(index);
 			break;
 			
 		case 21: // Plan Manager Screen: remove workout
 			planManagerScreen = this.mainWindow.getPlanManagerScreen();
-			index = planManagerScreen.getMyWorkoutsIndex()+this.value;
+			index = planManagerScreen.getMyDayWorkoutsIndex()+this.value;
 			planManagerScreen.removeWorkout(index);
+			break;
+			
+		case 22: // Plan Manager Screen: add meal to day plan
+			planManagerScreen = this.mainWindow.getPlanManagerScreen();
+			index = planManagerScreen.getMyMealsIndex(0)+this.value;
+			planManagerScreen.addMeal(this.mainWindow.getMyMeals().get(index));
 			break;
 		}
 	}
