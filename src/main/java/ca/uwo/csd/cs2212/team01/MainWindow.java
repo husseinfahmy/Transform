@@ -12,27 +12,12 @@ import java.util.Date;
 import java.util.LinkedList;
 
 import javax.swing.*;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.github.scribejava.apis.FitbitApi20;
-import com.github.scribejava.apis.service.FitbitOAuth20ServiceImpl;
-import com.github.scribejava.core.builder.ServiceBuilder;
-import com.github.scribejava.core.model.OAuth2AccessToken;
-import com.github.scribejava.core.model.OAuthRequest;
-import com.github.scribejava.core.model.Response;
-import com.github.scribejava.core.model.Verb;
-import com.github.scribejava.core.exceptions.OAuthConnectionException;
-import com.github.scribejava.core.exceptions.OAuthException;
 /**
  * @author team01
  *
  */
-public class MainWindow extends JFrame {
-	static final String CREDENTIALS_FILE_PATH = "src/main/resources/Team1Credentials.txt";
-	static final String TOKENS_FILE_PATH = "src/main/resources/Team1Tokens.txt";
+public class MainWindow extends JFrame implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	public Font FONT_HELVETICA_NEUE_THIN = null, FONT_HELVETICA_NEUE_ITALIC = null, FONT_HELVETICA_NEUE_BOLD = null;
 	private int posX = 0, posY = 0;
@@ -42,10 +27,11 @@ public class MainWindow extends JFrame {
 	public static final int MAX_PROGRESS = 1440;
 
 	//Time & Date Formats:
-	private SimpleDateFormat fmDate = new SimpleDateFormat("yyyy-MM-dd"); 				//date format: 2016-02-18
-	private SimpleDateFormat fmDayofWeek = new SimpleDateFormat ("EEEE");				//date format: Wednesday
-	private SimpleDateFormat fmLastRefresh = new SimpleDateFormat ("MMMM d, h:mm a");	//time format: "Feb 28, 1:34 PM"
-	private SimpleDateFormat fmTime = new SimpleDateFormat ("H:mm");					//time format 07:15 (or 13:00 for 1pm)
+	public static SimpleDateFormat fmDate = new SimpleDateFormat("yyyy-MM-dd"); 			//date format: 2016-02-18
+	public static SimpleDateFormat fmDayofWeek = new SimpleDateFormat("EEEE");				//date format: Wednesday
+	public static SimpleDateFormat fmLastRefresh = new SimpleDateFormat("MMMM d, h:mm a");	//date format: "Feb 28, 1:34 PM"
+	public static SimpleDateFormat fmTime = new SimpleDateFormat("H:mm");					//date format: 07:15 (or 13:00 for 1pm)
+	public static SimpleDateFormat fmDay = new SimpleDateFormat("MMM d");					//date format: "Feb 28"
 
 	private LoadingScreen loadingScreen;
 	private ContinueScreen continueScreen;
@@ -55,6 +41,8 @@ public class MainWindow extends JFrame {
 	private WeighScreen weighScreen;
 	private DashboardScreen dashboardScreen;
 	private NavigationScreen navScreen;
+	private MyPlansScreen myPlansScreen;
+	private PlanManagerScreen planManagerScreen;
 	
 	private FitbitAPIThread apiThread;
 	
@@ -69,9 +57,11 @@ public class MainWindow extends JFrame {
 		this.testMode = testMode;
 
 		try{
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream("window.dat"));
+			FileInputStream fin = new FileInputStream("window.dat");
+			ObjectInputStream in = new ObjectInputStream(fin);
 			userPreferences = (Preferences)in.readObject();
-			in.close();		
+			in.close();
+			fin.close();
 		}catch(FileNotFoundException e){
 			System.out.println("No previous data found. Welcome, new user!");
 		}catch(IOException e){
@@ -79,7 +69,6 @@ public class MainWindow extends JFrame {
 		}catch(ClassNotFoundException e){
 			System.out.println(e.getMessage());
 		}
-		
 		if (userPreferences == null) userPreferences = new Preferences();
 		
     	//this.setLayout(null);
@@ -108,9 +97,11 @@ public class MainWindow extends JFrame {
 		loadingScreen = new LoadingScreen(this);
 		weighScreen = new WeighScreen(this);
 		dashboardScreen = new DashboardScreen(this);
+		myPlansScreen = new MyPlansScreen(this);
+		planManagerScreen = new PlanManagerScreen(this);
 		
-		if (testMode) this.getLoadingScreen().initTestMode();
-		else this.getLoadingScreen().initSetup();
+		if (testMode) this.loadingScreen.initTestMode();
+		else this.loadingScreen.initSetup();
 	}
 	
 	public Preferences getPreferences() { return this.userPreferences; }
@@ -300,6 +291,16 @@ public class MainWindow extends JFrame {
 	 * @return
 	 */
 	public MealDishScreen getMealDishScreen() { return this.mealDishScreen; }
+	/**
+	 * Gets the My Plans Screen object.
+	 * @return
+	 */
+	public MyPlansScreen getMyPlansScreen() { return this.myPlansScreen; }
+	/**
+	 * Gets the Plan Manager Screen object.
+	 * @return
+	 */
+	public PlanManagerScreen getPlanManagerScreen() { return this.planManagerScreen; }
 	/**
 	 * Gets the Loading Screen object.
 	 * @return

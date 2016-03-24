@@ -8,6 +8,7 @@ import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -15,7 +16,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class FoodServingSizePanel extends JPanel {
+public class FoodServingSizePanel extends JPanel implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private MainWindow mainWindow;
 	
 	private JLabel feedbackLabel;
@@ -28,7 +31,6 @@ public class FoodServingSizePanel extends JPanel {
 		this.mainWindow = mainWindow;
 		
 		this.mealScreen = mealScreen;
-		
 		this.foodCupServings = false;
 		
 		this.setLayout(null);
@@ -94,7 +96,7 @@ public class FoodServingSizePanel extends JPanel {
 		button.setForeground(new Color(255,255,255,200));
 		button.setFocusable(false);
 		size = button.getPreferredSize();
-		button.setBounds(60 + 15 + 15 + foodServingUnit.getWidth() + 10, (getHeight()-100)/2 + (100-size.height)/2, size.width, size.height);
+		button.setBounds(60 + 15 + 15 + 50 + 10, (getHeight()-100)/2 + (100-size.height)/2, size.width, size.height);
 		button.addActionListener(new ButtonActionListener(6, 3, mainWindow));
 		this.add(button);
 		
@@ -119,6 +121,11 @@ public class FoodServingSizePanel extends JPanel {
 
     public String getFoodServingSize() { return this.foodServingSizeInput.getText(); }
     public String getFoodServingUnit() { return this.foodServingUnit.getText(); }
+    public void setFoodServingUnit(String newUnit) {
+    	this.foodServingUnit.setText(newUnit);
+    	Dimension size = this.foodServingUnit.getPreferredSize();
+    	this.foodServingUnit.setBounds(60 + 15, (getHeight()-100)/2 + (100-size.height)/2, size.width, size.height);
+    }
     
     /* (non-Javadoc)
      * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)

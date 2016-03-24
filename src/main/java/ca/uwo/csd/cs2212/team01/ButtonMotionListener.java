@@ -3,10 +3,13 @@ package ca.uwo.csd.cs2212.team01;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.io.Serializable;
 
 import javax.swing.JButton;
 
-public class ButtonMotionListener implements MouseMotionListener {
+public class ButtonMotionListener implements MouseMotionListener, Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private int btnMode, value;
 	private MainWindow mainWindow;
 	

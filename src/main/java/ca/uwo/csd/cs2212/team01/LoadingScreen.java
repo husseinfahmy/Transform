@@ -15,7 +15,7 @@ import javax.swing.*;
  * @author team01
  *
  */
-public class LoadingScreen extends JPanel {
+public class LoadingScreen extends JPanel implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private MainWindow mainWindow;
 	
@@ -118,11 +118,11 @@ public class LoadingScreen extends JPanel {
 	 * Sets up the Virtual Trainer in "test" mode.
 	 */
 	public void initTestMode() {
-		/*int x = 0;
-		while(x == 0) {
-		}*/
-		
-		if(!mainWindow.isFirstCall()) return;
+		if(!mainWindow.isFirstCall()) {
+			this.mainWindow.getContentPane().removeAll();
+			this.mainWindow.add(this.mainWindow.getDashboardScreen());
+			return;
+		}
 		
 		Date today = new Date();
 		
@@ -197,14 +197,25 @@ public class LoadingScreen extends JPanel {
 		//The 6 previous days gets filled with fake raw data from 8am till 11:59pm each day. All other elements in arrays will be empty.
 		//"Today" gets filled with fake raw data from 8am till 5pm. Thus, Test Mode simulates the user refreshing the app at 5pm "today"
 				
+		Day day;
+		Date[] dateArray = new Date[21];
+		
+		//[TEST: PASSED]
+		//Create 21 more empty day objects.
+		for (int i = 0; i<21; i++)
+		{ dateArray[i] = new Date(System.currentTimeMillis() + (i+1)*24*60*60*1000); }
+		
+		//Add to "futureDays"
+		for(int i = 0; i<21; i++)
+		{ day = new Day(dateArray[i]); day.setDayProgress(0); mainWindow.getFutureDays().add(day); }
 		
 		/////////////////////////////////////////////////////////////////////////////////
 			int updateDays = 7;		//Simulated refresh assumes 7 new incoming day's worth of data is downloaded which = 6 Previous Days and Today.
 		////////////////////////////////////////////////////////////////////////////////
 		
 		for(int i = 0;i<updateDays-1;i++)
-		{ Day day = new Day(); day.setDate(new Date(today.getTime()-1440*60*1000*(updateDays-1-i))); day.setDayProgress(1440); day.setPlan(planArray[i]); day.generateFakeData(1); mainWindow.getDays().add(day); } //add 6 "previous days" worth of fake raw data & fake plans.
-		Day day = new Day(); day.setDate(today);day.setDayProgress(1020); day.setPlan(planArray[6]); day.generateFakeData(3); mainWindow.getDays().add(day); //add "todays" data which includes fake raw data until 5pm and fake plan.
+		{ day = new Day(); day.setDate(new Date(today.getTime()-1440*60*1000*(updateDays-1-i))); day.setDayProgress(1440); day.setPlan(planArray[i]); day.generateFakeData(1); mainWindow.getDays().add(day); } //add 6 "previous days" worth of fake raw data & fake plans.
+		  day = new Day(); day.setDate(today);day.setDayProgress(1020); day.setPlan(planArray[6]); day.generateFakeData(3); mainWindow.getDays().add(day); //add "todays" data which includes fake raw data until 5pm and fake plan.
 		//carry out calculations and call methods --> display everything on UI. Done.
 		
 		//all 7 days have raw data that needs processing // ie. updateDays = number of days that need updating in the LinkedList. the last "updateDays" worth of days

@@ -10,6 +10,7 @@ import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,7 +22,9 @@ import javax.swing.JTextArea;
  * @author team01
  *
  */
-public class GoalPanel extends JPanel {
+public class GoalPanel extends JPanel implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private Rectangle rectList[];
 	private Rectangle panelRect;
 	private MainWindow mainWindow;

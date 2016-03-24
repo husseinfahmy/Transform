@@ -1,4 +1,5 @@
 package ca.uwo.csd.cs2212.team01;
+import java.io.Serializable;
 /*
  * This is a class representing TrophyProgression
 */
@@ -6,7 +7,8 @@ import java.util.*;
 
 
 
-public class TrophyProgression {
+public class TrophyProgression implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	//fields
 	private int currentStreak;

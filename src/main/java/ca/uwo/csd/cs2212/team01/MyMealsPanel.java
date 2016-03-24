@@ -7,6 +7,7 @@ import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
@@ -14,17 +15,19 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MyMealsPanel extends JPanel {
+public class MyMealsPanel extends JPanel implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private MainWindow mainWindow;
 	
-	private JButton[] listRemoveButton;
+	private JButton[] listRemoveButton, listDisplayButton;
 	private JLabel[][] listLabel;
 	
 	private int myMealsIndex;
 	
 	public MyMealsPanel(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
-		this.myMealsIndex = 0;
+		this.setMyMealsIndex(0);
 
 		this.setLayout(null);
 		this.setOpaque(false);
@@ -42,6 +45,7 @@ public class MyMealsPanel extends JPanel {
 		label.setForeground(new Color(255,255,255,200));
 		this.add(label);
 		
+		listDisplayButton = new JButton[7];
 		listRemoveButton = new JButton[7];
 		listLabel = new JLabel[2][7];
 		
@@ -53,7 +57,7 @@ public class MyMealsPanel extends JPanel {
 			
 			listLabel[1][i] = new JLabel();
 			listLabel[1][i].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
-			listLabel[1][i].setForeground(new Color(106, 185, 255, 200));
+			listLabel[1][i].setForeground(new Color(106, 185, 255, 255));
 			//this.add(listLabel[i]);
 			
 			listRemoveButton[i] = new JButton();
@@ -69,19 +73,34 @@ public class MyMealsPanel extends JPanel {
 			//size = listRemoveButton[i].getPreferredSize();
 			listRemoveButton[i].setBounds((getWidth() - 200)/2 - 50 + (50-30)/2, 30+68+(getHeight()-(30+68+70*7-10))/2 + (60-30)/2 + i*70, 30, 30);
 			listRemoveButton[i].addActionListener(new ButtonActionListener(8, i, mainWindow));
+			
+			listDisplayButton[i] = new JButton();
+			listDisplayButton[i].setBackground(null);
+			listDisplayButton[i].setBorder(null);
+			listDisplayButton[i].setFocusPainted(false);
+			listDisplayButton[i].setMargin(new Insets(0, 0, 0, 0));
+			listDisplayButton[i].setContentAreaFilled(false);
+			listDisplayButton[i].setBorderPainted(false);
+			listDisplayButton[i].setOpaque(false);
+			//listDisplayButton[i].setForeground(new Color(255,255,255,200));
+			listDisplayButton[i].setFocusable(false);
+			//size = listDisplayButton[i].getPreferredSize();
+			listDisplayButton[i].setBounds((getWidth() - 200)/2, 30+68+(getHeight()-(30+68+70*7-10))/2+i*70, 200, 60);
+			listDisplayButton[i].addActionListener(new ButtonActionListener(10, i, mainWindow));
 		}
 	}
 	
-	public int getScrollIndex() { return this.myMealsIndex; }
+	public int getScrollIndex() { return this.getMyMealsIndex(); }
 	
 	public void removeMeal(int index) {
-		if (this.mainWindow.getMeals().size() <= myMealsIndex+index) return;
-		this.mainWindow.getMeals().remove(myMealsIndex+index);
+		if (this.mainWindow.getMeals().size() <= getMyMealsIndex()+index) return;
+		this.mainWindow.getMeals().remove(getMyMealsIndex()+index);
 		this.repaint();
 	}
     
     private void removeListFromPanel() {
     	for(int i = 0; i < 7; i++) {
+    		this.remove(listDisplayButton[i]);
     		this.remove(listRemoveButton[i]);
     		this.remove(listLabel[0][i]);
     		this.remove(listLabel[1][i]);
@@ -140,6 +159,15 @@ public class MyMealsPanel extends JPanel {
 			g.drawRoundRect((getWidth() - 200)/2, 30+68+(getHeight()-(30+68+70*7-10))/2+i*70, 200, 60, 15, 15);
 			
 			this.add(listRemoveButton[i]);
+			this.add(listDisplayButton[i]);
 		}
     }
+
+	public int getMyMealsIndex() {
+		return myMealsIndex;
+	}
+
+	public void setMyMealsIndex(int myMealsIndex) {
+		this.myMealsIndex = myMealsIndex;
+	}
 }

@@ -1,4 +1,4 @@
-package ca.uwo.csd.cs2212.team01;
+//package ca.uwo.csd.cs2212.team01;
 
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;

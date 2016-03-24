@@ -40,7 +40,20 @@ public class App {
         	//@Override
         	public void run() {
         		window = new MainWindow(testMode);
-        		window.setVisible(true);
+        		
+        		/*try {
+	    			ObjectInputStream in = new ObjectInputStream(new FileInputStream("window.dat"));
+	    			window = (MainWindow) in.readObject();
+	    			in.close();
+    			}catch(FileNotFoundException e){
+    				System.out.println("No previous data found. Welcome, new user!");
+    				window = new MainWindow(testMode);
+    			}catch(IOException e){
+    				System.out.println(e.getMessage());
+    			}catch(ClassNotFoundException e){
+    				System.out.println(e.getMessage());
+    			}*/
+    			window.setVisible(true);
         	}
 		});
 		

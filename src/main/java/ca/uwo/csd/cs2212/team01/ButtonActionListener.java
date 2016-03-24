@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,7 +20,9 @@ import javax.swing.JTextArea;
  * @author team01
  *
  */
-public class ButtonActionListener implements ActionListener {
+public class ButtonActionListener implements ActionListener, Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private int btnMode, value;
 	private MainWindow mainWindow;
 	
@@ -126,9 +129,9 @@ public class ButtonActionListener implements ActionListener {
 			try{
 			   FileOutputStream fout = new FileOutputStream("window.dat");
 			   ObjectOutputStream out = new ObjectOutputStream(fout);
-			   out.writeObject(mainWindow.getPreferences());
-			   //mainWindow.getPreferences().writeObject(out); //(over)writes preferences file
+			   out.writeObject(mainWindow.getPreferences());	//(over)writes dashboard preferences file
 			   out.close();
+			   fout.close();
 			}catch(FileNotFoundException exception){
 			   System.out.println(exception.getMessage());
 			}catch(IOException exception){
@@ -166,16 +169,22 @@ public class ButtonActionListener implements ActionListener {
 		case 6: // Add Meal and Dishes Screen
 			switch(this.value) {
 			case 0:
-				//this.mainWindow.getAddMealDishScreen().toggleServingUnit();
+				NutritionPanel nutritionPanel = this.mainWindow.getAddMealDishScreen().getNutritionPanel();
+				if (nutritionPanel.getServingUnit().equals("Cup"))
+					nutritionPanel.setServingUnit("g");
+				else nutritionPanel.setServingUnit("Cup");
 				break;
 			case 1:
 				break;
 			case 2:
-				//this.mainWindow.getAddMealDishScreen().toggleFoodServingUnit();
+				FoodServingSizePanel foodServingSizePanel = this.mainWindow.getAddMealDishScreen().getServingSizePanel();
+				if (foodServingSizePanel.getFoodServingUnit().equals("Cup"))
+					foodServingSizePanel.setFoodServingUnit("g");
+				else foodServingSizePanel.setFoodServingUnit("Cup");
 				break;
 			case 3:
 				AddMealDishScreen screen = this.mainWindow.getAddMealDishScreen();
-				NutritionPanel nutritionPanel = screen.getNutritionPanel();
+				nutritionPanel = screen.getNutritionPanel();
 				FoodServingSizePanel servingSizePanel = screen.getServingSizePanel();
 				MealListPanel mealListPanel = screen.getMealListPanel();
 				
@@ -209,6 +218,7 @@ public class ButtonActionListener implements ActionListener {
 			case 4:
 				screen = this.mainWindow.getAddMealDishScreen();
 				Meal meal = screen.getMealListPanel().getMeal();
+				meal.setName(screen.getMealListPanel().getNameInput().getText());
 				if (screen.isMealScreen()) this.mainWindow.addMeal(meal);
 				else this.mainWindow.addDish(meal);
 				screen.clearTextFields();
@@ -231,22 +241,34 @@ public class ButtonActionListener implements ActionListener {
 			
 		case 8: // My Meals Panel: remove meal
 			MealDishScreen mealDishScreen = this.mainWindow.getMealDishScreen();
-			mealDishScreen.getMyMealsPanel().removeMeal(this.value);
+			int index = this.mainWindow.getMyMeals().size()-1-(mealDishScreen.getMyMealsPanel().getMyMealsIndex()+this.value);
+			if (index == mealDishScreen.getDisplayPanel().getItemIndex() && mealDishScreen.getDisplayPanel().isMealItem()) {
+				mealDishScreen.getDisplayPanel().setItemIndex(-1);
+				mealDishScreen.getDisplayPanel().repaint();
+			}
+			mealDishScreen.getMyMealsPanel().removeMeal(index);
 			break;
 			
 		case 9: // My Dishes Panel: remove dish
 			mealDishScreen = this.mainWindow.getMealDishScreen();
-			mealDishScreen.getMyDishesPanel().removeDish(this.value);
+			index = this.mainWindow.getMyDishes().size()-1-(mealDishScreen.getMyDishesPanel().getMyDishesIndex()+this.value);
+			if (index == mealDishScreen.getDisplayPanel().getItemIndex() && !mealDishScreen.getDisplayPanel().isMealItem()) {
+				mealDishScreen.getDisplayPanel().setItemIndex(-1);
+				mealDishScreen.getDisplayPanel().repaint();
+			}
+			mealDishScreen.getMyDishesPanel().removeDish(index);
 			break;
 			
 		case 10: // My Meals Panel: display meal
 			mealDishScreen = this.mainWindow.getMealDishScreen();
-			mealDishScreen.getDisplayPanel().displayItem(true, mealDishScreen.getMyMealsPanel().getScrollIndex()+this.value);
+			index = this.mainWindow.getMyMeals().size()-1-(mealDishScreen.getMyMealsPanel().getScrollIndex()+this.value);
+			mealDishScreen.getDisplayPanel().displayItem(true, index);
 			break;
 			
 		case 11: // My Dishes Panel: display dish
 			mealDishScreen = this.mainWindow.getMealDishScreen();
-			mealDishScreen.getDisplayPanel().displayItem(false, mealDishScreen.getMyDishesPanel().getScrollIndex()+this.value);
+			index = this.mainWindow.getMyDishes().size()-1-(mealDishScreen.getMyDishesPanel().getScrollIndex()+this.value);
+			mealDishScreen.getDisplayPanel().displayItem(false, index);
 			break;
 			
 		case 12: // My Meals & Dishes Panel
@@ -273,7 +295,6 @@ public class ButtonActionListener implements ActionListener {
 			break;
 			
 		case 13: // Navigation Screen
-			System.out.println("nav button");
 			switch(this.value) {
 			case 0: // Nagivates to Dashboard Screen
 				this.mainWindow.setVisible(false);
@@ -284,7 +305,6 @@ public class ButtonActionListener implements ActionListener {
 			case 1: // Nagivates to Profile Screen
 				this.mainWindow.setVisible(false);
 				this.mainWindow.getContentPane().removeAll();
-				this.mainWindow.add(this.mainWindow.getDashboardScreen());
 				this.mainWindow.setVisible(true);
 				break;
 			case 2: // Nagivates to Create Meals or Dishes Screen
@@ -294,6 +314,19 @@ public class ButtonActionListener implements ActionListener {
 				this.mainWindow.setVisible(true);
 				break;
 			case 3: // Quits Program
+				//write user dashboard preferences to file	
+				try{
+				   FileOutputStream fout = new FileOutputStream("window.dat");
+				   ObjectOutputStream out = new ObjectOutputStream(fout);
+				   out.writeObject(mainWindow.getPreferences());	//(over)writes dashboard preferences file
+				   out.close();
+				   fout.close();
+				}catch(FileNotFoundException exception){
+				   System.out.println(exception.getMessage());
+				}catch(IOException exception){
+				   System.out.println(exception.getMessage());
+				}
+				
 				System.exit(0);
 				break;
 			case 4: // Nagivates to My Meals & Dishes Screen
@@ -305,6 +338,7 @@ public class ButtonActionListener implements ActionListener {
 			case 5: // Nagivates to Plans Screen
 				this.mainWindow.setVisible(false);
 				this.mainWindow.getContentPane().removeAll();
+				this.mainWindow.add(this.mainWindow.getMyPlansScreen());
 				this.mainWindow.setVisible(true);
 				break;
 			}
@@ -317,106 +351,129 @@ public class ButtonActionListener implements ActionListener {
 			this.mainWindow.setVisible(true);
 			break;
 			
-		/*case 0: // Submit Current/Target Weights
+		case 15: 
 			switch(this.value) {
-			case 1: // Dashboard Screen
-				label = this.mainWindow.getSplashScreen().getSetGoalPanel().getDesc();
-				
-				try {
-					value = this.mainWindow.getSplashScreen().getSetGoalPanel().getCurrentWeight();
-					currentWeight = Float.parseFloat(value);
-					
-					value = this.mainWindow.getSplashScreen().getSetGoalPanel().getTargetWeight();
-					targetWeight = Float.parseFloat(value);
-					
-					if (currentWeight-targetWeight < 2) {
-						label.setText("Try to lose at least 2 lbs!");
-						size = label.getPreferredSize();
-						label.setBounds((503-size.width)/2, label.getY(), size.width, size.height);
-						break;
-					}else if (currentWeight <= 0 || targetWeight <= 0) throw new NumberFormatException("Negative number!");
-
-					this.mainWindow.setupVirtualTrainer(currentWeight, targetWeight);
-
-					this.mainWindow.setVisible(false);
-					this.mainWindow.getContentPane().removeAll();
-					this.mainWindow.add(this.mainWindow.getDashboardScreen());
-					this.mainWindow.setVisible(true);
-				}catch (NumberFormatException ex) {
-					label.setText("Invalid format! Enter a positive number.");
-					size = label.getPreferredSize();
-					label.setBounds((503-size.width)/2, label.getY(), size.width, size.height);
-				}finally {
-				}
-				break;*/
-				
-			/*case 2: // Weigh Screen - Submit New Weight
-				label = this.mainWindow.getWeighScreen().getSetWeighPanel().getDesc();
-				
-				try {
-					value = this.mainWindow.getWeighScreen().getSetWeighPanel().getCurrentWeight();
-					currentWeight = Float.parseFloat(value);
-					
-					if (currentWeight <= 0) throw new NumberFormatException("Negative number!");
-					
-					this.mainWindow.getVirtualTrainer().addNewWeightMeasurement(mainWindow.getUser(), currentWeight);
-					
-					this.mainWindow.updateDashboardScreen();
-					
-					this.mainWindow.setVisible(false);
-					this.mainWindow.getContentPane().removeAll();
-					this.mainWindow.add(this.mainWindow.getDashboardScreen());
-					this.mainWindow.setVisible(true);
-				}catch (NumberFormatException ex) {
-					label.setText("Invalid format! Enter a positive number.");
-					size = label.getPreferredSize();
-					label.setBounds((503-size.width)/2, label.getY(), size.width, size.height);
-				}finally {
-				}
+			case 0: // My Plans Screen: previous week
+				this.mainWindow.getMyPlansScreen().prevWeek();
+				break;
+			case 1: // My Plans Screen: next week
+				this.mainWindow.getMyPlansScreen().nextWeek();
+				break;
+			case 2: // Plan Manager Screen: meals
+				PlanManagerScreen planManagerScreen = this.mainWindow.getPlanManagerScreen();
+				planManagerScreen.toggleMealWorkoutScreen(0);
+				break;
+			case 3: // Plan Manager Screen: dishes
+				planManagerScreen = this.mainWindow.getPlanManagerScreen();
+				planManagerScreen.toggleMealWorkoutScreen(1);
+				break;
+			case 4: // Plan Manager Screen: add workout
+				planManagerScreen = this.mainWindow.getPlanManagerScreen();
+				planManagerScreen.addWorkout();
+				break;
+			case 5: // Plan Manager Screen: workouts
+				planManagerScreen = this.mainWindow.getPlanManagerScreen();
+				planManagerScreen.toggleMealWorkoutScreen(2);
 				break;
 			}
-			break;*/
+			break;
 			
-		/*case 1: // Refresh Button
-			this.mainWindow.updateLastRefreshed();
-			//display "updating app"
-			this.mainWindow.refreshEvent();
-			//remove that textbox
-			// notify user app is updating?
-			this.mainWindow.updateDashboardScreen();
+		case 16: // My Plans Screen: Edit Plan
+			MyPlansScreen myPlansScreen = this.mainWindow.getMyPlansScreen();
+			PlanManagerScreen planManagerScreen = this.mainWindow.getPlanManagerScreen();
+			Day day = null;
 			
-			//label = mainWindow.getDashboardScreen().getRefreshDesc();
-			//label.setText("<html>Last Refreshed:<br>" + mainWindow.lastRefreshed().getTXTone().get(0) + "</html>");
+			if (myPlansScreen.getWeekIndex() == 0) {
+				if (this.value == 0) day = this.mainWindow.getDays().getLast();
+				else day = this.mainWindow.getFutureDays().get(this.value+7*myPlansScreen.getWeekIndex()-1);
+			}else day = this.mainWindow.getFutureDays().get(this.value+7*myPlansScreen.getWeekIndex()-1);
 			
-			this.mainWindow.setVisible(false);
-			this.mainWindow.getContentPane().removeAll();
-			this.mainWindow.add(this.mainWindow.getDashboardScreen());
-			this.mainWindow.setVisible(true);
-			break;*/
+			if (day.getPlan() != null) {
+				planManagerScreen.setDay(day, 0);
+				this.mainWindow.setVisible(false);
+				this.mainWindow.getContentPane().removeAll();
+				this.mainWindow.add(planManagerScreen);
+				this.mainWindow.setVisible(true);
+			}
+			break;
 			
-		/*case 2: // Exit Button
-		
-			//write user dashboard preferences to file	
-			try{
-			   FileOutputStream fout = new FileOutputStream("window.dat");
-			   ObjectOutputStream out = new ObjectOutputStream(fout);
-			   out.writeObject(mainWindow);	//(over)writes dashboard preferences file
-			   out.close();
-			}catch(FileNotFoundException exception){
-			   System.out.println(exception.getMessage());
-			}catch(IOException exception){
-			   System.out.println(exception.getMessage());
+		case 17: // My Plans Screen: Create New Plan/Edit Plan Meals
+			myPlansScreen = this.mainWindow.getMyPlansScreen();
+			planManagerScreen = this.mainWindow.getPlanManagerScreen();
+			day = null;
+			
+			if (myPlansScreen.getWeekIndex() == 0) {
+				if (this.value == 0) day = this.mainWindow.getDays().getLast();
+				else day = this.mainWindow.getFutureDays().get(this.value+7*myPlansScreen.getWeekIndex()-1);
+			}else day = this.mainWindow.getFutureDays().get(this.value+7*myPlansScreen.getWeekIndex()-1);
+			
+			if (day.getPlan() != null) {
+				planManagerScreen.setDay(day, 0);
+				this.mainWindow.setVisible(false);
+				this.mainWindow.getContentPane().removeAll();
+				this.mainWindow.add(planManagerScreen);
+				this.mainWindow.setVisible(true);
+			}else {
+				day.setPlan(new Plan());
+				myPlansScreen.repaint();
+			}
+			break;
+			
+		case 18: // My Plans Screen: Edit Plan Workouts
+			myPlansScreen = this.mainWindow.getMyPlansScreen();
+			planManagerScreen = this.mainWindow.getPlanManagerScreen();
+			day = null;
+			
+			if (myPlansScreen.getWeekIndex() == 0) {
+				if (this.value == 0) day = this.mainWindow.getDays().getLast();
+				else day = this.mainWindow.getFutureDays().get(this.value+7*myPlansScreen.getWeekIndex()-1);
+			}else day = this.mainWindow.getFutureDays().get(this.value+7*myPlansScreen.getWeekIndex()-1);
+			
+			if (day.getPlan() != null) {
+				planManagerScreen.setDay(day, 2);
+				this.mainWindow.setVisible(false);
+				this.mainWindow.getContentPane().removeAll();
+				this.mainWindow.add(planManagerScreen);
+				this.mainWindow.setVisible(true);
+			}else myPlansScreen.repaint();
+			break;
+			
+		case 19: // My Plans Screen: Copy From Previous Plan
+			myPlansScreen = this.mainWindow.getMyPlansScreen();
+			Day prevDay = null;
+			day = null;
+			
+			if (myPlansScreen.getWeekIndex() == 0) {
+				if (this.value == 0) {
+					day = this.mainWindow.getDays().getLast();
+					prevDay = this.mainWindow.getDays().get(this.mainWindow.getDays().size()-2);
+				}
+				else {
+					day = this.mainWindow.getFutureDays().get(this.value+7*myPlansScreen.getWeekIndex()-1);
+					if (this.value == 1) prevDay = this.mainWindow.getDays().getLast();
+					else prevDay = this.mainWindow.getFutureDays().get(this.value+7*myPlansScreen.getWeekIndex()-1-1);
+				}
+			}else {
+				day = this.mainWindow.getFutureDays().get(this.value+7*myPlansScreen.getWeekIndex()-1);
+				prevDay = this.mainWindow.getFutureDays().get(this.value+7*myPlansScreen.getWeekIndex()-1-1);
 			}
 			
-			System.exit(0);
-			break;*/
+			day.setPlan(prevDay.getPlan());
 			
-		/*case 3: // Weigh Screen
-			this.mainWindow.setVisible(false);
-			this.mainWindow.getContentPane().removeAll();
-			this.mainWindow.add(this.mainWindow.getWeighScreen());
-			this.mainWindow.setVisible(true);
-			break;*/
+			myPlansScreen.repaint();
+			break;
+			
+		case 20: // Plan Manager Screen: remove meal
+			planManagerScreen = this.mainWindow.getPlanManagerScreen();
+			index = planManagerScreen.getMyMealsIndex()+this.value;
+			planManagerScreen.removeMeal(index);
+			break;
+			
+		case 21: // Plan Manager Screen: remove workout
+			planManagerScreen = this.mainWindow.getPlanManagerScreen();
+			index = planManagerScreen.getMyWorkoutsIndex()+this.value;
+			planManagerScreen.removeWorkout(index);
+			break;
 		}
 	}
 }

@@ -1,11 +1,13 @@
 package ca.uwo.csd.cs2212.team01;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-public class testing {
+public class testing implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	public static void main(String[] args) {
 		

@@ -12,6 +12,7 @@ import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -20,7 +21,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class SetupScreen extends JPanel {
+public class SetupScreen extends JPanel implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private MainWindow mainWindow;
 	
 	private int page;
@@ -588,6 +591,8 @@ public class SetupScreen extends JPanel {
 			
 			this.mainWindow.setupVirtualTrainer(Float.parseFloat(currentWeight), Float.parseFloat(targetWeight));
 
+			this.mainWindow.setFirstCall(false);
+			
 			this.mainWindow.setVisible(false);
 			this.mainWindow.getContentPane().removeAll();
 			this.mainWindow.add(this.mainWindow.getDashboardScreen());

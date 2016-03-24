@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package ca.uwo.csd.cs2212.team01;
 
 import java.awt.*;
@@ -9,18 +12,20 @@ import javax.swing.*;
 
 /**
  * @author team01
+ *
  */
-public class WeighScreen extends JPanel implements Serializable {
+public class SplashScreen extends JPanel implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private MainWindow mainWindow;
-
-	private WeighPanel setWeighPanel;
+	
+	private JPanel loggingInPanel, titlePanel;
+	private GoalPanel setGoalPanel;
 	
 	/**
 	 * Class Constructor
 	 * @param mainWindow
 	 */
-	public WeighScreen(MainWindow mainWindow) {
+	public SplashScreen(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 		
     	//this.setLayout(null);
@@ -32,19 +37,52 @@ public class WeighScreen extends JPanel implements Serializable {
 	}
 	
     /**
-     * Renders the Weigh Screen.
+     * Renders the Splash Screen.
      */
     private void initUI() {
-    	this.setWeighPanel = new WeighPanel(mainWindow);
+    	this.titlePanel = new JPanel() {
+    		@Override
+    		protected void paintComponent(Graphics g) {
+    			super.paintComponent(g);
+    			
+    			this.setLayout(null);
+    			this.setOpaque(false);
+    			
+    			Graphics2D g2 = (Graphics2D) g;
+    			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    			
+    			JLabel title = new JLabel("Trainr", JLabel.LEFT);
+    			title.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(120.0f));
+    			Dimension sizeTitle = title.getPreferredSize();
+    			title.setBounds(0, 0, sizeTitle.width, sizeTitle.height);
+    			title.setForeground(new Color(255,255,255,150));
+    			
+    			JLabel version = new JLabel("Beta Version 1.0", JLabel.LEFT);
+    			version.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+    			Dimension sizeVersion = version.getPreferredSize();
+    			version.setBounds((sizeTitle.width-sizeVersion.width)/2, sizeTitle.height, sizeVersion.width, sizeVersion.height);
+    			version.setForeground(new Color(255,255,255,128));
+
+    			this.setSize(sizeTitle.width, sizeTitle.height+sizeVersion.height);
+    			this.setLocation((1480/2-getWidth())/2, (800-getHeight())/2);
+    			
+    			this.add(title);
+    			this.add(version);
+    		}
+    	};
+    	this.add(titlePanel);
     	
-    	this.add(setWeighPanel);
+    	this.add(mainWindow.getLoadingScreen().getDevicesPanel());
+
+    	this.setGoalPanel = new GoalPanel(mainWindow);
+    	this.add(setGoalPanel);
 	}
     
     /**
-     * Gets the Weigh Panel which holds the user input objects.
+     * Gets the Goal Panel which holds the user input for current/target weight goals.
      * @return
      */
-    public WeighPanel getSetWeighPanel() { return this.setWeighPanel; }
+    public GoalPanel getSetGoalPanel() { return this.setGoalPanel; }
     
     /* (non-Javadoc)
      * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
@@ -93,7 +131,7 @@ public class WeighScreen extends JPanel implements Serializable {
 			e.printStackTrace();
 		}
 		g2.drawImage(image, getWidth()-image.getWidth()-13, getHeight()-13-image.getHeight(), null);
-				
+
 		image = null;
 		try {
 			image = ImageIO.read(new File("UI/exit-icon.png"));
@@ -113,8 +151,8 @@ public class WeighScreen extends JPanel implements Serializable {
 		exitBtn.setFocusable(false);
 		exitBtn.setSize(image.getWidth(), image.getHeight());
 		exitBtn.setLocation(getWidth()-image.getWidth()-13, 13);
-		exitBtn.addActionListener(new ButtonActionListener(2, 0, mainWindow));
-		this.add(exitBtn);
+        exitBtn.addActionListener(new ButtonActionListener(2, 0, mainWindow));
+        this.add(exitBtn);
 		
 		g2.drawImage(image, getWidth()-image.getWidth()-13, 13, null);
 	}

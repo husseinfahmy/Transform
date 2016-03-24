@@ -19,10 +19,7 @@ import javax.swing.*;
  * @author team01
  *
  */
-public class DashboardScreen extends JPanel {
-    /**
-	 * 
-	 */
+public class DashboardScreen extends JPanel implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private MainWindow mainWindow;
 	
@@ -77,6 +74,19 @@ public class DashboardScreen extends JPanel {
 					e.printStackTrace();
 				}
     			g2.drawImage(image, 13, 13, null);
+    			
+    			JButton button = new JButton();
+    			button.setBackground(null);
+    			button.setBorder(null);
+    			button.setFocusPainted(false);
+    			button.setMargin(new Insets(0, 0, 0, 0));
+    			button.setContentAreaFilled(false);
+    			button.setBorderPainted(false);
+    			button.setOpaque(false);
+    			button.setFocusable(false);
+    			button.setBounds(13, 13, image.getWidth(), image.getHeight());
+    			button.addActionListener(new ButtonActionListener(14, 0, mainWindow));
+    			this.add(button);
 				
     			JButton weighBtn = new JButton("Weigh Myself");
     			weighBtn.setBackground(null);
@@ -583,7 +593,6 @@ public class DashboardScreen extends JPanel {
     			this.add(label);
     		}
     	};
-    	
     	this.add(trainrFeedbackPanel);
     	
 

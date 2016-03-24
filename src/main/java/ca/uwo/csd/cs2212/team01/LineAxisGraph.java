@@ -12,6 +12,7 @@ import java.awt.Label;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
+import java.io.Serializable;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,7 +21,9 @@ import javax.swing.JPanel;
  * @author team01
  *
  */
-public class LineAxisGraph extends JPanel {
+public class LineAxisGraph extends JPanel implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private int numTicks;
 	private int x, y, width, height, textHeight = 0;
 	private boolean flip;

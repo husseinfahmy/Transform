@@ -7,6 +7,7 @@ import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
@@ -14,8 +15,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
-public class MealListPanel extends JPanel {
+public class MealListPanel extends JPanel implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private MainWindow mainWindow;
 	
 	private Meal meal = null;
@@ -23,6 +27,8 @@ public class MealListPanel extends JPanel {
 	private JButton[] listButton;
 	private JLabel[] listLabel;
 	private JLabel listTitle;
+	
+	private JTextArea nameInput;
 	
 	private int listHeight;
 	
@@ -89,6 +95,15 @@ public class MealListPanel extends JPanel {
 			
 			currHeight += 50 + 5;
 		}
+
+		setNameInput(new JTextArea());
+    	getNameInput().setOpaque(false);
+    	getNameInput().setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(27.0f));
+		size = getNameInput().getPreferredSize();
+		getNameInput().setBounds(100, getHeight() - 60 - 30 - 40 + (40-size.height)/2, getWidth() - 15, size.height);
+		getNameInput().setCaretColor(new Color(255,255,255,200));
+		getNameInput().setForeground(new Color(255,255,255,200));
+		this.add(getNameInput());
 
 		JButton listButton;
 		if (mealScreen) listButton = new JButton("Add Meal to My Meals");
@@ -227,6 +242,9 @@ public class MealListPanel extends JPanel {
     	//scrollFrame.setPreferredSize(new Dimension(getWidth(),800-75-listHeight));
 		this.add(panel);
     	//mainWindow.add(scrollFrame);*/
+				
+		g.setColor(new Color(255,255,255,75));
+		g.fillRect(15, getHeight() - 60 - 30 - 40, getWidth() - 15, 40);
 		
 		try {
 			image = ImageIO.read(new File("UI/btn-bg.png"));
@@ -236,5 +254,13 @@ public class MealListPanel extends JPanel {
 		}
 		g.drawImage(image, 0,  getHeight() - 60 - 15, null);
     }
+
+	public JTextArea getNameInput() {
+		return nameInput;
+	}
+
+	public void setNameInput(JTextArea nameInput) {
+		this.nameInput = nameInput;
+	}
 
 }

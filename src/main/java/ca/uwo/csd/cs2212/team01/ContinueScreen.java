@@ -11,8 +11,9 @@ import javax.swing.*;
  * @author team01
  *
  */
-public class ContinueScreen extends JPanel {
+public class ContinueScreen extends JPanel implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
 	private MainWindow mainWindow;
 	
 	/**

@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
+
 import javax.swing.SwingWorker;
 
 import org.json.JSONArray;
@@ -26,7 +28,9 @@ import com.github.scribejava.core.model.Verb;
  * @author Kamal
  *
  */
-public class FitbitAPIThread extends SwingWorker<Void,Void> {
+public class FitbitAPIThread extends SwingWorker<Void,Void> implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	public static final String CREDENTIALS_FILE_PATH = "src/main/resources/Team1Credentials.txt";
 	public static final String TOKENS_FILE_PATH = "src/main/resources/Team1Tokens.txt";
 	

@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -25,7 +26,8 @@ import javax.swing.JTextArea;
  * @author team01
  *
  */
-public class WeighPanel extends JPanel {
+public class WeighPanel extends JPanel implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private Rectangle rectList[];
 	private Rectangle panelRect;
 	private MainWindow mainWindow;

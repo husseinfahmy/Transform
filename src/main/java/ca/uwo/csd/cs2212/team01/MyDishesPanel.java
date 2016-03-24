@@ -7,6 +7,7 @@ import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
@@ -14,7 +15,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MyDishesPanel extends JPanel {
+public class MyDishesPanel extends JPanel implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private MainWindow mainWindow;
 	
 	private JButton[] listRemoveButton, listDisplayButton;
@@ -25,7 +28,7 @@ public class MyDishesPanel extends JPanel {
 	public MyDishesPanel(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 		
-		this.myDishesIndex = 0;
+		this.setMyDishesIndex(0);
 
 		this.setLayout(null);
 		this.setOpaque(false);
@@ -64,36 +67,37 @@ public class MyDishesPanel extends JPanel {
 			//listRemoveButton[i].setForeground(new Color(255,255,255,200));
 			listRemoveButton[i].setFocusable(false);
 			//size = listRemoveButton[i].getPreferredSize();
-			listRemoveButton[i].setBounds((getWidth() - 200)/2 - 50 + (50-30)/2, 30+68+(getHeight()-(30+68+70*7-10))/2 + (60-30)/2 + i*70, 30, 30);
+			listRemoveButton[i].setBounds((getWidth() - 200)/2 + 200 + (50-30)/2, 30+68+(getHeight()-(30+68+70*7-10))/2 + (60-30)/2 + i*70, 30, 30);
 			listRemoveButton[i].addActionListener(new ButtonActionListener(9, i, mainWindow));
 			
-			listRemoveButton[i] = new JButton();
-			listRemoveButton[i].setBackground(null);
-			listRemoveButton[i].setBorder(null);
-			listRemoveButton[i].setFocusPainted(false);
-			listRemoveButton[i].setMargin(new Insets(0, 0, 0, 0));
-			listRemoveButton[i].setContentAreaFilled(false);
-			listRemoveButton[i].setBorderPainted(false);
-			listRemoveButton[i].setOpaque(false);
-			//listRemoveButton[i].setForeground(new Color(255,255,255,200));
-			listRemoveButton[i].setFocusable(false);
-			//size = listRemoveButton[i].getPreferredSize();
-			listRemoveButton[i].setBounds((getWidth() - 200)/2, 30+68+(getHeight()-(30+68+70*7-10))/2+i*70, 200, 60);
-			listRemoveButton[i].addActionListener(new ButtonActionListener(10, i, mainWindow));
+			listDisplayButton[i] = new JButton();
+			listDisplayButton[i].setBackground(null);
+			listDisplayButton[i].setBorder(null);
+			listDisplayButton[i].setFocusPainted(false);
+			listDisplayButton[i].setMargin(new Insets(0, 0, 0, 0));
+			listDisplayButton[i].setContentAreaFilled(false);
+			listDisplayButton[i].setBorderPainted(false);
+			listDisplayButton[i].setOpaque(false);
+			//listDisplayButton[i].setForeground(new Color(255,255,255,200));
+			listDisplayButton[i].setFocusable(false);
+			//size = listDisplayButton[i].getPreferredSize();
+			listDisplayButton[i].setBounds((getWidth() - 200)/2, 30+68+(getHeight()-(30+68+70*7-10))/2+i*70, 200, 60);
+			listDisplayButton[i].addActionListener(new ButtonActionListener(11, i, mainWindow));
 		}
 	}
 	
-	public int getScrollIndex() { return this.myDishesIndex; }
+	public int getScrollIndex() { return this.getMyDishesIndex(); }
 	
 	public void removeDish(int index) {
-		if (this.mainWindow.getMeals().size() <= myDishesIndex+index) return;
-		this.mainWindow.getDishes().remove(myDishesIndex+index);
+		if (this.mainWindow.getMeals().size() <= getMyDishesIndex()+index) return;
+		this.mainWindow.getDishes().remove(getMyDishesIndex()+index);
 		this.repaint();
 	}
     
     private void removeListFromPanel() {
     	for(int i = 0; i < 7; i++) {
     		this.remove(listRemoveButton[i]);
+    		this.remove(listDisplayButton[i]);
     		this.remove(listLabel[i]);
     	}
     }
@@ -132,8 +136,8 @@ public class MyDishesPanel extends JPanel {
 		Meal myDish;
 		LinkedList<Meal> myDishes = mainWindow.getDishes();
 		
-		for(int i = 0; i < 7 && myDishesIndex+i < myDishes.size(); i++) {
-			myDish = myDishes.get(myDishes.size()-1-(myDishesIndex+i));
+		for(int i = 0; i < 7 && getMyDishesIndex()+i < myDishes.size(); i++) {
+			myDish = myDishes.get(myDishes.size()-1-(getMyDishesIndex()+i));
 			
 			g.setColor(new Color(255,255,255,120));
 			listLabel[i].setText(myDish.getName());
@@ -145,6 +149,15 @@ public class MyDishesPanel extends JPanel {
 			g.drawRoundRect((getWidth() - 200)/2, 30+68+(getHeight()-(30+68+70*7-10))/2+i*70, 200, 60, 15, 15);
 			
 			this.add(listRemoveButton[i]);
+			this.add(listDisplayButton[i]);
 		}
     }
+
+	public int getMyDishesIndex() {
+		return myDishesIndex;
+	}
+
+	public void setMyDishesIndex(int myDishesIndex) {
+		this.myDishesIndex = myDishesIndex;
+	}
 }

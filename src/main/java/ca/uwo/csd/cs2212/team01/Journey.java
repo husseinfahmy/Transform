@@ -9,6 +9,7 @@ import java.util.LinkedList;
  *
  */
 public class Journey implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	//Attributes
 	public String name;

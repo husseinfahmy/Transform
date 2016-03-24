@@ -7,12 +7,15 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class NavigationScreen extends JPanel {
+public class NavigationScreen extends JPanel implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private MainWindow mainWindow;
 
 	/**

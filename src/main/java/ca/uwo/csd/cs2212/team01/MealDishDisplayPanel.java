@@ -7,6 +7,7 @@ import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
@@ -14,7 +15,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MealDishDisplayPanel extends JPanel {
+public class MealDishDisplayPanel extends JPanel implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private MainWindow mainWindow;
 	
 	private boolean mealItem;
@@ -92,8 +95,8 @@ public class MealDishDisplayPanel extends JPanel {
 	}
 	
 	public void displayItem(boolean mealItem, int index) {
-		this.mealItem = mealItem;
-		this.itemIndex = index;
+		this.setMealItem(mealItem);
+		this.setItemIndex(index);
 		this.repaint();
 	}
 	
@@ -125,11 +128,12 @@ public class MealDishDisplayPanel extends JPanel {
 		
 		Dimension size;
 		
-		if (itemIndex != -1) {
+		if (getItemIndex() != -1) {
 			Meal myItem;
 			
-			if (mealItem) {
+			if (isMealItem()) {
 				myItem = mainWindow.getMeals().get(itemIndex);
+				
 				g.setColor(new Color(255,255,255,120));
 				listTitleLabel[0].setText(myItem.getName());
 				size = listTitleLabel[0].getPreferredSize();
@@ -161,7 +165,7 @@ public class MealDishDisplayPanel extends JPanel {
 			for(int i = 0; i < foodServings.size(); i++) {
 				foodServing = foodServings.get(i);
 				foodServingMacros = foodServing.getMacros();
-				g.fillRect(0, 30+68+(getHeight()-(30+68+70*7-10))/2+60+30+i*55, getWidth() - 50, 50);
+				g.fillRect((getWidth()-(getWidth() - 50))/2, 30+68+(getHeight()-(30+68+70*7-10))/2+60+30+i*55, getWidth() - 50, 50);
 				mealListLabel[i].setText("<html><center>" + foodServing.getFood().getName() + "<br>"
 						+ foodServing.getServingSize() + " " + foodServing.getServingUnit() + " | " + foodServingMacros.getCalories() + " cal</center></html>");
 				/*listLabel[i].setText("<html><center>" + "name" + i + "<br>"
@@ -183,5 +187,21 @@ public class MealDishDisplayPanel extends JPanel {
 		}
 		g.drawImage(image, 0,  getHeight() - 60 - 30, null);
 		g.drawImage(image, getWidth()-image.getWidth(),  getHeight() - 60 - 30, null);
+	}
+
+	public int getItemIndex() {
+		return itemIndex;
+	}
+
+	public void setItemIndex(int itemIndex) {
+		this.itemIndex = itemIndex;
+	}
+
+	public boolean isMealItem() {
+		return mealItem;
+	}
+
+	public void setMealItem(boolean mealItem) {
+		this.mealItem = mealItem;
 	}
 }

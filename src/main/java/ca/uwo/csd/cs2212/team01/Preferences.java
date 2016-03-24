@@ -20,20 +20,27 @@ public class Preferences implements Serializable {
 	
 	//Time & Date Stamps:
 	private Date lastCall;
-	private Boolean firstCall = true;
+	private boolean firstCall;
 
 	//User & Virtual Trainer Storage:
 	private User user;	//srlze
 	private VirtualTrainer vt;
 
 	//Data Storage:
-	private LinkedList<Day> days = new LinkedList<Day>();
-	private LinkedList<Day> futureDays = new LinkedList<Day>();
+	private LinkedList<Day> days;
+	private LinkedList<Day> futureDays;
 	
-	private LinkedList<Meal> myMeals = new LinkedList<Meal>();
-	private LinkedList<Meal> myDishes = new LinkedList<Meal>();
+	private LinkedList<Meal> myMeals;
+	private LinkedList<Meal> myDishes;
 
 	public Preferences(){
+		firstCall = true;
+		days = new LinkedList<Day>();
+		futureDays = new LinkedList<Day>();
+		
+		myMeals = new LinkedList<Meal>();
+		myDishes = new LinkedList<Meal>();
+		
 		/*boolean showCaloriesBurned = true;
 		boolean showTotalDistance = true;
 		boolean showFloorsClimbed = true;

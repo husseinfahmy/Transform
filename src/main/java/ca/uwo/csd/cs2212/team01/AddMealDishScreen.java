@@ -11,6 +11,7 @@ import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
@@ -19,7 +20,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class AddMealDishScreen extends JPanel {
+public class AddMealDishScreen extends JPanel implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private MainWindow mainWindow;
 	
 	private NutritionPanel nutritionPanel;
@@ -179,8 +182,9 @@ public class AddMealDishScreen extends JPanel {
     
     public boolean isMealScreen() { return this.mealScreen; }
 
-    
     public void toggleMealDishScreen(boolean mealScreen) {
+    	if (this.mealScreen == mealScreen) return;
+    	
     	this.mealScreen = mealScreen;
 
     	this.remove(nutritionPanel);

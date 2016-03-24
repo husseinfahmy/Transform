@@ -10,6 +10,7 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -17,21 +18,24 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class NutritionPanel extends JPanel {
+public class NutritionPanel extends JPanel implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private MainWindow mainWindow;
 	
 	private JButton servingUnit;
 	private JTextArea servingSizeInput, fatsInput, proteinInput, carbsInput, calInput, nameInput;
 	
-	private boolean cupServings = true, mealScreen = true;
+	private boolean cupServings, mealScreen;
 	
-	private int nameFillHeight;
+	private int nameFillHeight, servingInputHeight;
 	private int[] lineHeight;
 	
 	public NutritionPanel(MainWindow mainWindow, boolean mealScreen) {
 		this.mainWindow = mainWindow;
 		
 		this.mealScreen = mealScreen;
+		this.cupServings = false;
 		
 		this.setLayout(null);
 		this.setOpaque(false);
@@ -90,6 +94,8 @@ public class NutritionPanel extends JPanel {
 		this.add(label);
 		
 		currHeight += size.height + 15;
+		
+		servingInputHeight = currHeight;
 		
 		label = new JLabel("Serving Size:", JLabel.LEFT);
 		label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(27.0f));
@@ -274,11 +280,17 @@ public class NutritionPanel extends JPanel {
 
     public String getFoodName() { return this.nameInput.getText(); }
     public String getServingSize() { return this.servingSizeInput.getText(); }
-    public String getServingUnit() { return this.servingUnit.getText(); }
     public String getCalories() { return this.calInput.getText(); }
     public String getProteins() { return this.proteinInput.getText(); }
     public String getCarbs() { return this.carbsInput.getText(); }
     public String getFats() { return this.fatsInput.getText(); }
+
+    public String getServingUnit() { return this.servingUnit.getText(); }
+    public void setServingUnit(String newUnit) {
+    	this.servingUnit.setText(newUnit);
+    	Dimension size = this.servingUnit.getPreferredSize();
+    	this.servingUnit.setBounds(getWidth() - 50 + (50-size.width)/2, servingInputHeight + (60-size.height)/2, size.width, size.height);
+    }
     
     /* (non-Javadoc)
      * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)

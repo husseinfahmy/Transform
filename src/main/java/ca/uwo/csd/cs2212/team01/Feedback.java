@@ -1,12 +1,14 @@
 package ca.uwo.csd.cs2212.team01;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
  * @author team01
  *
  */
-public class Feedback {
+public class Feedback implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	//Attributes
 	public int textCode;
