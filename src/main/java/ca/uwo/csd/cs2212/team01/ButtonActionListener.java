@@ -175,6 +175,26 @@ public class ButtonActionListener implements ActionListener, Serializable {
 				else nutritionPanel.setServingUnit("Cup");
 				break;
 			case 1:
+				OCR ocr = new OCR();
+				
+				String[] result = new String[6];
+				result[0] = "1";
+				result[1] = "OCR method failed";
+				
+				try
+				{
+					result = ocr.analyzeImage();
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+				System.out.println(result[0]);
+				System.out.println(result[1]);
+				System.out.println(result[2]);
+				System.out.println(result[3]);
+				System.out.println(result[4]);
+				System.out.println(result[5]);
 				break;
 			case 2:
 				FoodServingSizePanel foodServingSizePanel = this.mainWindow.getAddMealDishScreen().getServingSizePanel();

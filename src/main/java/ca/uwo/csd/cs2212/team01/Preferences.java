@@ -33,6 +33,12 @@ public class Preferences implements Serializable {
 	private LinkedList<Meal> myMeals;
 	private LinkedList<Meal> myDishes;
 
+	private boolean[] dashboardPanelsToggler, activityTrackingPanelsToggler, lifetimeTotalsToggler;
+
+	/**
+	 * Class Constructor
+	 * @param mainWindow
+	 */
 	public Preferences(){
 		firstCall = true;
 		days = new LinkedList<Day>();
@@ -40,6 +46,14 @@ public class Preferences implements Serializable {
 		
 		myMeals = new LinkedList<Meal>();
 		myDishes = new LinkedList<Meal>();
+		
+		dashboardPanelsToggler = new boolean[3];
+		activityTrackingPanelsToggler = new boolean[3];
+		lifetimeTotalsToggler = new boolean[4];
+
+		for(int i = 0; i < 3; i++) dashboardPanelsToggler[i] = true;
+		for(int i = 0; i < 3; i++) activityTrackingPanelsToggler[i] = true;
+		for(int i = 0; i < 4; i++) lifetimeTotalsToggler[i] = true;
 		
 		/*boolean showCaloriesBurned = true;
 		boolean showTotalDistance = true;
@@ -197,5 +211,29 @@ public class Preferences implements Serializable {
 
 	public void setMyDishes(LinkedList<Meal> myDishes) {
 		this.myDishes = myDishes;
+	}
+
+	public boolean getDashboardPanelsToggler(int index) {
+		return dashboardPanelsToggler[index];
+	}
+
+	public void setDashboardPanelsToggler(int index, boolean value) {
+		this.dashboardPanelsToggler[index] = value;
+	}
+
+	public boolean getActivityTrackingPanelsToggler(int index) {
+		return activityTrackingPanelsToggler[index];
+	}
+
+	public void setActivityTrackingPanelsToggler(int index, boolean value) {
+		this.activityTrackingPanelsToggler[index] = value;
+	}
+
+	public boolean getLifetimeTotalsToggler(int index) {
+		return lifetimeTotalsToggler[index];
+	}
+
+	public void setLifetimeTotalsToggler(int index, boolean value) {
+		this.lifetimeTotalsToggler[index] = value;
 	}
 }
