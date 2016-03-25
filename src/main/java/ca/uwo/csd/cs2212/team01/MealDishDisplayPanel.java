@@ -132,7 +132,7 @@ public class MealDishDisplayPanel extends JPanel implements Serializable {
 			Meal myItem;
 			
 			if (isMealItem()) {
-				myItem = mainWindow.getMeals().get(itemIndex);
+				myItem = mainWindow.getMyMeals().get(itemIndex);
 				
 				g.setColor(new Color(255,255,255,120));
 				listTitleLabel[0].setText(myItem.getName());
@@ -147,7 +147,7 @@ public class MealDishDisplayPanel extends JPanel implements Serializable {
 				
 				g.drawRoundRect((getWidth() - 200)/2, 30+68+(getHeight()-(30+68+70*7-10))/2, 200, 60, 15, 15);
 			}else {
-				myItem = mainWindow.getDishes().get(itemIndex);
+				myItem = mainWindow.getMyDishes().get(itemIndex);
 				
 				g.setColor(new Color(255,255,255,120));
 				listTitleLabel[0].setText(myItem.getName());

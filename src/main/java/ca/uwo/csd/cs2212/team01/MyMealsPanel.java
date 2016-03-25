@@ -93,8 +93,8 @@ public class MyMealsPanel extends JPanel implements Serializable {
 	public int getScrollIndex() { return this.getMyMealsIndex(); }
 	
 	public void removeMeal(int index) {
-		if (this.mainWindow.getMeals().size() <= getMyMealsIndex()+index) return;
-		this.mainWindow.getMeals().remove(getMyMealsIndex()+index);
+		if (this.mainWindow.getMyMeals().size() <= getMyMealsIndex()+index) return;
+		this.mainWindow.getMyMeals().remove(getMyMealsIndex()+index);
 		this.repaint();
 	}
     
@@ -139,7 +139,7 @@ public class MyMealsPanel extends JPanel implements Serializable {
 		}
 
 		Meal myMeal;
-		LinkedList<Meal> myMeals = mainWindow.getMeals();
+		LinkedList<Meal> myMeals = mainWindow.getMyMeals();
 		
 		for(int i = 0; i < 7 && myMealsIndex+i < myMeals.size(); i++) {
 			myMeal = myMeals.get(myMeals.size()-1-(myMealsIndex+i));

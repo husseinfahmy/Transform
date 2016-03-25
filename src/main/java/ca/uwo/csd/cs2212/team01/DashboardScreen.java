@@ -336,7 +336,7 @@ public class DashboardScreen extends JPanel implements Serializable {
 
 				Feedback feedbackMeals = mainWindow.getDays().getLast().todaysMeals();
 	   			Feedback feedbackWorkouts = mainWindow.getDays().getLast().todaysWorkouts();
-	   			LinkedList<String> txtOne;
+	   			LinkedList<String> txtOne, txtTwo;
 	   			
 	   			if ((feedbackMeals != null && feedbackMeals.getTXTone().size() > 0) || (feedbackWorkouts != null && feedbackWorkouts.getTXTone().size() > 0)) {
 		   			if (feedbackMeals != null) {
@@ -357,9 +357,10 @@ public class DashboardScreen extends JPanel implements Serializable {
 		   			
 		   			if (feedbackWorkouts != null) {
 			   			txtOne =  feedbackWorkouts.getTXTone();
+			   			txtTwo =  feedbackWorkouts.getTXTtwo();
 		
-			   			for (int i = 0; i < txtOne.size(); i++ ) {
-		   					label = new JLabel("<html><font color='#ffffff'>" + feedbackWorkouts.getTXTone().get(i) + "</font><font color='#6AB9FF'>" + feedbackWorkouts.getTXTtwo().get(i) + "</font></html>", JLabel.LEFT);
+			   			for (int i = 0; i < txtOne.size() && i < txtTwo.size(); i++ ) {
+		   					label = new JLabel("<html><font color='#ffffff'>" + txtOne.get(i) + "</font><font color='#6AB9FF'>" + txtTwo.get(i) + "</font></html>", JLabel.LEFT);
 			    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
 			    			size = label.getPreferredSize();
 		

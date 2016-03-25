@@ -13,6 +13,7 @@ public class FoodServing implements Serializable {
 	private Macro macros = new Macro(); //derived nutritional info is stored here
 	private float servingSize;
 	private String servingUnit;
+	private Meal dish;	//the dish that this foodServing's nutritional info is derived from
 
 	/**
 	 * Class Constructor
@@ -22,6 +23,13 @@ public class FoodServing implements Serializable {
 	 */
 	public FoodServing(Food food, float servingSize, String servingUnit) {
 		this.food = food;
+		this.servingSize = servingSize;
+		this.servingUnit = servingUnit;
+		this.calcMacros(food, servingSize);
+	}
+
+	public FoodServing(Meal dish, float servingSize, String servingUnit) {	//“servingUnit” will always be “g”
+		this.dish = dish;
 		this.servingSize = servingSize;
 		this.servingUnit = servingUnit;
 		this.calcMacros(food, servingSize);
