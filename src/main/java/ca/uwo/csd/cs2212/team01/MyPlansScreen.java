@@ -472,12 +472,12 @@ public class MyPlansScreen extends JPanel implements Serializable{
 			}
 		}
 		
-		if (goodWeek) {
+		/*if (goodWeek) {
 			feedbackLabel[0].setText("This week looks good!");
 			size = feedbackLabel[0].getPreferredSize();
 	    	feedbackLabel[0].setBounds(275 + 600 + 25 + (getWidth()-(275 + 600 + 25)-size.width)/2, 75+75+15, size.width, size.height);
 	    	this.add(feedbackLabel[0]);
-		}
+		}*/
 		
 		g2.setColor(new Color(255,255,255,75));
 		g2.fillRect(275 + image.getWidth() + 25 + 30, 75+15, getWidth()-(275 + image.getWidth() + 25) - 60, 60);

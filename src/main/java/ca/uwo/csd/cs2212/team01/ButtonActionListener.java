@@ -317,6 +317,7 @@ public class ButtonActionListener implements ActionListener, Serializable {
 		case 13: // Navigation Screen
 			switch(this.value) {
 			case 0: // Nagivates to Dashboard Screen
+				this.mainWindow.setDashboardScreen(new DashboardScreen(mainWindow));
 				this.mainWindow.setVisible(false);
 				this.mainWindow.getContentPane().removeAll();
 				this.mainWindow.add(this.mainWindow.getDashboardScreen());
@@ -484,7 +485,8 @@ public class ButtonActionListener implements ActionListener, Serializable {
 				prevDay = this.mainWindow.getFutureDays().get(this.value+7*myPlansScreen.getWeekIndex()-1-1);
 			}
 			
-			day.setPlan(prevDay.getPlan());
+			Plan newPlan = prevDay.getPlan().copyPlan();
+			day.setPlan(newPlan);
 			
 			myPlansScreen.repaint();
 			break;
@@ -533,6 +535,39 @@ public class ButtonActionListener implements ActionListener, Serializable {
 		case 28: // Profile Screen: lifetime totals
 			ProfileScreen profileScreen = this.mainWindow.getProfileScreen();
 			profileScreen.toggleToggles(this.btnMode, this.value);
+			break;
+			
+		case 29: // Dashboard: Navigate Activity Panel Days
+			switch(this.value) {
+			case 0:
+				DashboardScreen dashboardScreen = this.mainWindow.getDashboardScreen();
+
+				dashboardScreen.setActivityPanelPrevDay();
+				index = dashboardScreen.getActivityPanelDayIndex();
+				
+				day = this.mainWindow.getDays().get(index);
+				
+				dashboardScreen.setActivityPanelDay(day);
+
+				dashboardScreen.removeAll();
+				dashboardScreen.initUI();
+				dashboardScreen.repaint();
+				break;
+			case 1:
+				dashboardScreen = this.mainWindow.getDashboardScreen();
+
+				dashboardScreen.setActivityPanelNextDay();
+				index = dashboardScreen.getActivityPanelDayIndex();
+				
+				day = this.mainWindow.getDays().get(index);
+				
+				dashboardScreen.setActivityPanelDay(day);
+				
+				dashboardScreen.removeAll();
+				dashboardScreen.initUI();
+				dashboardScreen.repaint();
+				break;
+			}
 			break;
 		}
 	}

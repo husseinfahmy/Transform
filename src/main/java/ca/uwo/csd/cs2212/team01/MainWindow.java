@@ -32,6 +32,7 @@ public class MainWindow extends JFrame implements Serializable {
 	public static SimpleDateFormat fmLastRefresh = new SimpleDateFormat("MMMM d, h:mm a");	//date format: "Feb 28, 1:34 PM"
 	public static SimpleDateFormat fmTime = new SimpleDateFormat("H:mm");					//date format: 07:15 (or 13:00 for 1pm)
 	public static SimpleDateFormat fmDay = new SimpleDateFormat("MMM d");					//date format: "Feb 28"
+	public static SimpleDateFormat fmActivityDay = new SimpleDateFormat("EEEE, MMM d");		//date format: "Wednesday, Feb 28"
 
 	private LoadingScreen loadingScreen;
 	private ContinueScreen continueScreen;
@@ -97,7 +98,7 @@ public class MainWindow extends JFrame implements Serializable {
 		mealDishScreen = new MealDishScreen(this);
 		loadingScreen = new LoadingScreen(this);
 		weighScreen = new WeighScreen(this);
-		dashboardScreen = new DashboardScreen(this);
+		setDashboardScreen(new DashboardScreen(this));
 		myPlansScreen = new MyPlansScreen(this);
 		planManagerScreen = new PlanManagerScreen(this);
 		
@@ -121,7 +122,7 @@ public class MainWindow extends JFrame implements Serializable {
 	/**
 	 * Refreshes the Dashboard Screen.
 	 */
-	public void updateDashboardScreen() { this.dashboardScreen = new DashboardScreen(this); }
+	public void updateDashboardScreen() { this.setDashboardScreen(new DashboardScreen(this)); }
 	
 	/**
 	 * Returns the last timestamp the user data was updated in MMMM d, h:mm a format.
@@ -143,13 +144,10 @@ public class MainWindow extends JFrame implements Serializable {
 	public void setupVirtualTrainer(float currentWeight, float targetWeight) {
 		// Virtual Trainer needs to deliver feedback to the user based on the processed data.
 		this.userPreferences.setVt(new VirtualTrainer());
-    	// Test Mode assumes user has already specified a weight loss goal:
-		System.out.println();
-		if(this.userPreferences.getVt().setWeightLossGoal(this.userPreferences.getUser(), currentWeight, targetWeight)) System.out.println("Setting current weight and target weight successful.") ;
-		this.userPreferences.getVt().setMileStones();
-		System.out.println();
 		
-		//if (testMode) vt.addNewWeightMeasurement(user, currentWeight);
+    	// Test Mode assumes user has already specified a weight loss goal:
+		this.userPreferences.getVt().setWeightLossGoal(this.userPreferences.getUser(), currentWeight, targetWeight);
+		this.userPreferences.getVt().setMileStones();
 	}
 	
     /**
@@ -199,11 +197,11 @@ public class MainWindow extends JFrame implements Serializable {
     /**
      * Adds a Meal to the list of Meals.
      */
-    public void addMeal(Meal newMeal) { if (newMeal != null) this.userPreferences.getMyMeals().add(newMeal); }
+    public void addMeal(Meal newMeal) { if (newMeal != null && this.userPreferences.getMyMeals().size() < 7) this.userPreferences.getMyMeals().add(newMeal); }
     /**
      * Adds a Dish to the list of Dishes.
      */
-    public void addDish(Meal newDish) { if (newDish != null) this.userPreferences.getMyDishes().add(newDish); }
+    public void addDish(Meal newDish) { if (newDish != null && this.userPreferences.getMyDishes().size() < 7) this.userPreferences.getMyDishes().add(newDish); }
     
     
     /**
@@ -519,11 +517,6 @@ public class MainWindow extends JFrame implements Serializable {
 			
 	}
     
-    
-    
-    
-    
-	
 	/**
 	 * Storing the data into data structures (arrays) from the and old API call to test 
 	 * the program when not connected to the Internet.
@@ -560,5 +553,9 @@ public class MainWindow extends JFrame implements Serializable {
 
 	public void setProfileScreen(ProfileScreen profileScreen) {
 		this.profileScreen = profileScreen;
+	}
+
+	public void setDashboardScreen(DashboardScreen dashboardScreen) {
+		this.dashboardScreen = dashboardScreen;
 	}
 }

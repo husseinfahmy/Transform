@@ -447,21 +447,27 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 	
 	public void addDishesMeal() {
 		if (this.addDishesMeal == null) return;
-		this.day.getPlan().addMeal(this.addDishesMeal);
-		this.addDishesMeal = new Meal();
-		this.toggleMealWorkoutScreen(screen);
+		if (this.day.getPlan().getMeals().size() < 7) {
+			this.day.getPlan().addMeal(this.addDishesMeal);
+			this.addDishesMeal = new Meal();
+			this.toggleMealWorkoutScreen(screen);
+		}
 	}
 	
 	public void addMeal(Meal meal) {
 		if (meal == null) return;
-		this.day.getPlan().addMeal(meal);
-		this.toggleMealWorkoutScreen(screen);
+		if (this.day.getPlan().getMeals().size() < 7) {
+			this.day.getPlan().addMeal(meal);
+			this.toggleMealWorkoutScreen(screen);
+		}
 	}
 	
 	public void addDish(Meal dish) {
 		FoodServing newFoodServing = new FoodServing(dish, 10, "g");
-		this.addDishesMeal.addFoodServing(newFoodServing);
-		toggleMealWorkoutScreen(screen);
+		if (this.addDishesMeal.getFoodServings().size() < 7) {
+			this.addDishesMeal.addFoodServing(newFoodServing);
+			toggleMealWorkoutScreen(screen);
+		}
 	}
 	
 	public void removeDish(int index) {
@@ -470,8 +476,10 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 	}
 
 	public void addWorkout() {
-		this.day.getPlan().addWorkout(new Workout(Integer.parseInt(this.calorieInput.getText())));
-		this.toggleMealWorkoutScreen(screen);
+		if (this.day.getPlan().getWorkouts().size() < 7) {
+			this.day.getPlan().addWorkout(new Workout(Integer.parseInt(this.calorieInput.getText())));
+			this.toggleMealWorkoutScreen(screen);
+		}
 	}
 	
     public void toggleMealWorkoutScreen(int screen) {
@@ -835,12 +843,12 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 	}
 
 	public void removeMeal(int index) {
-		this.day.getPlan().getMeals().remove(index);
+		this.day.getPlan().removeMeal(index);
 		this.toggleMealWorkoutScreen(screen);
 	}
 
 	public void removeWorkout(int index) {
-		this.day.getPlan().getWorkouts().remove(index);
+		this.day.getPlan().removeWorkout(index);
 		this.toggleMealWorkoutScreen(screen);
 	}
 

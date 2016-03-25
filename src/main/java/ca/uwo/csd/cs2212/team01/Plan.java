@@ -153,4 +153,72 @@ public class Plan implements Serializable {
 	public void setPredictedCalorieBurn(float cal) 
 	{ this.predictedCalorieDiff = cal; }
 	
+	/**
+	 * Returns a copy of the plan this method is called on
+	 * @return Plan
+	 */
+	public Plan copyPlan()
+	{
+		Plan newPlan = new Plan();
+
+		//Meals: construct same number of new meals
+		
+		for(int i = 0; i < this.getMeals().size(); i++)
+		{
+			Meal newMeal = new Meal();
+			newMeal.setName(this.getMeals().get(i).getName());
+			newMeal.setIsDish(this.getMeals().get(i).getIsDish());
+			if(this.getMeals().get(i).getIsDish()){newMeal.setDishWeight(this.getMeals().get(i).getDishWeight());}
+			//FoodServings: construct same number of new foodservings and add to new meal
+			
+			for(int j = 0; j < this.getMeals().get(i).getFoodServings().size(); j++)	//construct the next meal
+			{
+				//public Food(String name, int itemNumber, float servingSize, String servingUnit, Macro macro)
+				Macro newMacro = new Macro();	//for the Food Object
+				
+				newMacro.setCalories( this.getMeals().get(i).getFoodServings().get(j).getFood().getMacroInfo().getCalories());
+				newMacro.setCarbs(this.getMeals().get(i).getFoodServings().get(j).getFood().getMacroInfo().getCarbs());
+				newMacro.setFats(this.getMeals().get(i).getFoodServings().get(j).getFood().getMacroInfo().getFats());
+				newMacro.setProteins(this.getMeals().get(i).getFoodServings().get(j).getFood().getMacroInfo().getProteins());
+				
+				Food newFood = new Food	(
+						this.getMeals().get(i).getFoodServings().get(j).getFood().getName(),
+						1, this.getMeals().get(i).getFoodServings().get(j).getFood().getServingInfo(),
+						this.getMeals().get(i).getFoodServings().get(j).getFood().getServingUnit(), newMacro
+										);
+				//public FoodServing(Food food, float servingSize, String servingUnit)
+				FoodServing newFS = new FoodServing
+						(
+								newFood,
+								this.getMeals().get(i).getFoodServings().get(j).getServingSize(),
+								this.getMeals().get(i).getFoodServings().get(j).getServingUnit()
+						);
+				
+				newMeal.addFoodServing(newFS);
+			}
+			
+			newPlan.addMeal(newMeal);
+		}
+		
+		//Workouts: construct same number of new workouts
+		for(int i = 0; i < this.getWorkouts().size(); i++)
+		{
+			Workout newWRK = new Workout(this.getWorkouts().get(i).getCalorieBurnGoal());
+			newPlan.addWorkout(newWRK);
+		}
+		
+		return newPlan;	
+	}
+	/**
+	 * Setter for mealCount
+	 * @param mealCount
+	 */
+	public void setMealCount(int mealCount){this.mealCount=mealCount;}
+	/**
+	 * Getter for mealCount
+	 * @return
+	 */
+	public int getMealCount(){return mealCount;}
+
+	
 }//Class

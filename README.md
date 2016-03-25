@@ -1,13 +1,7 @@
 # Welcome to CS 2212 - Winter 2016
 
-To setup the program, you will need to configure these paths to the corresponding credentials & token files.
-The path variables are located in the MainWindow.java file as class variables.
-
-```
-	static final String CREDENTIALS_FILE_PATH = "/PATH/Team1Credentials.txt";
-	static final String TOKENS_FILE_PATH = "/PATH/Team1Tokens.txt";
-```
-
+Before running, make sure you are using a 32-bit operating system, with a display of 1480 by 800 or greater for optimum results. 
+Image analysis of the nutrition label image will only run on a 32-bit system. 
 To start the program, you will need to run these commands in your terminal to run the program.
 
 ```

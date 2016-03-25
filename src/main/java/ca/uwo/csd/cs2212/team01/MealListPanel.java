@@ -141,7 +141,7 @@ public class MealListPanel extends JPanel implements Serializable {
     
     public void addFoodServing(FoodServing newFoodServing) {
     	if (meal == null) meal = new Meal();
-    	meal.addFoodServing(newFoodServing);
+    	if (meal.getFoodServings().size() < 7) meal.addFoodServing(newFoodServing);
     }
     
     public void removeFoodServing(int index) {
