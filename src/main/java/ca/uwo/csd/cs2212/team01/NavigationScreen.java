@@ -149,5 +149,14 @@ public class NavigationScreen extends JPanel implements Serializable {
 			e.printStackTrace();
 		}
 		g2.drawImage(image, (getWidth()-image.getWidth())/2, (getHeight()-image.getHeight())/2, null);
+		
+		image = null;
+		try {
+			image = ImageIO.read(new File("UI/logo.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		g2.drawImage(image, (getWidth()-image.getWidth())/2, (getHeight()-image.getHeight())/2 + 20, null);
 	}
 }

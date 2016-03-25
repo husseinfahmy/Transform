@@ -30,7 +30,7 @@ public class FoodServingSizePanel extends JPanel implements Serializable {
 	public FoodServingSizePanel(MainWindow mainWindow, boolean mealScreen) {
 		this.mainWindow = mainWindow;
 		
-		this.mealScreen = mealScreen;
+		this.setMealScreen(mealScreen);
 		this.foodCupServings = false;
 		
 		this.setLayout(null);
@@ -151,4 +151,12 @@ public class FoodServingSizePanel extends JPanel implements Serializable {
 		g.setColor(new Color(255,255,255,75));
 		g.drawLine(60, (getHeight()-100)/2, 60, (getHeight()-100)/2 + 100);
     }
+
+	public boolean isMealScreen() {
+		return mealScreen;
+	}
+
+	public void setMealScreen(boolean mealScreen) {
+		this.mealScreen = mealScreen;
+	}
 }

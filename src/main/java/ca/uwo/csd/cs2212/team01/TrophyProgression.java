@@ -12,8 +12,7 @@ public class TrophyProgression implements Serializable {
 	
 	//fields
 	private int currentStreak;
-	private int lifeTimeStreak;
-	private int numberOfStreaks;
+	private int lifeTimeStreak=0;
 	
 	//threshold for minimum calorie difference to be considered a successful day
 	final int THRESHOLD = -500;
@@ -25,16 +24,16 @@ public class TrophyProgression implements Serializable {
 	{
 		this.currentStreak = 0;
 		this.lifeTimeStreak = 0;
-		this.numberOfStreaks = 0;
-		
 	}
 	
 	/**
-	 * setter method to set the current streak of consecutive days of reaching the goal calorie deficit
+	 * updates user's streak progression
 	 * @param days a LinkedList of Day objects that store the data for each day
+	 * @return int[]. int[0] = current streak number. int[1] = 
 	 */
-	public void setCurrentStreak(LinkedList<Day> days)
+	public int[] updateStreaks(LinkedList<Day> days)
 	{
+		int[] result = new int[2];
 		int count = 0;
 		
 		//start from the last complete day
@@ -43,10 +42,14 @@ public class TrophyProgression implements Serializable {
 		{
 			count++;
 		}
-		
 		this.currentStreak = count;
-		if(currentStreak > 0)
-			numberOfStreaks++;
+		result[0] = count;				//return current streak
+		if(count>lifeTimeStreak)
+		{	
+			lifeTimeStreak=count; result[1] = 1; return result;		//user has broken personal record. 1 = true
+		}
+		else { result[1] = 0; } //user has NOT broken personal record. 0 = false
+		return result;
 	}
 	
 	/**
@@ -110,68 +113,9 @@ public class TrophyProgression implements Serializable {
 		return lifeTimeStreak;
 	}
 	
-	public static void main(String args[])
-	{
-		TrophyProgression trophy = new TrophyProgression();
-		LinkedList<Day> theDays = new LinkedList<Day>();
-		for(int i = 1; i <= 10; i++){
-			Day day = new Day();
-			day.setDailyCalDiff(-610);
-			theDays.add(day);
-			
-		}
-		trophy.setCurrentStreak(theDays);
-		trophy.setLifeTimeStreak(theDays);
-		System.out.println("Current Streak: " + trophy.getCurrentStreak() + "\n Current Streak #: " + trophy.getNumberOfStreaks());
-		System.out.println("Lifetime Streak: " + trophy.getLifeTimeStreak());
-		for(int i = 1; i <= 10; i++){
-			Day day = new Day();
-			day.setDailyCalDiff(-5);
-			theDays.add(day);
-		}
-		trophy.setCurrentStreak(theDays);
-		if (trophy.setLifeTimeStreak(theDays))
-		{
-			System.out.println("True");
-		}
-		System.out.println("Current Streak: " + trophy.getCurrentStreak() + "\n Current Streak #: " + trophy.getNumberOfStreaks());
-		System.out.println("Lifetime Streak: " + trophy.getLifeTimeStreak());
-		for(int i = 1; i <= 25; i++){
-			Day day = new Day();
-			day.setDailyCalDiff(-510);
-			theDays.add(day);
-		}
-			
-		trophy.setCurrentStreak(theDays);
-		if (trophy.setLifeTimeStreak(theDays))
-		{
-			System.out.println("True");
-		}
-		System.out.println("Current Streak: " + trophy.getCurrentStreak() + "\n Current Streak #: " + trophy.getNumberOfStreaks());
-		System.out.println("Lifetime Streak: " + trophy.getLifeTimeStreak());
-		for(int i = 1; i <= 8; i++){
-			Day day = new Day();
-			day.setDailyCalDiff(-5);
-			theDays.add(day);
-		}
-			
-		trophy.setCurrentStreak(theDays);
-		if (trophy.setLifeTimeStreak(theDays))
-		{
-			System.out.println("True");
-		}
-		System.out.println("Current Streak: " + trophy.getCurrentStreak() + "\n Current Streak #: " + trophy.getNumberOfStreaks());
-		System.out.println("Lifetime Streak: " + trophy.getLifeTimeStreak());
-		
-	}
 
-	public int getNumberOfStreaks() {
-		return numberOfStreaks;
-	}
 
-	public void setNumberOfStreaks(int numberOfStreaks) {
-		this.numberOfStreaks = numberOfStreaks;
-	}
+
 
 	
 }

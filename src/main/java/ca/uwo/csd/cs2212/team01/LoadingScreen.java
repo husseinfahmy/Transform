@@ -48,58 +48,63 @@ public class LoadingScreen extends JPanel implements Serializable {
 	 * Sets up the App in normal mode
 	 */
 	public void initSetup() {
-		if(mainWindow.isFirstCall())
-		{
-			Date[] dateArray = new Date[21]; int dayNumber;
-			for (int i = 0; i<6; i++)
-			{ dayNumber = (5 - i); dateArray[dayNumber] = new Date(System.currentTimeMillis() - (i+1)*24*60*60*1000); }
-			
-			//Add 6 previous empty days: [TEST: PASSED]
-			
-			for(int i = 0; i<6; i++)
-			{ Day day = new Day(dateArray[i]); mainWindow.getDays().add(day); }
-			
-			//Add empty "today": [TEST: PASSED]
-			
-			Date todayDate = new Date();
-			//calculate number of elapsed minutes for current day:
-			int hours = todayDate.getHours(); int minutes=0;
-			if(hours == 0)
-				{ minutes = todayDate.getMinutes(); }
-			else
-				{ minutes = hours*60 + todayDate.getMinutes(); }
-			
-			Day day = new Day(todayDate); mainWindow.getDays().add(day); day.setDayProgress(minutes);
-			
-			//[TEST: PASSED]
-			//Create 21 more empty day objects.
-			for (int i = 0; i<21; i++)
-			{ dateArray[i] = new Date(System.currentTimeMillis() + (i+1)*24*60*60*1000); }
-			
-			//Add to "futureDays"
-			for(int i = 0; i<21; i++)
-			{ day = new Day(dateArray[i]); day.setDayProgress(0); mainWindow.getFutureDays().add(day); }
-			
-			// [TEST: PASSED]			
-			//Fill the past 7 empty days ("days" LinkedList) with data by using APICall(): 
-			
-			ListIterator<Day> previousDays = mainWindow.getDays().listIterator(); 
-			mainWindow.setLastCall(todayDate); 
-			while(previousDays.hasNext())
-			{
-				day = previousDays.next();
-				
-				if(day.getDate().getDay() == todayDate.getDay()) //if day == "current day"
-				{  mainWindow.APICall(fmDate.format(day.getDate()),"00:00",fmTime.format(day.getDate()),day); day.processNewData();  }
-				
-				else 
-				{  mainWindow.APICall(fmDate.format(day.getDate()),"00:00","23:59",day); day.processNewData();  }
-			}
-			
-			//Create new user and new virtual trainer
-			//mainWindow.setUser(new User("Beth Locke"));
-			//vt = new VirtualTrainer();
+		if(!mainWindow.isFirstCall()) {
+			this.mainWindow.refreshEvent();
+			this.mainWindow.updateDashboardScreen();
+			this.mainWindow.getContentPane().removeAll();
+			this.mainWindow.add(this.mainWindow.getDashboardScreen());
+			return;
 		}
+		
+		Date[] dateArray = new Date[21]; int dayNumber;
+		for (int i = 0; i<6; i++)
+		{ dayNumber = (5 - i); dateArray[dayNumber] = new Date(System.currentTimeMillis() - (i+1)*24*60*60*1000); }
+		
+		//Add 6 previous empty days: [TEST: PASSED]
+		
+		for(int i = 0; i<6; i++)
+		{ Day day = new Day(dateArray[i]); mainWindow.getDays().add(day); }
+		
+		//Add empty "today": [TEST: PASSED]
+		
+		Date todayDate = new Date();
+		//calculate number of elapsed minutes for current day:
+		int hours = todayDate.getHours(); int minutes=0;
+		if(hours == 0)
+			{ minutes = todayDate.getMinutes(); }
+		else
+			{ minutes = hours*60 + todayDate.getMinutes(); }
+		
+		Day day = new Day(todayDate); mainWindow.getDays().add(day); day.setDayProgress(minutes);
+		
+		//[TEST: PASSED]
+		//Create 21 more empty day objects.
+		for (int i = 0; i<21; i++)
+		{ dateArray[i] = new Date(System.currentTimeMillis() + (i+1)*24*60*60*1000); }
+		
+		//Add to "futureDays"
+		for(int i = 0; i<21; i++)
+		{ day = new Day(dateArray[i]); day.setDayProgress(0); mainWindow.getFutureDays().add(day); }
+		
+		// [TEST: PASSED]			
+		//Fill the past 7 empty days ("days" LinkedList) with data by using APICall(): 
+		
+		ListIterator<Day> previousDays = mainWindow.getDays().listIterator(); 
+		mainWindow.setLastCall(todayDate); 
+		while(previousDays.hasNext())
+		{
+			day = previousDays.next();
+			
+			if(day.getDate().getDay() == todayDate.getDay()) //if day == "current day"
+			{  mainWindow.APICall(fmDate.format(day.getDate()),"00:00",fmTime.format(day.getDate()),day); day.processNewData();  }
+			
+			else 
+			{  mainWindow.APICall(fmDate.format(day.getDate()),"00:00","23:59",day); day.processNewData();  }
+		}
+		
+		//Create new user and new virtual trainer
+		//mainWindow.setUser(new User("Beth Locke"));
+		//vt = new VirtualTrainer();
 		
 		//this.mainWindow.setVisible(false);
 		this.mainWindow.getContentPane().removeAll();
@@ -119,6 +124,7 @@ public class LoadingScreen extends JPanel implements Serializable {
 	 */
 	public void initTestMode() {
 		if(!mainWindow.isFirstCall()) {
+			this.mainWindow.updateDashboardScreen();
 			this.mainWindow.getContentPane().removeAll();
 			this.mainWindow.add(this.mainWindow.getDashboardScreen());
 			return;
@@ -172,13 +178,13 @@ public class LoadingScreen extends JPanel implements Serializable {
 
 		//Adding the meals and workouts that the user built to the user's daily plans. BMR = Basal Metabolic Rate = 1600 Calories burned passively by user.
 		Plan[] planArray = new Plan[7];
-		Plan plan1 = new Plan(); plan1.addMeal(meal1); plan1.addMeal(meal2); plan1.addMeal(meal3); plan1.addWorkout(workout1); planArray[0] = plan1; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
-		Plan plan2 = new Plan(); plan2.addMeal(meal1); plan2.addMeal(meal2); plan2.addMeal(meal3); plan2.addWorkout(workout2); planArray[1] = plan2; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
-		Plan plan3 = new Plan(); plan3.addMeal(meal1); plan3.addMeal(meal2); plan3.addMeal(meal3); plan3.addWorkout(workout3); planArray[2] = plan3; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
-		Plan plan4 = new Plan(); plan4.addMeal(meal1); plan4.addMeal(meal2); plan4.addMeal(meal3); plan4.addWorkout(workout4); planArray[3] = plan4; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
-		Plan plan5 = new Plan(); plan5.addMeal(meal1); plan5.addMeal(meal2); plan5.addMeal(meal3); plan5.addWorkout(workout5); planArray[4] = plan5; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
-		Plan plan6 = new Plan(); plan6.addMeal(meal1); plan6.addMeal(meal2); plan6.addMeal(meal3); plan6.addWorkout(workout6); planArray[5] = plan6; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
-		Plan plan7 = new Plan(); plan7.addMeal(meal1); plan7.addMeal(meal2); plan7.addMeal(meal3); plan7.addWorkout(workout7); planArray[6] = plan7; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
+		Plan plan1 = new Plan(1600); plan1.addMeal(meal1); plan1.addMeal(meal2); plan1.addMeal(meal3); plan1.addWorkout(workout1); planArray[0] = plan1; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
+		Plan plan2 = new Plan(1600); plan2.addMeal(meal1); plan2.addMeal(meal2); plan2.addMeal(meal3); plan2.addWorkout(workout2); planArray[1] = plan2; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
+		Plan plan3 = new Plan(1600); plan3.addMeal(meal1); plan3.addMeal(meal2); plan3.addMeal(meal3); plan3.addWorkout(workout3); planArray[2] = plan3; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
+		Plan plan4 = new Plan(1600); plan4.addMeal(meal1); plan4.addMeal(meal2); plan4.addMeal(meal3); plan4.addWorkout(workout4); planArray[3] = plan4; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
+		Plan plan5 = new Plan(1600); plan5.addMeal(meal1); plan5.addMeal(meal2); plan5.addMeal(meal3); plan5.addWorkout(workout5); planArray[4] = plan5; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
+		Plan plan6 = new Plan(1600); plan6.addMeal(meal1); plan6.addMeal(meal2); plan6.addMeal(meal3); plan6.addWorkout(workout6); planArray[5] = plan6; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
+		Plan plan7 = new Plan(1600); plan7.addMeal(meal1); plan7.addMeal(meal2); plan7.addMeal(meal3); plan7.addWorkout(workout7); planArray[6] = plan7; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
 		
 		//Each plan has a planned calorie difference of 1500 cal -1800 cal = 
 		// -300 calories deficit
@@ -336,7 +342,7 @@ public class LoadingScreen extends JPanel implements Serializable {
 		
 		BufferedImage image = null;
 		try {
-			image = ImageIO.read(new File("UI/bg.jpg"));
+			image = ImageIO.read(new File("UI/bg-ldng.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

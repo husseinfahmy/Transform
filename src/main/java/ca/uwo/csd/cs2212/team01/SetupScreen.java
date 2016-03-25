@@ -30,7 +30,9 @@ public class SetupScreen extends JPanel implements Serializable {
 	
 	private JTextArea inputGender, inputAge, inputHeight, inputCurrentWeight, inputTargetWeight;
 	
-	private String gender, age, height, currentWeight, targetWeight;
+	private String gender;
+	private int age;
+	private float height, currentWeight, targetWeight;
 	
 	/**
 	 * Class Constructor
@@ -92,7 +94,14 @@ public class SetupScreen extends JPanel implements Serializable {
 					e.printStackTrace();
 				}
 				
-    			JLabel label = new JLabel("Setup");
+    			JLabel label = new JLabel("Setup TRANSFORM");
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+    			Dimension size = label.getPreferredSize();
+    			label.setBounds((getWidth() - size.width)/2, (getHeight()-size.height)/2, size.width, size.height);
+    			label.setForeground(Color.WHITE);
+    			this.add(label);
+				
+    			/*JLabel label = new JLabel("Setup");
     			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
     			Dimension size = label.getPreferredSize();
     			label.setBounds(getWidth()/7 - size.width, (getHeight()-size.height)/2, size.width, size.height);
@@ -134,7 +143,7 @@ public class SetupScreen extends JPanel implements Serializable {
     	        	g2.drawLine((getWidth() - 30)/2 + 30 + (getWidth()/2 - getWidth()/7 - 10 - 15 - 30)/2 + 30, 75/2, (getWidth() - 30)/2 + 30 + (getWidth()/2 - getWidth()/7 - 10 - 15 - 30)/2 + 30 + length, 75/2);
     	        	g.drawImage(checkmark, (getWidth() - 30)/2 + 30 + (getWidth()/2 - getWidth()/7 - 10 - 15 - 30)/2, (75-checkmark.getHeight())/2, checkmark.getWidth(), checkmark.getHeight(), null);
     	        }else g2.draw(new Ellipse2D.Double((getWidth() - 30)/2 + 30 + (getWidth()/2 - getWidth()/7 - 10 - 15 - 30)/2,(getHeight()-30)/2, 30, 30));
-
+*/
     			image = null;
     			try {
     				image = ImageIO.read(new File("UI/exit-icon.png"));
@@ -167,8 +176,8 @@ public class SetupScreen extends JPanel implements Serializable {
     	this.add(bannerPanel);
     	
     	if (this.page <= 1) {
-			JButton button = new JButton("Next >");
-			button.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(35.0f));
+			JButton button = new JButton();
+			//button.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(35.0f));
 			button.setBackground(null);
 			button.setBorder(null);
 			button.setFocusPainted(false);
@@ -178,13 +187,13 @@ public class SetupScreen extends JPanel implements Serializable {
 			button.setOpaque(false);
 			button.setForeground(new Color(255,255,255,220));
 			button.setFocusable(false);
-			Dimension size = button.getPreferredSize();
-			button.setBounds((getWidth()-size.width)/2, getHeight()-size.height-30, size.width, size.height);
+			//Dimension size = button.getPreferredSize();
+			button.setBounds((getWidth()-415)/2, getHeight()-50-18, 415, 50);
 	        button.addActionListener(new ButtonActionListener(4, 0, mainWindow));
 	        this.add(button);
     	}else {
     		JButton button;
-    		if (this.page >= 6) button = new JButton("Done >");
+    		if (this.page >= 11) button = new JButton("Done >");
     		else button = new JButton("Next >");
 	        button.addActionListener(new ButtonActionListener(4, 0, mainWindow));
 			button.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(35.0f));
@@ -219,7 +228,7 @@ public class SetupScreen extends JPanel implements Serializable {
     	}
     	
     	switch(this.page) {
-    	case 1:
+    	/*case 1:
     		JLabel title = new JLabel("How does TRAINR work?");
 			title.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(60.0f));
 			Dimension titlesize = title.getPreferredSize();
@@ -264,10 +273,10 @@ public class SetupScreen extends JPanel implements Serializable {
     		desc.setBounds((getWidth()-size.width)/2, bannerPanel.getHeight() + titlesize.height*2, size.width, size.height);
     		desc.setForeground(new Color(255,255,255,128));
     		this.add(desc);
-    		break;
+    		break;*/
 
-    	case 3:
-    		title = new JLabel("Enter in your body stats");
+    	case 6:
+    		/*title = new JLabel("Enter in your body stats");
 			title.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(60.0f));
 			titlesize = title.getPreferredSize();
 			title.setBounds((getWidth() - titlesize.width)/2, bannerPanel.getHeight() + titlesize.height/2, titlesize.width, titlesize.height);
@@ -279,12 +288,12 @@ public class SetupScreen extends JPanel implements Serializable {
     		size = desc.getPreferredSize();
     		desc.setBounds((getWidth()-size.width)/2, bannerPanel.getHeight() + titlesize.height*2, size.width, size.height);
     		desc.setForeground(new Color(255,255,255,150));
-    		this.add(desc);
+    		this.add(desc);*/
     		
-    		JLabel tableTitle = new JLabel("Gender", JLabel.CENTER);
+    		JLabel tableTitle = new JLabel("Gender ( M or F )", JLabel.CENTER);
     		tableTitle.setOpaque(true);
     		tableTitle.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
-    		tableTitle.setBounds((getWidth() - 250*3 - 2)/2, (getHeight() - 50*2 - 1)/2, 250, 50);
+    		tableTitle.setBounds((getWidth() - 250*3 - 2)/2, (getHeight() - 50*2 - 1)/2 + 100, 250, 50);
     		tableTitle.setForeground(new Color(255,255,255,200));
     		tableTitle.setBackground(new Color(0,0,0,120));
     		this.add(tableTitle);
@@ -292,15 +301,15 @@ public class SetupScreen extends JPanel implements Serializable {
     		tableTitle = new JLabel("Age", JLabel.CENTER);
     		tableTitle.setOpaque(true);
     		tableTitle.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
-    		tableTitle.setBounds((getWidth() - 250*3 - 2)/2 + 250 + 1, (getHeight() - 50*2 - 1)/2, 250, 50);
+    		tableTitle.setBounds((getWidth() - 250*3 - 2)/2 + 250 + 1, (getHeight() - 50*2 - 1)/2 + 100, 250, 50);
     		tableTitle.setForeground(new Color(255,255,255,200));
     		tableTitle.setBackground(new Color(0,0,0,120));
     		this.add(tableTitle);
     		
-    		tableTitle = new JLabel("Height (cm)", JLabel.CENTER);
+    		tableTitle = new JLabel("Height ( cm )", JLabel.CENTER);
     		tableTitle.setOpaque(true);
     		tableTitle.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
-    		tableTitle.setBounds((getWidth() - 250*3 - 2)/2 + 250*2 + 2, (getHeight() - 50*2 - 1)/2, 250, 50);
+    		tableTitle.setBounds((getWidth() - 250*3 - 2)/2 + 250*2 + 2, (getHeight() - 50*2 - 1)/2 + 100, 250, 50);
     		tableTitle.setForeground(new Color(255,255,255,200));
     		tableTitle.setBackground(new Color(0,0,0,120));
     		this.add(tableTitle);
@@ -328,13 +337,13 @@ public class SetupScreen extends JPanel implements Serializable {
     		inputGender = new JTextArea(gender);
     		inputGender.setOpaque(false);
     		inputGender.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
-    		size = inputGender.getPreferredSize();
+    		Dimension size = inputGender.getPreferredSize();
     		inputGender.setBounds(0 + 100, (50 - size.height)/2, 250-100, 50);
     		inputGender.setCaretColor(new Color(255,255,255,200));
     		inputGender.setForeground(new Color(255,255,255,200));
     		inputboxes.add(inputGender);
     		
-    		inputAge = new JTextArea(age);
+    		inputAge = new JTextArea((age != 0 ? age : "") + "");
     		inputAge.setLayout(null);
     		inputAge.setOpaque(false);
     		inputAge.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
@@ -343,7 +352,7 @@ public class SetupScreen extends JPanel implements Serializable {
     		inputAge.setForeground(new Color(255,255,255,200));
     		inputboxes.add(inputAge);
     		
-    		inputHeight = new JTextArea(height);
+    		inputHeight = new JTextArea((height != 0 ? height : "") + "");
     		inputHeight.setLayout(null);
     		inputHeight.setOpaque(false);
     		inputHeight.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
@@ -352,12 +361,12 @@ public class SetupScreen extends JPanel implements Serializable {
     		inputHeight.setForeground(new Color(255,255,255,200));
     		inputboxes.add(inputHeight);
     		
-    		inputboxes.setBounds((getWidth() - 250*3 - 2)/2, (getHeight() - 50*2 - 1)/2 + 50 + 1, 250*3 + 2, 50);
+    		inputboxes.setBounds((getWidth() - 250*3 - 2)/2, (getHeight() - 50*2 - 1)/2 + 50 + 1 + 100, 250*3 + 2, 50);
     		this.add(inputboxes);
     		break;
     		
-    	case 4:
-    		title = new JLabel("Set a Weight Loss Goal");
+    	case 7:
+    		/*title = new JLabel("Set a Weight Loss Goal");
 			title.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(60.0f));
 			titlesize = title.getPreferredSize();
 			title.setBounds((getWidth() - titlesize.width)/2, bannerPanel.getHeight() + titlesize.height/2, titlesize.width, titlesize.height);
@@ -369,20 +378,20 @@ public class SetupScreen extends JPanel implements Serializable {
     		size = desc.getPreferredSize();
     		desc.setBounds((getWidth()-size.width)/2, bannerPanel.getHeight() + titlesize.height*2, size.width, size.height);
     		desc.setForeground(new Color(255,255,255,150));
-    		this.add(desc);
+    		this.add(desc);*/
     		
-    		tableTitle = new JLabel("Current Weight (lbs)", JLabel.CENTER);
+    		tableTitle = new JLabel("Current Weight ( lbs )", JLabel.CENTER);
     		tableTitle.setOpaque(true);
     		tableTitle.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
-    		tableTitle.setBounds((getWidth() - 250*2 - 1)/2, (getHeight() - 50*2 - 1)/2, 250, 50);
+    		tableTitle.setBounds((getWidth() - 250*2 - 1)/2 - 60, (getHeight() - 50*2 - 1)/2 + 30, 250, 50);
     		tableTitle.setForeground(new Color(255,255,255,200));
     		tableTitle.setBackground(new Color(0,0,0,120));
     		this.add(tableTitle);
     		
-    		tableTitle = new JLabel("Target Weight (lbs)", JLabel.CENTER);
+    		tableTitle = new JLabel("Target Weight ( lbs )", JLabel.CENTER);
     		tableTitle.setOpaque(true);
     		tableTitle.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
-    		tableTitle.setBounds((getWidth() - 250*2 - 1)/2 + 250 + 1, (getHeight() - 50*2 - 1)/2, 250, 50);
+    		tableTitle.setBounds((getWidth() - 250*2 - 1)/2 + 250 + 1 + 60, (getHeight() - 50*2 - 1)/2 + 30, 250, 50);
     		tableTitle.setForeground(new Color(255,255,255,200));
     		tableTitle.setBackground(new Color(0,0,0,120));
     		this.add(tableTitle);
@@ -393,17 +402,17 @@ public class SetupScreen extends JPanel implements Serializable {
     				super.paintComponent(g);
     				
     				this.setLayout(null);
-    				this.setSize(250*2 + 1,50);
+    				this.setSize(250*2 + 1 + 120,50);
     				//this.setLocation(0, 0);
 
     				g.setColor(new Color(0,0,0,120));
     				
     				g.fillRect(0, 0, 250, 50);
-    				g.fillRect(250 + 1, 0, 250, 50);
+    				g.fillRect(250 + 1 + 120, 0, 250, 50);
     			}
     		};
     		
-    		inputCurrentWeight = new JTextArea(currentWeight);
+    		inputCurrentWeight = new JTextArea((currentWeight != 0 ? currentWeight : "") + "");
     		inputCurrentWeight.setOpaque(false);
     		inputCurrentWeight.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
     		size = inputCurrentWeight.getPreferredSize();
@@ -412,20 +421,20 @@ public class SetupScreen extends JPanel implements Serializable {
     		inputCurrentWeight.setForeground(new Color(255,255,255,200));
     		inputboxes.add(inputCurrentWeight);
     		
-    		inputTargetWeight = new JTextArea(targetWeight);
+    		inputTargetWeight = new JTextArea((targetWeight != 0 ? targetWeight : "") + "");
     		inputTargetWeight.setLayout(null);
     		inputTargetWeight.setOpaque(false);
     		inputTargetWeight.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
-    		inputTargetWeight.setBounds(250 + 1 + 100, (50 - size.height)/2, 250-100, 50);
+    		inputTargetWeight.setBounds(250 + 1 + 100 + 120, (50 - size.height)/2, 250-100, 50);
     		inputTargetWeight.setCaretColor(new Color(255,255,255,200));
     		inputTargetWeight.setForeground(new Color(255,255,255,200));
     		inputboxes.add(inputTargetWeight);
     		
-    		inputboxes.setBounds((getWidth() - 250*2 - 1)/2, (getHeight() - 50*2 - 1)/2 + 50 + 1, 250*2 + 1, 50);
+    		inputboxes.setBounds((getWidth() - 250*2 - 1)/2 - 60, (getHeight() - 50*2 - 1)/2 + 50 + 1 + 30, 250*2 + 1 + 120, 50);
     		this.add(inputboxes);
     		break;
 
-    	case 5:
+    	/*case 5:
     		title = new JLabel("Focus On Milestones");
 			title.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(60.0f));
 			titlesize = title.getPreferredSize();
@@ -570,29 +579,40 @@ public class SetupScreen extends JPanel implements Serializable {
     		desc.setBounds((getWidth()-size.width)/2, bannerPanel.getHeight() + titlesize.height*2, size.width, size.height);
     		desc.setForeground(new Color(255,255,255,128));
     		this.add(desc);
-    		break;
+    		break;*/
     	}
     }
     
     public void gotoNextPage() {
     	switch(this.page) {
-    	case 3: // Save gender, age, height input values
-    		gender = inputGender.getText();
-    		age = inputAge.getText();
-    		height = inputHeight.getText();
+    	case 6: // Save gender, age, height input values
+    		try {
+	    		gender = inputGender.getText();
+	    		if (!gender.toUpperCase().equals("M") && !gender.toUpperCase().equals("F")) throw new NumberFormatException();
+	    		age = Integer.parseInt(inputAge.getText());
+	    		height = Float.parseFloat(inputHeight.getText());
+    		}catch(NumberFormatException e) {
+				return;
+    		}
     		break;
-    	case 4: // Save current/target weight input values
-    		currentWeight = inputCurrentWeight.getText();
-    		targetWeight = inputTargetWeight.getText();
+    	case 7: // Save current/target weight input values
+    		try {
+	    		currentWeight = Float.parseFloat(inputCurrentWeight.getText());
+	    		targetWeight = Float.parseFloat(inputTargetWeight.getText());
+			}catch(NumberFormatException e) {
+				return;
+			}
     		break;
-    	case 6: // Setup User & Virtual Trainer Objects
-    		User user = new User("Beth Locke", Integer.parseInt(age), gender.charAt(0), Integer.parseInt(height));
+    	case 11: // Setup User & Virtual Trainer Objects
+    		User user = new User("Beth Locke", age, gender.toUpperCase().charAt(0), height);
 			this.mainWindow.setUser(user);
 			
-			this.mainWindow.setupVirtualTrainer(Float.parseFloat(currentWeight), Float.parseFloat(targetWeight));
+			this.mainWindow.setupVirtualTrainer(currentWeight, targetWeight);
+    		user.calcBMR(this.mainWindow.getVirtualTrainer());
 
 			this.mainWindow.setFirstCall(false);
-			
+
+			this.mainWindow.updateDashboardScreen();
 			this.mainWindow.setVisible(false);
 			this.mainWindow.getContentPane().removeAll();
 			this.mainWindow.add(this.mainWindow.getDashboardScreen());
@@ -601,20 +621,26 @@ public class SetupScreen extends JPanel implements Serializable {
     	}
     	
     	this.page++;
-    	if (this.page > 6) this.page = 6;
+    	if (this.page > 11) this.page = 11;
     	this.redraw();
     }
     
     public void gotoPrevPage() {
     	switch(this.page) {
-    	case 3: // Save gender, age, height input values
-    		gender = inputGender.getText();
-    		age = inputAge.getText();
-    		height = inputHeight.getText();
+    	case 6: // Save gender, age, height input values
+    		try {
+	    		gender = inputGender.getText();
+	    		age = Integer.parseInt(inputAge.getText());
+	    		height = Float.parseFloat(inputHeight.getText());
+    		}catch(NumberFormatException e) {
+    		}
     		break;
-    	case 4: // Save current/target weight input values
-    		currentWeight = inputCurrentWeight.getText();
-    		targetWeight = inputTargetWeight.getText();
+    	case 7: // Save current/target weight input values
+    		try {
+	    		currentWeight = Float.parseFloat(inputCurrentWeight.getText());
+	    		targetWeight = Float.parseFloat(inputTargetWeight.getText());
+			}catch(NumberFormatException e) {
+			}
     		break;
     	}
     	
@@ -645,7 +671,7 @@ public class SetupScreen extends JPanel implements Serializable {
 		
 		BufferedImage image = null;
 		try {
-			image = ImageIO.read(new File("UI/bg.jpg"));
+			image = ImageIO.read(new File("UI/Bkg-Setup-" + this.page + ".png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

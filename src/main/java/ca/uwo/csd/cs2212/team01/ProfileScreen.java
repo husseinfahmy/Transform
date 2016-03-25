@@ -24,7 +24,8 @@ public class ProfileScreen extends JPanel implements Serializable{
 	private JButton settingsBtn;
 	private JButton[] dashboardPanelsButtons, activityTrackingPanelsButtons, lifetimeTotalsButtons;
 	private boolean settingsScreen;
-	private JLabel[] label;
+	private JLabel[] label, labelSettings, infoLabel;
+	private JTextArea[] input;
 	
 	private boolean[] dashboardPanelsToggler, activityTrackingPanelsToggler, lifetimeTotalsToggler;
 	
@@ -46,6 +47,9 @@ public class ProfileScreen extends JPanel implements Serializable{
 		lifetimeTotalsButtons = new JButton[4];
 
 		label = new JLabel[8];
+		infoLabel = new JLabel[9];
+		labelSettings = new JLabel[5];
+		input = new JTextArea[5];
 		
 		settingsBtn = new JButton();
 		
@@ -79,28 +83,30 @@ public class ProfileScreen extends JPanel implements Serializable{
     			this.setSize(1480, image.getHeight());
     			g2.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
     			
-    			image = null;
-				try {
-					image = ImageIO.read(new File("UI/logo-s.png"));
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-    			g2.drawImage(image, 13, 13, null);
+	    		if (!settingsScreen) {
+	    			image = null;
+					try {
+						image = ImageIO.read(new File("UI/logo-s.png"));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	    			g2.drawImage(image, 13, 13, null);
+	    			
+	    			JButton button = new JButton();
+	    			button.setBackground(null);
+	    			button.setBorder(null);
+	    			button.setFocusPainted(false);
+	    			button.setMargin(new Insets(0, 0, 0, 0));
+	    			button.setContentAreaFilled(false);
+	    			button.setBorderPainted(false);
+	    			button.setOpaque(false);
+	    			button.setFocusable(false);
+	    			button.setBounds(13, 13, image.getWidth(), image.getHeight());
+	    			button.addActionListener(new ButtonActionListener(14, 0, mainWindow));
+	    			this.add(button);
+    			}
     			
-    			JButton button = new JButton();
-    			button.setBackground(null);
-    			button.setBorder(null);
-    			button.setFocusPainted(false);
-    			button.setMargin(new Insets(0, 0, 0, 0));
-    			button.setContentAreaFilled(false);
-    			button.setBorderPainted(false);
-    			button.setOpaque(false);
-    			button.setFocusable(false);
-    			button.setBounds(13, 13, image.getWidth(), image.getHeight());
-    			button.addActionListener(new ButtonActionListener(14, 0, mainWindow));
-    			this.add(button);
-    	    	
     			if (settingsScreen) settingsBtn.setText("Accept >");
     			else settingsBtn.setText("Settings >");
     			settingsBtn.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
@@ -143,11 +149,148 @@ public class ProfileScreen extends JPanel implements Serializable{
     	        this.add(exitBtn);
     		}
     	};
-
     	bannerPanel.setBounds(0, 0, getWidth(), 75);
     	this.add(bannerPanel);
+    	
+		infoLabel[0] = new JLabel(mainWindow.getUser().getBestDistance() + "", JLabel.CENTER);
+		infoLabel[0].setOpaque(false);
+		infoLabel[0].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+		Dimension size = infoLabel[0].getPreferredSize();
+		infoLabel[0].setBounds(415, 330, size.width, size.height);
+		infoLabel[0].setForeground(new Color(255,255,255,200));
+		
+		infoLabel[1] = new JLabel(mainWindow.getUser().getBestFloors() + "", JLabel.CENTER);
+		infoLabel[1].setOpaque(false);
+		infoLabel[1].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+		size = infoLabel[1].getPreferredSize();
+		infoLabel[1].setBounds(495 + 20, 330, size.width, size.height);
+		infoLabel[1].setForeground(new Color(255,255,255,200));
+		
+		infoLabel[2] = new JLabel(mainWindow.getUser().getBestSteps() + "", JLabel.CENTER);
+		infoLabel[2].setOpaque(false);
+		infoLabel[2].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+		size = infoLabel[2].getPreferredSize();
+		infoLabel[2].setBounds(457 + 10, 424 - 10, size.width, size.height);
+		infoLabel[2].setForeground(new Color(255,255,255,200));
 
-    	if (!settingsScreen) {
+		infoLabel[3] = new JLabel(mainWindow.getUser().getLifeTimeDistance() + "", JLabel.CENTER);
+		infoLabel[3].setOpaque(false);
+		infoLabel[3].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+		size = infoLabel[3].getPreferredSize();
+		infoLabel[3].setBounds(415 + 260, 330, size.width, size.height);
+		infoLabel[3].setForeground(new Color(255,255,255,200));
+		
+		infoLabel[4] = new JLabel(mainWindow.getUser().getLifeTimeFloors() + "", JLabel.CENTER);
+		infoLabel[4].setOpaque(false);
+		infoLabel[4].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+		size = infoLabel[4].getPreferredSize();
+		infoLabel[4].setBounds(495 + 20 + 260, 330, size.width, size.height);
+		infoLabel[4].setForeground(new Color(255,255,255,200));
+		
+		infoLabel[5] = new JLabel(mainWindow.getUser().getLifeTimeSteps() + "", JLabel.CENTER);
+		infoLabel[5].setOpaque(false);
+		infoLabel[5].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+		size = infoLabel[5].getPreferredSize();
+		infoLabel[5].setBounds(457 + 10 + 260, 424 - 10, size.width, size.height);
+		infoLabel[5].setForeground(new Color(255,255,255,200));
+
+		infoLabel[6] = new JLabel(mainWindow.getUserPreferences().getTp().getCurrentStreak() + "", JLabel.CENTER);
+		infoLabel[6].setOpaque(false);
+		infoLabel[6].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+		size = infoLabel[6].getPreferredSize();
+		infoLabel[6].setBounds(415 + 10 + 260*2, 330, size.width, size.height);
+		infoLabel[6].setForeground(new Color(255,255,255,200));
+		
+		infoLabel[7] = new JLabel(mainWindow.getUserPreferences().getTp().getLifeTimeStreak() + "", JLabel.CENTER);
+		infoLabel[7].setOpaque(false);
+		infoLabel[7].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+		size = infoLabel[7].getPreferredSize();
+		infoLabel[7].setBounds(495 + 30 + 260*2, 330, size.width, size.height);
+		infoLabel[7].setForeground(new Color(255,255,255,200));
+		
+		infoLabel[8] = new JLabel(mainWindow.getUserPreferences().getVt().completedMileStones.size() + "", JLabel.CENTER);
+		infoLabel[8].setOpaque(false);
+		infoLabel[8].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+		size = infoLabel[8].getPreferredSize();
+		infoLabel[8].setBounds(457 + 20 + 260*2, 424 - 10, size.width, size.height);
+		infoLabel[8].setForeground(new Color(255,255,255,200));
+
+    	//if (settingsScreen) {
+			labelSettings[0] = new JLabel("Gender ( M or F )", JLabel.CENTER);
+			labelSettings[0].setOpaque(true);
+			labelSettings[0].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+			labelSettings[0].setBounds(getWidth()/2 - 30 - (200*3 + 2), 75+60, 200, 40);
+			labelSettings[0].setForeground(new Color(255,255,255,200));
+			labelSettings[0].setBackground(new Color(0,0,0,120));
+			
+			labelSettings[1] = new JLabel("Age", JLabel.CENTER);
+			labelSettings[1].setOpaque(true);
+			labelSettings[1].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+			labelSettings[1].setBounds(getWidth()/2 - 30 - (200*3 + 2) + 200 + 1, 75+60, 200, 40);
+			labelSettings[1].setForeground(new Color(255,255,255,200));
+			labelSettings[1].setBackground(new Color(0,0,0,120));
+			
+			labelSettings[2] = new JLabel("Height ( cm )", JLabel.CENTER);
+			labelSettings[2].setOpaque(true);
+			labelSettings[2].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+			labelSettings[2].setBounds(getWidth()/2 - 30 - (200*3 + 2) + 200*2 + 2, 75+60, 200, 40);
+			labelSettings[2].setForeground(new Color(255,255,255,200));
+			labelSettings[2].setBackground(new Color(0,0,0,120));
+			
+			labelSettings[3] = new JLabel("Current Weight ( lbs )", JLabel.CENTER);
+			labelSettings[3].setOpaque(true);
+			labelSettings[3].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+			labelSettings[3].setBounds(getWidth()/2 + 30, 75+60, 200, 40);
+			labelSettings[3].setForeground(new Color(255,255,255,200));
+			labelSettings[3].setBackground(new Color(0,0,0,120));
+			
+			labelSettings[4] = new JLabel("Target Weight ( lbs )", JLabel.CENTER);
+			labelSettings[4].setOpaque(true);
+			labelSettings[4].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+			labelSettings[4].setBounds(getWidth()/2 + 30 + 350, 75+60, 200, 40);
+			labelSettings[4].setForeground(new Color(255,255,255,200));
+			labelSettings[4].setBackground(new Color(0,0,0,120));
+
+    		input[0] = new JTextArea(this.mainWindow.getPreferences().getUser().gender + "");
+    		input[0].setOpaque(false);
+    		input[0].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+    		size = input[0].getPreferredSize();
+    		input[0].setBounds(getWidth()/2 - 30 - (200*3 + 2) + 75, 75+60 + 40 + 1 + (40-size.height)/2, 200, size.height);
+    		input[0].setCaretColor(new Color(255,255,255,200));
+    		input[0].setForeground(new Color(255,255,255,200));
+
+    		input[1] = new JTextArea(this.mainWindow.getPreferences().getUser().age + "");
+    		input[1].setOpaque(false);
+    		input[1].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+    		size = input[1].getPreferredSize();
+    		input[1].setBounds(getWidth()/2 - 30 - (200*3 + 2) + 200 + 1 + 75, 75+60 + 40 + 1 + (40-size.height)/2, 200, size.height);
+    		input[1].setCaretColor(new Color(255,255,255,200));
+    		input[1].setForeground(new Color(255,255,255,200));
+
+    		input[2] = new JTextArea(this.mainWindow.getPreferences().getUser().height + "");
+    		input[2].setOpaque(false);
+    		input[2].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+    		size = input[2].getPreferredSize();
+    		input[2].setBounds(getWidth()/2 - 30 - (200*3 + 2) + 200*2 + 2 + 75, 75+60 + 40 + 1 + (40-size.height)/2, 200, size.height);
+    		input[2].setCaretColor(new Color(255,255,255,200));
+    		input[2].setForeground(new Color(255,255,255,200));
+    		
+    		input[3] = new JTextArea();
+    		input[3].setOpaque(false);
+    		input[3].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+    		size = input[3].getPreferredSize();
+    		input[3].setBounds(getWidth()/2 + 30 + 75, 75+60 + 40 + 1 + (40-size.height)/2, 200, size.height);
+    		input[3].setCaretColor(new Color(255,255,255,200));
+    		input[3].setForeground(new Color(255,255,255,200));
+
+    		input[4] = new JTextArea();
+    		input[4].setOpaque(false);
+    		input[4].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+    		size = input[4].getPreferredSize();
+    		input[4].setBounds(getWidth()/2 + 30 + 350 + 75, 75+60 + 40 + 1 + (40-size.height)/2, 200, size.height);
+    		input[4].setCaretColor(new Color(255,255,255,200));
+    		input[4].setForeground(new Color(255,255,255,200));
+    	//}else {
 			label[0] = new JLabel("Gender", JLabel.CENTER);
 			label[0].setOpaque(true);
 			label[0].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
@@ -176,34 +319,34 @@ public class ProfileScreen extends JPanel implements Serializable{
 			label[3].setForeground(new Color(255,255,255,200));
 			label[3].setBackground(new Color(0,0,0,120));
 	
-			label[4] = new JLabel(this.mainWindow.getPreferences().getUser().getGender() + "", JLabel.CENTER);
+			label[4] = new JLabel(this.mainWindow.getPreferences().getUser().gender + "", JLabel.CENTER);
 			label[4].setOpaque(true);
 			label[4].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
 			label[4].setBounds((getWidth() - 200*4 - 3)/2, 75+60 + 40 + 1, 200, 40);
 			label[4].setForeground(new Color(255,255,255,200));
 			label[4].setBackground(new Color(0,0,0,120));
 			
-			label[5] = new JLabel(this.mainWindow.getPreferences().getUser().getAge() + "", JLabel.CENTER);
+			label[5] = new JLabel(this.mainWindow.getPreferences().getUser().age + "", JLabel.CENTER);
 			label[5].setOpaque(true);
 			label[5].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
 			label[5].setBounds((getWidth() - 200*4 - 3)/2 + 200 + 1, 75+60 + 40 + 1, 200, 40);
 			label[5].setForeground(new Color(255,255,255,200));
 			label[5].setBackground(new Color(0,0,0,120));
 			
-			label[6] = new JLabel(this.mainWindow.getPreferences().getUser().getHeight() + "", JLabel.CENTER);
+			label[6] = new JLabel(this.mainWindow.getPreferences().getUser().height + "", JLabel.CENTER);
 			label[6].setOpaque(true);
 			label[6].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
 			label[6].setBounds((getWidth() - 200*4 - 3)/2 + 200*2 + 2, 75+60 + 40 + 1, 200, 40);
 			label[6].setForeground(new Color(255,255,255,200));
 			label[6].setBackground(new Color(0,0,0,120));
 			
-			label[7] = new JLabel("1600", JLabel.CENTER);
+			label[7] = new JLabel(this.mainWindow.getUser().bmr + "", JLabel.CENTER);
 			label[7].setOpaque(true);
 			label[7].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
 			label[7].setBounds((getWidth() - 200*4 - 3)/2 + 200*3 + 3, 75+60 + 40 + 1, 200, 40);
 			label[7].setForeground(new Color(255,255,255,200));
 			label[7].setBackground(new Color(0,0,0,120));
-    	}
+    	//}
 
 		for(int i = 0; i < 3; i++) {
 			dashboardPanelsToggler[i] = this.mainWindow.getPreferences().getDashboardPanelsToggler(i);
@@ -280,7 +423,12 @@ public class ProfileScreen extends JPanel implements Serializable{
 	}
 	
 	private void removeObjects() {
+		for(int i = 0; i < 9; i++) this.remove(infoLabel[i]);
 		for(int i = 0; i < 8; i++) this.remove(label[i]);
+		for(int i = 0; i < 5; i++) {
+			//this.remove(input[i]);
+			this.remove(labelSettings[i]);
+		}
 		
 		for(int i = 0; i < 3; i++) this.remove(dashboardPanelsButtons[i]);
 		for(int i = 0; i < 3; i++) this.remove(activityTrackingPanelsButtons[i]);
@@ -348,7 +496,15 @@ public class ProfileScreen extends JPanel implements Serializable{
 				else g2.drawImage(unchecked, 1060+12+(60-20)/2 + 69*i, 685+(60-20)/2, null);
 				this.add(lifetimeTotalsButtons[i]);
 			}
+			for(int i = 0; i < 5; i++) {
+				this.add(labelSettings[i]);
+			}
+			g2.setColor(new Color(0,0,0,120));
+			for(int i = 0; i < 3; i++) g2.fillRect(getWidth()/2 - 30 - (200*3 + 2) + (200 + 1)*i, 75+60 + 40 + 1, 200, 40);
+			g2.fillRect(getWidth()/2 + 30, 75+60 + 40 + 1, 200, 40);
+			g2.fillRect(getWidth()/2 + 30 + 350, 75+60 + 40 + 1, 200, 40);
 		}else {
+			for(int i = 0; i < 9; i++) this.add(infoLabel[i]);
 			for(int i = 0; i < 8; i++) this.add(label[i]);
 		}
     }
@@ -359,12 +515,31 @@ public class ProfileScreen extends JPanel implements Serializable{
 			screen.setDashboardPanelsToggler(dashboardPanelsToggler);
 			screen.setActivityTrackingPanelsToggler(activityTrackingPanelsToggler);
 			screen.setLifetimeTotalsToggler(lifetimeTotalsToggler);
+			
+			User user = screen.getUser();
+			
+			user.gender = input[0].getText().toUpperCase().charAt(0);
+			user.age = Integer.parseInt(input[1].getText());
+			user.height = Float.parseFloat(input[2].getText());
+			
+			if (input[3].getText().length() > 0 && input[4].getText().length() > 0) {
+				screen.getVt().setWeightLossGoal(user, Float.parseFloat(input[3].getText()), Float.parseFloat(input[4].getText()));
+				screen.getVt().setMileStones();
+			}
+			
+    		user.calcBMR(screen.getVt());
 		}
 		
 		this.settingsScreen = !this.settingsScreen;
 		
 		if (this.settingsScreen) this.settingsBtn.setText("Accept >");
 		else this.settingsBtn.setText("Settings >");
+		
+		for(int i = 0; i < 5; i++) {
+			if (this.settingsScreen) this.add(input[i]);
+			else this.remove(input[i]);
+		}
+		
 		this.repaint();
 	}
 }

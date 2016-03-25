@@ -137,25 +137,25 @@ public class MealDishDisplayPanel extends JPanel implements Serializable {
 				g.setColor(new Color(255,255,255,120));
 				listTitleLabel[0].setText(myItem.getName());
 				size = listTitleLabel[0].getPreferredSize();
-				listTitleLabel[0].setBounds((getWidth() - size.width)/2, 30+68+(getHeight()-(30+68+70*7-10))/2 + (60-size.height*2)/2, size.width, size.height);
+				listTitleLabel[0].setBounds((getWidth() - size.width)/2, 30+68+(getHeight()-(30+68+70*7-10))/2 + (60-size.height*2)/2 - 30, size.width, size.height);
 				this.add(listTitleLabel[0]);
 				
 				listTitleLabel[1].setText("( + "+myItem.getCalories()+" Cal )");
 				size = listTitleLabel[1].getPreferredSize();
-				listTitleLabel[1].setBounds((getWidth() - size.width)/2, 30+68+(getHeight()-(30+68+70*7-10))/2 + size.height + (60-size.height*2)/2, size.width, size.height);
+				listTitleLabel[1].setBounds((getWidth() - size.width)/2, 30+68+(getHeight()-(30+68+70*7-10))/2 + size.height + (60-size.height*2)/2 - 30, size.width, size.height);
 				this.add(listTitleLabel[1]);
 				
-				g.drawRoundRect((getWidth() - 200)/2, 30+68+(getHeight()-(30+68+70*7-10))/2, 200, 60, 15, 15);
+				g.drawRoundRect((getWidth() - 200)/2, 30+68+(getHeight()-(30+68+70*7-10))/2 - 30, 200, 60, 15, 15);
 			}else {
 				myItem = mainWindow.getMyDishes().get(itemIndex);
 				
 				g.setColor(new Color(255,255,255,120));
 				listTitleLabel[0].setText(myItem.getName());
 				size = listTitleLabel[0].getPreferredSize();
-				listTitleLabel[0].setBounds((getWidth() - size.width)/2, 30+68+(getHeight()-(30+68+70*7-10))/2 + (60-size.height)/2, size.width, size.height);
+				listTitleLabel[0].setBounds((getWidth() - size.width)/2, 30+68+(getHeight()-(30+68+70*7-10))/2 + (60-size.height)/2 - 30, size.width, size.height);
 				this.add(listTitleLabel[0]);
 				
-				g.drawRoundRect((getWidth() - 200)/2, 30+68+(getHeight()-(30+68+70*7-10))/2, 200, 60, 15, 15);
+				g.drawRoundRect((getWidth() - 200)/2, 30+68+(getHeight()-(30+68+70*7-10))/2 - 30, 200, 60, 15, 15);
 			}
 			
 			LinkedList<FoodServing> foodServings = myItem.getFoodServings();
@@ -165,14 +165,14 @@ public class MealDishDisplayPanel extends JPanel implements Serializable {
 			for(int i = 0; i < foodServings.size(); i++) {
 				foodServing = foodServings.get(i);
 				foodServingMacros = foodServing.getMacros();
-				g.fillRect((getWidth()-(getWidth() - 50))/2, 30+68+(getHeight()-(30+68+70*7-10))/2+60+30+i*55, getWidth() - 50, 50);
+				g.fillRect((getWidth()-(getWidth() - 50))/2, 30+68+(getHeight()-(30+68+70*7-10))/2+60+30+i*55 - 30, getWidth() - 50, 50);
 				mealListLabel[i].setText("<html><center>" + foodServing.getFood().getName() + "<br>"
 						+ foodServing.getServingSize() + " " + foodServing.getServingUnit() + " | " + foodServingMacros.getCalories() + " cal</center></html>");
 				/*listLabel[i].setText("<html><center>" + "name" + i + "<br>"
 						+ "size" + i + " " + "unit" + i + " | " + "calories" + i + " cal</center></html>");*/
 				//label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
 				size = mealListLabel[i].getPreferredSize();
-				mealListLabel[i].setBounds((getWidth() - size.width)/2, 30+68+(getHeight()-(30+68+70*7-10))/2+60+30+i*55, size.width, size.height);
+				mealListLabel[i].setBounds((getWidth() - size.width)/2, 30+68+(getHeight()-(30+68+70*7-10))/2+60+30+i*55 - 30, size.width, size.height);
 				//label.setForeground(new Color(255,255,255,150));
 				this.add(mealListLabel[i]);
 			}

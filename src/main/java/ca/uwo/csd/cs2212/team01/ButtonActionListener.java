@@ -170,9 +170,11 @@ public class ButtonActionListener implements ActionListener, Serializable {
 			switch(this.value) {
 			case 0:
 				NutritionPanel nutritionPanel = this.mainWindow.getAddMealDishScreen().getNutritionPanel();
-				if (nutritionPanel.getServingUnit().equals("Cup"))
-					nutritionPanel.setServingUnit("g");
-				else nutritionPanel.setServingUnit("Cup");
+				if (nutritionPanel.isMealScreen()) {
+					if (nutritionPanel.getServingUnit().equals("Cup"))
+						nutritionPanel.setServingUnit("g");
+					else nutritionPanel.setServingUnit("Cup");
+				}
 				break;
 			case 1:
 				OCR ocr = new OCR();
@@ -198,9 +200,11 @@ public class ButtonActionListener implements ActionListener, Serializable {
 				break;
 			case 2:
 				FoodServingSizePanel foodServingSizePanel = this.mainWindow.getAddMealDishScreen().getServingSizePanel();
-				if (foodServingSizePanel.getFoodServingUnit().equals("Cup"))
-					foodServingSizePanel.setFoodServingUnit("g");
-				else foodServingSizePanel.setFoodServingUnit("Cup");
+				if (foodServingSizePanel.isMealScreen()) {
+					if (foodServingSizePanel.getFoodServingUnit().equals("Cup"))
+						foodServingSizePanel.setFoodServingUnit("g");
+					else foodServingSizePanel.setFoodServingUnit("Cup");
+				}
 				break;
 			case 3:
 				AddMealDishScreen screen = this.mainWindow.getAddMealDishScreen();
@@ -317,6 +321,7 @@ public class ButtonActionListener implements ActionListener, Serializable {
 		case 13: // Navigation Screen
 			switch(this.value) {
 			case 0: // Nagivates to Dashboard Screen
+				this.mainWindow.setDashboardScreen(new DashboardScreen(mainWindow));
 				this.mainWindow.setVisible(false);
 				this.mainWindow.getContentPane().removeAll();
 				this.mainWindow.add(this.mainWindow.getDashboardScreen());
@@ -367,6 +372,7 @@ public class ButtonActionListener implements ActionListener, Serializable {
 			break;
 			
 		case 14: // Go to Navigation Screen
+			this.mainWindow.getPreferences().setTutorialMode(false);
 			this.mainWindow.setVisible(false);
 			this.mainWindow.getContentPane().removeAll();
 			this.mainWindow.add(this.mainWindow.getNavigationScreen());
@@ -440,7 +446,7 @@ public class ButtonActionListener implements ActionListener, Serializable {
 				this.mainWindow.add(planManagerScreen);
 				this.mainWindow.setVisible(true);
 			}else {
-				day.setPlan(new Plan());
+				day.setPlan(new Plan(mainWindow.getUser().bmr));
 				myPlansScreen.repaint();
 			}
 			break;
@@ -484,7 +490,8 @@ public class ButtonActionListener implements ActionListener, Serializable {
 				prevDay = this.mainWindow.getFutureDays().get(this.value+7*myPlansScreen.getWeekIndex()-1-1);
 			}
 			
-			day.setPlan(prevDay.getPlan());
+			Plan newPlan = prevDay.getPlan().copyPlan(mainWindow.getUser().bmr);
+			day.setPlan(newPlan);
 			
 			myPlansScreen.repaint();
 			break;
@@ -533,6 +540,39 @@ public class ButtonActionListener implements ActionListener, Serializable {
 		case 28: // Profile Screen: lifetime totals
 			ProfileScreen profileScreen = this.mainWindow.getProfileScreen();
 			profileScreen.toggleToggles(this.btnMode, this.value);
+			break;
+			
+		case 29: // Dashboard: Navigate Activity Panel Days
+			switch(this.value) {
+			case 0:
+				DashboardScreen dashboardScreen = this.mainWindow.getDashboardScreen();
+
+				dashboardScreen.setActivityPanelPrevDay();
+				index = dashboardScreen.getActivityPanelDayIndex();
+				
+				day = this.mainWindow.getDays().get(index);
+				
+				dashboardScreen.setActivityPanelDay(day);
+
+				dashboardScreen.removeAll();
+				dashboardScreen.initUI();
+				dashboardScreen.repaint();
+				break;
+			case 1:
+				dashboardScreen = this.mainWindow.getDashboardScreen();
+
+				dashboardScreen.setActivityPanelNextDay();
+				index = dashboardScreen.getActivityPanelDayIndex();
+				
+				day = this.mainWindow.getDays().get(index);
+				
+				dashboardScreen.setActivityPanelDay(day);
+				
+				dashboardScreen.removeAll();
+				dashboardScreen.initUI();
+				dashboardScreen.repaint();
+				break;
+			}
 			break;
 		}
 	}

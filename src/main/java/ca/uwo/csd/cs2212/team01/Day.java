@@ -14,7 +14,7 @@ public class Day implements Serializable {
 	//ATTRIBUTES:
 	private Date date;
 	private Date lastUpdated;	
-	private float dailyCalDiff;					
+	private float dailyCalDiff = 0;					
 	private int dayProgress = 0;	 	//MAX_VALUE: 1440 (1440 minutes in an entire day)
 	private Plan plan;
 	 

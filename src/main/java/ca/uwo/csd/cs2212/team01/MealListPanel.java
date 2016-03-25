@@ -59,13 +59,16 @@ public class MealListPanel extends JPanel implements Serializable {
 		
 		currHeight += 80;
 		
-		if (mealScreen) listTitle = new JLabel("This meal has: 0 Calories", JLabel.LEFT);
-		else listTitle = new JLabel("<html><center>This meal has:<br>0 Ingredients | 0 Calories</center></html>", JLabel.LEFT);
-		listTitle.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
-		size = listTitle.getPreferredSize();
-		listTitle.setBounds((getWidth() - size.width)/2, currHeight, size.width, size.height);
-		listTitle.setForeground(new Color(255,255,255,150));
-		this.add(listTitle);
+		//if (meal != null) {
+			listTitle = new JLabel("This meal has: ");
+			//else listTitle = new JLabel("<html><center>This meal has:<br>" + meal.getFoodServings().size() + " Ingredients | " + meal.getCalories() + " Calories</center></html>", JLabel.LEFT);
+		
+			listTitle.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+			size = listTitle.getPreferredSize();
+			listTitle.setBounds((getWidth() - size.width)/2, currHeight, size.width, size.height);
+			listTitle.setForeground(new Color(255,255,255,150));
+			this.add(listTitle);
+		//}
 		
 		currHeight += size.height;
 		
@@ -141,7 +144,7 @@ public class MealListPanel extends JPanel implements Serializable {
     
     public void addFoodServing(FoodServing newFoodServing) {
     	if (meal == null) meal = new Meal();
-    	meal.addFoodServing(newFoodServing);
+    	if (meal.getFoodServings().size() < 7) meal.addFoodServing(newFoodServing);
     }
     
     public void removeFoodServing(int index) {
