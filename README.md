@@ -4,6 +4,8 @@ Before running, make sure you are using a 32-bit operating system, with a displa
 Image analysis of the nutrition label image will only run on a 32-bit system. 
 To start the program, you will need to run these commands in your terminal to run the program.
 
+UI for Uploading / Viewing Transformation Photos is not included in this version.
+
 ```
 mvn clean
 mvn package
