@@ -1,0 +1,1011 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.9" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="ca.uwo.csd.cs2212.team01.LineAxisGraph" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/LineAxisGraph.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="276" width="348" x="114" y="153"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="ca.uwo.csd.cs2212.team01.testing" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/testing.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="136" width="181" x="704" y="153"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="ca.uwo.csd.cs2212.team01.DashboardScreen" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/DashboardScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="256" width="254" x="1656" y="2441"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="ca.uwo.csd.cs2212.team01.GoalPanel" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/GoalPanel.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="396" width="247" x="3143" y="529"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="ca.uwo.csd.cs2212.team01.NutritionPanel" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/NutritionPanel.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="556" width="282" x="3451" y="529"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="ca.uwo.csd.cs2212.team01.Food" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/Food.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="416" width="260" x="3235" y="6161"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="ca.uwo.csd.cs2212.team01.NavigationScreen" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/NavigationScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="156" width="250" x="1950" y="2441"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="ca.uwo.csd.cs2212.team01.PlanManagerScreen" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/PlanManagerScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="956" width="278" x="3558" y="2441"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="ca.uwo.csd.cs2212.team01.Plan" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/Plan.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="476" width="276" x="3219" y="4653"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="ca.uwo.csd.cs2212.team01.Goal" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/Goal.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="276" width="224" x="2651" y="5169"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="ca.uwo.csd.cs2212.team01.MyPlansScreen" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/MyPlansScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="476" width="247" x="2240" y="2441"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="ca.uwo.csd.cs2212.team01.WeighScreen" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/WeighScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="176" width="256" x="2142" y="153"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="ca.uwo.csd.cs2212.team01.Day" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/Day.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="1176" width="223" x="2870" y="3437"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="ca.uwo.csd.cs2212.team01.MealDishDisplayPanel" 
+    project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/MealDishDisplayPanel.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="356" width="284" x="2203" y="529"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="ca.uwo.csd.cs2212.team01.OCR" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/OCR.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="184" x="1128" y="153"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="ca.uwo.csd.cs2212.team01.App" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/App.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="156" width="181" x="376" y="529"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="ca.uwo.csd.cs2212.team01.ProfileScreen" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/ProfileScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="396" width="303" x="2527" y="2441"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="ca.uwo.csd.cs2212.team01.ContinueScreen" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/ContinueScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="156" width="247" x="3271" y="2441"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="ca.uwo.csd.cs2212.team01.Feedback" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/Feedback.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="476" width="285" x="2915" y="5169"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="ca.uwo.csd.cs2212.team01.MainWindow" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/MainWindow.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="1276" width="352" x="2527" y="1125"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="ca.uwo.csd.cs2212.team01.Workout" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/Workout.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="336" width="232" x="3240" y="5169"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="ca.uwo.csd.cs2212.team01.MealListPanel" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/MealListPanel.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="456" width="284" x="4201" y="529"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="ca.uwo.csd.cs2212.team01.MealDishScreen" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/MealDishScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="236" width="312" x="3059" y="153"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="ca.uwo.csd.cs2212.team01.LoadingScreen" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/LoadingScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="296" width="247" x="597" y="529"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="ca.uwo.csd.cs2212.team01.User" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/User.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="496" width="287" x="2522" y="3437"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="ca.uwo.csd.cs2212.team01.ButtonActionListener" 
+    project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/ButtonActionListener.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="176" width="310" x="884" y="529"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="ca.uwo.csd.cs2212.team01.Preferences" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/Preferences.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="656" width="361" x="2870" y="2441"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="ca.uwo.csd.cs2212.team01.SplashScreen" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/SplashScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="216" width="247" x="3411" y="153"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="ca.uwo.csd.cs2212.team01.Macro" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/Macro.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="376" width="208" x="3516" y="6617"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="ca.uwo.csd.cs2212.team01.SetupScreen" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/SetupScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="436" width="247" x="1234" y="529"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="ca.uwo.csd.cs2212.team01.AddMealDishScreen" 
+    project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/AddMealDishScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="316" width="347" x="4140" y="153"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="ca.uwo.csd.cs2212.team01.MyMealsPanel" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/MyMealsPanel.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="336" width="247" x="2527" y="529"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="ca.uwo.csd.cs2212.team01.VirtualTrainer" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/VirtualTrainer.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="436" width="392" x="2787" y="4653"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="ca.uwo.csd.cs2212.team01.MyDishesPanel" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/MyDishesPanel.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="336" width="247" x="2814" y="529"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="ca.uwo.csd.cs2212.team01.FoodServing" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/FoodServing.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="336" width="241" x="3275" y="5785"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="ca.uwo.csd.cs2212.team01.TrophyProgression" 
+    project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/TrophyProgression.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="336" width="341" x="1556" y="153"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="ca.uwo.csd.cs2212.team01.Meal" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/Meal.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="576" width="368" x="3537" y="5169"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="ca.uwo.csd.cs2212.team01.ButtonMotionListener" 
+    project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/ButtonMotionListener.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="196" width="313" x="1521" y="529"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="ca.uwo.csd.cs2212.team01.FoodServingSizePanel" 
+    project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/FoodServingSizePanel.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="356" width="346" x="3773" y="529"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="ca.uwo.csd.cs2212.team01.WeighPanel" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/WeighPanel.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="316" width="247" x="1874" y="529"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="ca.uwo.csd.cs2212.team01.FitbitAPIThread" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/FitbitAPIThread.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="396" width="424" x="-88" y="529"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="ca.uwo.csd.cs2212.team01.Journey" project="team01.TRAINR-0.0.1-SNAPSHOT" 
+    file="/team01.TRAINR-0.0.1-SNAPSHOT/src/main/java/ca/uwo/csd/cs2212/team01/Journey.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="196" width="355" x="2392" y="4653"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="43">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="44" name="mainWindow"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="46">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="47" name="trophyCase"/>      
+      <multiplicity id="48" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="49">    
+    <bendpoint x="3112" y="529"/>    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="50" name="mealDishScreen"/>      
+      <multiplicity id="51" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="52">    
+    <bendpoint x="4149" y="529"/>    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="53" name="mainWindow"/>      
+      <multiplicity id="54" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="55">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="56" name="userPreferences"/>      
+      <multiplicity id="57" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="58">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="59" name="futureDays"/>      
+      <multiplicity id="60" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="61">    
+    <bendpoint x="2172" y="529"/>    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="62" name="weighScreen"/>      
+      <multiplicity id="63" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="64">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="65" name="apiThread"/>      
+      <multiplicity id="66" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="67">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="68" name="mainWindow"/>      
+      <multiplicity id="69" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="70">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="71" name="mainWindow"/>      
+      <multiplicity id="72" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="73">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="74" name="setWeighPanel"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="40" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="76">    
+    <bendpoint x="3546" y="3437"/>    
+    <bendpoint x="3546" y="4653"/>    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="77" name="myMeals"/>      
+      <multiplicity id="78" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="79">    
+    <bendpoint x="1400" y="1125"/>    
+    <bendpoint x="1400" y="2441"/>    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="80" name="day"/>      
+      <multiplicity id="81" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="82">    
+    <bendpoint x="4170" y="529"/>    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="83" name="addMealDishScreen"/>      
+      <multiplicity id="84" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="85">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="86" name="myPlansScreen"/>      
+      <multiplicity id="87" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="88">    
+    <bendpoint x="3420" y="529"/>    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="89" name="mainWindow"/>      
+      <multiplicity id="90" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="91">    
+    <bendpoint x="3546" y="5785"/>    
+    <bendpoint x="3546" y="6161"/>    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="92" name="macros"/>      
+      <multiplicity id="93" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="94">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="95" name="mainWindow"/>      
+      <multiplicity id="96" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="97">    
+    <bendpoint x="3567" y="3437"/>    
+    <bendpoint x="3567" y="4653"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="98" name="addDishesMeal"/>      
+      <multiplicity id="99" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="100">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="101" name="plan"/>      
+      <multiplicity id="102" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="103">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="104" name="mainWindow"/>      
+      <multiplicity id="105" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="106">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="107" name="loadingScreen"/>      
+      <multiplicity id="108" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="109">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="110" name="mainWindow"/>      
+      <multiplicity id="111" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="112">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="113" name="mainWindow"/>      
+      <multiplicity id="114" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="115">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="116" name="planManagerScreen"/>      
+      <multiplicity id="117" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="118">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="119" name="servingSizePanel"/>      
+      <multiplicity id="120" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="121">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="122" name="displayPanel"/>      
+      <multiplicity id="123" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="124">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="125" name="continueScreen"/>      
+      <multiplicity id="126" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="127">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="128" name="completedMileStones"/>      
+      <multiplicity id="129" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="130">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="131" name="food"/>      
+      <multiplicity id="132" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="133">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="134" name="mainWindow"/>      
+      <multiplicity id="135" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="136">    
+    <bendpoint x="2839" y="3437"/>    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="137" name="vt"/>      
+      <multiplicity id="138" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="139">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="140" name="mainWindow"/>      
+      <multiplicity id="141" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="142">    
+    <bendpoint x="3525" y="3437"/>    
+    <bendpoint x="3525" y="4653"/>    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="143" name="myDishes"/>      
+      <multiplicity id="144" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="145">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="146" name="mainWindow"/>      
+      <multiplicity id="147" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="148">    
+    <bendpoint x="2151" y="529"/>    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="149" name="mainWindow"/>      
+      <multiplicity id="150" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="151">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="152" name="mainWindow"/>      
+      <multiplicity id="153" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="154">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="155" name="navScreen"/>      
+      <multiplicity id="156" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="157">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="158" name="day"/>      
+      <multiplicity id="159" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="160">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="161" name="workouts"/>      
+      <multiplicity id="162" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="163">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="164" name="mainWindow"/>      
+      <multiplicity id="165" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="166">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="167" name="setGoalPanel"/>      
+      <multiplicity id="168" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="169">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="170" name="nutritionPanel"/>      
+      <multiplicity id="171" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="172">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="173" name="mainWindow"/>      
+      <multiplicity id="174" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="175">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="176" name="mainWindow"/>      
+      <multiplicity id="177" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="178">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="179" name="myMealsPanel"/>      
+      <multiplicity id="180" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="181">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="182" name="mealListPanel"/>      
+      <multiplicity id="183" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="184">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="185" name="days"/>      
+      <multiplicity id="186" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="187">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="188" name="milestoneFeedback"/>      
+      <multiplicity id="189" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="190">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="191" name="mainWindow"/>      
+      <multiplicity id="192" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="193">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="194" name="user"/>      
+      <multiplicity id="195" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="196">    
+    <bendpoint x="3525" y="6161"/>    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="197" name="macros"/>      
+      <multiplicity id="198" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="199">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="200" name="mainWindow"/>      
+      <multiplicity id="201" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="202">    
+    <bendpoint x="3091" y="529"/>    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="203" name="mainWindow"/>      
+      <multiplicity id="204" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="205">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="206" name="myDishesPanel"/>      
+      <multiplicity id="207" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="208">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="209" name="setupScreen"/>      
+      <multiplicity id="210" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="211">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="212" name="myJourneys"/>      
+      <multiplicity id="213" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="214">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="215" name="window"/>      
+      <multiplicity id="216" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="217">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="218" name="profileScreen"/>      
+      <multiplicity id="219" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="220">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="221" name="remainingMileStones"/>      
+      <multiplicity id="222" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="223">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="224" name="mainWindow"/>      
+      <multiplicity id="225" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="226">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="227" name="mainWindow"/>      
+      <multiplicity id="228" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="229">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="230" name="mainWindow"/>      
+      <multiplicity id="231" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="232">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="233" name="macroInfo"/>      
+      <multiplicity id="234" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="235">    
+    <bendpoint x="3878" y="1125"/>    
+    <bendpoint x="3878" y="2441"/>    
+    <bendpoint x="3878" y="3437"/>    
+    <bendpoint x="3878" y="4653"/>    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="236" name="meal"/>      
+      <multiplicity id="237" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="238">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="239" name="foodServings"/>      
+      <multiplicity id="240" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="241">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="242" name="dashboardScreen"/>      
+      <multiplicity id="243" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="244">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="245" name="meals"/>      
+      <multiplicity id="246" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="247">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="248" name="currentMileStone"/>      
+      <multiplicity id="249" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

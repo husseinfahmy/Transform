@@ -26,6 +26,8 @@ public class DashboardScreen extends JPanel implements Serializable {
 	private JPanel bannerPanel;
 	private JLabel refreshDesc;
 	
+	private int dashboardPanelFixX = 0;
+	
 	/**
 	 * Class Constructor
 	 * @param mainWindow
@@ -282,8 +284,12 @@ public class DashboardScreen extends JPanel implements Serializable {
         		}
     		}
     	};
-    	
     	this.add(weekProgressPanel);
+    	
+    	Preferences prefs = this.mainWindow.getPreferences();
+    	
+    	for(int i = 0; i < 3; i++)
+    	if (prefs.getDashboardPanelsToggler(i));
     	
     	JPanel calorieTrackingPanel = new JPanel() {
     		@Override
@@ -293,7 +299,7 @@ public class DashboardScreen extends JPanel implements Serializable {
     			this.setLayout(null);
     			this.setOpaque(false);
     			this.setSize(1480/3, 800 - 75 - 150 - 20);
-    	    	this.setLocation((1480 - (getWidth()*3))/2 + getWidth()*0,75 + 150);
+    	    	this.setLocation(dashboardPanelFixX+(1480 - (getWidth()*3))/2 + getWidth()*0,75 + 150);
     			
     			Graphics2D g2 = (Graphics2D) g;
     			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -490,7 +496,7 @@ public class DashboardScreen extends JPanel implements Serializable {
     		}
     	};
     	
-    	this.add(calorieTrackingPanel);
+    	if (this.mainWindow.getPreferences().getDashboardPanelsToggler(0)) this.add(calorieTrackingPanel);
     	
 
     	JPanel trainrFeedbackPanel = new JPanel() {
@@ -501,7 +507,7 @@ public class DashboardScreen extends JPanel implements Serializable {
     			this.setLayout(null);
     			this.setOpaque(false);
     			this.setSize(1480/3, 800 - 75 - 150 - 20);
-    	    	this.setLocation((1480 - getWidth()*3)/2 + getWidth()*1,75 + 150);
+    	    	this.setLocation(dashboardPanelFixX+(1480 - getWidth()*3)/2 + getWidth()*1,75 + 150);
     			
     			Graphics2D g2 = (Graphics2D) g;
     			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -594,7 +600,7 @@ public class DashboardScreen extends JPanel implements Serializable {
     			this.add(label);
     		}
     	};
-    	this.add(trainrFeedbackPanel);
+    	if (this.mainWindow.getPreferences().getDashboardPanelsToggler(1)) this.add(trainrFeedbackPanel);
     	
 
     	JPanel activityTrackingPanel = new JPanel() {
@@ -605,7 +611,7 @@ public class DashboardScreen extends JPanel implements Serializable {
     			this.setLayout(null);
     			this.setOpaque(false);
     			this.setSize(1480/3, 800 - 75 - 150 - 20);
-    	    	this.setLocation((1480 - getWidth()*3)/2 + getWidth()*2,75 + 150);
+    	    	this.setLocation(dashboardPanelFixX+(1480 - getWidth()*3)/2 + getWidth()*2,75 + 150);
     			
     			Graphics2D g2 = (Graphics2D) g;
     			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -623,212 +629,225 @@ public class DashboardScreen extends JPanel implements Serializable {
 				g2.drawLine(0, 0, 0, getHeight());
 				g2.drawImage(image, (getWidth()-image.getWidth())/2, 0, null);
 
-    			JLabel label = new JLabel("Activity Tracking", JLabel.LEFT);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
-    			Dimension size = label.getPreferredSize();
-    			label.setBounds((getWidth() - size.width)/2, (52-size.height)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-    			
-    			label = new JLabel("<html><div style='text-align:center;'>Active<br>Activity</div></html>", JLabel.CENTER);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
-    			size = label.getPreferredSize();
-    			label.setBounds((getWidth()/3 - size.width)/2, 52 + (80-size.height)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-    			
-    			label = new JLabel("<html><div style='text-align:center;'>Sedentary<br>Activity</div></html>", JLabel.CENTER);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
-    			size = label.getPreferredSize();
-    			label.setBounds(getWidth()*2/3 + (getWidth()/3 - size.width)/2, 52 + (80-size.height)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-
     			Day lastDay = mainWindow.getDays().getLast();
     			
-    			int totalActiveMin = lastDay.getTotalActiveMin();
-    			int totalSedMin = lastDay.getTotalSedMin();
+    			if (mainWindow.getPreferences().getActivityTrackingPanelsToggler(0)) {
+	    			JLabel label = new JLabel("Activity Tracking", JLabel.LEFT);
+	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+	    			Dimension size = label.getPreferredSize();
+	    			label.setBounds((getWidth() - size.width)/2, (52-size.height)/2, size.width, size.height);
+	    			label.setForeground(Color.WHITE);
+	    			this.add(label);
+	    			
+	    			label = new JLabel("<html><div style='text-align:center;'>Active<br>Activity</div></html>", JLabel.CENTER);
+	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+	    			size = label.getPreferredSize();
+	    			label.setBounds((getWidth()/3 - size.width)/2, 52 + (80-size.height)/2, size.width, size.height);
+	    			label.setForeground(Color.WHITE);
+	    			this.add(label);
+	    			
+	    			label = new JLabel("<html><div style='text-align:center;'>Sedentary<br>Activity</div></html>", JLabel.CENTER);
+	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+	    			size = label.getPreferredSize();
+	    			label.setBounds(getWidth()*2/3 + (getWidth()/3 - size.width)/2, 52 + (80-size.height)/2, size.width, size.height);
+	    			label.setForeground(Color.WHITE);
+	    			this.add(label);
+	    			
+	    			int totalActiveMin = lastDay.getTotalActiveMin();
+	    			int totalSedMin = lastDay.getTotalSedMin();
+	
+	    	        // draw Arc2D.Double
+	    	        g2.setStroke(new BasicStroke(8.0f));
+	    	        g2.setColor(Color.WHITE);
+	    	        g2.draw(new Arc2D.Double((getWidth()-100)/2, 52+80, 100, 100, 90, 360, Arc2D.OPEN));
+	    	        
+	    	        g2.setStroke(new BasicStroke(12.0f));
+	    	        g2.setPaint(new GradientPaint(0, 0, new Color(143, 183, 238, 255),
+	    	        		0, getHeight() / 2, new Color(84, 142, 250, 255)));
+	    	        g2.draw(new Arc2D.Double((getWidth()-100)/2, 52+80, 100, 100, 180+(360*totalActiveMin/(totalActiveMin+totalSedMin)/2), 360*totalSedMin/(totalActiveMin+totalSedMin), Arc2D.OPEN));
+	
+	    			g2.setColor(new Color(1.0f,1.0f,1.0f,0.4f));
+	    	        g2.setStroke(new BasicStroke(2.0f));
+	    	        
+	    			label = new JLabel(totalActiveMin + "", JLabel.CENTER);
+	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+	    			size = label.getPreferredSize();
+	    			label.setBounds((getWidth()/3 - size.width)/2, 52+80 + (100-size.height)/2, size.width, size.height);
+	    			label.setForeground(Color.WHITE);
+	    			this.add(label);
+	
+	    			g2.drawLine((getWidth()/3 - size.width)/2 + size.width + 10, 52+80 + (100-2)/2, (getWidth()-100)/2 - 10 - 6, 52+80 + (100-2)/2);
+	    			
+	    			label = new JLabel("min", JLabel.CENTER);
+	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+	    			Dimension size2 = label.getPreferredSize();
+	    			label.setBounds((getWidth()/3 - size2.width)/2, 52+80 + (100-size.height)/2 + size.height + 1, size2.width, size2.height);
+	    			label.setForeground(Color.WHITE);
+	    			this.add(label);
+	    			
+	    			label = new JLabel(totalSedMin + "", JLabel.CENTER);
+	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+	    			size = label.getPreferredSize();
+	    			label.setBounds(getWidth()*2/3 + (getWidth()/3 - size.width)/2, 52+80 + (100-size.height)/2, size.width, size.height);
+	    			label.setForeground(Color.WHITE);
+	    			this.add(label);
+	    			
+	    			g2.drawLine((getWidth()-100)/2 + 100 + 10 + 6, 52+80 + (100-2)/2, getWidth()*2/3 + (getWidth()/3 - size.width)/2 - 10, 52+80 + (100-2)/2);
+	    			
+	    			label = new JLabel("min", JLabel.CENTER);
+	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+	    			size2 = label.getPreferredSize();
+	    			label.setBounds(getWidth()*2/3 + (getWidth()/3 - size2.width)/2, 52+80 + (100-size.height)/2 + size.height + 1, size2.width, size2.height);
+	    			label.setForeground(Color.WHITE);
+	    			this.add(label);
+    			}
     			
-    			int totalFloors = lastDay.getTotalFloors();
-    			int totalSteps = lastDay.getTotalSteps();
-    			int totalDist = lastDay.getTotalDist();
-    			
-    			Feedback feedback = mainWindow.getDays().getLast().todaysProgess();
-    			int totalCal = Math.round(feedback.getFirstValues().get(1));
-
-    	        // draw Arc2D.Double
-    	        g2.setStroke(new BasicStroke(8.0f));
-    	        g2.setColor(Color.WHITE);
-    	        g2.draw(new Arc2D.Double((getWidth()-100)/2, 52+80, 100, 100, 90, 360, Arc2D.OPEN));
-    	        
-    	        g2.setStroke(new BasicStroke(12.0f));
-    	        g2.setPaint(new GradientPaint(0, 0, new Color(143, 183, 238, 255),
-    	        		0, getHeight() / 2, new Color(84, 142, 250, 255)));
-    	        g2.draw(new Arc2D.Double((getWidth()-100)/2, 52+80, 100, 100, 180+(360*totalActiveMin/(totalActiveMin+totalSedMin)/2), 360*totalSedMin/(totalActiveMin+totalSedMin), Arc2D.OPEN));
-
-    			g2.setColor(new Color(1.0f,1.0f,1.0f,0.4f));
-    	        g2.setStroke(new BasicStroke(2.0f));
-    	        
-    			label = new JLabel(totalActiveMin + "", JLabel.CENTER);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
-    			size = label.getPreferredSize();
-    			label.setBounds((getWidth()/3 - size.width)/2, 52+80 + (100-size.height)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-
-    			g2.drawLine((getWidth()/3 - size.width)/2 + size.width + 10, 52+80 + (100-2)/2, (getWidth()-100)/2 - 10 - 6, 52+80 + (100-2)/2);
-    			
-    			label = new JLabel("min", JLabel.CENTER);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
-    			Dimension size2 = label.getPreferredSize();
-    			label.setBounds((getWidth()/3 - size2.width)/2, 52+80 + (100-size.height)/2 + size.height + 1, size2.width, size2.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-    			
-    			label = new JLabel(totalSedMin + "", JLabel.CENTER);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
-    			size = label.getPreferredSize();
-    			label.setBounds(getWidth()*2/3 + (getWidth()/3 - size.width)/2, 52+80 + (100-size.height)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-    			
-    			g2.drawLine((getWidth()-100)/2 + 100 + 10 + 6, 52+80 + (100-2)/2, getWidth()*2/3 + (getWidth()/3 - size.width)/2 - 10, 52+80 + (100-2)/2);
-    			
-    			label = new JLabel("min", JLabel.CENTER);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
-    			size2 = label.getPreferredSize();
-    			label.setBounds(getWidth()*2/3 + (getWidth()/3 - size2.width)/2, 52+80 + (100-size.height)/2 + size.height + 1, size2.width, size2.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-    			
-    	        image = null;
-				try {
-					image = ImageIO.read(new File("UI/heart-outline.png"));
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				g2.drawImage(image, (getWidth()-image.getWidth())/2, 52+80+100 + (160 - image.getHeight())/2, null);
-
-    			g2.setColor(new Color(1.0f,1.0f,1.0f,0.4f));
-    	        g2.setStroke(new BasicStroke(2.0f));
-    			
-    			label = new JLabel(lastDay.getActiveHR() + "", JLabel.CENTER);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
-    			size = label.getPreferredSize();
-    			label.setBounds((getWidth()/3 - size.width)/2, 52+80+100 + (160-size.height)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-
-    			g2.drawLine((getWidth()/3 - size.width)/2 + size.width + 10, 52+80+100 + (160-2)/2, (getWidth()-image.getWidth())/2 - 10, 52+80+100 + (160-2)/2);
-    			
-    			label = new JLabel("BPM", JLabel.CENTER);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
-    			size2 = label.getPreferredSize();
-    			label.setBounds((getWidth()/3 - size2.width)/2, 52+80+100 + (160-size.height)/2 + size.height + 1, size2.width, size2.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-    			
-    			label = new JLabel(lastDay.getRestingHR() + "", JLabel.CENTER);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
-    			size = label.getPreferredSize();
-    			label.setBounds(getWidth()*2/3 + (getWidth()/3 - size.width)/2, 52+80+100 + (160-size.height)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-
-    			g2.drawLine((getWidth()-image.getWidth())/2 + image.getWidth() + 10, 52+80+100 + (160-2)/2, getWidth()*2/3 + (getWidth()/3 - size.width)/2 - 10, 52+80+100 + (160-2)/2);
-    			
-    			label = new JLabel("BPM", JLabel.CENTER);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
-    			size2 = label.getPreferredSize();
-    			label.setBounds(getWidth()*2/3 + (getWidth()/3 - size2.width)/2, 52+80+100 + (160-size.height)/2 + size.height + 1, size2.width, size2.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
+    			if (mainWindow.getPreferences().getActivityTrackingPanelsToggler(1)) {
+	    	        image = null;
+					try {
+						image = ImageIO.read(new File("UI/heart-outline.png"));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					g2.drawImage(image, (getWidth()-image.getWidth())/2, 52+80+100 + (160 - image.getHeight())/2, null);
+	
+	    			g2.setColor(new Color(1.0f,1.0f,1.0f,0.4f));
+	    	        g2.setStroke(new BasicStroke(2.0f));
+	    			
+	    			JLabel label = new JLabel(lastDay.getActiveHR() + "", JLabel.CENTER);
+	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+	    			Dimension size = label.getPreferredSize();
+	    			label.setBounds((getWidth()/3 - size.width)/2, 52+80+100 + (160-size.height)/2, size.width, size.height);
+	    			label.setForeground(Color.WHITE);
+	    			this.add(label);
+	
+	    			g2.drawLine((getWidth()/3 - size.width)/2 + size.width + 10, 52+80+100 + (160-2)/2, (getWidth()-image.getWidth())/2 - 10, 52+80+100 + (160-2)/2);
+	    			
+	    			label = new JLabel("BPM", JLabel.CENTER);
+	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+	    			Dimension size2 = label.getPreferredSize();
+	    			label.setBounds((getWidth()/3 - size2.width)/2, 52+80+100 + (160-size.height)/2 + size.height + 1, size2.width, size2.height);
+	    			label.setForeground(Color.WHITE);
+	    			this.add(label);
+	    			
+	    			label = new JLabel(lastDay.getRestingHR() + "", JLabel.CENTER);
+	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+	    			size = label.getPreferredSize();
+	    			label.setBounds(getWidth()*2/3 + (getWidth()/3 - size.width)/2, 52+80+100 + (160-size.height)/2, size.width, size.height);
+	    			label.setForeground(Color.WHITE);
+	    			this.add(label);
+	
+	    			g2.drawLine((getWidth()-image.getWidth())/2 + image.getWidth() + 10, 52+80+100 + (160-2)/2, getWidth()*2/3 + (getWidth()/3 - size.width)/2 - 10, 52+80+100 + (160-2)/2);
+	    			
+	    			label = new JLabel("BPM", JLabel.CENTER);
+	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+	    			size2 = label.getPreferredSize();
+	    			label.setBounds(getWidth()*2/3 + (getWidth()/3 - size2.width)/2, 52+80+100 + (160-size.height)/2 + size.height + 1, size2.width, size2.height);
+	    			label.setForeground(Color.WHITE);
+	    			this.add(label);
+    			}
 				
-				int arcSize = (getWidth() - 20*(4+1))/4;
-				
-    	        // draw Arc2D.Double
-    	        g2.setStroke(new BasicStroke(2.0f));
-    	        g2.setColor(Color.WHITE);
-    	        g2.draw(new Ellipse2D.Double(20*1 + arcSize*0, 52+80+100+160, arcSize, arcSize));
-
-    			label = new JLabel(totalDist + "", JLabel.LEFT);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
-    			size = label.getPreferredSize();
-    			label.setBounds(20*1 + arcSize*0 + (arcSize-size.width)/2, 52+80+100+160 + (arcSize*2/3 - size.height)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-    			
-    			label = new JLabel("Km", JLabel.LEFT);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
-    			size = label.getPreferredSize();
-    			label.setBounds(20*1 + arcSize*0 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-    			
-    	        // draw Arc2D.Double
-    	        g2.setStroke(new BasicStroke(2.0f));
-    	        g2.setColor(Color.WHITE);
-    	        g2.draw(new Ellipse2D.Double(20*2 + arcSize*1, 52+80+100+160, arcSize, arcSize));
-
-    			label = new JLabel(totalSteps + "", JLabel.LEFT);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
-    			size = label.getPreferredSize();
-    			label.setBounds(20*2 + arcSize*1 + (arcSize-size.width)/2, 52+80+100+160 + (arcSize*2/3 - size.height)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-    			
-    			label = new JLabel("Steps", JLabel.LEFT);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
-    			size = label.getPreferredSize();
-    			label.setBounds(20*2 + arcSize*1 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-    			
-    	        // draw Arc2D.Double
-    	        g2.setStroke(new BasicStroke(2.0f));
-    	        g2.setColor(Color.WHITE);
-    	        g2.draw(new Ellipse2D.Double(20*3 + arcSize*2, 52+80+100+160, arcSize, arcSize));
-
-    			label = new JLabel(totalFloors + "", JLabel.LEFT);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
-    			size = label.getPreferredSize();
-    			label.setBounds(20*3 + arcSize*2 + (arcSize-size.width)/2, 52+80+100+160 + (arcSize*2/3 - size.height)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-    			
-    			label = new JLabel("Floors", JLabel.LEFT);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
-    			size = label.getPreferredSize();
-    			label.setBounds(20*3 + arcSize*2 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-
-    	        // draw Arc2D.Double
-    	        g2.setStroke(new BasicStroke(2.0f));
-    	        g2.setColor(Color.WHITE);
-    	        g2.draw(new Ellipse2D.Double(20*4 + arcSize*3, 52+80+100+160, arcSize, arcSize));
-    	        
-    			label = new JLabel(totalCal + "", JLabel.LEFT);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
-    			size = label.getPreferredSize();
-    			label.setBounds(20*4 + arcSize*3 + (arcSize-size.width)/2, 52+80+100+160 + (arcSize*2/3 - size.height)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-    			
-    			label = new JLabel("<html><p style='text-align:center;'>Calories<br>Burned</p></html>", JLabel.LEFT);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(16.0f));
-    			size = label.getPreferredSize();
-    			label.setBounds(20*4 + arcSize*3 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
+    			if (mainWindow.getPreferences().getActivityTrackingPanelsToggler(2)) {
+	    			int totalFloors = lastDay.getTotalFloors();
+	    			int totalSteps = lastDay.getTotalSteps();
+	    			int totalDist = lastDay.getTotalDist();
+	    			
+	    			Feedback feedback = lastDay.todaysProgess();
+	    			int totalCal = Math.round(feedback.getFirstValues().get(1));
+	    			
+					int arcSize = (getWidth() - 20*(4+1))/4;
+					
+	    			if (mainWindow.getPreferences().getLifetimeTotalsToggler(0)) {
+		    	        // draw Arc2D.Double
+		    	        g2.setStroke(new BasicStroke(2.0f));
+		    	        g2.setColor(Color.WHITE);
+		    	        g2.draw(new Ellipse2D.Double(20*1 + arcSize*0, 52+80+100+160, arcSize, arcSize));
+		
+		    			JLabel label = new JLabel(totalDist + "", JLabel.LEFT);
+		    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+		    			Dimension size = label.getPreferredSize();
+		    			label.setBounds(20*1 + arcSize*0 + (arcSize-size.width)/2, 52+80+100+160 + (arcSize*2/3 - size.height)/2, size.width, size.height);
+		    			label.setForeground(Color.WHITE);
+		    			this.add(label);
+		    			
+		    			label = new JLabel("Km", JLabel.LEFT);
+		    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+		    			size = label.getPreferredSize();
+		    			label.setBounds(20*1 + arcSize*0 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
+		    			label.setForeground(Color.WHITE);
+		    			this.add(label);
+	    			}
+	
+	    			if (mainWindow.getPreferences().getLifetimeTotalsToggler(1)) {
+		    	        // draw Arc2D.Double
+		    	        g2.setStroke(new BasicStroke(2.0f));
+		    	        g2.setColor(Color.WHITE);
+		    	        g2.draw(new Ellipse2D.Double(20*2 + arcSize*1, 52+80+100+160, arcSize, arcSize));
+		
+		    			JLabel label = new JLabel(totalSteps + "", JLabel.LEFT);
+		    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+		    			Dimension size = label.getPreferredSize();
+		    			label.setBounds(20*2 + arcSize*1 + (arcSize-size.width)/2, 52+80+100+160 + (arcSize*2/3 - size.height)/2, size.width, size.height);
+		    			label.setForeground(Color.WHITE);
+		    			this.add(label);
+		    			
+		    			label = new JLabel("Steps", JLabel.LEFT);
+		    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+		    			size = label.getPreferredSize();
+		    			label.setBounds(20*2 + arcSize*1 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
+		    			label.setForeground(Color.WHITE);
+		    			this.add(label);
+	    			}
+	    			
+	    			if (mainWindow.getPreferences().getLifetimeTotalsToggler(2)) {
+		    	        // draw Arc2D.Double
+		    	        g2.setStroke(new BasicStroke(2.0f));
+		    	        g2.setColor(Color.WHITE);
+		    	        g2.draw(new Ellipse2D.Double(20*3 + arcSize*2, 52+80+100+160, arcSize, arcSize));
+		
+		    			JLabel label = new JLabel(totalFloors + "", JLabel.LEFT);
+		    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+		    			Dimension size = label.getPreferredSize();
+		    			label.setBounds(20*3 + arcSize*2 + (arcSize-size.width)/2, 52+80+100+160 + (arcSize*2/3 - size.height)/2, size.width, size.height);
+		    			label.setForeground(Color.WHITE);
+		    			this.add(label);
+		    			
+		    			label = new JLabel("Floors", JLabel.LEFT);
+		    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
+		    			size = label.getPreferredSize();
+		    			label.setBounds(20*3 + arcSize*2 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
+		    			label.setForeground(Color.WHITE);
+		    			this.add(label);
+	    			}
+	
+	    			if (mainWindow.getPreferences().getLifetimeTotalsToggler(3)) {
+		    	        // draw Arc2D.Double
+		    	        g2.setStroke(new BasicStroke(2.0f));
+		    	        g2.setColor(Color.WHITE);
+		    	        g2.draw(new Ellipse2D.Double(20*4 + arcSize*3, 52+80+100+160, arcSize, arcSize));
+		    	        
+		    			JLabel label = new JLabel(totalCal + "", JLabel.LEFT);
+		    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+		    			Dimension size = label.getPreferredSize();
+		    			label.setBounds(20*4 + arcSize*3 + (arcSize-size.width)/2, 52+80+100+160 + (arcSize*2/3 - size.height)/2, size.width, size.height);
+		    			label.setForeground(Color.WHITE);
+		    			this.add(label);
+		    			
+		    			label = new JLabel("<html><p style='text-align:center;'>Calories<br>Burned</p></html>", JLabel.LEFT);
+		    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(16.0f));
+		    			size = label.getPreferredSize();
+		    			label.setBounds(20*4 + arcSize*3 + (arcSize-size.width)/2, 52+80+100+160 + arcSize/2 + (arcSize/2 - size.height - 6)/2, size.width, size.height);
+		    			label.setForeground(Color.WHITE);
+		    			this.add(label);
+	    			}
+    			}
     			
     	        // reset stroke to default
     	        g2.setStroke(new BasicStroke(1.0f));
     		}
     	};
-    	
-    	this.add(activityTrackingPanel);
+    	if (this.mainWindow.getPreferences().getDashboardPanelsToggler(2)) this.add(activityTrackingPanel);
 	}
 
     /**

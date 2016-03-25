@@ -323,6 +323,7 @@ public class ButtonActionListener implements ActionListener, Serializable {
 				this.mainWindow.setVisible(true);
 				break;
 			case 1: // Nagivates to Profile Screen
+				this.mainWindow.setProfileScreen(new ProfileScreen(mainWindow));
 				this.mainWindow.setVisible(false);
 				this.mainWindow.getContentPane().removeAll();
 				this.mainWindow.add(this.mainWindow.getProfileScreen());
@@ -518,13 +519,20 @@ public class ButtonActionListener implements ActionListener, Serializable {
 			planManagerScreen.removeDish(index);
 			break;
 			
-		case 25: // Profile Screen
+		case 25: // Profile Screen: toggle settings/profile screens
 			switch(this.value) {
 			case 0:
 				ProfileScreen profileScreen = this.mainWindow.getProfileScreen();
 				profileScreen.toggleScreen();
 				break;
 			}
+			break;
+			
+		case 26: // Profile Screen: toggle dashboard panels
+		case 27: // Profile Screen: activity tracking panels
+		case 28: // Profile Screen: lifetime totals
+			ProfileScreen profileScreen = this.mainWindow.getProfileScreen();
+			profileScreen.toggleToggles(this.btnMode, this.value);
 			break;
 		}
 	}

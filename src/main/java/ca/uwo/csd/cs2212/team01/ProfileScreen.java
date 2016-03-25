@@ -22,11 +22,12 @@ public class ProfileScreen extends JPanel implements Serializable{
 	private MainWindow mainWindow;
 	
 	private JButton settingsBtn;
+	private JButton[] dashboardPanelsButtons, activityTrackingPanelsButtons, lifetimeTotalsButtons;
 	private boolean settingsScreen;
 	private JLabel[] label;
 	
 	private boolean[] dashboardPanelsToggler, activityTrackingPanelsToggler, lifetimeTotalsToggler;
-
+	
 	/**
 	 * Class Constructor
 	 * @param mainWindow
@@ -40,10 +41,10 @@ public class ProfileScreen extends JPanel implements Serializable{
 		activityTrackingPanelsToggler = new boolean[3];
 		lifetimeTotalsToggler = new boolean[4];
 
-		//for(int i = 0; i < 3; i++) dashboardPanelsToggler[i] = this.mainWindow.getPreferences().getDashboardPanelsToggler(i);
-		//for(int i = 0; i < 3; i++) activityTrackingPanelsToggler[i] = this.mainWindow.getPreferences().activityTrackingPanelsToggler;
-		//for(int i = 0; i < 4; i++) lifetimeTotalsToggler[i] = this.mainWindow.getPreferences().lifetimeTotalsToggler;
-		
+		dashboardPanelsButtons = new JButton[3];
+		activityTrackingPanelsButtons = new JButton[3];
+		lifetimeTotalsButtons = new JButton[4];
+
 		label = new JLabel[8];
 		
 		settingsBtn = new JButton();
@@ -203,10 +204,87 @@ public class ProfileScreen extends JPanel implements Serializable{
 			label[7].setForeground(new Color(255,255,255,200));
 			label[7].setBackground(new Color(0,0,0,120));
     	}
+
+		for(int i = 0; i < 3; i++) {
+			dashboardPanelsToggler[i] = this.mainWindow.getPreferences().getDashboardPanelsToggler(i);
+
+			dashboardPanelsButtons[i] = new JButton();
+			//dashboardPanelsButtons[i].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+			dashboardPanelsButtons[i].setBackground(null);
+			dashboardPanelsButtons[i].setBorder(null);
+			dashboardPanelsButtons[i].setFocusPainted(false);
+			dashboardPanelsButtons[i].setMargin(new Insets(0, 0, 0, 0));
+			dashboardPanelsButtons[i].setContentAreaFilled(false);
+			dashboardPanelsButtons[i].setBorderPainted(false);
+			dashboardPanelsButtons[i].setOpaque(false);
+			dashboardPanelsButtons[i].setForeground(new Color(255,255,255,220));
+			dashboardPanelsButtons[i].setFocusable(false);
+			//Dimension size = dashboardPanelsButtons[i].getPreferredSize();
+			dashboardPanelsButtons[i].setBounds(130+(290-20)/2+465*i, getHeight()-60+(60-20)/2, 20, 20);
+	        dashboardPanelsButtons[i].addActionListener(new ButtonActionListener(26, i, mainWindow));
+		}
+		
+		for(int i = 0; i < 3; i++) {
+			activityTrackingPanelsToggler[i] = this.mainWindow.getPreferences().getActivityTrackingPanelsToggler(i);
+
+			activityTrackingPanelsButtons[i] = new JButton();
+			//activityTrackingPanelsButtons[i].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+			activityTrackingPanelsButtons[i].setBackground(null);
+			activityTrackingPanelsButtons[i].setBorder(null);
+			activityTrackingPanelsButtons[i].setFocusPainted(false);
+			activityTrackingPanelsButtons[i].setMargin(new Insets(0, 0, 0, 0));
+			activityTrackingPanelsButtons[i].setContentAreaFilled(false);
+			activityTrackingPanelsButtons[i].setBorderPainted(false);
+			activityTrackingPanelsButtons[i].setOpaque(false);
+			activityTrackingPanelsButtons[i].setForeground(new Color(255,255,255,220));
+			activityTrackingPanelsButtons[i].setFocusable(false);
+			//Dimension size = activityTrackingPanelsButtons[i].getPreferredSize();
+			activityTrackingPanelsButtons[i].setBounds(1350+(60-20)/2, 415+(75-20)/2 + 100*i, 20, 20);
+	        activityTrackingPanelsButtons[i].addActionListener(new ButtonActionListener(27, i, mainWindow));
+		}
+		
+		for(int i = 0; i < 4; i++) {
+			lifetimeTotalsToggler[i] = this.mainWindow.getPreferences().getLifetimeTotalsToggler(i);
+
+			lifetimeTotalsButtons[i] = new JButton();
+			//lifetimeTotalsButtons[i].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+			lifetimeTotalsButtons[i].setBackground(null);
+			lifetimeTotalsButtons[i].setBorder(null);
+			lifetimeTotalsButtons[i].setFocusPainted(false);
+			lifetimeTotalsButtons[i].setMargin(new Insets(0, 0, 0, 0));
+			lifetimeTotalsButtons[i].setContentAreaFilled(false);
+			lifetimeTotalsButtons[i].setBorderPainted(false);
+			lifetimeTotalsButtons[i].setOpaque(false);
+			lifetimeTotalsButtons[i].setForeground(new Color(255,255,255,220));
+			lifetimeTotalsButtons[i].setFocusable(false);
+			//Dimension size = lifetimeTotalsButtons[i].getPreferredSize();
+			lifetimeTotalsButtons[i].setBounds(1060+12+(60-20)/2 + 69*i, 685+(60-20)/2, 20, 20);
+	        lifetimeTotalsButtons[i].addActionListener(new ButtonActionListener(28, i, mainWindow));
+		}
+	}
+	
+	public void toggleToggles(int btnMode, int value) {
+		switch(btnMode) {
+		case 26:
+			dashboardPanelsToggler[value] = !dashboardPanelsToggler[value];
+			break;
+		case 27:
+			activityTrackingPanelsToggler[value] = !activityTrackingPanelsToggler[value];
+			break;
+		case 28:
+			lifetimeTotalsToggler[value] = !lifetimeTotalsToggler[value];
+			break;
+		}
+		
+		this.repaint();
 	}
 	
 	private void removeObjects() {
 		for(int i = 0; i < 8; i++) this.remove(label[i]);
+		
+		for(int i = 0; i < 3; i++) this.remove(dashboardPanelsButtons[i]);
+		for(int i = 0; i < 3; i++) this.remove(activityTrackingPanelsButtons[i]);
+		for(int i = 0; i < 4; i++) this.remove(lifetimeTotalsButtons[i]);
 	}
 	
     /* (non-Javadoc)
@@ -253,14 +331,38 @@ public class ProfileScreen extends JPanel implements Serializable{
 		}
 		
 		if (this.settingsScreen) {
-			g2.drawImage(image, 0, 0, getWidth(), getHeight(), 0, 0, image.getWidth(), image.getHeight(), null);
+			for(int i = 0; i < 3; i++) {
+				if (dashboardPanelsToggler[i]) g2.drawImage(checked, 130+(290-20)/2+465*i, getHeight()-60+(60-20)/2, null);
+				else g2.drawImage(unchecked, 130+(290-20)/2+465*i, getHeight()-60+(60-20)/2, null);
+				this.add(dashboardPanelsButtons[i]);
+			}
+			
+			for(int i = 0; i < 3; i++) {
+				if (activityTrackingPanelsToggler[i]) g2.drawImage(checked, 1350+(60-20)/2, 415+(75-20)/2 + 100*i, null);
+				else g2.drawImage(unchecked, 1350+(60-20)/2, 415+(75-20)/2 + 100*i, null);
+				this.add(activityTrackingPanelsButtons[i]);
+			}
+			
+			for(int i = 0; i < 4; i++) {
+				if (lifetimeTotalsToggler[i]) g2.drawImage(checked, 1060+12+(60-20)/2 + 69*i, 685+(60-20)/2, null);
+				else g2.drawImage(unchecked, 1060+12+(60-20)/2 + 69*i, 685+(60-20)/2, null);
+				this.add(lifetimeTotalsButtons[i]);
+			}
 		}else {
 			for(int i = 0; i < 8; i++) this.add(label[i]);
 		}
     }
 
 	public void toggleScreen() {
+		Preferences screen = this.mainWindow.getPreferences();
+		if (this.settingsScreen) {
+			screen.setDashboardPanelsToggler(dashboardPanelsToggler);
+			screen.setActivityTrackingPanelsToggler(activityTrackingPanelsToggler);
+			screen.setLifetimeTotalsToggler(lifetimeTotalsToggler);
+		}
+		
 		this.settingsScreen = !this.settingsScreen;
+		
 		if (this.settingsScreen) this.settingsBtn.setText("Accept >");
 		else this.settingsBtn.setText("Settings >");
 		this.repaint();

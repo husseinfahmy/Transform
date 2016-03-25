@@ -217,23 +217,23 @@ public class Preferences implements Serializable {
 		return dashboardPanelsToggler[index];
 	}
 
-	public void setDashboardPanelsToggler(int index, boolean value) {
-		this.dashboardPanelsToggler[index] = value;
+	public void setDashboardPanelsToggler(boolean[] dashboardPanelsToggler) {
+		this.dashboardPanelsToggler = dashboardPanelsToggler;
 	}
 
 	public boolean getActivityTrackingPanelsToggler(int index) {
 		return activityTrackingPanelsToggler[index];
 	}
 
-	public void setActivityTrackingPanelsToggler(int index, boolean value) {
-		this.activityTrackingPanelsToggler[index] = value;
+	public void setActivityTrackingPanelsToggler(boolean[] activityTrackingPanelsToggler) {
+		this.activityTrackingPanelsToggler = activityTrackingPanelsToggler;
 	}
 
 	public boolean getLifetimeTotalsToggler(int index) {
 		return lifetimeTotalsToggler[index];
 	}
 
-	public void setLifetimeTotalsToggler(int index, boolean value) {
-		this.lifetimeTotalsToggler[index] = value;
+	public void setLifetimeTotalsToggler(boolean[] lifetimeTotalsToggler) {
+		this.lifetimeTotalsToggler = lifetimeTotalsToggler;
 	}
 }
