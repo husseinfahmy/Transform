@@ -34,7 +34,7 @@ public class NutritionPanel extends JPanel implements Serializable {
 	public NutritionPanel(MainWindow mainWindow, boolean mealScreen) {
 		this.mainWindow = mainWindow;
 		
-		this.mealScreen = mealScreen;
+		this.setMealScreen(mealScreen);
 		this.cupServings = false;
 		
 		this.setLayout(null);
@@ -330,5 +330,13 @@ public class NutritionPanel extends JPanel implements Serializable {
 			e.printStackTrace();
 		}
 		g.drawImage(image, 0,  getHeight() - 60 - 15, null);
+	}
+
+	public boolean isMealScreen() {
+		return mealScreen;
+	}
+
+	public void setMealScreen(boolean mealScreen) {
+		this.mealScreen = mealScreen;
 	}
 }

@@ -182,7 +182,7 @@ public class VirtualTrainer implements Serializable {
 			msUpdateFeedback.setTXTCode(2);
 			msUpdateFeedback.addTXTone
 			(
-					"Progress towards your first Milestone:"
+					"Progress towards your first Milestone:<br>( lose 2 lbs to achieve a Milestone )"
 			);
 			msUpdateFeedback.addFeedbackValue((float)0); 			//current MileStone number
 			msUpdateFeedback.addFeedbackValue((float)0);				//current MileStone progress, out of 7000
@@ -195,8 +195,9 @@ public class VirtualTrainer implements Serializable {
 			msUpdateFeedback.setTXTCode(1); //DISPLAY 1 SENTENCE 
 			msUpdateFeedback.addTXTone
 			(
-					"Warning: User has completed all Milestones and is continuing to use the TRAINR without a new Target Weight goal.\n"
-					+ "No new Milestones can be achieved until a new Target Weight Goal has been set."
+					"You've completed your goal!<br>"
+					+ "If you wish to continue receiving rewards,<br>"
+					+ "please specify a new Goal in: Profile > Settings"
 			);
 			return msUpdateFeedback; 
 		} 
@@ -247,12 +248,12 @@ public class VirtualTrainer implements Serializable {
 						msUpdateFeedback.setFontSize(20);
 						msUpdateFeedback.addTXTone
 						(
-								"Warning: You have completed all Milestones and have lost more weight than specified target weight.<br>"
-								+ "TRAINR is not tracking any new Milestone progress with weight that has been lost beyond the Target Weight of: " + this.targetWeight +  " lbs.<br>"
-								+ "Please specify a new Target Weight goal if you wish to achieve more Milestone Rewards!"
+								"You've completed your goal!<br>"
+								+ "If you wish to continue receiving rewards,<br>"
+								+ "please specify a new Goal in: Profile > Settings"
 						);
 						return msUpdateFeedback;
-					} 
+					}
 					
 					usersProgress = currentMileStone.updateProgress(usersProgress);
 					//System.out.println("usersProgress: "+usersProgress);System.out.println(currentMileStone.getStatus());System.out.println("current ms progress: "+currentMileStone.progress);
@@ -319,7 +320,7 @@ public class VirtualTrainer implements Serializable {
 						msUpdateFeedback.addTXTone
 						(
 								"You've lost " + String.format("%.1f", Math.abs(weightDiff)) + " lbs!<br>"
-								+ "Progress towards your first Milestone:"
+								+ "Progress towards your first Milestone:<br>( lose 2 lbs to achieve a Milestone )"
 						);
 					}
 					msUpdateFeedback.addFeedbackValue((float)completedMileStones.size()+1); 			//current MileStone number

@@ -18,6 +18,8 @@ public class Preferences implements Serializable {
 	private boolean showSedentaryMinutes;
 	private boolean showTrainR;*/
 	
+	private boolean tutorialMode;
+	
 	//Time & Date Stamps:
 	private Date lastCall;
 	private boolean firstCall;
@@ -34,12 +36,18 @@ public class Preferences implements Serializable {
 	private LinkedList<Meal> myDishes;
 
 	private boolean[] dashboardPanelsToggler, activityTrackingPanelsToggler, lifetimeTotalsToggler;
+	
+	private TrophyProgression tp;
 
 	/**
 	 * Class Constructor
 	 * @param mainWindow
 	 */
 	public Preferences(){
+		setTp(new TrophyProgression());
+		
+		tutorialMode = true;
+		
 		firstCall = true;
 		days = new LinkedList<Day>();
 		futureDays = new LinkedList<Day>();
@@ -132,7 +140,6 @@ public class Preferences implements Serializable {
 	public void setShowTrainR(boolean showTrainR) {
 		this.showTrainR = showTrainR;
 	}*/
-
 
 	public Date getLastCall() {
 		return lastCall;
@@ -235,5 +242,21 @@ public class Preferences implements Serializable {
 
 	public void setLifetimeTotalsToggler(boolean[] lifetimeTotalsToggler) {
 		this.lifetimeTotalsToggler = lifetimeTotalsToggler;
+	}
+
+	public boolean isTutorialMode() {
+		return tutorialMode;
+	}
+
+	public void setTutorialMode(boolean tutorialMode) {
+		this.tutorialMode = tutorialMode;
+	}
+
+	public TrophyProgression getTp() {
+		return tp;
+	}
+
+	public void setTp(TrophyProgression tp) {
+		this.tp = tp;
 	}
 }

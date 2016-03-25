@@ -7,18 +7,31 @@ import java.util.LinkedList;
  * @author team01
  *
  */
-public class User implements Serializable {
+public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
-
+	
 	//Attributes
-	private String name;
-	private int age;
-	private char gender;
-	private float height;
-	private LinkedList<Journey> myJourneys = new LinkedList<Journey>();
+	public String name;
+	public int age;				
+	public char gender;			// f or m
+	public float height;		//cm
+	public LinkedList<Journey> myJourneys = new LinkedList<Journey>();
+	public float bmr;
+	
+	private double lifeTimeDistance;
+	private int lifeTimeFloors;
+	private int lifeTimeSteps;
+	
 	private double bestDistance;
 	private int bestFloors;
 	private int bestSteps;
+	
+	
+	//Constructor
+	/**
+	 * @param name
+	 */
+	public User(String name) {this.name = name;}
 	
 	//Constructor
 	/**
@@ -29,9 +42,9 @@ public class User implements Serializable {
 	 */
 	public User(String name, int age, char gender, float height) {
 		this.name = name;
-		this.setAge(age);
-		this.setGender(gender);
-		this.setHeight(height);
+		this.age = age;
+		this.gender = gender;
+		this.height = height;
 	}
 	
 	//Methods
@@ -49,6 +62,33 @@ public class User implements Serializable {
 	{
 		return myJourneys.size();
 	}
+	
+	
+	
+	
+	/**
+	 * setter method to set the values of lifetime totals for distance, floors, and steps
+	 * @param days a LinkedList of Day objects that store the data for each day
+	 */
+	public void setLifeTimeValues(LinkedList<Day> days)
+	{
+		double totalDistance = 0;
+		int totalFloors = 0;
+		int totalSteps = 0;
+		
+		//go through all of the days to get the sum for each attribute
+		for(int i = 0; i < days.size(); i++)
+		{
+			totalDistance += days.get(i).getTotalDist();
+			totalFloors += days.get(i).getTotalFloors();
+			totalSteps += days.get(i).getTotalSteps();
+		}
+		
+		this.lifeTimeDistance = totalDistance;
+		this.lifeTimeFloors = totalFloors;
+		this.lifeTimeSteps = totalSteps;
+	}
+	
 	
 	/**
 	 * setter method to set the values of the best days for distance, floors, and steps
@@ -84,6 +124,24 @@ public class User implements Serializable {
 		this.bestSteps = maxSteps;
 	}
 	
+	
+	
+	public void calcBMR(VirtualTrainer vt)
+	{
+		if(gender=='f' || gender=='F')
+		{ setBmr((float)(447.6 + (9.2*(vt.getCurrentWeight()/2.2)) + (3.1*(height/0.39)) - (4.3*age))-1500); }
+		
+		else if(gender=='m' || gender == 'M')
+		{ setBmr((float)(88.3 + (13.4*(vt.getCurrentWeight()/2.2)) + (4.8*(height/0.39)) - (5.7*age))-1800); }
+		
+		else
+		{ setBmr(0);}
+	}
+
+	
+	
+	
+	
 	/**
 	 * accessor method to get the largest distance in one day
 	 * @return double largest distance in one day
@@ -110,28 +168,41 @@ public class User implements Serializable {
 	{
 		return bestSteps;
 	}
+	
 
-	public char getGender() {
-		return gender;
+	/**
+	 * accessor method to get lifetime distance
+	 * @return double lifetime total distance
+	 */
+	public double getLifeTimeDistance()
+	{
+		return lifeTimeDistance;
+	}
+	
+	/**
+	 * accessor method to get the lifetime floors
+	 * @return int lifetime total floors
+	 */
+	public int getLifeTimeFloors()
+	{
+		return lifeTimeFloors;
+	}
+	
+	/**
+	 * accessor method to get the lifetime steps
+	 * @return int lifetime total steps
+	 */
+	public int getLifeTimeSteps()
+	{
+		return lifeTimeSteps;
 	}
 
-	public void setGender(char gender) {
-		this.gender = gender;
+	public float getBmr() {
+		return bmr;
 	}
 
-	public int getAge() {
-		return age;
+	public void setBmr(float bmr) {
+		this.bmr = bmr;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public float getHeight() {
-		return height;
-	}
-
-	public void setHeight(float height) {
-		this.height = height;
-	}
 }

@@ -24,7 +24,7 @@ public class DashboardScreen extends JPanel implements Serializable {
 	private MainWindow mainWindow;
 	
 	private int activityPanelDayIndex;
-	private Day activityPanelDay;
+	private Day activityPanelDay = null;
 	
 	private JPanel bannerPanel;
 	private JLabel refreshDesc, mealsLabel, workoutsLabel, calDeficitLabel, activityDayLabel;
@@ -265,7 +265,9 @@ public class DashboardScreen extends JPanel implements Serializable {
     				else {
     					day = days.get(i);
     					value = (int)day.getDailyCalDiff();
-    					if (value >= 0) g.drawImage(xmark, (this.getWidth()/7)*i + ((this.getWidth()/7)-xmark.getWidth())/2, (60-xmark.getHeight())/2, xmark.getWidth(), xmark.getHeight(), null);
+    					if (day.getPlan() == null || day.getPlan().getMeals().size() == 0)
+    						g.drawImage(exclmark, (this.getWidth()/7)*i + ((this.getWidth()/7)-exclmark.getWidth())/2, (60-exclmark.getHeight())/2, exclmark.getWidth(), exclmark.getHeight(), null);
+    					else if (value >= 0) g.drawImage(xmark, (this.getWidth()/7)*i + ((this.getWidth()/7)-xmark.getWidth())/2, (60-xmark.getHeight())/2, xmark.getWidth(), xmark.getHeight(), null);
     					else if (value <= -480)
     						g.drawImage(checkmark, (this.getWidth()/7)*i + ((this.getWidth()/7)-checkmark.getWidth())/2, (60-checkmark.getHeight())/2, checkmark.getWidth(), checkmark.getHeight(), null);
     					else g.drawImage(exclmark, (this.getWidth()/7)*i + ((this.getWidth()/7)-exclmark.getWidth())/2, (60-exclmark.getHeight())/2, exclmark.getWidth(), exclmark.getHeight(), null);
@@ -280,13 +282,20 @@ public class DashboardScreen extends JPanel implements Serializable {
         			label.setForeground(Color.WHITE);
         			this.add(label);
         			
+
     				if (i == 6) {
     					label = new JLabel("In Progress", JLabel.LEFT);
     					label.setFont(mainWindow.FONT_HELVETICA_NEUE_ITALIC.deriveFont(25.0f));
-    				}else {
+    				}else if (day.getPlan() == null || day.getPlan().getMeals().size() == 0) {
+						g.setColor(new Color(255,255,255,150));
+						label = new JLabel("No Plan", JLabel.LEFT);
+	    				label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+						size = label.getPreferredSize();
+						((Graphics2D) g).draw(new RoundRectangle2D.Float((this.getWidth()/7)*i + ((this.getWidth()/7)-size.width-15)/2, 60+35 + (55-size.height-10)/2, size.width+15, size.height+10, 10, 10));
+					}else {
     					label = new JLabel("<html>" + (value > 0 ? "+" : "") + value + "<small style='font-size:18pt'> cal</small></html>", JLabel.LEFT);
     					label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
-    				}
+					}
     				
     				size = label.getPreferredSize();
         			label.setBounds((this.getWidth()/7)*i + ((this.getWidth()/7)-size.width)/2, 60+35 + (55-size.height)/2, size.width, size.height);
@@ -374,7 +383,6 @@ public class DashboardScreen extends JPanel implements Serializable {
 
 	    			g2.setColor(new Color(1.0f,1.0f,1.0f,0.5f));
 					g2.draw(new RoundRectangle2D.Float((getWidth() - (size.width+30))/2,  112 + (130-(size.height+15))/2, size.width + 30, size.height+15, 10, 10));
-					
 					
 	   				/*if (feedbackMeals != null) {
 						txtOne = feedbackMeals.getTXTone();
@@ -560,78 +568,121 @@ public class DashboardScreen extends JPanel implements Serializable {
 				g2.drawLine(getWidth()-1, 0, getWidth()-1, getHeight());
 				g2.drawImage(image, (getWidth()-image.getWidth())/2, 0, null);
 
-    			JLabel label = new JLabel("TRAINR Feedback", JLabel.LEFT);
+    			JLabel label = new JLabel("Feedback", JLabel.LEFT);
     			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
     			Dimension size = label.getPreferredSize();
     			label.setBounds((getWidth() - size.width)/2, (52-size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
     			this.add(label);
 
-	   			//Display Feedback:
-	   			//Milestone Progress Feedback:
-	   			Feedback feedback = mainWindow.getVirtualTrainer().getmsFeedback();
-	   			
-	   			String output = null;
-	   			if (feedback.getTextCode() == 1) output = feedback.getTXTone().getFirst();
-	   			else if (feedback.getTextCode() == 2) output = feedback.getTXTone().getFirst();
-	   			else output = null;
-	   			
-	   			label = new JLabel("<html><center>" + output + "</center></html>", JLabel.LEFT);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
-    			size = label.getPreferredSize();
-    			label.setBounds((getWidth() - size.width)/2, 52 + 15 + (100-size.height)/2, size.width, size.height);
-    			label.setForeground(new Color(1.0f,1.0f,1.0f,0.6f));
-    			this.add(label);
-    			
-    			if (feedback.getTextCode() == 2) {
-    				output = String.format("%.1f", feedback.getFirstValues().get(2))+" lbs to go!";
-    	   			label = new JLabel(output, JLabel.LEFT);
-        			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
-        			size = label.getPreferredSize();
-        			label.setBounds(40, 52 + 15 + 100 + 100/2 - size.height - 3, size.width, size.height);
-        			label.setForeground(new Color(106, 185, 255, 255));
-        			this.add(label);
-        			g2.setColor(new Color(106, 185, 255, 255));
-        			g2.drawLine(40, 52 + 15 + 100 + 100/2, (getWidth()-40-50) - (int)((getWidth()-40*2-50)*feedback.getFirstValues().get(2)/2), 52 + 15 + 100 + 100/2);
+    			if (!mainWindow.getPreferences().isTutorialMode()) {
+		   			//Display Feedback:
+		   			//Milestone Progress Feedback:
+		   			Feedback feedback = mainWindow.getVirtualTrainer().getmsFeedback();
+		   			
+		   			String output = null;
+		   			if (feedback.getTextCode() == 1) output = feedback.getTXTone().getFirst();
+		   			else if (feedback.getTextCode() == 2) output = feedback.getTXTone().getFirst();
+		   			else output = null;
+		   			
+		   			label = new JLabel("<html><center>" + output + "</center></html>", JLabel.LEFT);
+	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+	    			size = label.getPreferredSize();
+	    			label.setBounds((getWidth() - size.width)/2, 52 + 15 + (100-size.height)/2, size.width, size.height);
+	    			label.setForeground(new Color(1.0f,1.0f,1.0f,0.6f));
+	    			this.add(label);
+	    			
+	    			if (feedback.getTextCode() == 2) {
+	    				image = null;
+	    				try {
+	    					image = ImageIO.read(new File("UI/star-ms.png"));
+	    				} catch (IOException e) {
+	    					// TODO Auto-generated catch block
+	    					e.printStackTrace();
+	    				}
+	    				//g2.drawImage(image, (getWidth()-400)/2, 52+15+100+(100-75)/2, null);
+	    				
+	    				output = String.format("%.1f", feedback.getFirstValues().get(2))+" lbs to go!";
+	    	   			label = new JLabel(output, JLabel.LEFT);
+	        			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+	        			size = label.getPreferredSize();
+	    				g2.drawImage(image, (getWidth()-400)/2, 52+15+100+(100-75)/2 - size.height/2, null);
+	        			label.setBounds(40, 52 + 15 + 100 + 100/2 - size.height - 3, size.width, size.height);
+	        			label.setForeground(new Color(106, 185, 255, 255));
+	        			this.add(label);
+	        			g2.setColor(new Color(106, 185, 255, 255));
+	        			g2.drawLine(40, 52 + 15 + 100 + 100/2, (getWidth()-40-50) - (int)((getWidth()-40*2-50)*feedback.getFirstValues().get(2)/2), 52 + 15 + 100 + 100/2);
+	
+	        			/*g2.setColor(Color.WHITE);
+	        			g2.draw(new Ellipse2D.Double(getWidth()-40-50, 52 + 15 + 100 + (100-50)/2, 50, 50));
+	        			
+	        			label = new JLabel("MS", JLabel.LEFT);
+	        			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+	        			size = label.getPreferredSize();
+	        			label.setBounds(getWidth()-40-50 + (50-size.width)/2, 52+15+100 + (100-size.height)/2, size.width, size.height);
+	        			label.setForeground(Color.WHITE);
+	        			this.add(label);*/
+	    			}
+		   			
+		   			//Feedback on user's current Calorie Difference for today:
+		   			/*feedback = mainWindow.getVirtualTrainer().updateTodaysProgress(mainWindow.getDays().getLast());
+		   			
+		   			if(feedback.getTextCode() == 1) output = feedback.getTXTone().getFirst();
+		   			else if (feedback.getTextCode() == 2) output = feedback.getTXTone().getFirst() + feedback.getFirstValues().get(2);
+		   			else output = null;
+		   			
+		   			label = new JLabel("<html><center>" + output + "</center></html>", JLabel.LEFT);
+	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+	    			size = label.getPreferredSize();
+	    			label.setBounds((getWidth() - size.width)/2, 52+15+100+100 + (100-size.height)/2, size.width, size.height);
+	    			label.setForeground(new Color(1.0f,1.0f,1.0f,0.6f));
+	    			this.add(label);*/
+		   			
+		   			//Feedback on user's past week's performance:
+		   			feedback = mainWindow.updateWeeklyProgress();
+		   			
+		   			if(feedback.getTextCode() == 1) output = feedback.getTXTone().getFirst();
+		   			else if (feedback.getTextCode() == 2) output = feedback.getTXTone().getFirst() + feedback.getFirstValues().get(2);
+		   			else output = null;
+		   			
+		   			label = new JLabel("<html><center>" + output + "</center></html>", JLabel.LEFT);
+	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+	    			size = label.getPreferredSize();
+	    			label.setBounds((getWidth() - size.width)/2, 52+15+100+50 + (200-size.height)/2, size.width, size.height);
+	    			label.setForeground(new Color(1.0f,1.0f,1.0f,0.6f));
+	    			this.add(label);
 
-        			g2.setColor(Color.WHITE);
-        			g2.draw(new Ellipse2D.Double(getWidth()-40-50, 52 + 15 + 100 + (100-50)/2, 50, 50));
-        			
-        			label = new JLabel("MS", JLabel.LEFT);
-        			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
-        			size = label.getPreferredSize();
-        			label.setBounds(getWidth()-40-50 + (50-size.width)/2, 52+15+100 + (100-size.height)/2, size.width, size.height);
-        			label.setForeground(Color.WHITE);
-        			this.add(label);
+    				image = null;
+    				try {
+    					image = ImageIO.read(new File("UI/swag-arrow.png"));
+    				} catch (IOException e) {
+    					// TODO Auto-generated catch block
+    					e.printStackTrace();
+    				}
+    				
+    				int[] ret;
+    				
+    				ret = mainWindow.getPreferences().getTp().updateStreaks(mainWindow.getPreferences().getDays());
+    				
+    				if (ret[0] != 0) {
+    					g2.drawImage(image, (getWidth()-400)/2, getHeight()-15-90, null);
+    					if (ret[1] == 1) {
+    			   			label = new JLabel("<html><center>Congratulations!<br>You broke your streak record!<br>You're on a " + ret[0] + " day streak!</center></html>", JLabel.LEFT);
+    		    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+    		    			size = label.getPreferredSize();
+    		    			label.setBounds((getWidth()-size.width)/2, getHeight()-15-90 + (90-size.height)/2, size.width, size.height);
+    		    			label.setForeground(new Color(1.0f,1.0f,1.0f,0.6f));
+    		    			this.add(label);
+    					}else {
+    			   			label = new JLabel("You're on a " + ret[0] + " day streak!", JLabel.LEFT);
+    		    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
+    		    			size = label.getPreferredSize();
+    		    			label.setBounds((getWidth()-size.width)/2, getHeight()-15-90 + (90-size.height)/2, size.width, size.height);
+    		    			label.setForeground(new Color(1.0f,1.0f,1.0f,0.6f));
+    		    			this.add(label);
+    					}
+    				}
     			}
-	   			
-	   			//Feedback on user's current Calorie Difference for today:
-	   			feedback = mainWindow.getVirtualTrainer().updateTodaysProgress(mainWindow.getDays().getLast());
-	   			
-	   			if(feedback.getTextCode() == 1) output = feedback.getTXTone().getFirst();
-	   			else if (feedback.getTextCode() == 2) output = feedback.getTXTone().getFirst() + feedback.getFirstValues().get(2);
-	   			else output = null;
-	   			
-	   			label = new JLabel("<html><center>" + output + "</center></html>", JLabel.LEFT);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
-    			size = label.getPreferredSize();
-    			label.setBounds((getWidth() - size.width)/2, 52+15+100+100 + (100-size.height)/2, size.width, size.height);
-    			label.setForeground(new Color(1.0f,1.0f,1.0f,0.6f));
-    			this.add(label);
-	   			
-	   			//Feedback on user's past week's performance:
-	   			feedback = mainWindow.updateWeeklyProgress();
-	   			
-	   			if(feedback.getTextCode() == 1) output = feedback.getTXTone().getFirst();
-	   			else if (feedback.getTextCode() == 2) output = feedback.getTXTone().getFirst() + feedback.getFirstValues().get(2);
-	   			else output = null;
-	   			
-	   			label = new JLabel("<html><center>" + output + "</center></html>", JLabel.LEFT);
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
-    			size = label.getPreferredSize();
-    			label.setBounds((getWidth() - size.width)/2, 52+15+100+100+100 + (100-size.height)/2, size.width, size.height);
-    			label.setForeground(new Color(1.0f,1.0f,1.0f,0.6f));
-    			this.add(label);
     		}
     	};
     	if (this.mainWindow.getPreferences().getDashboardPanelsToggler(1)) {
@@ -878,7 +929,7 @@ public class DashboardScreen extends JPanel implements Serializable {
 		    			this.add(label);
 	    			}
     			}
-
+    			
     			navActivities[0] = new JButton("<");
     			navActivities[0].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
     			navActivities[0].setBackground(null);
@@ -993,7 +1044,8 @@ public class DashboardScreen extends JPanel implements Serializable {
 		
 		BufferedImage bgImage = null;
 		try {
-			bgImage = ImageIO.read(new File("UI/bg.jpg"));
+			if (mainWindow.getPreferences().isTutorialMode()) bgImage = ImageIO.read(new File("UI/bg-tut.png"));
+			else bgImage = ImageIO.read(new File("UI/bg.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

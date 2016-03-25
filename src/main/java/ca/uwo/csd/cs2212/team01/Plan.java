@@ -18,15 +18,18 @@ public class Plan implements Serializable {
 	private int mealCount = 0;
 	//private int workoutCount = 0;
 	private float caloriesConsumed = 0;
-	private float caloriesBurned = 1600;		//need to create a formula/method for stage 3 to compute this
+	private float caloriesBurned = 0;		//need to create a formula/method for stage 3 to compute this
 	private float predictedCalorieDiff = caloriesConsumed - caloriesBurned;  // total meal calories - (BMR + Calories burned from Workouts)
 	
 	//Contructor
 	/**
 	 * 
 	 */
-	public Plan() 
-	{ meals = new LinkedList<Meal>(); workouts = new LinkedList<Workout>(); }
+	public Plan(float bmr) 
+	{
+		meals = new LinkedList<Meal>(); workouts = new LinkedList<Workout>();
+		caloriesBurned = bmr;
+	}
 	
 	//Methods
 	
@@ -157,9 +160,9 @@ public class Plan implements Serializable {
 	 * Returns a copy of the plan this method is called on
 	 * @return Plan
 	 */
-	public Plan copyPlan()
+	public Plan copyPlan(float bmr)
 	{
-		Plan newPlan = new Plan();
+		Plan newPlan = new Plan(bmr);
 
 		//Meals: construct same number of new meals
 		

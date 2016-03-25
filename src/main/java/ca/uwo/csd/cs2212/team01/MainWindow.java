@@ -98,7 +98,6 @@ public class MainWindow extends JFrame implements Serializable {
 		mealDishScreen = new MealDishScreen(this);
 		loadingScreen = new LoadingScreen(this);
 		weighScreen = new WeighScreen(this);
-		setDashboardScreen(new DashboardScreen(this));
 		myPlansScreen = new MyPlansScreen(this);
 		planManagerScreen = new PlanManagerScreen(this);
 		
@@ -514,7 +513,11 @@ public class MainWindow extends JFrame implements Serializable {
 					}
 				}
 			}
-			
+		
+		this.userPreferences.getTp().updateStreaks(this.userPreferences.getDays());
+
+		this.userPreferences.getUser().setLifeTimeValues(this.userPreferences.getDays());
+		this.userPreferences.getUser().setBestValues(this.userPreferences.getDays());
 	}
     
 	/**

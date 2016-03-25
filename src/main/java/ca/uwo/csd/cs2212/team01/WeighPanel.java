@@ -73,7 +73,7 @@ public class WeighPanel extends JPanel implements Serializable {
 
 		height += 53+20;
 
-		desc = new JLabel("Please enter in a weight for each.", JLabel.LEFT);
+		desc = new JLabel("Please enter in your current weight.", JLabel.LEFT);
 		desc.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
 		size = desc.getPreferredSize();
 		desc.setBounds((503-size.width)/2, height, size.width, size.height);
