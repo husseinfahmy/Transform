@@ -11,11 +11,11 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	//Attributes
-	public String name;
-	public int age;
-	public char gender;
-	public float height;
-	public LinkedList<Journey> myJourneys = new LinkedList<Journey>();
+	private String name;
+	private int age;
+	private char gender;
+	private float height;
+	private LinkedList<Journey> myJourneys = new LinkedList<Journey>();
 	private double bestDistance;
 	private int bestFloors;
 	private int bestSteps;
@@ -29,9 +29,9 @@ public class User implements Serializable {
 	 */
 	public User(String name, int age, char gender, float height) {
 		this.name = name;
-		this.age = age;
-		this.gender = gender;
-		this.height = height;
+		this.setAge(age);
+		this.setGender(gender);
+		this.setHeight(height);
 	}
 	
 	//Methods
@@ -109,5 +109,29 @@ public class User implements Serializable {
 	public int getBestSteps()
 	{
 		return bestSteps;
+	}
+
+	public char getGender() {
+		return gender;
+	}
+
+	public void setGender(char gender) {
+		this.gender = gender;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public float getHeight() {
+		return height;
+	}
+
+	public void setHeight(float height) {
+		this.height = height;
 	}
 }

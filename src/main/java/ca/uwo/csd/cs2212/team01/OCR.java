@@ -1,5 +1,4 @@
-//package ca.uwo.csd.cs2212.team01;
-
+package ca.uwo.csd.cs2212.team01;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
@@ -7,6 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.imageio.IIOException;
 import javax.imageio.ImageIO;
@@ -26,7 +26,13 @@ import net.sourceforge.tess4j.TesseractException;
 
 public class OCR {
 		
-		public static void main(String[] args) throws IOException {
+		public OCR() {}
+	
+		public String[] analyzeImage() throws IOException{
+			
+			//RETURN THIS
+			String[] analyzed = new String[6];
+			//
 			
 			String text = null;//holds the data from the picture file 
 			File img = null; 
@@ -249,29 +255,59 @@ public class OCR {
 								}
 								
 								    }
-								if(calories == "" || servingSize == "" ||protein == "" || fat == "" || carbs == ""){
-									System.out.println(" Error occured while reading nutrition facts, please put them in manualy");
+								if(calories == "" || servingSize == "" ||protein == "" || fat == "" || carbs == "")
+								{
+									analyzed[0]="1";		// "1" means an error occured
+									analyzed[1] = "Error occured while reading nutrition facts, please enter them in manualy";
+									return analyzed;
+								}
+								else
+								{
+									
+									analyzed[0]="0";		// "0" means success 
+									analyzed[1]=servingSize;
+									analyzed[2]=calories;
+									analyzed[3]=carbs;
+									analyzed[4]=protein;
+									analyzed[5]=fat;
+								
+									return analyzed;
 								}
 
-							} catch (TesseractException e) //catches any exception in the OCR
+							} catch (TesseractException e) 	//catches any exception in the OCR
 							{
-								System.out.println("Bad file");
-								
+								analyzed[0]="1";			// "1" means an error occured
+								analyzed[1] = "Please choose a differen image.";
+								return analyzed;
 							}
 						}
-						else{
-							System.out.println("unsupported file chosen");
-							}
+						else
+						{
+							analyzed[0]="1";				// "1" means an error occured
+							analyzed[1] = "Unsupported file chosen!";
+							return analyzed;
+						}
 						
-		 } catch(IllegalArgumentException e){
-			 System.out.println("error, no file");
-		 }
-			 catch(IIOException e){
-			 System.out.println("error, bad file");
-		 }
-			    catch (IOException e) { 
-		        e.printStackTrace(); 
-		    }
+		 } 
+			    catch(IllegalArgumentException e)
+			    {
+			    	analyzed[0]="1";						// "1" means an error occured
+					analyzed[1] = "No file was chosen!";
+					return analyzed;
+			    }
+			 catch(IIOException e)
+			    {
+				 	analyzed[0]="1";						// "1" means an error occured
+					analyzed[1] = "Incompatible file format!";
+					return analyzed;
+			    }
+			    catch (IOException e) 
+			    { 
+			    	e.printStackTrace(); 
+			    	analyzed[0]="1";						// "1" means an error occured
+			    	analyzed[1]="An error occured. Please try again.";
+			    	return analyzed;
+			    }
 		}
 		//close file
 			
