@@ -305,6 +305,7 @@ public class ButtonActionListener implements ActionListener, Serializable {
 			case 1: // Nagivates to Profile Screen
 				this.mainWindow.setVisible(false);
 				this.mainWindow.getContentPane().removeAll();
+				this.mainWindow.add(this.mainWindow.getProfileScreen());
 				this.mainWindow.setVisible(true);
 				break;
 			case 2: // Nagivates to Create Meals or Dishes Screen
@@ -374,6 +375,10 @@ public class ButtonActionListener implements ActionListener, Serializable {
 			case 5: // Plan Manager Screen: workouts
 				planManagerScreen = this.mainWindow.getPlanManagerScreen();
 				planManagerScreen.toggleMealWorkoutScreen(2);
+				break;
+			case 6: // Plan Manager Screen: remove dish from meal
+				planManagerScreen = this.mainWindow.getPlanManagerScreen();
+				planManagerScreen.addDishesMeal();
 				break;
 			}
 			break;
@@ -479,6 +484,27 @@ public class ButtonActionListener implements ActionListener, Serializable {
 			planManagerScreen = this.mainWindow.getPlanManagerScreen();
 			index = planManagerScreen.getMyMealsIndex(0)+this.value;
 			planManagerScreen.addMeal(this.mainWindow.getMyMeals().get(index));
+			break;
+			
+		case 23: // Plan Manager Screen: add dish to meal
+			planManagerScreen = this.mainWindow.getPlanManagerScreen();
+			index = planManagerScreen.getMyMealsIndex(0)+this.value;
+			planManagerScreen.addDish(this.mainWindow.getMyDishes().get(index));
+			break;
+			
+		case 24: // Plan Manager Screen: remove dish from meal
+			planManagerScreen = this.mainWindow.getPlanManagerScreen();
+			index = planManagerScreen.getMyMealsIndex(1)+this.value;
+			planManagerScreen.removeDish(index);
+			break;
+			
+		case 25: // Profile Screen
+			switch(this.value) {
+			case 0:
+				ProfileScreen profileScreen = this.mainWindow.getProfileScreen();
+				profileScreen.toggleScreen();
+				break;
+			}
 			break;
 		}
 	}

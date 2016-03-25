@@ -27,16 +27,15 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 	private int screen, myDayMealsIndex, myDayWorkoutsIndex;
 	private int[] myMealsDishesIndex;
 	
-	private JTextArea calorieInput;
+	private JTextArea calorieInput, nameInput;
 	
 	private JLabel mealsLabel, workoutsLabel, calDeficitLabel, addMealLabel;
-	private JLabel[][][] listLabel;
+	private JLabel[][][] listLabel, myListLabel;
 	private JLabel[] listBMPLabel, addWorkoutLabel;
-	private JLabel[][] myListLabel;
 	
-	private JButton addWorkoutBtn;
+	private JButton addWorkoutBtn, addMealBtn;
 	private JButton[] editBtn, myListAddButton;
-	private JButton[][] listRemoveButton;
+	private JButton[][] listRemoveButton, myListAddRemoveButton;
 
 	/**
 	 * Class Constructor
@@ -219,10 +218,11 @@ public class PlanManagerScreen extends JPanel implements Serializable{
     	
     	editBtn = new JButton[2];
 
-    	myListLabel = new JLabel[2][7];
+    	myListLabel = new JLabel[2][2][7];
     	myListAddButton = new JButton[7];
     	
 		listRemoveButton = new JButton[2][7];
+    	myListAddRemoveButton = new JButton[2][7];
 		listLabel = new JLabel[2][2][7];
 		listBMPLabel = new JLabel[2];
 
@@ -254,18 +254,18 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 			//size = myListAddButton[i].getPreferredSize();
 			myListAddButton[i].setBounds((getWidth()/2 - 200)/2 + 200 + (50-30)/2, 75+15+60+i*70, 200, 60);
 			myListAddButton[i].addActionListener(new ButtonActionListener(22, i, mainWindow));
-
-			myListLabel[0][i] = new JLabel();
-			myListLabel[0][i].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
-			myListLabel[0][i].setForeground(new Color(255,255,255,200));
-			//this.add(listLabel[i]);
-			
-			myListLabel[1][i] = new JLabel();
-			myListLabel[1][i].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
-			myListLabel[1][i].setForeground(new Color(106, 185, 255, 255));
-			//this.add(listLabel[i]);
 			
 			for(int x = 0; x < 2; x++) {
+
+				myListLabel[x][0][i] = new JLabel();
+				myListLabel[x][0][i].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+				myListLabel[x][0][i].setForeground(new Color(255,255,255,200));
+				//this.add(listLabel[i]);
+				
+				myListLabel[x][1][i] = new JLabel();
+				myListLabel[x][1][i].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+				myListLabel[x][1][i].setForeground(new Color(106, 185, 255, 255));
+				//this.add(listLabel[i]);
 				
 				listLabel[x][0][i] = new JLabel();
 				listLabel[x][0][i].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
@@ -305,6 +305,34 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 			//size = listRemoveButton[1][i].getPreferredSize();
 			listRemoveButton[1][i].setBounds(getWidth()/2 + 75 + 125 + 30 + 50 + (195-200)/2 + 200 + (50-30)/2, 75+60+30 + (60-30)/2 + (i+1)*70, 30, 30);
 			listRemoveButton[1][i].addActionListener(new ButtonActionListener(21, i, mainWindow));
+
+			myListAddRemoveButton[0][i] = new JButton();
+			myListAddRemoveButton[0][i].setBackground(null);
+			myListAddRemoveButton[0][i].setBorder(null);
+			myListAddRemoveButton[0][i].setFocusPainted(false);
+			myListAddRemoveButton[0][i].setMargin(new Insets(0, 0, 0, 0));
+			myListAddRemoveButton[0][i].setContentAreaFilled(false);
+			myListAddRemoveButton[0][i].setBorderPainted(false);
+			myListAddRemoveButton[0][i].setOpaque(false);
+			//myListAddRemoveButton[0][i].setForeground(new Color(255,255,255,200));
+			myListAddRemoveButton[0][i].setFocusable(false);
+			//size = myListAddRemoveButton[0][i].getPreferredSize();
+			myListAddRemoveButton[0][i].setBounds((getWidth()/2/2 - 200)/2 + 200 + (50-30)/2, 75+15+60 + (60-30)/2 + i*70, 30, 30);
+			myListAddRemoveButton[0][i].addActionListener(new ButtonActionListener(23, i, mainWindow));
+
+			myListAddRemoveButton[1][i] = new JButton();
+			myListAddRemoveButton[1][i].setBackground(null);
+			myListAddRemoveButton[1][i].setBorder(null);
+			myListAddRemoveButton[1][i].setFocusPainted(false);
+			myListAddRemoveButton[1][i].setMargin(new Insets(0, 0, 0, 0));
+			myListAddRemoveButton[1][i].setContentAreaFilled(false);
+			myListAddRemoveButton[1][i].setBorderPainted(false);
+			myListAddRemoveButton[1][i].setOpaque(false);
+			//myListAddRemoveButton[1][i].setForeground(new Color(255,255,255,200));
+			myListAddRemoveButton[1][i].setFocusable(false);
+			//size = myListAddRemoveButton[1][i].getPreferredSize();
+			myListAddRemoveButton[1][i].setBounds(getWidth()/2/2 + (getWidth()/2/2 - 200)/2 + 200 + (50-30)/2, 75+15+60 + (60-30)/2 + i*70, 30, 30);
+			myListAddRemoveButton[1][i].addActionListener(new ButtonActionListener(24, i, mainWindow));
 		}
 		
     	//if (screen == 0) { // Add Meals to Plan
@@ -315,7 +343,13 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 			addMealLabel.setBounds((getWidth()/2 - size.width)/2, 75+15+(60-size.height)/2, size.width, size.height);
 			//this.add(label);
     	//}else if (screen == 1) { // Add Dishes to Meal to Plan
-    		
+			nameInput = new JTextArea();
+			nameInput.setOpaque(false);
+			nameInput.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(27.0f));
+			size = nameInput.getPreferredSize();
+			nameInput.setBounds(50 + getWidth()/2/2 + (getWidth()/2/2 - 300)/2, getHeight() - 15 - 40 + (40-size.height)/2, 300, size.height);
+			nameInput.setCaretColor(new Color(255,255,255,200));
+			nameInput.setForeground(new Color(255,255,255,200));
     	//}else if (screen == 2) { // Add Workouts to Plan
 			addWorkoutLabel[0] = new JLabel("Specify a Calorie Burn Goal to add a Workout to your Plan >");
 			addWorkoutLabel[0].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
@@ -357,6 +391,21 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 			size = addWorkoutBtn.getPreferredSize();
 			addWorkoutBtn.setBounds((getWidth()/2-209)/2, 75 + 15 + 255, 209, 60);
 	        addWorkoutBtn.addActionListener(new ButtonActionListener(15, 4, mainWindow));
+
+			addMealBtn = new JButton("Add >");
+			addMealBtn.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+			addMealBtn.setBackground(null);
+			addMealBtn.setBorder(null);
+			addMealBtn.setFocusPainted(false);
+			addMealBtn.setMargin(new Insets(0, 0, 0, 0));
+			addMealBtn.setContentAreaFilled(false);
+			addMealBtn.setBorderPainted(false);
+			addMealBtn.setOpaque(false);
+			addMealBtn.setForeground(new Color(255,255,255,220));
+			addMealBtn.setFocusable(false);
+			size = addMealBtn.getPreferredSize();
+			addMealBtn.setBounds(getWidth()/2 + 75 - 30 - size.width, 75+15 + (60-size.height)/2, size.width, size.height);
+	        addMealBtn.addActionListener(new ButtonActionListener(15, 6, mainWindow));
     	//}
     	
     	mealsLabel = new JLabel();
@@ -396,9 +445,28 @@ public class PlanManagerScreen extends JPanel implements Serializable{
         //this.add(editBtn[1]);
 	}
 	
+	public void addDishesMeal() {
+		if (this.addDishesMeal == null) return;
+		this.day.getPlan().addMeal(this.addDishesMeal);
+		this.addDishesMeal = new Meal();
+		this.toggleMealWorkoutScreen(screen);
+	}
+	
 	public void addMeal(Meal meal) {
+		if (meal == null) return;
 		this.day.getPlan().addMeal(meal);
 		this.toggleMealWorkoutScreen(screen);
+	}
+	
+	public void addDish(Meal dish) {
+		FoodServing newFoodServing = new FoodServing(dish, 10, "g");
+		this.addDishesMeal.addFoodServing(newFoodServing);
+		toggleMealWorkoutScreen(screen);
+	}
+	
+	public void removeDish(int index) {
+		this.addDishesMeal.removeFoodServing(index);
+		toggleMealWorkoutScreen(screen);
 	}
 
 	public void addWorkout() {
@@ -410,6 +478,8 @@ public class PlanManagerScreen extends JPanel implements Serializable{
     	this.screen = screen;
     	
     	removeListFromPanel();
+    	
+    	if (screen == 1 && this.addDishesMeal == null) this.addDishesMeal = new Meal();
 
 		Dimension size;
 		
@@ -422,15 +492,15 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 			for(int i = 0; i < 7 && this.myMealsDishesIndex[0]+i < myMeals.size(); i++) {
 				myMeal = myMeals.get(this.myMealsDishesIndex[0]+i);
 				
-				myListLabel[0][i].setText(myMeal.getName());
-				size = myListLabel[0][i].getPreferredSize();
-				myListLabel[0][i].setBounds((getWidth()/2 - size.width)/2, 75+15+60 + (60-size.height*2)/2 + i*70, size.width, size.height);
-				this.add(myListLabel[0][i]);
+				myListLabel[0][0][i].setText(myMeal.getName());
+				size = myListLabel[0][0][i].getPreferredSize();
+				myListLabel[0][0][i].setBounds((getWidth()/2 - size.width)/2, 75+15+60 + (60-size.height*2)/2 + i*70, size.width, size.height);
+				this.add(myListLabel[0][0][i]);
 				
-				myListLabel[1][i].setText("( + "+myMeal.getCalories()+" Cal )");
-				size = myListLabel[1][i].getPreferredSize();
-				myListLabel[1][i].setBounds((getWidth()/2 - size.width)/2, 75+15+60 + size.height + (60-size.height*2)/2 + i*70, size.width, size.height);
-				this.add(myListLabel[1][i]);
+				myListLabel[0][1][i].setText("( + "+myMeal.getCalories()+" Cal )");
+				size = myListLabel[0][1][i].getPreferredSize();
+				myListLabel[0][1][i].setBounds((getWidth()/2 - size.width)/2, 75+15+60 + size.height + (60-size.height*2)/2 + i*70, size.width, size.height);
+				this.add(myListLabel[0][1][i]);
 				
 				this.add(myListAddButton[i]);
 			}
@@ -443,18 +513,40 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 			for(int i = 0; i < 7 && this.myMealsDishesIndex[0]+i < myDishes.size(); i++) {
 				myMeal = myDishes.get(this.myMealsDishesIndex[0]+i);
 				
-				myListLabel[0][i].setText(myMeal.getName());
-				size = myListLabel[0][i].getPreferredSize();
-				myListLabel[0][i].setBounds((getWidth()/2/2 - size.width)/2, 75+15+60 + (60-size.height*2)/2 + i*70, size.width, size.height);
-				this.add(myListLabel[0][i]);
+				myListLabel[0][0][i].setText(myMeal.getName());
+				size = myListLabel[0][0][i].getPreferredSize();
+				myListLabel[0][0][i].setBounds((getWidth()/2/2 - size.width)/2, 75+15+60 + (60-size.height*2)/2 + i*70, size.width, size.height);
+				this.add(myListLabel[0][0][i]);
 				
-				myListLabel[1][i].setText("( + "+myMeal.getCalories()+" Cal )");
-				size = myListLabel[1][i].getPreferredSize();
-				myListLabel[1][i].setBounds((getWidth()/2/2 - size.width)/2, 75+15+60 + size.height + (60-size.height*2)/2 + i*70, size.width, size.height);
-				this.add(myListLabel[1][i]);
-				
-				this.add(myListAddButton[i]);
+				myListLabel[0][1][i].setText("( + "+myMeal.getCalories()+" Cal )");
+				size = myListLabel[0][1][i].getPreferredSize();
+				myListLabel[0][1][i].setBounds((getWidth()/2/2 - size.width)/2, 75+15+60 + size.height + (60-size.height*2)/2 + i*70, size.width, size.height);
+				this.add(myListLabel[0][1][i]);
+
+				this.add(myListAddRemoveButton[0][i]);
 			}
+			
+			FoodServing foodServing;
+			LinkedList<FoodServing> foodServings = this.addDishesMeal.getFoodServings();
+			
+			for(int i = 0; i < 7 && this.myMealsDishesIndex[1]+i < foodServings.size(); i++) {
+				foodServing = foodServings.get(this.myMealsDishesIndex[1]+i);
+				
+				myListLabel[1][0][i].setText(foodServing.getFood().getName());
+				size = myListLabel[1][0][i].getPreferredSize();
+				myListLabel[1][0][i].setBounds(getWidth()/2/2 + (getWidth()/2/2 - size.width)/2, 75+15+60 + (60-size.height*2)/2 + i*70, size.width, size.height);
+				this.add(myListLabel[1][0][i]);
+				
+				myListLabel[1][1][i].setText("( + "+foodServing.getMacros().getCalories()+" Cal )");
+				size = myListLabel[1][1][i].getPreferredSize();
+				myListLabel[1][1][i].setBounds(getWidth()/2/2 + (getWidth()/2/2 - size.width)/2, 75+15+60 + size.height + (60-size.height*2)/2 + i*70, size.width, size.height);
+				this.add(myListLabel[1][1][i]);
+
+				this.add(myListAddRemoveButton[1][i]);
+			}
+			
+			this.add(nameInput);
+		    this.add(addMealBtn);
 		}else if (screen == 2) { // Add Workouts to Plan
 			this.add(addWorkoutLabel[0]);
 			this.add(addWorkoutLabel[1]);
@@ -531,8 +623,10 @@ public class PlanManagerScreen extends JPanel implements Serializable{
     
     private void removeListFromPanel() {
     	for(int i = 0; i < 7; i++) {
-    		this.remove(myListLabel[0][i]);
-    		this.remove(myListLabel[1][i]);
+    		this.remove(myListLabel[0][0][i]);
+    		this.remove(myListLabel[0][1][i]);
+    		this.remove(myListLabel[1][0][i]);
+    		this.remove(myListLabel[1][1][i]);
     		this.remove(myListAddButton[i]);
     				
     		//this.remove(editPlanBtn[i]);
@@ -543,6 +637,9 @@ public class PlanManagerScreen extends JPanel implements Serializable{
     		this.remove(listLabel[0][1][i]);
     		this.remove(listLabel[1][0][i]);
     		this.remove(listLabel[1][1][i]);
+    		
+    		this.remove(myListAddRemoveButton[0][i]);
+    		this.remove(myListAddRemoveButton[1][i]);
     	}
 
 	    this.remove(addMealLabel);
@@ -553,6 +650,9 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 
 		this.remove(calorieInput);
 	    this.remove(addWorkoutBtn);
+	    
+	    this.remove(nameInput);
+	    this.remove(addMealBtn);
     }
 
     /* (non-Javadoc)
@@ -654,9 +754,12 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 			LinkedList<FoodServing> foodSerings = this.addDishesMeal.getFoodServings();
 			
 			for(int i = 0; i < 7 && this.myMealsDishesIndex[1]+i < foodSerings.size(); i++) {
-				g.drawImage(addicon,(getWidth()/2/2 - 200)/2 + 200 + (50-30)/2, 75+15+60 + (60-30)/2 + i*70, null);
-				g.drawRoundRect((getWidth()/2/2 - 200)/2, 75+15+60+i*70, 200, 60, 15, 15);
+				g.drawImage(xmark,getWidth()/2/2 + (getWidth()/2/2 - 200)/2 + 200 + (50-30)/2, 75+15+60 + (60-30)/2 + i*70, null);
+				g.drawRoundRect(getWidth()/2/2 + (getWidth()/2/2 - 200)/2, 75+15+60+i*70, 200, 60, 15, 15);
 			}
+			
+			g.setColor(new Color(255,255,255,75));
+			g.fillRect(getWidth()/2/2 + (getWidth()/2/2 - 300)/2, getHeight() - 15 - 40, 300, 40);
 		}/*else if (screen == 2) { // Add Workouts to Plan
 			LinkedList<Meal> myDishes = this.mainWindow.getMyDishes();
 			
@@ -701,6 +804,10 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 			}
 		}
     }
+
+    public Meal getAddDishesMeal() { return this.addDishesMeal; }
+    public void setAddDishesMeal(Meal meal) { this.addDishesMeal = meal; }
+    public void setAddDishesMealName() { this.addDishesMeal.setName(this.nameInput.getText());}
 
 	public Day getDay() {
 		return day;

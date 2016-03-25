@@ -43,6 +43,7 @@ public class MainWindow extends JFrame implements Serializable {
 	private NavigationScreen navScreen;
 	private MyPlansScreen myPlansScreen;
 	private PlanManagerScreen planManagerScreen;
+	private ProfileScreen profileScreen;
 	
 	private FitbitAPIThread apiThread;
 	
@@ -99,6 +100,7 @@ public class MainWindow extends JFrame implements Serializable {
 		dashboardScreen = new DashboardScreen(this);
 		myPlansScreen = new MyPlansScreen(this);
 		planManagerScreen = new PlanManagerScreen(this);
+		setProfileScreen(new ProfileScreen(this));
 		
 		if (testMode) this.loadingScreen.initTestMode();
 		else this.loadingScreen.initSetup();
@@ -552,4 +554,12 @@ public class MainWindow extends JFrame implements Serializable {
     	     }
     	});
     }
+
+	public ProfileScreen getProfileScreen() {
+		return profileScreen;
+	}
+
+	public void setProfileScreen(ProfileScreen profileScreen) {
+		this.profileScreen = profileScreen;
+	}
 }
