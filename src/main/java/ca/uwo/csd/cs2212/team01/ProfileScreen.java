@@ -24,6 +24,8 @@ public class ProfileScreen extends JPanel implements Serializable{
 	private JButton settingsBtn;
 	private boolean settingsScreen;
 	private JLabel[] label;
+	
+	private boolean[] dashboardPanelsToggler, activityTrackingPanelsToggler, lifetimeTotalsToggler;
 
 	/**
 	 * Class Constructor
@@ -33,6 +35,14 @@ public class ProfileScreen extends JPanel implements Serializable{
 		this.mainWindow = mainWindow;
 		
 		this.settingsScreen = false;
+		
+		dashboardPanelsToggler = new boolean[3];
+		activityTrackingPanelsToggler = new boolean[3];
+		lifetimeTotalsToggler = new boolean[4];
+
+		//for(int i = 0; i < 3; i++) dashboardPanelsToggler[i] = this.mainWindow.getPreferences().getDashboardPanelsToggler(i);
+		//for(int i = 0; i < 3; i++) activityTrackingPanelsToggler[i] = this.mainWindow.getPreferences().activityTrackingPanelsToggler;
+		//for(int i = 0; i < 4; i++) lifetimeTotalsToggler[i] = this.mainWindow.getPreferences().lifetimeTotalsToggler;
 		
 		label = new JLabel[8];
 		
@@ -225,8 +235,25 @@ public class ProfileScreen extends JPanel implements Serializable{
 		}
 		g2.drawImage(image, 0, 0, getWidth(), getHeight(), 0, 0, image.getWidth(), image.getHeight(), null);
 		
-		if (this.settingsScreen) {
+		BufferedImage checked = null;
+		try {
+			checked = ImageIO.read(new File("UI/checktoggle.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			
+		}
+		
+		BufferedImage unchecked = null;
+		try {
+			unchecked = ImageIO.read(new File("UI/checktoggle-un.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if (this.settingsScreen) {
+			g2.drawImage(image, 0, 0, getWidth(), getHeight(), 0, 0, image.getWidth(), image.getHeight(), null);
 		}else {
 			for(int i = 0; i < 8; i++) this.add(label[i]);
 		}
