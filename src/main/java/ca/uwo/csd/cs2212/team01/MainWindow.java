@@ -100,7 +100,6 @@ public class MainWindow extends JFrame implements Serializable {
 		dashboardScreen = new DashboardScreen(this);
 		myPlansScreen = new MyPlansScreen(this);
 		planManagerScreen = new PlanManagerScreen(this);
-		setProfileScreen(new ProfileScreen(this));
 		
 		if (testMode) this.loadingScreen.initTestMode();
 		else this.loadingScreen.initSetup();
