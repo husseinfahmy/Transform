@@ -490,10 +490,12 @@ public class ButtonActionListener implements ActionListener, Serializable {
 				prevDay = this.mainWindow.getFutureDays().get(this.value+7*myPlansScreen.getWeekIndex()-1-1);
 			}
 			
-			Plan newPlan = prevDay.getPlan().copyPlan(mainWindow.getUser().bmr);
-			day.setPlan(newPlan);
-			
-			myPlansScreen.repaint();
+			if (prevDay.getPlan() != null) {
+				Plan newPlan = prevDay.getPlan().copyPlan(mainWindow.getUser().bmr);
+				day.setPlan(newPlan);
+				
+				myPlansScreen.repaint();
+			}
 			break;
 			
 		case 20: // Plan Manager Screen: remove meal
