@@ -228,10 +228,6 @@ public class LoadingScreen extends JPanel implements Serializable {
 		//need to process new raw data :
 		for(int i = 0; i < updateDays; i++)
 			mainWindow.getDays().get(mainWindow.getDays().size()-1-i).processNewData();
-		 
-		mainWindow.getUserPreferences().getTp().updateStreaks(mainWindow.getUserPreferences().getDays());
-		mainWindow.getUserPreferences().getUser().setLifeTimeValues(mainWindow.getUserPreferences().getDays());
-		mainWindow.getUserPreferences().getUser().setBestValues(mainWindow.getUserPreferences().getDays());
 		
 		this.mainWindow.getContentPane().removeAll();
 		this.mainWindow.add(this.mainWindow.getSetupScreen());
