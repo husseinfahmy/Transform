@@ -1,3 +1,4 @@
+
 package ca.uwo.csd.cs2212.team01;
 
 import java.awt.Color;
@@ -142,3 +143,4 @@ public class WeighPanel extends JPanel implements Serializable {
 		for(Rectangle rect : this.rectList) g2.fillRect(rect.x, rect.y, rect.width, rect.height);
 	}
 }
+

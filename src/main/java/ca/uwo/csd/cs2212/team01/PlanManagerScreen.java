@@ -1,3 +1,4 @@
+
 package ca.uwo.csd.cs2212.team01;
 
 import java.awt.Color;
@@ -860,3 +861,4 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 		this.myMealsDishesIndex[i] = this.myMealsDishesIndex[i];
 	}
 }
+

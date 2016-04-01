@@ -267,3 +267,4 @@ public class MealListPanel extends JPanel implements Serializable {
 	}
 
 }
+

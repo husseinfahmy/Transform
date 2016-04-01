@@ -1,3 +1,4 @@
+
 package ca.uwo.csd.cs2212.team01;
 
 import java.awt.BasicStroke;
@@ -679,3 +680,4 @@ public class SetupScreen extends JPanel implements Serializable {
 		g2.drawImage(image, 0, 0, getWidth(), getHeight(), 0, 0, image.getWidth(), image.getHeight(), null);
 	}
 }
+

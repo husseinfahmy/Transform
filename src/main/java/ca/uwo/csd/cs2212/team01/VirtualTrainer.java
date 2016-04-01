@@ -1,3 +1,4 @@
+
 package ca.uwo.csd.cs2212.team01;
 
 import java.io.Serializable;
@@ -590,4 +591,5 @@ public class VirtualTrainer implements Serializable {
 	public String feedbackHelper()
 	{ if(completedMileStones.size()==1) return " Milestone "; else return " Milestones "; }
 	
+
 }//Class

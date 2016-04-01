@@ -1,3 +1,4 @@
+
 package ca.uwo.csd.cs2212.team01;
 
 import java.awt.Color;
@@ -491,3 +492,4 @@ public class MyPlansScreen extends JPanel implements Serializable{
 		this.weekIndex = weekIndex;
 	}
 }
+
