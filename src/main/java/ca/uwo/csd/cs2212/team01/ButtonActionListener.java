@@ -113,21 +113,23 @@ public class ButtonActionListener implements ActionListener, Serializable {
 			this.mainWindow.refreshEvent();
 			//remove that textbox
 			// notify user app is updating?
-			this.mainWindow.updateDashboardScreen();
+			//this.mainWindow.updateDashboardScreen();
 			
 			//label = mainWindow.getDashboardScreen().getRefreshDesc();
 			//label.setText("<html>Last Refreshed:<br>" + mainWindow.lastRefreshed().getTXTone().get(0) + "</html>");
 			
-			this.mainWindow.setVisible(false);
+			/*this.mainWindow.setVisible(false);
 			this.mainWindow.getContentPane().removeAll();
 			this.mainWindow.add(this.mainWindow.getDashboardScreen());
-			this.mainWindow.setVisible(true);
+			this.mainWindow.setVisible(true);*/
 			break;
 			
 		case 2: // Exit Button
 			//write user dashboard preferences to file	
 			try{
-			   FileOutputStream fout = new FileOutputStream("window.dat");
+				FileOutputStream fout;
+			   if (this.mainWindow.isTestMode()) fout = new FileOutputStream("window-test.dat");
+			   else fout = new FileOutputStream("window.dat");
 			   ObjectOutputStream out = new ObjectOutputStream(fout);
 			   out.writeObject(mainWindow.getPreferences());	//(over)writes dashboard preferences file
 			   out.close();
@@ -573,6 +575,18 @@ public class ButtonActionListener implements ActionListener, Serializable {
 				dashboardScreen.removeAll();
 				dashboardScreen.initUI();
 				dashboardScreen.repaint();
+				break;
+			}
+			break;
+			
+		case 30:
+			switch(this.value) {
+			case 0:
+				//this.mainWindow.get
+				break;
+			case 1:
+				break;
+			case 2:
 				break;
 			}
 			break;

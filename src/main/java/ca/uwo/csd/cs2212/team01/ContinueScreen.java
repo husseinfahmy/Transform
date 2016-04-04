@@ -46,8 +46,8 @@ public class ContinueScreen extends JPanel implements Serializable {
     			Graphics2D g2 = (Graphics2D) g;
     			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     			
-    			JLabel title = new JLabel("Trainr", JLabel.LEFT);
-    			title.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(120.0f));
+    			JLabel title = new JLabel("TRANSFORM", JLabel.LEFT);
+    			title.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(80.0f));
     			Dimension sizeTitle = title.getPreferredSize();
     			title.setBounds(0, 0, sizeTitle.width, sizeTitle.height);
     			title.setForeground(new Color(255,255,255,150));
@@ -104,7 +104,7 @@ public class ContinueScreen extends JPanel implements Serializable {
     			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
     			JButton button = new JButton("Click to continue >");
-    			button.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(60.0f));
+    			button.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(50.0f));
     			button.setBackground(null);
     			button.setBorder(null);
     			button.setFocusPainted(false);

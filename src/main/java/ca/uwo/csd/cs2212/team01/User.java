@@ -1,3 +1,4 @@
+
 package ca.uwo.csd.cs2212.team01;
 
 import java.io.Serializable;
@@ -206,3 +207,4 @@ public class User implements Serializable{
 	}
 
 }
+

@@ -99,14 +99,15 @@ public class MealListPanel extends JPanel implements Serializable {
 			currHeight += 50 + 5;
 		}
 
-		setNameInput(new JTextArea());
-    	getNameInput().setOpaque(false);
-    	getNameInput().setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(27.0f));
+		if (mealScreen) nameInput = new JTextArea("Enter Name of Meal");
+		else nameInput = new JTextArea("Enter Name of Dish");
+		nameInput.setOpaque(false);
+		nameInput.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
 		size = getNameInput().getPreferredSize();
-		getNameInput().setBounds(100, getHeight() - 60 - 30 - 40 + (40-size.height)/2, getWidth() - 15, size.height);
-		getNameInput().setCaretColor(new Color(255,255,255,200));
-		getNameInput().setForeground(new Color(255,255,255,200));
-		this.add(getNameInput());
+		nameInput.setBounds(100, getHeight() - 60 - 30 - 40 + (40-size.height)/2, getWidth() - 15, size.height);
+		nameInput.setCaretColor(new Color(255,255,255,200));
+		nameInput.setForeground(new Color(255,255,255,200));
+		this.add(nameInput);
 
 		JButton listButton;
 		if (mealScreen) listButton = new JButton("Add Meal to My Meals");
@@ -255,7 +256,7 @@ public class MealListPanel extends JPanel implements Serializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		g.drawImage(image, 0,  getHeight() - 60 - 15, null);
+		g.drawImage(image, 15,  getHeight() - 60 - 15, null);
     }
 
 	public JTextArea getNameInput() {
@@ -267,3 +268,4 @@ public class MealListPanel extends JPanel implements Serializable {
 	}
 
 }
+

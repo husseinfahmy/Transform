@@ -172,7 +172,8 @@ public class MealDishScreen extends JPanel implements Serializable {
 		
 		BufferedImage image = null;
 		try {
-			image = ImageIO.read(new File("UI/bg.jpg"));
+			if (displayPanel.getItemIndex() == -1) image = ImageIO.read(new File("UI/nomealsdishes-bg.png"));
+			else image = ImageIO.read(new File("UI/bg.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

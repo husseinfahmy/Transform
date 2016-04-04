@@ -1,3 +1,4 @@
+
 package ca.uwo.csd.cs2212.team01;
 
 import java.awt.Color;
@@ -441,7 +442,7 @@ public class MyPlansScreen extends JPanel implements Serializable{
 		        g2.drawLine(275 + 125 + 30 + 50 + 150 + 30 + 15, 75+75+i*(60+30) + 60/2 - 3, 275 + 125 + 30 + 50 + 150 + 30 + 50 - 15, 75+75+i*(60+30) + 60/2 - 3);
 		        g2.drawLine(275 + 125 + 30 + 50 + 150 + 30 + 15, 75+75+i*(60+30) + 60/2 + 3, 275 + 125 + 30 + 50 + 150 + 30 + 50 - 15, 75+75+i*(60+30) + 60/2 + 3);
 				
-				calDeficitLabel[i].setText(plan.getPredictedCalorieBurn() + " cal");
+				calDeficitLabel[i].setText((int)plan.getPredictedCalorieBurn() + " cal");
 				size = calDeficitLabel[i].getPreferredSize();
 				calDeficitLabel[i].setBounds(275 + image.getWidth() + 25 - 15 - 30 - 15 - size.width,  75+75+i*(60+30) + (60-size.height)/2, size.width, size.height);
 				this.add(calDeficitLabel[i]);
@@ -491,3 +492,4 @@ public class MyPlansScreen extends JPanel implements Serializable{
 		this.weekIndex = weekIndex;
 	}
 }
+

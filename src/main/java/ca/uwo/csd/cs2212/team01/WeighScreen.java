@@ -1,3 +1,4 @@
+
 package ca.uwo.csd.cs2212.team01;
 
 import java.awt.*;
@@ -94,3 +95,4 @@ public class WeighScreen extends JPanel implements Serializable {
 		g2.drawImage(image, getWidth()-image.getWidth()-13, 13, null);
 	}
 }
+

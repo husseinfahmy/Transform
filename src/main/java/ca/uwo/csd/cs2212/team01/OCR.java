@@ -1,24 +1,13 @@
 package ca.uwo.csd.cs2212.team01;
-import java.awt.Dimension;
+
 import java.awt.image.BufferedImage;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.Serializable;
 
 import javax.imageio.IIOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.WindowConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
-import org.apache.commons.io.FilenameUtils;
 
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
@@ -313,5 +302,6 @@ public class OCR {
 			
 
 	}
+
 
 

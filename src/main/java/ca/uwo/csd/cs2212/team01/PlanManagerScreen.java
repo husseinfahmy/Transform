@@ -1,3 +1,4 @@
+
 package ca.uwo.csd.cs2212.team01;
 
 import java.awt.Color;
@@ -343,7 +344,7 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 			addMealLabel.setBounds((getWidth()/2 - size.width)/2, 75+15+(60-size.height)/2, size.width, size.height);
 			//this.add(label);
     	//}else if (screen == 1) { // Add Dishes to Meal to Plan
-			nameInput = new JTextArea();
+			nameInput = new JTextArea("Enter a Name of Meal");
 			nameInput.setOpaque(false);
 			nameInput.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(27.0f));
 			size = nameInput.getPreferredSize();
@@ -492,10 +493,10 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 		Dimension size;
 		
 		if (this.screen == 0) {
-			this.add(addMealLabel);
-			
 			Meal myMeal;
 			LinkedList<Meal> myMeals = this.mainWindow.getMyMeals();
+
+			if (myMeals.size() > 0) this.add(addMealLabel);
 			
 			for(int i = 0; i < 7 && this.myMealsDishesIndex[0]+i < myMeals.size(); i++) {
 				myMeal = myMeals.get(this.myMealsDishesIndex[0]+i);
@@ -553,8 +554,10 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 				this.add(myListAddRemoveButton[1][i]);
 			}
 			
-			this.add(nameInput);
-		    this.add(addMealBtn);
+			if (myDishes.size() > 0) {
+				this.add(nameInput);
+			    this.add(addMealBtn);
+			}
 		}else if (screen == 2) { // Add Workouts to Plan
 			this.add(addWorkoutLabel[0]);
 			this.add(addWorkoutLabel[1]);
@@ -766,8 +769,10 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 				g.drawRoundRect(getWidth()/2/2 + (getWidth()/2/2 - 200)/2, 75+15+60+i*70, 200, 60, 15, 15);
 			}
 			
-			g.setColor(new Color(255,255,255,75));
-			g.fillRect(getWidth()/2/2 + (getWidth()/2/2 - 300)/2, getHeight() - 15 - 40, 300, 40);
+			if (myDishes.size() > 0) {
+				g.setColor(new Color(255,255,255,75));
+				g.fillRect(getWidth()/2/2 + (getWidth()/2/2 - 300)/2, getHeight() - 15 - 40, 300, 40);
+			}
 		}/*else if (screen == 2) { // Add Workouts to Plan
 			LinkedList<Meal> myDishes = this.mainWindow.getMyDishes();
 			
@@ -860,3 +865,4 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 		this.myMealsDishesIndex[i] = this.myMealsDishesIndex[i];
 	}
 }
+

@@ -1,3 +1,4 @@
+
 package ca.uwo.csd.cs2212.team01;
 
 import java.awt.Graphics;
@@ -160,3 +161,4 @@ public class NavigationScreen extends JPanel implements Serializable {
 		g2.drawImage(image, (getWidth()-image.getWidth())/2, (getHeight()-image.getHeight())/2 + 20, null);
 	}
 }
+

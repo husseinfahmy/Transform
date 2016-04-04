@@ -50,11 +50,13 @@ public class LoadingScreen extends JPanel implements Serializable {
 	public void initSetup() {
 		if(!mainWindow.isFirstCall()) {
 			this.mainWindow.refreshEvent();
-			this.mainWindow.updateDashboardScreen();
+			/*this.mainWindow.updateDashboardScreen();
 			this.mainWindow.getContentPane().removeAll();
-			this.mainWindow.add(this.mainWindow.getDashboardScreen());
+			this.mainWindow.add(this.mainWindow.getDashboardScreen());*/
 			return;
 		}
+    	
+    	this.mainWindow.setLoadingAPIData(true);
 		
 		Date[] dateArray = new Date[21]; int dayNumber;
 		for (int i = 0; i<6; i++)
@@ -96,19 +98,24 @@ public class LoadingScreen extends JPanel implements Serializable {
 			day = previousDays.next();
 			
 			if(day.getDate().getDay() == todayDate.getDay()) //if day == "current day"
-			{  mainWindow.APICall(fmDate.format(day.getDate()),"00:00",fmTime.format(day.getDate()),day); day.processNewData();  }
-			
+			{  
+				mainWindow.APICall(fmDate.format(day.getDate()),"00:00",fmTime.format(day.getDate()),day);
+			}
 			else 
-			{  mainWindow.APICall(fmDate.format(day.getDate()),"00:00","23:59",day); day.processNewData();  }
+			{  
+				mainWindow.APICall(fmDate.format(day.getDate()),"00:00","23:59",day);  
+			}
 		}
+		
+    	this.mainWindow.setLoadingAPIData(false);
 		
 		//Create new user and new virtual trainer
 		//mainWindow.setUser(new User("Beth Locke"));
 		//vt = new VirtualTrainer();
 		
 		//this.mainWindow.setVisible(false);
-		this.mainWindow.getContentPane().removeAll();
-		this.mainWindow.add(this.mainWindow.getSetupScreen());
+		//this.mainWindow.getContentPane().removeAll();
+		//this.mainWindow.add(this.mainWindow.getSetupScreen());
 		//this.mainWindow.setVisible(true);
 	}
 	
@@ -124,12 +131,15 @@ public class LoadingScreen extends JPanel implements Serializable {
 	 */
 	public void initTestMode() {
 		if(!mainWindow.isFirstCall()) {
+			this.mainWindow.refreshEvent();
+			/*this.mainWindow.getContentPane().removeAll();
 			this.mainWindow.updateDashboardScreen();
-			this.mainWindow.getContentPane().removeAll();
-			this.mainWindow.add(this.mainWindow.getDashboardScreen());
+			this.mainWindow.add(this.mainWindow.getDashboardScreen());*/
 			return;
 		}
-		
+
+    	this.mainWindow.setLoadingAPIData(true);
+    	
 		Date today = new Date();
 		
 		mainWindow.setLastCall(today);
@@ -228,16 +238,18 @@ public class LoadingScreen extends JPanel implements Serializable {
 		//need to process new raw data :
 		for(int i = 0; i < updateDays; i++)
 			mainWindow.getDays().get(mainWindow.getDays().size()-1-i).processNewData();
-		 
+
+    	this.mainWindow.setLoadingAPIData(false);
+    	
 		this.mainWindow.getContentPane().removeAll();
-		this.mainWindow.add(this.mainWindow.getSetupScreen());
+		this.mainWindow.add(this.mainWindow.getContinueScreen());
 	}
 	
     /**
      * Renders the Loading Screen.
      */
     private void initUI() {
-    	this.titlePanel = new JPanel() {
+    	/*this.titlePanel = new JPanel() {
     		@Override
     		protected void paintComponent(Graphics g) {
     			super.paintComponent(g);
@@ -317,7 +329,7 @@ public class LoadingScreen extends JPanel implements Serializable {
     			this.add(label);
     		}
     	};
-    	this.add(loggingInPanel);
+    	this.add(loggingInPanel);*/
 	}
     
     /**
@@ -348,7 +360,7 @@ public class LoadingScreen extends JPanel implements Serializable {
 			e.printStackTrace();
 		}
 		g2.drawImage(image, 0, 0, getWidth(), getHeight(), 0, 0, image.getWidth(), image.getHeight(), null);
-		
+		/*
 		image = null;
 		try {
 			image = ImageIO.read(new File("UI/fitbit-logo.png"));
@@ -373,7 +385,7 @@ public class LoadingScreen extends JPanel implements Serializable {
 			e.printStackTrace();
 		}
 		g2.drawImage(image, getWidth()-image.getWidth()-13, getHeight()-13-image.getHeight(), null);
-
+*/
 		image = null;
 		try {
 			image = ImageIO.read(new File("UI/exit-icon.png"));

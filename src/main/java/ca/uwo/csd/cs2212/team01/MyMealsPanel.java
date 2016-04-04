@@ -1,3 +1,4 @@
+
 package ca.uwo.csd.cs2212.team01;
 
 import java.awt.Color;
@@ -20,7 +21,8 @@ public class MyMealsPanel extends JPanel implements Serializable {
 	
 	private MainWindow mainWindow;
 	
-	private JButton[] listRemoveButton, listDisplayButton;
+	private JLabel noMeals;
+	private JButton[] listRemoveButton, listDisplayButton, scrollButtons;
 	private JLabel[][] listLabel;
 	
 	private int myMealsIndex;
@@ -44,10 +46,37 @@ public class MyMealsPanel extends JPanel implements Serializable {
 		label.setBounds((getWidth() - size.width)/2, 30 + (60-size.height)/2, size.width, size.height);
 		label.setForeground(new Color(255,255,255,200));
 		this.add(label);
+
+		noMeals = new JLabel("No Meals");
+		noMeals.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+		size = noMeals.getPreferredSize();
+		noMeals.setBounds((getWidth() - size.width)/2, 68 + (getHeight()-size.height-68)/2, size.width, size.height);
+		noMeals.setForeground(new Color(255,255,255,200));
 		
 		listDisplayButton = new JButton[7];
 		listRemoveButton = new JButton[7];
 		listLabel = new JLabel[2][7];
+		scrollButtons = new JButton[2];
+
+		scrollButtons[0] = new JButton("v");
+		scrollButtons[1] = new JButton("^");
+		
+		for(int i = 0; i < 2; i++) {
+			scrollButtons[i].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(50.0f));
+			scrollButtons[i].setForeground(new Color(255,255,255,200));
+			scrollButtons[i].setBackground(null);
+			scrollButtons[i].setBorder(null);
+			scrollButtons[i].setFocusPainted(false);
+			scrollButtons[i].setMargin(new Insets(0, 0, 0, 0));
+			scrollButtons[i].setContentAreaFilled(false);
+			scrollButtons[i].setBorderPainted(false);
+			scrollButtons[i].setOpaque(false);
+			//scrollButtons[i].setForeground(new Color(255,255,255,200));
+			scrollButtons[i].setFocusable(false);
+			//size = scrollButtons[i].getPreferredSize();
+			scrollButtons[i].setBounds((getWidth() - size.width*2 - 30)/2 + i*(size.width+30), 30+68+(getHeight()-(30+68+70*7-10))/2+7*70, size.width, size.height);
+			scrollButtons[i].addActionListener(new ButtonActionListener(8, i, mainWindow));
+		}
 		
 		for(int i = 0; i < 7; i++) {
 			listLabel[0][i] = new JLabel();
@@ -105,6 +134,10 @@ public class MyMealsPanel extends JPanel implements Serializable {
     		this.remove(listLabel[0][i]);
     		this.remove(listLabel[1][i]);
     	}
+    	for(int i = 0; i < 2; i++) {
+    		this.remove(scrollButtons[i]);
+    	}
+    	this.remove(noMeals);
     }
 	
     /* (non-Javadoc)
@@ -141,6 +174,8 @@ public class MyMealsPanel extends JPanel implements Serializable {
 		Meal myMeal;
 		LinkedList<Meal> myMeals = mainWindow.getMyMeals();
 		
+		if (myMeals.size() <= 0) this.add(noMeals);
+		
 		for(int i = 0; i < 7 && myMealsIndex+i < myMeals.size(); i++) {
 			myMeal = myMeals.get(myMeals.size()-1-(myMealsIndex+i));
 			
@@ -161,6 +196,9 @@ public class MyMealsPanel extends JPanel implements Serializable {
 			this.add(listRemoveButton[i]);
 			this.add(listDisplayButton[i]);
 		}
+
+		//this.add(scrollButtons[0]);
+		//this.add(scrollButtons[1]);
     }
 
 	public int getMyMealsIndex() {
@@ -171,3 +209,4 @@ public class MyMealsPanel extends JPanel implements Serializable {
 		this.myMealsIndex = myMealsIndex;
 	}
 }
+

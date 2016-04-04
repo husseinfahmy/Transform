@@ -1,3 +1,4 @@
+
 package ca.uwo.csd.cs2212.team01;
 
 import java.awt.Color;
@@ -22,6 +23,7 @@ public class MyDishesPanel extends JPanel implements Serializable {
 	
 	private JButton[] listRemoveButton, listDisplayButton;
 	private JLabel[] listLabel;
+	private JLabel noDishes;
 	
 	private int myDishesIndex;
 	
@@ -45,6 +47,12 @@ public class MyDishesPanel extends JPanel implements Serializable {
 		label.setBounds((getWidth() - size.width)/2, 30 + (60-size.height)/2, size.width, size.height);
 		label.setForeground(new Color(255,255,255,200));
 		this.add(label);
+
+		noDishes = new JLabel("No Meals");
+		noDishes.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(25.0f));
+		size = noDishes.getPreferredSize();
+		noDishes.setBounds((getWidth() - size.width)/2, 68 + (getHeight()-size.height-68)/2, size.width, size.height);
+		noDishes.setForeground(new Color(255,255,255,200));
 		
 		listRemoveButton = new JButton[7];
 		listDisplayButton = new JButton[7];
@@ -100,6 +108,7 @@ public class MyDishesPanel extends JPanel implements Serializable {
     		this.remove(listDisplayButton[i]);
     		this.remove(listLabel[i]);
     	}
+    	this.remove(noDishes);
     }
 	
     /* (non-Javadoc)
@@ -136,6 +145,8 @@ public class MyDishesPanel extends JPanel implements Serializable {
 		Meal myDish;
 		LinkedList<Meal> myDishes = mainWindow.getMyDishes();
 		
+		if (myDishes.size() <= 0) this.add(noDishes);
+		
 		for(int i = 0; i < 7 && getMyDishesIndex()+i < myDishes.size(); i++) {
 			myDish = myDishes.get(myDishes.size()-1-(getMyDishesIndex()+i));
 			
@@ -161,3 +172,4 @@ public class MyDishesPanel extends JPanel implements Serializable {
 		this.myDishesIndex = myDishesIndex;
 	}
 }
+

@@ -39,35 +39,45 @@ public class FitbitAPIThread extends SwingWorker<Void,Void> implements Serializa
 	private String date, startTime, endTime;
 	private Day day;
 	
-	private String responseBody, name;
+	//private String responseBody, name;
 	
-	private boolean apiCall;
+	//private boolean apiCall;
 	
-	public FitbitAPIThread(MainWindow mainWindow) {
+	public FitbitAPIThread(MainWindow mainWindow, String date, String startTime, String endTime, Day day) {
 		this.mainWindow = mainWindow;
 		
-		this.date = null;
-		this.startTime = null;
-		this.endTime = null;
-		this.day = null;
+		this.date = date;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.day = day;
 		
-		this.apiCall = true;
-		
-		//this.execute();
+		//this.apiCall = true;
 	}
+	
+	/*public FitbitAPIThread(MainWindow mainWindow, String responseBody, String name, Day day) {
+		this.mainWindow = mainWindow;
+
+		this.responseBody = responseBody;
+		this.name = name;
+		this.day = day;
+		
+		this.apiCall = false;
+		
+		this.execute();
+	}*/
 	
 	/**
 	 * @param responseBody
 	 * @param name
 	 * @param day
 	 */
-	public void setStoreDataFromAPIParameters(String responseBody, String name, Day day) {
+	/*public void setStoreDataFromAPIParameters(String responseBody, String name, Day day) {
 		this.responseBody = responseBody;
 		this.name = name;
 		this.day = day;
 		
 		this.apiCall = false;
-	}
+	}*/
 	
 	/**
 	 * @param date
@@ -75,14 +85,14 @@ public class FitbitAPIThread extends SwingWorker<Void,Void> implements Serializa
 	 * @param endTime
 	 * @param day
 	 */
-	public void setAPICallParameters(String date, String startTime, String endTime, Day day) {
+	/*public void setAPICallParameters(String date, String startTime, String endTime, Day day) {
 		this.date = date;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.day = day;
 		
 		this.apiCall = true;
-	}
+	}*/
 
 	//API METHODS
     
@@ -96,7 +106,7 @@ public class FitbitAPIThread extends SwingWorker<Void,Void> implements Serializa
 	 */
     public void APICall(String date, String startTime, String endTime, Day day) 
 	{	
-String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 if "00:00"
+    	String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 if "00:00"
 		String fmEndTime = endTime;			//fmEndTime.length() == 4 if "0:00" or == 5 if "00:00"
 		
 		// format startTime and endTime if times are between 1:00am and 9:59am ( ie. if .length() == 4 ) by adding an initial "0" 
@@ -112,7 +122,9 @@ String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 i
 		// set Day Object's progress to current day progress
 		// set Last Updated to "lastCall"	
 		if (fmEndTime.equals("23:59"))
-		{  day.setDayProgress(MainWindow.MAX_PROGRESS);  }
+		{	day.setDayProgress(MainWindow.MAX_PROGRESS);
+			day.setLastUpdated(mainWindow.getLastCall());
+		}
 		else 
 		{    
 			String endHoursStr = "" + fmEndTime.charAt(0) + fmEndTime.charAt(1);			//get the hours part of the string
@@ -357,7 +369,7 @@ String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 i
 	 */
 	private void StoreDataFromAPI(String responseBody, String name, Day day) 
 	{
-	System.out.println("\n\n"+ name+ "\n\n\n" +responseBody);	
+	//System.out.println("\n\n"+ name+ "\n\n\n" +responseBody);	
 			try {
 	    			JSONObject jsonObj =  new JSONObject(responseBody);
 	    			JSONArray dataType = (JSONArray) jsonObj.get("activities-" + name);
@@ -389,7 +401,7 @@ String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 i
 	     				}
 	     				day.setFloorsArray(floorArray);
     	    		}
-    	    		else if(name == "distace")
+    	    		else if(name == "distance")
     	    		{
     	    			double[] distArray = day.getDistArray();
     	    			for(int i = 0; i < dataSet.length(); i++)
@@ -435,7 +447,7 @@ String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 i
 	    			// TODO Auto-generated catch block
 	    			e.printStackTrace();
 	    		}
-		
+		day.processNewData();
 	}//StoreDataFromAPI()
 	
 	@Override
@@ -449,8 +461,9 @@ String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 i
 		 publish(i);
 		}*/
 		
-		if (this.apiCall) this.APICall(this.date, this.startTime, this.endTime, this.day);
-		else this.StoreDataFromAPI(this.responseBody, this.name, this.day);
+		this.APICall(this.date, this.startTime, this.endTime, this.day);
+		//if (this.apiCall) this.APICall(this.date, this.startTime, this.endTime, this.day);
+		//else this.StoreDataFromAPI(this.responseBody, this.name, this.day);
 		
 		// Here we can return some object of whatever type
 		// we specified for the first template parameter.
@@ -473,11 +486,14 @@ String fmStartTime = startTime;		//fmStartTime.length() == 4 if "0:00" or == 5 i
 		 // from doInBackground.
 		}*/
 		
-		if (this.apiCall && this.mainWindow.isFirstCall()) this.mainWindow.setFirstCall(false);
-		//this.mainWindow.setVisible(false);
+		this.mainWindow.apiThreadDoneHandler(this);
+		
+		/*if (this.apiCall && this.mainWindow.isFirstCall()) this.mainWindow.setFirstCall(false);
+		
+		this.mainWindow.setVisible(false);
 		this.mainWindow.getContentPane().removeAll();
 		this.mainWindow.add(this.mainWindow.getContinueScreen());
-		//this.mainWindow.setVisible(true);
+		this.mainWindow.setVisible(true);*/
 	}
 
    /*@Override

@@ -21,7 +21,7 @@ public class ProfileScreen extends JPanel implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private MainWindow mainWindow;
 	
-	private JButton settingsBtn;
+	private JButton settingsBtn, logoButton;
 	private JButton[] dashboardPanelsButtons, activityTrackingPanelsButtons, lifetimeTotalsButtons;
 	private boolean settingsScreen;
 	private JLabel[] label, labelSettings, infoLabel;
@@ -46,6 +46,7 @@ public class ProfileScreen extends JPanel implements Serializable{
 		activityTrackingPanelsButtons = new JButton[3];
 		lifetimeTotalsButtons = new JButton[4];
 
+		logoButton = new JButton();
 		label = new JLabel[8];
 		infoLabel = new JLabel[9];
 		labelSettings = new JLabel[5];
@@ -82,7 +83,17 @@ public class ProfileScreen extends JPanel implements Serializable{
 				}
     			this.setSize(1480, image.getHeight());
     			g2.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
-    			
+
+    			image = null;
+				try {
+					image = ImageIO.read(new File("UI/user.png"));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+    			g2.drawImage(image, (getWidth()-image.getWidth())/2, (getHeight()-image.getHeight())/2, null);
+
+    			this.remove(logoButton);
 	    		if (!settingsScreen) {
 	    			image = null;
 					try {
@@ -93,37 +104,23 @@ public class ProfileScreen extends JPanel implements Serializable{
 					}
 	    			g2.drawImage(image, 13, 13, null);
 	    			
-	    			JButton button = new JButton();
-	    			button.setBackground(null);
-	    			button.setBorder(null);
-	    			button.setFocusPainted(false);
-	    			button.setMargin(new Insets(0, 0, 0, 0));
-	    			button.setContentAreaFilled(false);
-	    			button.setBorderPainted(false);
-	    			button.setOpaque(false);
-	    			button.setFocusable(false);
-	    			button.setBounds(13, 13, image.getWidth(), image.getHeight());
-	    			button.addActionListener(new ButtonActionListener(14, 0, mainWindow));
-	    			this.add(button);
+	    			logoButton.setBackground(null);
+	    			logoButton.setBorder(null);
+	    			logoButton.setFocusPainted(false);
+	    			logoButton.setMargin(new Insets(0, 0, 0, 0));
+	    			logoButton.setContentAreaFilled(false);
+	    			logoButton.setBorderPainted(false);
+	    			logoButton.setOpaque(false);
+	    			logoButton.setFocusable(false);
+	    			logoButton.setBounds(13, 13, image.getWidth(), image.getHeight());
+	    			logoButton.addActionListener(new ButtonActionListener(14, 0, mainWindow));
+	    			this.add(logoButton);
     			}
-    			
-    			if (settingsScreen) settingsBtn.setText("Accept >");
-    			else settingsBtn.setText("Settings >");
-    			settingsBtn.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
-    			settingsBtn.setBackground(null);
-    			settingsBtn.setBorder(null);
-    			settingsBtn.setFocusPainted(false);
-    			settingsBtn.setMargin(new Insets(0, 0, 0, 0));
-    			settingsBtn.setContentAreaFilled(false);
-    			settingsBtn.setBorderPainted(false);
-    			settingsBtn.setOpaque(false);
-    			settingsBtn.setForeground(new Color(255,255,255,220));
-    			settingsBtn.setFocusable(false);
-    			Dimension size = settingsBtn.getPreferredSize();
-    			settingsBtn.setBounds(getWidth() - 50 - size.width, (75 - size.height)/2, size.width, size.height);
-    	        settingsBtn.addActionListener(new ButtonActionListener(25, 0, mainWindow));
-    	        this.add(settingsBtn);
-    	    	
+
+	    		Dimension size = settingsBtn.getPreferredSize();
+	    		settingsBtn.setBounds(getWidth() - 50 - size.width, (75 - size.height)/2, size.width, size.height);
+	        	this.add(settingsBtn);
+	        	
     			image = null;
     			try {
     				image = ImageIO.read(new File("UI/exit-icon.png"));
@@ -151,6 +148,20 @@ public class ProfileScreen extends JPanel implements Serializable{
     	};
     	bannerPanel.setBounds(0, 0, getWidth(), 75);
     	this.add(bannerPanel);
+
+		if (this.settingsScreen) this.settingsBtn.setText("Accept >");
+		else this.settingsBtn.setText("Settings >");
+		settingsBtn.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+		settingsBtn.setBackground(null);
+		settingsBtn.setBorder(null);
+		settingsBtn.setFocusPainted(false);
+		settingsBtn.setMargin(new Insets(0, 0, 0, 0));
+		settingsBtn.setContentAreaFilled(false);
+		settingsBtn.setBorderPainted(false);
+		settingsBtn.setOpaque(false);
+		settingsBtn.setForeground(new Color(255,255,255,220));
+		settingsBtn.setFocusable(false);
+		settingsBtn.addActionListener(new ButtonActionListener(25, 0, mainWindow));
     	
 		infoLabel[0] = new JLabel(mainWindow.getUser().getBestDistance() + "", JLabel.CENTER);
 		infoLabel[0].setOpaque(false);
@@ -511,6 +522,7 @@ public class ProfileScreen extends JPanel implements Serializable{
 
 	public void toggleScreen() {
 		Preferences screen = this.mainWindow.getPreferences();
+		
 		if (this.settingsScreen) {
 			screen.setDashboardPanelsToggler(dashboardPanelsToggler);
 			screen.setActivityTrackingPanelsToggler(activityTrackingPanelsToggler);
@@ -531,7 +543,7 @@ public class ProfileScreen extends JPanel implements Serializable{
 		}
 		
 		this.settingsScreen = !this.settingsScreen;
-		
+
 		if (this.settingsScreen) this.settingsBtn.setText("Accept >");
 		else this.settingsBtn.setText("Settings >");
 		

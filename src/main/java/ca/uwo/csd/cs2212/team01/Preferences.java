@@ -1,3 +1,4 @@
+
 /**
  * 
  */
@@ -259,4 +260,5 @@ public class Preferences implements Serializable {
 	public void setTp(TrophyProgression tp) {
 		this.tp = tp;
 	}
+
 }
