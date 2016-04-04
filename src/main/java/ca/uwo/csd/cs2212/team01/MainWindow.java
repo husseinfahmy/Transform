@@ -134,12 +134,13 @@ public class MainWindow extends JFrame implements Serializable {
 		myPlansScreen = new MyPlansScreen(this);
 		planManagerScreen = new PlanManagerScreen(this);
 
-		this.add(this.getLoadingScreen());
+		this.add(this.getSetupScreen());
+		/*this.add(this.getLoadingScreen());
 
 		if (testMode)
 			this.loadingScreen.initTestMode();
 		else
-			this.loadingScreen.initSetup();
+			this.loadingScreen.initSetup();*/
 	}
 
 	public Preferences getPreferences() {
