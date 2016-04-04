@@ -611,6 +611,11 @@ public class SetupScreen extends JPanel implements Serializable {
 			this.mainWindow.setupVirtualTrainer(currentWeight, targetWeight);
     		user.calcBMR(this.mainWindow.getVirtualTrainer());
 
+			this.mainWindow.getUserPreferences().getTp().updateStreaks(this.mainWindow.getUserPreferences().getDays());
+
+			user.setLifeTimeValues(this.mainWindow.getUserPreferences().getDays());
+			user.setBestValues(this.mainWindow.getUserPreferences().getDays());
+			
 			this.mainWindow.setFirstCall(false);
 
 			this.mainWindow.updateDashboardScreen();

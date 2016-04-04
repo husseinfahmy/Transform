@@ -76,7 +76,7 @@ public class NutritionPanel extends JPanel implements Serializable {
 		label.setForeground(new Color(255,255,255,75));
 		//this.add(label);
     	
-		nameInput = new JTextArea();
+		nameInput = new JTextArea("Enter Name of Food Item");
     	nameInput.setOpaque(false);
     	nameInput.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(27.0f));
 		size = nameInput.getPreferredSize();
@@ -105,7 +105,7 @@ public class NutritionPanel extends JPanel implements Serializable {
 		label.setForeground(new Color(255,255,255,150));
 		this.add(label);
     	
-		servingSizeInput = new JTextArea();
+		servingSizeInput = new JTextArea("0");
     	servingSizeInput.setOpaque(false);
     	servingSizeInput.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(27.0f));
 		size = servingSizeInput.getPreferredSize();
@@ -154,7 +154,7 @@ public class NutritionPanel extends JPanel implements Serializable {
 		label.setForeground(new Color(255,255,255,200));
 		this.add(label);
     	
-		calInput = new JTextArea();
+		calInput = new JTextArea("0");
     	calInput.setOpaque(false);
     	calInput.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(27.0f));
 		size = calInput.getPreferredSize();
@@ -181,7 +181,7 @@ public class NutritionPanel extends JPanel implements Serializable {
 		label.setForeground(new Color(255,255,255,150));
 		this.add(label);
     	
-		carbsInput = new JTextArea();
+		carbsInput = new JTextArea("0");
     	carbsInput.setOpaque(false);
     	carbsInput.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(27.0f));
 		size = carbsInput.getPreferredSize();
@@ -208,7 +208,7 @@ public class NutritionPanel extends JPanel implements Serializable {
 		label.setForeground(new Color(255,255,255,150));
 		this.add(label);
     	
-		proteinInput = new JTextArea();
+		proteinInput = new JTextArea("0");
     	proteinInput.setOpaque(false);
     	proteinInput.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(27.0f));
 		size = proteinInput.getPreferredSize();
@@ -235,7 +235,7 @@ public class NutritionPanel extends JPanel implements Serializable {
 		label.setForeground(new Color(255,255,255,150));
 		this.add(label);
     	
-		fatsInput = new JTextArea();
+		fatsInput = new JTextArea("0");
     	fatsInput.setOpaque(false);
     	fatsInput.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(27.0f));
 		size = fatsInput.getPreferredSize();
@@ -271,12 +271,12 @@ public class NutritionPanel extends JPanel implements Serializable {
 	}
     
 	public void clearTextFields() {
-		servingSizeInput.setText("");
-		fatsInput.setText("");
-		proteinInput.setText("");
-		carbsInput.setText("");
-		calInput.setText("");
-		nameInput.setText("");
+		servingSizeInput.setText("0");
+		fatsInput.setText("0");
+		proteinInput.setText("0");
+		carbsInput.setText("0");
+		calInput.setText("0");
+		nameInput.setText("Enter Name of Food Item");
 	}
 
     public String getFoodName() { return this.nameInput.getText(); }

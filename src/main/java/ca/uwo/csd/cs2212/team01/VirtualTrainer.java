@@ -401,10 +401,12 @@ public class VirtualTrainer implements Serializable {
 	public Feedback updateWeeklyProgress(LinkedList<Day> pastWeek) //to be called once everyday, every morning?
 	{
 		ListIterator<Day> pastWeekIter = pastWeek.listIterator();
-		int successDays = 0, missedDay = 0;
+		int successDays = 0, missedDay = 0, unplannedDays = 0;
 		while(pastWeekIter.hasNext()) 
 		{
-			if(pastWeekIter.next().getDailyCalDiff()<=-490) { successDays++;}
+			Day day = pastWeekIter.next();
+			if(day.getPlan() != null && day.getDailyCalDiff()<=-490) { successDays++;}
+			else if (day.getPlan() == null) unplannedDays++;
 			else missedDay = successDays + 1;
 		}
 		//System.out.println("successDays: "+successDays);
@@ -421,7 +423,8 @@ public class VirtualTrainer implements Serializable {
 			weekFeedback.setTXTCode(1);
 			 weekFeedback.addTXTone
 			 (
-					 "You missed your calorie goal yesterday but you’ve had 5 successful days before that! Good job!"
+					 "You missed your calorie goal yesterday but you’ve had <br>"
+					 + "5 successful days before that! Good job!"
 			 );
 			 return weekFeedback;
 		}
@@ -431,7 +434,8 @@ public class VirtualTrainer implements Serializable {
 			weekFeedback.setTXTCode(1);
 			 weekFeedback.addTXTone
 			 (
-					 "You missed your calorie goal " + missedDay + " days ago<br>but you’ve had 5 successful days! Great job!"
+					"You missed your calorie goal " + missedDay + " days ago<br>"
+					+ "but you’ve had 5 successful days! Great job!"
 			 );
 			 return weekFeedback;
 		}
@@ -441,8 +445,9 @@ public class VirtualTrainer implements Serializable {
 			weekFeedback.setTXTCode(1);
 			 weekFeedback.addTXTone
 			 (
-					 "You missed your calorie goal twice in the past 6 days<br>but you’ve had " + successDays +" successful days.<br>"
-			 		+ "Make sure you stick to your daily plans!"
+					 "You missed your calorie goal twice in the past 6 days<br>"
+					 + "but you’ve had " + successDays +" successful days.<br>"
+			 		 + "Make sure you stick to your daily plans!"
 			 );
 			 return weekFeedback;
 		}
@@ -452,9 +457,11 @@ public class VirtualTrainer implements Serializable {
 			weekFeedback.setTXTCode(1);
 			 weekFeedback.addTXTone
 			 (
-					 "You missed your calorie goal 3 times in the past 6 days<br>but you’ve had " + successDays +" successful days.<br>"
+					 "You missed your calorie goal 3 times in the past 6 days<br>"
+					 + "but you’ve had " + successDays +" successful days.<br>"
 			 		+ "You're missing your daily calorie goal too many times.<br>"
-			 		+ "Take action by reducing your calorie intake or setting a higher<br>calorie burn goal during your workouts: "
+			 		+ "Take action by reducing your calorie intake or setting a <br>"
+			 		+ "higher calorie burn goal during your workouts: "
 			 );
 			 weekFeedback.setButtonCode(1); // display customize meal plan button.
 		}
@@ -464,9 +471,11 @@ public class VirtualTrainer implements Serializable {
 			weekFeedback.setTXTCode(1);
 			weekFeedback.addTXTone
 			(
-					 "You missed your calorie goal 4 times in the past 6 days<br>but you’ve had " + successDays +" successful days.<br>"
-					 + "You're missing your daily calorie goal too many times. "
-			 		 + "You must take action by reducing your calorie intake or setting a higher calorie burn goal during your workouts: "					 
+					 "You missed your calorie goal 4 times in the past 6 days<br>"
+					 + "but you’ve had " + successDays +" successful days.<br>"
+					 + "You're missing your daily calorie goal too many times. <br>"
+			 		 + "You must take action by reducing your calorie intake or <br>"
+			 		 + "setting a higher calorie burn goal during your workouts: "					 
 			);
 			weekFeedback.setButtonCode(1); // display customize meal plan button.
 			return weekFeedback;
@@ -477,25 +486,30 @@ public class VirtualTrainer implements Serializable {
 			weekFeedback.setTXTCode(1);
 			 weekFeedback.addTXTone
 			 (
-					 "You missed your calorie goal 5 times in the past 6 days but you’ve had " + successDays +" successful days.<br>"
+					 "You missed your calorie goal 5 times in the past 6 days <br>"
+					 + "but you’ve had " + successDays +" successful days.<br>"
 					 + "If you keep this up, you will not achieve your weight loss goal. "
-			 		 + "You must take action by reducing your calorie intake or setting a higher calorie burn goal during your workouts: "					 
+			 		 + "You must take action by reducing your calorie intake or setting <br>"
+			 		 + "a higher calorie burn goal during your workouts: "					 
 			 );
 			 weekFeedback.setButtonCode(1); // display customize meal plan button.
 			 return weekFeedback;
 		}
 		
-		else if(successDays == 0)
+		else if(successDays == 0 && unplannedDays < 6)
 		{
 			weekFeedback.setTXTCode(1);
 			 weekFeedback.addTXTone
 			 (
-					 "You missed your calorie goal every single day in the past 6 days."
-					 + "If you keep this up, you will not achieve your weight loss goal. "
-					 + "You must take action by reducing your calorie intake or setting a higher calorie burn goal during your workouts: "	
+					 "You've missed all 6 days! :(<br>"
+					 + "You must take action by reducing your calorie intake<br> "
+					 + "or setting a higher calorie burn goal during your workouts. "	
 			 );
 			 weekFeedback.setButtonCode(1); // display customize meal plan button.
 			 return weekFeedback;
+		}else if (unplannedDays == 6) {
+			weekFeedback.setTXTCode(0);
+			return weekFeedback;
 		}
 		  weekFeedback.addTXTone("Error"); return weekFeedback; 
 		

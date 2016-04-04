@@ -37,17 +37,20 @@ public class TrophyProgression implements Serializable {
 		int[] result = new int[2];
 		int count = 0;
 		
+		this.currentStreak = 0;
+		
 		//start from the last complete day
 		//continue backwards in the list until a day didn't reach goal deficit or until all of the days have been considered
 		while((days.size() - 2 - count) >= 0 && days.get(days.size() - 2 - count).getDailyCalDiff() <= THRESHOLD)
 		{
+			if (days.get(days.size() - 2 - count).getPlan() != null) this.currentStreak++;
 			count++;
 		}
-		this.currentStreak = count;
-		result[0] = count;				//return current streak
-		if(count>lifeTimeStreak)
+		//this.currentStreak = count;
+		result[0] = this.currentStreak;				//return current streak
+		if(this.currentStreak>lifeTimeStreak)
 		{	
-			lifeTimeStreak=count; result[1] = 1; return result;		//user has broken personal record. 1 = true
+			lifeTimeStreak=this.currentStreak; result[1] = 1; return result;		//user has broken personal record. 1 = true
 		}
 		else { result[1] = 0; } //user has NOT broken personal record. 0 = false
 		return result;

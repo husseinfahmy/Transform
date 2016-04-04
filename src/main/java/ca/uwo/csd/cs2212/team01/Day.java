@@ -44,11 +44,17 @@ public class Day implements Serializable {
 	/**
 	 * 
 	 */
-	public Day() {}
+	// this constructor is only used in test mode
+	public Day() {
+		//plan = new Plan(1600);
+	}
 	/**
 	 * @param date
 	 */
-	public Day(Date date)  { this.date = date; }
+	public Day(Date date)  {
+		//plan = new Plan(1600);
+		this.date = date;
+	}
 	
 	//METHODS:
 	
@@ -148,7 +154,8 @@ public class Day implements Serializable {
 	public void calcDailyCalDiff()
 	{
 		int calBurned = totals[0]; 
-		int calConsumed = (int)plan.getCaloriesConsumed();
+		int calConsumed = 0;
+		if (plan != null) calConsumed = (int)plan.getCaloriesConsumed();
 		dailyCalDiff = (int)(calConsumed - calBurned);
 	}
 	
@@ -165,7 +172,7 @@ public class Day implements Serializable {
 		//example: [0] + [1] = "Meal 1 (+ 445 Cal)"
 		Feedback feedback = new Feedback();
 		feedback.setTXTCode(1);
-		if(plan.getMeals().size() != 0)
+		if(plan != null && plan.getMeals().size() != 0)
 		{
 			ListIterator<Meal> meals = plan.getMeals().listIterator();
 			while(meals.hasNext())
@@ -194,7 +201,7 @@ public class Day implements Serializable {
 		//example: [0] + [1] = "Workout (- 200 Cal)"
 		Feedback feedback = new Feedback();
 		feedback.setTXTCode(1);
-		if(plan.getWorkouts().size() != 0)
+		if(plan != null && plan.getWorkouts().size() != 0)
 		{
 			if(plan.getWorkouts().size() == 1)
 			{ 
@@ -232,7 +239,8 @@ public class Day implements Serializable {
 		//[0] = calories eaten
 		//[1] = actual calories burned
 		Feedback feedback = new Feedback();
-		feedback.addFeedbackValue(plan.getCaloriesConsumed());
+		if (plan != null) feedback.addFeedbackValue(plan.getCaloriesConsumed());
+		else feedback.addFeedbackValue(0.0f);
 		feedback.addFeedbackValue((float)totals[0]);
 		return feedback;
 	}

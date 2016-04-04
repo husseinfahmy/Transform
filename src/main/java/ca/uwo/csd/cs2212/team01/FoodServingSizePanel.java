@@ -57,7 +57,7 @@ public class FoodServingSizePanel extends JPanel implements Serializable {
 		label.setForeground(new Color(255,255,255,150));
 		this.add(label);
     	
-		foodServingSizeInput = new JTextArea();
+		foodServingSizeInput = new JTextArea("0");
 		foodServingSizeInput.setOpaque(false);
 		foodServingSizeInput.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(27.0f));
 		size = foodServingSizeInput.getPreferredSize();

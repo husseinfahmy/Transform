@@ -374,7 +374,7 @@ public class DashboardScreen extends JPanel implements Serializable {
 	   			if ((feedbackMeals != null && feedbackMeals.getTXTone().size() > 0) || (feedbackWorkouts != null && feedbackWorkouts.getTXTone().size() > 0)) {
 					Plan plan = mainWindow.getDays().getLast().getPlan();
 					
-	   				mealsLabel = new JLabel(plan.getMeals().size() + " Meals" + " - " + plan.getWorkouts().size() + " Workouts = " + plan.getPredictedCalorieBurn() + " cal");
+	   				mealsLabel = new JLabel(plan.getMeals().size() + " Meals" + " - " + plan.getWorkouts().size() + " Workouts = " + (int)plan.getPredictedCalorieBurn() + " cal");
 	   				mealsLabel.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(24.0f));
 	   				mealsLabel.setForeground(Color.WHITE);
 					size = mealsLabel.getPreferredSize();
@@ -517,7 +517,7 @@ public class DashboardScreen extends JPanel implements Serializable {
     			axisGraph = new LineAxisGraph(axisData, 0, 112+120+120+110+image.getHeight(), this.getWidth() - 1, 30, axisData.length, false);
     			this.add(axisGraph);
     			
-    			image = null;
+    			/*image = null;
 				try {
 					image = ImageIO.read(new File("UI/panel-btn1-bg.png"));
 				} catch (IOException e) {
@@ -531,7 +531,7 @@ public class DashboardScreen extends JPanel implements Serializable {
     			size = label.getPreferredSize();
     			label.setBounds(getWidth()*0 + (getWidth()-size.width)/2, getHeight()-image.getHeight()+(31-size.height)/2, size.width, size.height);
     			label.setForeground(Color.WHITE);
-    			this.add(label);
+    			this.add(label);*/
     		}
     	};
     	
@@ -643,7 +643,7 @@ public class DashboardScreen extends JPanel implements Serializable {
 		   			
 		   			if(feedback.getTextCode() == 1) output = feedback.getTXTone().getFirst();
 		   			else if (feedback.getTextCode() == 2) output = feedback.getTXTone().getFirst() + feedback.getFirstValues().get(2);
-		   			else output = null;
+		   			else output = "There were no plans for the past 6 days";
 		   			
 		   			label = new JLabel("<html><center>" + output + "</center></html>", JLabel.LEFT);
 	    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(22.0f));
