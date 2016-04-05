@@ -385,7 +385,7 @@ public class FitbitAPIThread extends SwingWorker<Void,Void> implements Serializa
 	     				{
 		    	        	 
 	     					jsonDataObj = dataSet.getJSONObject(i); 
-	     					calArray[i] = (Double) jsonDataObj.get("value"); 
+	     					calArray[i] = jsonDataObj.getDouble("value"); 
 	     				}
 	     				day.setCalArray(calArray);
     	    		}
@@ -407,7 +407,7 @@ public class FitbitAPIThread extends SwingWorker<Void,Void> implements Serializa
     	    			for(int i = 0; i < dataSet.length(); i++)
     	    			{
     	    				jsonDataObj = dataSet.getJSONObject(i); 
-    	    				distArray[i] = (Double) jsonDataObj.get("value");
+    	    				distArray[i] = jsonDataObj.getDouble("value");
     	    			}
     	    			day.setDistArray(distArray);
     	    		}

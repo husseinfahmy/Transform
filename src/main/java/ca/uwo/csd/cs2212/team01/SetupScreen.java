@@ -86,6 +86,35 @@ public class SetupScreen extends JPanel implements Serializable {
 					e.printStackTrace();
 				}
     			g2.drawImage(image, 13, 13, null);
+				
+    			/*JLabel label = new JLabel("Setup TRANSFORM");
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+    			Dimension size = label.getPreferredSize();
+    			label.setBounds((getWidth() - size.width)/2, (getHeight()-size.height)/2, size.width, size.height);
+    			label.setForeground(Color.WHITE);
+    			this.add(label);*/
+				
+    			JLabel label = new JLabel("Setup");
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+    			Dimension size = label.getPreferredSize();
+    			label.setBounds(getWidth()/4 - size.width, (getHeight()-size.height)/2, size.width, size.height);
+    			label.setForeground(Color.WHITE);
+    			this.add(label);
+    			
+    			label = new JLabel("Done");
+    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
+    			size = label.getPreferredSize();
+    			label.setBounds(getWidth()*3/4, (getHeight()-size.height)/2, size.width, size.height);
+    			label.setForeground(Color.WHITE);
+    			this.add(label);
+
+    			int width = (getWidth()*3/4) - (getWidth()/4);
+    			
+    			g2.setColor(Color.WHITE);
+    	        g2.setStroke(new BasicStroke(1.0f));
+
+    	        g2.draw(new Ellipse2D.Double(getWidth()/4 + (width/3) - 30/2,(getHeight()-30)/2, 30, 30));
+    	        g2.draw(new Ellipse2D.Double(getWidth()/4 + (width*2/3) - 30/2,(getHeight()-30)/2, 30, 30));
 
     			BufferedImage checkmark = null;
 				try {
@@ -95,56 +124,27 @@ public class SetupScreen extends JPanel implements Serializable {
 					e.printStackTrace();
 				}
 				
-    			JLabel label = new JLabel("Setup TRANSFORM");
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
-    			Dimension size = label.getPreferredSize();
-    			label.setBounds((getWidth() - size.width)/2, (getHeight()-size.height)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-				
-    			/*JLabel label = new JLabel("Setup");
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
-    			Dimension size = label.getPreferredSize();
-    			label.setBounds(getWidth()/7 - size.width, (getHeight()-size.height)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
+    	        int lineLength;
+    	        
+    	        lineLength = ((getWidth()/4 + (width/3) - 30/2) - (getWidth()/4 + 10))*(page-1)/(6-1);
+    	        if (lineLength > ((getWidth()/4 + (width/3) - 30/2) - (getWidth()/4 + 10))) lineLength = ((getWidth()/4 + (width/3) - 30/2) - (getWidth()/4 + 10));
+    	        if (lineLength > 0) g2.drawLine(getWidth()/4 + 10, 75/2, getWidth()/4 + 10 + lineLength, 75/2);
 
-    			g2.setColor(Color.WHITE);
-    	        g2.setStroke(new BasicStroke(1.0f));
+    	        lineLength = ((getWidth()/4 + (width*2/3) - 30/2) - (getWidth()/4 + (width/3) + 30/2))*(page-6)/(8-6);
+    	        if (lineLength > ((getWidth()/4 + (width*2/3) - 30/2) - (getWidth()/4 + (width/3) + 30/2))) lineLength = ((getWidth()/4 + (width*2/3) - 30/2) - (getWidth()/4 + (width/3) + 30/2));
+    	        if (lineLength > 0) g2.drawLine(getWidth()/4 + (width/3) + 30/2, 75/2, getWidth()/4 + (width/3) + 30/2 + lineLength, 75/2);
+
+    	        lineLength = ((getWidth()*3/4 - 10) - (getWidth()/4 + (width*2/3) + 30/2))*(page-8)/(11-8);
+    	        if (lineLength > ((getWidth()*3/4 - 10) - (getWidth()/4 + (width*2/3) + 30/2))) lineLength = ((getWidth()*3/4 - 10) - (getWidth()/4 + (width*2/3) + 30/2));
+    	        if (lineLength > 0) g2.drawLine(getWidth()/4 + (width*2/3) + 30/2, 75/2, getWidth()/4 + (width*2/3) + 30/2 + lineLength, 75/2);
     	        
-    	        int length;
-    	        
-    	        if (page >= 1) {
-    	        	length = (getWidth()/2 - getWidth()/7 - 10 - 30)/2;
-    	        	if (page == 1) length /= 2;
-    	        	g2.drawLine(getWidth()/7 + 10, 75/2, getWidth()/7 + 10 + length, 75/2);
+    	        if (page >= 6) {
+    	        	g.drawImage(checkmark, getWidth()/4 + (width/3) - 30/2,(getHeight()-30)/2, 30, 30, null);
+    	        }
+    	        if (page >= 8) {
+    	        	g.drawImage(checkmark, getWidth()/4 + (width*2/3) - 30/2,(getHeight()-30)/2, 30, 30, null);
     	        }
     	        
-    	        if (page >= 3) {
-    	        	g2.drawLine(getWidth()/7 + 10 + (getWidth()/2 - getWidth()/7 - 10 - 30)/2 + 30, 75/2, (getWidth() - 30)/2, 75/2);
-    	        	g.drawImage(checkmark, getWidth()/7 + 10 + (getWidth()/2 - getWidth()/7 - 10 - 30)/2, (75-checkmark.getHeight())/2, checkmark.getWidth(), checkmark.getHeight(), null);
-    	        }else g2.draw(new Ellipse2D.Double(getWidth()/7 + 10 + (getWidth()/2 - getWidth()/7 - 10 - 30)/2,(getHeight()-30)/2, 30, 30));
-
-    			label = new JLabel("Done");
-    			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
-    			size = label.getPreferredSize();
-    			label.setBounds(getWidth() - getWidth()/7, (getHeight()-size.height)/2, size.width, size.height);
-    			label.setForeground(Color.WHITE);
-    			this.add(label);
-
-    	        if (page >= 4) {
-    	        	length = (getWidth()/2 - getWidth()/7 - 10 - 15 - 30)/2;
-    	        	g2.drawLine((getWidth() - 30)/2 + 30, 75/2, (getWidth() - 30)/2 + 30 + length, 75/2);
-    	        	g.drawImage(checkmark, (getWidth() - 30)/2, (75-checkmark.getHeight())/2, checkmark.getWidth(), checkmark.getHeight(), null);
-    	        }else g2.draw(new Ellipse2D.Double((getWidth() - 30)/2,(getHeight()-30)/2, 30, 30));
-    	        
-    	        if (page >= 5) {
-    	        	length = (getWidth() - getWidth()/7 - 10) - ((getWidth() - 30)/2 + 30 + (getWidth()/2 - getWidth()/7 - 10 - 15 - 30)/2 + 30);
-    	        	if (page == 5) length /= 2;
-    	        	g2.drawLine((getWidth() - 30)/2 + 30 + (getWidth()/2 - getWidth()/7 - 10 - 15 - 30)/2 + 30, 75/2, (getWidth() - 30)/2 + 30 + (getWidth()/2 - getWidth()/7 - 10 - 15 - 30)/2 + 30 + length, 75/2);
-    	        	g.drawImage(checkmark, (getWidth() - 30)/2 + 30 + (getWidth()/2 - getWidth()/7 - 10 - 15 - 30)/2, (75-checkmark.getHeight())/2, checkmark.getWidth(), checkmark.getHeight(), null);
-    	        }else g2.draw(new Ellipse2D.Double((getWidth() - 30)/2 + 30 + (getWidth()/2 - getWidth()/7 - 10 - 15 - 30)/2,(getHeight()-30)/2, 30, 30));
-*/
     			image = null;
     			try {
     				image = ImageIO.read(new File("UI/exit-icon.png"));
