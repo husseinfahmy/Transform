@@ -242,7 +242,7 @@ public class LoadingScreen extends JPanel implements Serializable {
     	this.mainWindow.setLoadingAPIData(false);
     	
 		this.mainWindow.getContentPane().removeAll();
-		this.mainWindow.add(this.mainWindow.getContinueScreen());
+		this.mainWindow.add(this.mainWindow.getSetupScreen());
 	}
 	
     /**
