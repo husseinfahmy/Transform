@@ -12,11 +12,24 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
 
-
+/**
+ * this class allows the user to analyse a nutrition label image 
+ * and extract the text and numbers from it
+ * @author Mario Reckl 
+ */
 public class OCR {
-		
+	
+		/** 
+	    * Class constructor.
+	    */
 		public OCR() {}
 	
+		/**
+		 * This methods creates a file chooser and allows the user to select an image to be analysed. 
+		 * Using googles Tess4j package the image is analsed and based on the output and content returned
+		 * the array of strings contain the elements wanted from the image or an error message. 
+		 * @return      array of stings with the elements extracted from the image or an error
+		 */
 		public String[] analyzeImage() throws IOException{
 			
 			//RETURN THIS
