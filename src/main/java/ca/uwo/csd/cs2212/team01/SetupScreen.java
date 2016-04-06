@@ -85,7 +85,7 @@ public class SetupScreen extends JPanel implements Serializable {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-    			g2.drawImage(image, 13, 13, null);
+    			g2.drawImage(image, 13, (getHeight()-image.getHeight())/2, null);
 				
     			/*JLabel label = new JLabel("Setup TRANSFORM");
     			label.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
@@ -165,7 +165,7 @@ public class SetupScreen extends JPanel implements Serializable {
     			exitBtn.setForeground(new Color(255,255,255,220));
     			exitBtn.setFocusable(false);
     			size = exitBtn.getPreferredSize();
-    			exitBtn.setBounds(getWidth()-size.width-12, 6, size.width, size.height);
+    			exitBtn.setBounds(getWidth()-size.width-getHeight()/2, (getHeight()-size.height)/2, size.width, size.height);
     	        exitBtn.addActionListener(new ButtonActionListener(2, 0, mainWindow));
     	        //exitBtn.addMouseMotionListener(new ButtonMotionListener(4, 0, mainWindow));
     	        this.add(exitBtn);

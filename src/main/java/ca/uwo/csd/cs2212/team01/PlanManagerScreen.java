@@ -32,7 +32,7 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 	
 	private JLabel mealsLabel, workoutsLabel, calDeficitLabel, addMealLabel;
 	private JLabel[][][] listLabel, myListLabel;
-	private JLabel[] listBMPLabel, addWorkoutLabel;
+	private JLabel[] listBMRLabel, addWorkoutLabel;
 	
 	private JButton addWorkoutBtn, addMealBtn;
 	private JButton[] editBtn, myListAddButton;
@@ -88,7 +88,7 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-    			g2.drawImage(image, 13, 13, null);
+    			g2.drawImage(image, 13, (getHeight()-image.getHeight())/2, null);
     			
     			JButton button = new JButton();
     			button.setBackground(null);
@@ -99,7 +99,7 @@ public class PlanManagerScreen extends JPanel implements Serializable{
     			button.setBorderPainted(false);
     			button.setOpaque(false);
     			button.setFocusable(false);
-    			button.setBounds(13, 13, image.getWidth(), image.getHeight());
+    			button.setBounds(13, (getHeight()-image.getHeight())/2, image.getWidth(), image.getHeight());
     			button.addActionListener(new ButtonActionListener(14, 0, mainWindow));
     			this.add(button);
 			    
@@ -209,7 +209,7 @@ public class PlanManagerScreen extends JPanel implements Serializable{
     			size = exitBtn.getPreferredSize();
     			exitBtn.setBounds(getWidth()-size.width-12, 6, size.width, size.height);
     	        exitBtn.addActionListener(new ButtonActionListener(2, 0, mainWindow));
-    	        this.add(exitBtn);
+    	        //this.add(exitBtn);
     		}
     	};
     	bannerPanel.setBounds(0, 0, getWidth(), 75);
@@ -225,21 +225,21 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 		listRemoveButton = new JButton[2][7];
     	myListAddRemoveButton = new JButton[2][7];
 		listLabel = new JLabel[2][2][7];
-		listBMPLabel = new JLabel[2];
+		listBMRLabel = new JLabel[2];
 
-		listBMPLabel[0] = new JLabel("BMP");
-		listBMPLabel[0].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
-		listBMPLabel[0].setForeground(new Color(255,255,255, 200));
-		Dimension size = listBMPLabel[0].getPreferredSize();
-		listBMPLabel[0].setBounds(getWidth()/2 + 75 + 125 + 30 + 50 + (195-200)/2 + (200 - size.width)/2, 75+60+30 + (60-size.height*2)/2, size.width, size.height);
-		this.add(listBMPLabel[0]);
+		listBMRLabel[0] = new JLabel("BMR");
+		listBMRLabel[0].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+		listBMRLabel[0].setForeground(new Color(255,255,255, 200));
+		Dimension size = listBMRLabel[0].getPreferredSize();
+		listBMRLabel[0].setBounds(getWidth()/2 + 75 + 125 + 30 + 50 + (195-200)/2 + (200 - size.width)/2, 75+60+30 + (60-size.height*2)/2, size.width, size.height);
+		this.add(listBMRLabel[0]);
 
-		listBMPLabel[1] = new JLabel("( - 1600 Cal )");
-		listBMPLabel[1].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
-		listBMPLabel[1].setForeground(new Color(106, 185, 255, 200));
-		size = listBMPLabel[1].getPreferredSize();
-		listBMPLabel[1].setBounds(getWidth()/2 + 75 + 125 + 30 + 50 + (195-200)/2 + (200 - size.width)/2, 75+60+30 + size.height + (60-size.height*2)/2, size.width, size.height);
-		this.add(listBMPLabel[1]);
+		listBMRLabel[1] = new JLabel("( -" + (int)mainWindow.getUser().bmr + " Cal )");
+		listBMRLabel[1].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+		listBMRLabel[1].setForeground(new Color(106, 185, 255, 200));
+		size = listBMRLabel[1].getPreferredSize();
+		listBMRLabel[1].setBounds(getWidth()/2 + 75 + 125 + 30 + 50 + (195-200)/2 + (200 - size.width)/2, 75+60+30 + size.height + (60-size.height*2)/2, size.width, size.height);
+		this.add(listBMRLabel[1]);
 
 		for(int i = 0; i < 7; i++) {
 			myListAddButton[i] = new JButton();
@@ -341,7 +341,7 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 			addMealLabel.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(30.0f));
 			addMealLabel.setForeground(new Color(255,255,255,200));
 			size = addMealLabel.getPreferredSize();
-			addMealLabel.setBounds((getWidth()/2 - size.width)/2, 75+15+(60-size.height)/2, size.width, size.height);
+			addMealLabel.setBounds((getWidth()/2 - size.width)/2, 75+15+(60-size.height)/2, size.width+20, size.height);
 			//this.add(label);
     	//}else if (screen == 1) { // Add Dishes to Meal to Plan
 			nameInput = new JTextArea("Enter a Name of Meal");
@@ -506,7 +506,7 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 				myListLabel[0][0][i].setBounds((getWidth()/2 - size.width)/2, 75+15+60 + (60-size.height*2)/2 + i*70, size.width, size.height);
 				this.add(myListLabel[0][0][i]);
 				
-				myListLabel[0][1][i].setText("( + "+myMeal.getCalories()+" Cal )");
+				myListLabel[0][1][i].setText("( + "+(int)myMeal.getCalories()+" Cal )");
 				size = myListLabel[0][1][i].getPreferredSize();
 				myListLabel[0][1][i].setBounds((getWidth()/2 - size.width)/2, 75+15+60 + size.height + (60-size.height*2)/2 + i*70, size.width, size.height);
 				this.add(myListLabel[0][1][i]);
@@ -527,7 +527,7 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 				myListLabel[0][0][i].setBounds((getWidth()/2/2 - size.width)/2, 75+15+60 + (60-size.height*2)/2 + i*70, size.width, size.height);
 				this.add(myListLabel[0][0][i]);
 				
-				myListLabel[0][1][i].setText("( + "+myMeal.getCalories()+" Cal )");
+				myListLabel[0][1][i].setText("( + "+(int)myMeal.getCalories()+" Cal )");
 				size = myListLabel[0][1][i].getPreferredSize();
 				myListLabel[0][1][i].setBounds((getWidth()/2/2 - size.width)/2, 75+15+60 + size.height + (60-size.height*2)/2 + i*70, size.width, size.height);
 				this.add(myListLabel[0][1][i]);
@@ -546,7 +546,7 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 				myListLabel[1][0][i].setBounds(getWidth()/2/2 + (getWidth()/2/2 - size.width)/2, 75+15+60 + (60-size.height*2)/2 + i*70, size.width, size.height);
 				this.add(myListLabel[1][0][i]);
 				
-				myListLabel[1][1][i].setText("( + "+foodServing.getMacros().getCalories()+" Cal )");
+				myListLabel[1][1][i].setText("( + "+(int)foodServing.getMacros().getCalories()+" Cal )");
 				size = myListLabel[1][1][i].getPreferredSize();
 				myListLabel[1][1][i].setBounds(getWidth()/2/2 + (getWidth()/2/2 - size.width)/2, 75+15+60 + size.height + (60-size.height*2)/2 + i*70, size.width, size.height);
 				this.add(myListLabel[1][1][i]);
@@ -585,7 +585,7 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 			editBtn[1].setBounds(getWidth()/2 + 75 + 125 + 30 + 50 + 150,  75+15 + (60-30)/2, 30, 30);
 	        this.add(editBtn[1]);
 	        
-			calDeficitLabel.setText(day.getPlan().getPredictedCalorieBurn() + " cal");
+			calDeficitLabel.setText((int)day.getPlan().getPredictedCalorieBurn() + " cal");
 			size = calDeficitLabel.getPreferredSize();
 			calDeficitLabel.setBounds(getWidth()/2 + 75 + 600 + 25 - 15 - 30 - 15 - size.width,  75+15 + (60-size.height)/2, size.width, size.height);
 			this.add(calDeficitLabel);
@@ -601,7 +601,7 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 				listLabel[0][0][i].setBounds(getWidth()/2 + 75 + (170-200)/2 + (200 - size.width)/2, 75+60+30 + (60-size.height*2)/2 + i*70, size.width, size.height);
 				this.add(listLabel[0][0][i]);
 				
-				listLabel[0][1][i].setText("( + "+myMeal.getCalories()+" Cal )");
+				listLabel[0][1][i].setText("( + "+(int)myMeal.getCalories()+" Cal )");
 				size = listLabel[0][1][i].getPreferredSize();
 				listLabel[0][1][i].setBounds(getWidth()/2 + 75 + (170-200)/2 + (200 - size.width)/2, 75+60+30 + size.height + (60-size.height*2)/2 + i*70, size.width, size.height);
 				this.add(listLabel[0][1][i]);
@@ -620,7 +620,7 @@ public class PlanManagerScreen extends JPanel implements Serializable{
 				listLabel[1][0][i].setBounds(getWidth()/2 + 75 + 125 + 30 + 50 + (195-200)/2 + (200 - size.width)/2, 75+60+30 + (60-size.height*2)/2 + (i+1)*70, size.width, size.height);
 				this.add(listLabel[1][0][i]);
 				
-				listLabel[1][1][i].setText("( - "+myWorkout.getCalorieBurnGoal()+" Cal )");
+				listLabel[1][1][i].setText("( - "+(int)myWorkout.getCalorieBurnGoal()+" Cal )");
 				size = listLabel[1][1][i].getPreferredSize();
 				listLabel[1][1][i].setBounds(getWidth()/2 + 75 + 125 + 30 + 50 + (195-200)/2 + (200 - size.width)/2, 75+60+30 + size.height + (60-size.height*2)/2 + (i+1)*70, size.width, size.height);
 				this.add(listLabel[1][1][i]);

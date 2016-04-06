@@ -30,6 +30,7 @@ public class Plan implements Serializable {
 	{
 		meals = new LinkedList<Meal>(); workouts = new LinkedList<Workout>();
 		caloriesBurned = bmr;
+		predictedCalorieDiff = caloriesConsumed - caloriesBurned;
 	}
 	
 	//Methods

@@ -86,7 +86,7 @@ public class DashboardScreen extends JPanel implements Serializable {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-    			g2.drawImage(image, 13, 13, null);
+    			g2.drawImage(image, 13, (getHeight()-image.getHeight())/2, null);
     			
     			JButton button = new JButton();
     			button.setBackground(null);
@@ -97,13 +97,13 @@ public class DashboardScreen extends JPanel implements Serializable {
     			button.setBorderPainted(false);
     			button.setOpaque(false);
     			button.setFocusable(false);
-    			button.setBounds(13, 13, image.getWidth(), image.getHeight());
+    			button.setBounds(13, (getHeight()-image.getHeight())/2, image.getWidth(), image.getHeight());
     			button.addActionListener(new ButtonActionListener(14, 0, mainWindow));
     			this.add(button);
 				
     			JButton weighBtn = new JButton("Weigh Myself");
-    			weighBtn.setBackground(null);
     			weighBtn.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+    			weighBtn.setBackground(null);
     			weighBtn.setForeground(new Color(255,255,255,150));
     			weighBtn.setBorder(null);
     			weighBtn.setFocusPainted(false);
@@ -113,15 +113,17 @@ public class DashboardScreen extends JPanel implements Serializable {
     			weighBtn.setOpaque(false);
     			weighBtn.setFocusable(false);
     	        weighBtn.addActionListener(new ButtonActionListener(3, 0, mainWindow));
+    	        Dimension size = weighBtn.getPreferredSize();
+    	        weighBtn.setBounds(63+13, (getHeight()-size.height)/2, size.width*2, size.height);
     	        this.add(weighBtn);
 				
-    			JLabel btnDesc = new JLabel("Weigh Myself", JLabel.LEFT);
-    			btnDesc.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
-    			Dimension size = btnDesc.getPreferredSize();
-    			weighBtn.setSize(size.width, size.height);
-    			weighBtn.setLocation(63+13, (getHeight()-size.height)/2);
+    			//JLabel btnDesc = new JLabel("Weigh Myself", JLabel.LEFT);
+    			//btnDesc.setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(20.0f));
+    			//Dimension size = btnDesc.getPreferredSize();
+    			//weighBtn.setSize(size.width, size.height);
 
-			    g2.draw(new RoundRectangle2D.Float(63+13 - 8, (getHeight()-size.height)/2 - 3, size.width + 16, size.height+6, 8, 8));
+    	        g2.setColor(Color.WHITE);
+			    g2.draw(new RoundRectangle2D.Float(63+13 - 8, (getHeight()-size.height)/2 - 3, size.width*2 + 16, size.height+6, 8, 8));
     			
     			g2.setColor(new Color(1.0f,1.0f,1.0f,0.3f));
     	        g2.setStroke(new BasicStroke(2.0f));
@@ -216,9 +218,9 @@ public class DashboardScreen extends JPanel implements Serializable {
     			exitBtn.setSize(image.getWidth(), image.getHeight());
     			exitBtn.setLocation(getWidth()-image.getWidth()-13, 13);
     	        exitBtn.addActionListener(new ButtonActionListener(2, 0, mainWindow));
-    	        this.add(exitBtn);
+    	        ///this.add(exitBtn);
 				
-    			g2.drawImage(image, getWidth()-image.getWidth()-13, 13, null);
+    			//g2.drawImage(image, getWidth()-image.getWidth()-13, 13, null);
     		}
     	};
     	bannerPanel.setBounds(0,0, getWidth(), 75);

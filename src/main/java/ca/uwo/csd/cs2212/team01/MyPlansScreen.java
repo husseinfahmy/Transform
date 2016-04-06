@@ -90,7 +90,7 @@ public class MyPlansScreen extends JPanel implements Serializable{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-    			g2.drawImage(image, 13, 13, null);
+    			g2.drawImage(image, 13, (getHeight()-image.getHeight())/2, null);
     			
     			JButton button = new JButton();
     			button.setBackground(null);
@@ -101,7 +101,7 @@ public class MyPlansScreen extends JPanel implements Serializable{
     			button.setBorderPainted(false);
     			button.setOpaque(false);
     			button.setFocusable(false);
-    			button.setBounds(13, 13, image.getWidth(), image.getHeight());
+    			button.setBounds(13, (getHeight()-image.getHeight())/2, image.getWidth(), image.getHeight());
     			button.addActionListener(new ButtonActionListener(14, 0, mainWindow));
     			this.add(button);
     		    
@@ -134,7 +134,7 @@ public class MyPlansScreen extends JPanel implements Serializable{
     			size = exitBtn.getPreferredSize();
     			exitBtn.setBounds(getWidth()-size.width-12, 6, size.width, size.height);
     	        exitBtn.addActionListener(new ButtonActionListener(2, 0, mainWindow));
-    	        this.add(exitBtn);
+    	        //this.add(exitBtn);
     		}
     	};
     	bannerPanel.setBounds(0, 0, getWidth(), 75);
@@ -191,7 +191,7 @@ public class MyPlansScreen extends JPanel implements Serializable{
 	    	calDeficitLabel[i].setForeground(new Color(180,180,180,200));
 			
 			editPlanBtn[i] = new JButton();
-			editPlanBtn[i].setHorizontalAlignment(SwingConstants.CENTER);
+			editPlanBtn[i].setHorizontalAlignment(SwingConstants.LEFT);
 			editPlanBtn[i].setFont(mainWindow.FONT_HELVETICA_NEUE_THIN.deriveFont(18.0f));
 			editPlanBtn[i].setBackground(null);
 			editPlanBtn[i].setBorder(null);
@@ -386,7 +386,8 @@ public class MyPlansScreen extends JPanel implements Serializable{
 				prevWeek.setBounds(15, 75+15, (275-30-40)/2, 35);
 			}else if (i == 6) {
 				nextWeek.setText(MainWindow.fmDay.format(day.getDate()) + (getWeekIndex() >= 2 ? "": " >"));
-				nextWeek.setBounds(275 - 15 - (275-30-40)/2, 75+15, (275-30-40)/2, 35);
+				size = nextWeek.getMinimumSize();
+				nextWeek.setBounds(275 - 15 - (275-30-40)/2, 75+15, size.width, 35);
 			}
 			
 			plan = day.getPlan();
@@ -401,7 +402,8 @@ public class MyPlansScreen extends JPanel implements Serializable{
 			
 			if (plan == null) {
 				editPlanBtn[i].setText("No Plan");
-				editPlanBtn[i].setBounds(275 - 75 - 10,  75+75+i*(60+30) + (60-30)/2, 75, 30);
+				size = editPlanBtn[i].getMinimumSize();
+				editPlanBtn[i].setBounds(275 - 75 - 10 + (75-size.width)/2,  75+75+i*(60+30) + (60-30)/2, size.width, size.height);
 				
 				g2.drawImage(addicon, 275 + 15, 75+75+i*(60+30) + (60-30)/2, null);
 		        editBtnNoPlan[0][i].setBounds(275 + 15,  75+75+i*(60+30) + (60-30)/2, 30, 30);

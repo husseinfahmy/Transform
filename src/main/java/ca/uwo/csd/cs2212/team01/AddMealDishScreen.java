@@ -78,7 +78,7 @@ public class AddMealDishScreen extends JPanel implements Serializable {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-    			g2.drawImage(image, 13, 13, null);
+    			g2.drawImage(image, 13, (getHeight()-image.getHeight())/2, null);
     			
     			JButton button = new JButton();
     			button.setBackground(null);
@@ -89,7 +89,7 @@ public class AddMealDishScreen extends JPanel implements Serializable {
     			button.setBorderPainted(false);
     			button.setOpaque(false);
     			button.setFocusable(false);
-    			button.setBounds(13, 13, image.getWidth(), image.getHeight());
+    			button.setBounds(13, (getHeight()-image.getHeight())/2, image.getWidth(), image.getHeight());
     			button.addActionListener(new ButtonActionListener(14, 0, mainWindow));
     			this.add(button);
     			
@@ -165,7 +165,7 @@ public class AddMealDishScreen extends JPanel implements Serializable {
     			Dimension size = exitBtn.getPreferredSize();
     			exitBtn.setBounds(getWidth()-size.width-12, 6, size.width, size.height);
     	        exitBtn.addActionListener(new ButtonActionListener(2, 0, mainWindow));
-    	        this.add(exitBtn);
+    	        //this.add(exitBtn);
     		}
     	};
     	this.add(bannerPanel);

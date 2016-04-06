@@ -140,7 +140,7 @@ public class MealDishDisplayPanel extends JPanel implements Serializable {
 				listTitleLabel[0].setBounds((getWidth() - size.width)/2, 30+68+(getHeight()-(30+68+70*7-10))/2 + (60-size.height*2)/2 - 30, size.width, size.height);
 				this.add(listTitleLabel[0]);
 				
-				listTitleLabel[1].setText("( + "+myItem.getCalories()+" Cal )");
+				listTitleLabel[1].setText("( + "+(int)myItem.getCalories()+" Cal )");
 				size = listTitleLabel[1].getPreferredSize();
 				listTitleLabel[1].setBounds((getWidth() - size.width)/2, 30+68+(getHeight()-(30+68+70*7-10))/2 + size.height + (60-size.height*2)/2 - 30, size.width, size.height);
 				this.add(listTitleLabel[1]);

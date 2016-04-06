@@ -102,7 +102,7 @@ public class ProfileScreen extends JPanel implements Serializable{
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-	    			g2.drawImage(image, 13, 13, null);
+	    			g2.drawImage(image, 13, (getHeight()-image.getHeight())/2, null);
 	    			
 	    			logoButton.setBackground(null);
 	    			logoButton.setBorder(null);
@@ -112,7 +112,7 @@ public class ProfileScreen extends JPanel implements Serializable{
 	    			logoButton.setBorderPainted(false);
 	    			logoButton.setOpaque(false);
 	    			logoButton.setFocusable(false);
-	    			logoButton.setBounds(13, 13, image.getWidth(), image.getHeight());
+	    			logoButton.setBounds(13, (getHeight()-image.getHeight())/2, image.getWidth(), image.getHeight());
 	    			logoButton.addActionListener(new ButtonActionListener(14, 0, mainWindow));
 	    			this.add(logoButton);
     			}
@@ -143,7 +143,7 @@ public class ProfileScreen extends JPanel implements Serializable{
     			size = exitBtn.getPreferredSize();
     			exitBtn.setBounds(getWidth()-size.width-12, 6, size.width, size.height);
     	        exitBtn.addActionListener(new ButtonActionListener(2, 0, mainWindow));
-    	        this.add(exitBtn);
+    	        //this.add(exitBtn);
     		}
     	};
     	bannerPanel.setBounds(0, 0, getWidth(), 75);

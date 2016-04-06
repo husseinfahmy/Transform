@@ -19,13 +19,13 @@ import javax.swing.SwingUtilities;
  * @author team01
  *
  */
-public class App {
-	static Logger logger = LogManager.getLogger (App.class.getName());
+public class Transform {
+	static Logger logger = LogManager.getLogger (Transform.class.getName());
 	private static boolean testMode;
 	private static MainWindow window;
 	
     /**
-     * Runs the TRAINR program
+     * Runs the Transform program
      * @param args
      */
     public static void main(String[] args) {
