@@ -365,6 +365,7 @@ public class ButtonActionListener implements ActionListener, Serializable {
 				this.mainWindow.setVisible(true);
 				break;
 			case 5: // Nagivates to Plans Screen
+				if (this.mainWindow.getPlanManagerScreen() == null) this.mainWindow.setPlanManagerScreen(new PlanManagerScreen(mainWindow));
 				this.mainWindow.setVisible(false);
 				this.mainWindow.getContentPane().removeAll();
 				this.mainWindow.add(this.mainWindow.getMyPlansScreen());

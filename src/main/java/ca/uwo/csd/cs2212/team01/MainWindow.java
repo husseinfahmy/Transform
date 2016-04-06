@@ -132,7 +132,7 @@ public class MainWindow extends JFrame implements Serializable {
 		loadingScreen = new LoadingScreen(this);
 		weighScreen = new WeighScreen(this);
 		myPlansScreen = new MyPlansScreen(this);
-		planManagerScreen = new PlanManagerScreen(this);
+		//planManagerScreen = new PlanManagerScreen(this);
 
 		this.add(this.getLoadingScreen());
 
@@ -837,5 +837,9 @@ public class MainWindow extends JFrame implements Serializable {
 			apiThreadsRunning = true;
 			apiThreads.getFirst().execute();
 		}
+	}
+
+	public void setPlanManagerScreen(PlanManagerScreen planManagerScreen) {
+		this.planManagerScreen = planManagerScreen;
 	}
 }
