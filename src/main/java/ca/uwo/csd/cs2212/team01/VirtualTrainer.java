@@ -445,7 +445,8 @@ public class VirtualTrainer implements Serializable {
 			weekFeedback.setTXTCode(1);
 			 weekFeedback.addTXTone
 			 (
-					 "You missed your calorie goal twice in the past 6 days<br>"
+					 "You missed your calorie goal twice<br>"
+					 + "in the past 6 days<br>"
 					 + "but you’ve had " + successDays +" successful days.<br>"
 			 		 + "Make sure you stick to your daily plans!"
 			 );

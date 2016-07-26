@@ -256,9 +256,9 @@ public class Day implements Serializable {
 			for (int i = 479; i < 1440; i++)										//generates fake data for entire day (starts at 8am, ends at 11:59pm) [960 elements]
 			{
 				calArray[i] 		= (float)1.5;										//user is burning 1.5 cal each minute for whole day = 1440 cal
-				floorsArray[i] 	= (int)1.0;											//user climbs 1 floor per minute whole day
+				if (479 < i && i < 482) floorsArray[i] 	= (int)1;										//user climbs 1 floor per minute whole day
 				stepsArray[i] 	= (int)1.0;											//user takes 1 steps each minute for whole day
-				distArray[i] 	= (float)2.0;										//user travels a distance of 2 meters each minute for whole day
+				if (479 < i && i < 485) distArray[i] 	= (float)1.0;									//user travels a distance of 2 meters each minute for whole day
 				
 				if (479 < i && i < 540)
 				{ 
@@ -277,9 +277,9 @@ public class Day implements Serializable {
 			for (int i = 479; i < 1440; i++)										//generates fake data for entire day (starts at 8am, ends at 11:59pm)
 			{
 				calArray[i] 		= (float)2.1;										//user is burning 2 cal each minute for whole day = 2016 cal
-				floorsArray[i] 	= (int)2.0;											//user climbs 2 floors per minute whole day
+				if (479 < i && i < 482) floorsArray[i] 	= (int)1;											//user climbs 2 floors per minute whole day
 				stepsArray[i] 	= (int)2.0;											//user takes 2 steps each minute for whole day
-				distArray[i] 	= (float)4.0;										//user travels a distance of 4 meters each minute for whole day
+				if (479 < i && i < 485) distArray[i] 	= (float)1.0;									//user travels a distance of 4 meters each minute for whole day
 				
 				if (479 < i && i < 570)
 				{
@@ -298,9 +298,9 @@ public class Day implements Serializable {
 			for (int i = 479; i < 1440; i++)										//generates fake data for entire day (starts at 8am, ends at 11:59pm)
 			{
 				calArray[i] 		= (float)3;											//user is burning 3 cal each minute for whole day = 2880 cal
-				floorsArray[i] 	= (int)4.0;											//user climbs 4 floors per minute whole day
+				if (479 < i && i < 482) floorsArray[i] 	= (int)1;											//user climbs 4 floors per minute whole day
 				stepsArray[i] 	= (int)3.0;											//user takes 3 steps each minute for whole day
-				distArray[i] 	= (float)5.0;										//user travels a distance of 5 meters each minute for whole day
+				if (479 < i && i < 485) distArray[i] 	= (float)1.0;										//user travels a distance of 5 meters each minute for whole day
 				
 				if (479 < i && i < 600)
 				{
@@ -320,9 +320,9 @@ public class Day implements Serializable {
 			for (int i = 479; i < 1020; i++)										//generates fake data for "Today": Day started at 8:00am and is currently 5:00pm
 			{
 				calArray[i] 		= (float)2;											//user has burned 2 cal each minute  = 1080 cal
-				floorsArray[i] 	= (int)4.0;											//user climbs 4 floors per minute 
+				if (479 < i && i < 482) floorsArray[i] 	= (int)1;											//user climbs 4 floors per minute 
 				stepsArray[i] 	= (int)3.0;											//user takes 3 steps each minute
-				distArray[i] 	= (float)1.0;										//user travels a distance of 5 meters each minute
+				if (479 < i && i < 485) distArray[i] 	= (float)1.0;										//user travels a distance of 5 meters each minute
 				
 				if (479 < i && i < 600) 
 				{

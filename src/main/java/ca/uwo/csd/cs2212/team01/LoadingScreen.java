@@ -175,21 +175,35 @@ public class LoadingScreen extends JPanel implements Serializable {
 		meal3.addFoodServing(foodServing2); // 200 calories
 		meal3.addFoodServing(foodServing3); // 200 calories // total: 500 calories
 		
+		Meal meal4 = new Meal();
+		meal4.addFoodServing(foodServing2);
+		
+		
+		Meal meal5 = new Meal();
+		meal5.setName("Salad");
+		meal5.addFoodServing(foodServing2);
+		
+		Meal meal6 = new Meal();
+		meal6.setName("Pasta");
+		meal6.addFoodServing(foodServing2);
+		
+		
+		
 		//Total Calories In for the day: 500 + 500 + 500 = 1500 Calories
 
 		//Workouts created by user
-		Workout workout1 = new Workout(200); //Scheduled Workout has a Calorie Burn Goal of 200 Calories 
+		Workout workout1 = new Workout(202); //Scheduled Workout has a Calorie Burn Goal of 200 Calories 
 		Workout workout2 = new Workout(200); //Scheduled Workout has a Calorie Burn Goal of 200 Calories
-		Workout workout3 = new Workout(200); //Scheduled Workout has a Calorie Burn Goal of 200 Calories
+		Workout workout3 = new Workout(210); //Scheduled Workout has a Calorie Burn Goal of 200 Calories
 		Workout workout4 = new Workout(200); //Scheduled Workout has a Calorie Burn Goal of 200 Calories
-		Workout workout5 = new Workout(200); //Scheduled Workout has a Calorie Burn Goal of 200 Calories
-		Workout workout6 = new Workout(200); //Scheduled Workout has a Calorie Burn Goal of 200 Calories
-		Workout workout7 = new Workout(200); //Scheduled Workout has a Calorie Burn Goal of 200 Calories
+		Workout workout5 = new Workout(195); //Scheduled Workout has a Calorie Burn Goal of 200 Calories
+		Workout workout6 = new Workout(251); //Scheduled Workout has a Calorie Burn Goal of 200 Calories
+		Workout workout7 = new Workout(284); //Scheduled Workout has a Calorie Burn Goal of 200 Calories
 
 		//Adding the meals and workouts that the user built to the user's daily plans. BMR = Basal Metabolic Rate = 1600 Calories burned passively by user.
 		Plan[] planArray = new Plan[7];
 		Plan plan1 = new Plan(1600); plan1.addMeal(meal1); plan1.addMeal(meal2); plan1.addMeal(meal3); plan1.addWorkout(workout1); planArray[0] = plan1; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
-		Plan plan2 = new Plan(1600); plan2.addMeal(meal1); plan2.addMeal(meal2); plan2.addMeal(meal3); plan2.addWorkout(workout2); planArray[1] = plan2; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
+		Plan plan2 = new Plan(1600); plan2.addMeal(meal1); plan2.addMeal(meal2); plan2.addMeal(meal3); /*plan2.addWorkout(workout2);*/ planArray[1] = plan2; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
 		Plan plan3 = new Plan(1600); plan3.addMeal(meal1); plan3.addMeal(meal2); plan3.addMeal(meal3); plan3.addWorkout(workout3); planArray[2] = plan3; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
 		Plan plan4 = new Plan(1600); plan4.addMeal(meal1); plan4.addMeal(meal2); plan4.addMeal(meal3); plan4.addWorkout(workout4); planArray[3] = plan4; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
 		Plan plan5 = new Plan(1600); plan5.addMeal(meal1); plan5.addMeal(meal2); plan5.addMeal(meal3); plan5.addWorkout(workout5); planArray[4] = plan5; // Cal In = 1500 Calories | Cal Out = BMR + 200 Calories
@@ -230,15 +244,32 @@ public class LoadingScreen extends JPanel implements Serializable {
 		////////////////////////////////////////////////////////////////////////////////
 		
 		for(int i = 0;i<updateDays-1;i++)
-		{ day = new Day(); day.setDate(new Date(today.getTime()-1440*60*1000*(updateDays-1-i))); day.setDayProgress(1440); day.setPlan(planArray[i]); day.generateFakeData(1); mainWindow.getDays().add(day); } //add 6 "previous days" worth of fake raw data & fake plans.
-		  day = new Day(); day.setDate(today);day.setDayProgress(1020); day.setPlan(planArray[6]); day.generateFakeData(3); mainWindow.getDays().add(day); //add "todays" data which includes fake raw data until 5pm and fake plan.
+		{ 
+			day = new Day(); day.setDate(new Date(today.getTime()-1440*60*1000*(updateDays-1-i))); day.setDayProgress(1440); day.setPlan(planArray[i]); day.generateFakeData(1); mainWindow.getDays().add(day); 
+		} //add 6 "previous days" worth of fake raw data & fake plans.
+		  
+		day = new Day(); day.setDate(today);day.setDayProgress(1020); day.setPlan(planArray[6]); day.generateFakeData(3); mainWindow.getDays().add(day); //add "todays" data which includes fake raw data until 5pm and fake plan.
 		//carry out calculations and call methods --> display everything on UI. Done.
 		
 		//all 7 days have raw data that needs processing // ie. updateDays = number of days that need updating in the LinkedList. the last "updateDays" worth of days
 		//need to process new raw data :
 		for(int i = 0; i < updateDays; i++)
+		{
 			mainWindow.getDays().get(mainWindow.getDays().size()-1-i).processNewData();
-
+		}
+		
+		mainWindow.getDays().get(0).setDailyCalDiff(27);
+		mainWindow.getDays().get(1).setDailyCalDiff(-514);
+		mainWindow.getDays().get(2).setDailyCalDiff(-386);
+		mainWindow.getDays().get(3).setDailyCalDiff(-531);
+		mainWindow.getDays().get(4).setDailyCalDiff(-507);
+		mainWindow.getDays().get(5).setDailyCalDiff(-512);
+		
+		
+		meal4.setName("Rice & Chicken");
+		mainWindow.getMyMeals().add(meal4);
+		mainWindow.getMyMeals().add(meal5);
+		mainWindow.getMyMeals().add(meal6);
     	this.mainWindow.setLoadingAPIData(false);
     	
 		this.mainWindow.getContentPane().removeAll();
