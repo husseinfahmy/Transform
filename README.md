@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 # Welcome to CS 2212 - Winter 2016
 
 To get started, you will need to run these commands in your terminal to run the program.
@@ -130,7 +128,6 @@ into the `dev` branch.
 
 To submit your assignment, open a pull request to merge your changes on `dev`
 back into the `master` branch.
->>>>>>> e40c9ab59cec02fa495840806b4c3dd179af17c4
 =======
 # Welcome to CS 2212 - Winter 2016
 
